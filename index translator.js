@@ -22,6 +22,9 @@ document.addEventListener('DOMContentLoaded', function () {
       contactNav: "සම්බන්ධ වන්න"
     },
 
+    // Info Section
+    info: "තේමාව පීළිබඳ",
+
     // Hero Section
     hero: {
       title: "",
@@ -194,6 +197,9 @@ document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('programs-nav').textContent = translations.navigation.programsNav;
     document.getElementById('office-nav').textContent = translations.navigation.officeNav;
     document.getElementById('contact-nav').textContent = translations.navigation.contactNav;
+
+    // Info Section
+    document.getElementById('info').textContent = translations.info;
 
     // Hero Section
     document.getElementById('hero-title').textContent = translations.hero.title;
