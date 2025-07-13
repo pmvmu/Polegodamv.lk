@@ -22,15 +22,15 @@ document.addEventListener('DOMContentLoaded', function () {
       contactNav: "සම්බන්ධ වන්න"
     },
 
-    // Info Section
-    info: "තේමාව පීළිබඳ",
-
     // Hero Section
     hero: {
       title: "",
       subtitle: "",
       learnMoreBtn: "තව දැනගන්න"
     },
+    
+    // Info Section
+    info: "තේමාව පීළිබඳ",
 
     // Marquee Section
     marquee: {
@@ -198,13 +198,13 @@ document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('office-nav').textContent = translations.navigation.officeNav;
     document.getElementById('contact-nav').textContent = translations.navigation.contactNav;
 
-    // Info Section
-    document.getElementById('info').textContent = translations.info;
-
     // Hero Section
     document.getElementById('hero-title').textContent = translations.hero.title;
     document.getElementById('hero-subtitle').textContent = translations.hero.subtitle;
     document.getElementById('learn-more-btn').textContent = translations.hero.learnMoreBtn;
+
+    // Info Section
+    document.getElementById('info').textContent = translations.info;
 
     // Marquee Section
     document.getElementById('marquee-text').textContent = translations.marquee.text;

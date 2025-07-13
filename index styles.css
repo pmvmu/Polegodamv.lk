@@ -1,7 +1,7 @@
 :root {
   --primary-color: #800020;
   /* Maroon */
-  --secondary-color: #FFD700;
+  --secondary-color: #ffd700;
   /* Gold */
   --text-color: #333;
   --light-bg: #f9f9f9;
@@ -14,7 +14,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
 html {
@@ -97,7 +97,7 @@ body {
 }
 
 .section-title::after {
-  content: '';
+  content: "";
   position: absolute;
   width: 80px;
   height: 3px;
@@ -213,7 +213,8 @@ nav {
 .hero {
   height: 70vh;
   background-size: cover;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.118), rgba(0, 0, 0, 0.079)), url('./webhero-01.jpg');
+  background-image: linear-gradient(rgba(0, 0, 0, 0.118), rgba(0, 0, 0, 0.079)),
+    url("./webhero-01.jpg");
   background-position: center;
   color: var(--white);
   display: flex;
@@ -243,7 +244,11 @@ nav {
 @media screen and (max-width: 768px) {
   .hero {
     height: 30vh;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.255), rgba(0, 0, 0, 0.666)), url('./webhero-01.jpg');
+    background-image: linear-gradient(
+        rgba(0, 0, 0, 0.255),
+        rgba(0, 0, 0, 0.666)
+      ),
+      url("./webhero-01.jpg");
     /* Adjust height for mobile screens */
     padding: 0 15px;
     /* Add some padding on the sides */
@@ -290,7 +295,7 @@ nav {
 /* Extra small devices */
 @media screen and (max-width: 480px) {
   .hero {
-    height: 30vh
+    height: 30vh;
   }
 
   .hero-content h1 {
@@ -339,10 +344,11 @@ marquee {
   font-size: smaller;
 }
 
-#marquee-text4, #marquee-text2, #marquee-text {
+#marquee-text4,
+#marquee-text2,
+#marquee-text {
   font-weight: bold;
 }
-
 
 /* Principal Section */
 .principal-section {
@@ -409,13 +415,17 @@ marquee {
   z-index: -1;
   border: inherit;
   border-radius: inherit;
-  background-image: conic-gradient(from var(--angle), #ffffff 80%, #610030 88%, #610030 92%, #ffffff 100%);
+  background-image: conic-gradient(
+    from var(--angle),
+    #ffffff 80%,
+    #610030 88%,
+    #610030 92%,
+    #ffffff 100%
+  );
   background-origin: border-box;
-  -webkit-mask:
-    linear-gradient(black, black) content-box,
+  -webkit-mask: linear-gradient(black, black) content-box,
     linear-gradient(black, black);
-  mask: linear-gradient(black, black),
-    linear-gradient(black, black);
+  mask: linear-gradient(black, black), linear-gradient(black, black);
   -webkit-mask-clip: content-box, border-box;
   mask-clip: content-box, border-box;
   -webkit-mask-composite: xor;
@@ -425,7 +435,12 @@ marquee {
 
 @supports not (background: paint(something)) {
   .media-object::before {
-    background-image: conic-gradient(#ffffff 80%, #610030 88%, #610030 92%, #ffffff 100%);
+    background-image: conic-gradient(
+      #ffffff 80%,
+      #610030 88%,
+      #610030 92%,
+      #ffffff 100%
+    );
   }
 }
 
@@ -444,7 +459,6 @@ marquee {
     --angle: 1turn;
   }
 }
-
 
 /* Teachers Section */
 .teachers-section {
@@ -527,13 +541,17 @@ marquee {
   z-index: -1;
   border: inherit;
   border-radius: inherit;
-  background-image: conic-gradient(from var(--angle), #ffffff 80%, #610030 88%, #610030 92%, #ffffff 100%);
+  background-image: conic-gradient(
+    from var(--angle),
+    #ffffff 80%,
+    #610030 88%,
+    #610030 92%,
+    #ffffff 100%
+  );
   background-origin: border-box;
-  -webkit-mask:
-    linear-gradient(black, black) content-box,
+  -webkit-mask: linear-gradient(black, black) content-box,
     linear-gradient(black, black);
-  mask: linear-gradient(black, black),
-    linear-gradient(black, black);
+  mask: linear-gradient(black, black), linear-gradient(black, black);
   -webkit-mask-clip: content-box, border-box;
   mask-clip: content-box, border-box;
   -webkit-mask-composite: xor;
@@ -543,7 +561,12 @@ marquee {
 
 @supports not (background: paint(something)) {
   .media-object::before {
-    background-image: conic-gradient(#ffffff 80%, #610030 88%, #610030 92%, #ffffff 100%);
+    background-image: conic-gradient(
+      #ffffff 80%,
+      #610030 88%,
+      #610030 92%,
+      #ffffff 100%
+    );
   }
 }
 
@@ -562,8 +585,6 @@ marquee {
     --angle: 1turn;
   }
 }
-
-
 
 /* History Section */
 .history-section {
@@ -882,16 +903,15 @@ footer {
 }
 
 .scl-logo {
-  background-image: url('./logo.png');
+  background-image: url("./logo.png");
 }
 
 .media-logo {
-  background-image: url('./media_logo.png');
+  background-image: url("./media_logo.png");
 }
 
 /* Responsive */
 @media screen and (max-width: 992px) {
-
   .principal-content,
   .history-content {
     flex-direction: column;
@@ -990,7 +1010,7 @@ footer {
 }
 
 .sinhala {
-  font-family: 'Noto Sans Sinhala', Arial, sans-serif;
+  font-family: "Noto Sans Sinhala", Arial, sans-serif;
   font-size: 18px;
   margin-bottom: 12px;
   line-height: 1.5;
@@ -1015,7 +1035,6 @@ footer {
 .close-button:hover {
   background-color: #3367d6;
 }
-
 
 /* SlideShow */
 .slideshow-container {
@@ -1047,7 +1066,12 @@ footer {
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(90deg, rgb(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.6) 100%, transparent 100%);
+  background: linear-gradient(
+    90deg,
+    rgb(0, 0, 0, 0.8) 0%,
+    rgba(0, 0, 0, 0.6) 100%,
+    transparent 100%
+  );
   z-index: 5;
 }
 
@@ -1244,7 +1268,11 @@ footer {
   }
 
   .slide-overlay {
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.9) 100%);
+    background: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.7) 0%,
+      rgba(0, 0, 0, 0.9) 100%
+    );
   }
 
   .slide-content {
@@ -1323,21 +1351,20 @@ footer {
 
 /* Slide-specific styling */
 #slide1 {
-  background-image: url('./slide-01.jpg');
+  background-image: url("./slide-01.jpg");
 }
 
 #slide2 {
-  background-image: url('./slide-01.jpg');
+  background-image: url("./slide-01.jpg");
 }
 
 #slide3 {
-  background-image: url('./slide-01.jpg');
+  background-image: url("./slide-01.jpg");
 }
 
 #slide4 {
-  background-image: url('./slide-01.jpg');
+  background-image: url("./slide-01.jpg");
 }
-
 
 /* Mision and Visin */
 .mission-vision-section {
