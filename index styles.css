@@ -54,6 +54,36 @@ body {
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
+.special-btn {
+  position: fixed;
+  top: 160px;
+  right: 20px;
+  background-color: #d5d5d515;
+  color: var(--primary-color);
+  font-size: 9px;
+  padding: 10px 20px;
+  border-radius: 50px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  z-index: 1000;
+  text-transform: capitalize;
+  backdrop-filter: blur(10px);
+}
+
+.special-btn:hover {
+  background-color: var(--primary-color);
+  color: var(--white);
+}
+
+.special-btn a {
+  display: flex;
+  flex-direction: row; /* horizontal direction */
+  align-items: center; /* vertical alignment */
+  gap: 6px; /* space between icon and text */
+  text-decoration: none;
+  color: inherit;
+}
+
 .section-title {
   text-align: center;
   margin-bottom: 40px;
