@@ -37,10 +37,3 @@ This solo project is part of a hands-on learning experience in:
 - 📢 Digital presence and personal branding
 
 Whether it’s for coursework, competitions, or personal growth, this site is a proud representation of what a motivated student can build independently!
-
-## 🚀 How to Run Locally
-
-```bash
-git clone https://github.com/harshana101/solopjt.git
-cd solopjt
-open index.html   # Or double-click index.html in your file explorer
