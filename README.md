@@ -1,3 +1,5 @@
+![Project Image](webhero-01.png)
+
 # 🎓 Solo Project Showcase – Harshana @ Polegoda M. V.
 
 Welcome to the **Solo Project Showcase**, a dynamic portfolio built and maintained by a student of Polegoda M. V.! This project represents an individual effort to apply web development skills in a creative and visually engaging way. It's live at: [pmvmu.github.io/Polegodamv.lk](https://harshana101.github.io/solopjt/)
