@@ -41,4 +41,5 @@ This solo project is part of a hands-on learning experience in:
 Whether it’s for coursework, competitions, or personal growth, this site is a proud representation of what a motivated student can build independently!
 
 ## 📷 Screen Shot
-![web image]()
+![web image](link.jpg)
+![screenshot 1](screenshot.png)
