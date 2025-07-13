@@ -1,4 +1,4 @@
-![Project Image](webhero-01.png)
+![Project Image](webhero-01.jpg)
 
 # 🎓 Solo Project Showcase – Harshana @ Polegoda M. V.
 
@@ -39,3 +39,6 @@ This solo project is part of a hands-on learning experience in:
 - 📢 Digital presence and personal branding
 
 Whether it’s for coursework, competitions, or personal growth, this site is a proud representation of what a motivated student can build independently!
+
+## 📷 Screen Shot
+![web image]()
