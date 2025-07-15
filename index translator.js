@@ -177,6 +177,7 @@ document.addEventListener('DOMContentLoaded', function () {
       copyright: "© 2025 බප/ හො/ පොලේගොඩ මහා විද්‍යාලය. සියලුම හිමිකම් ඇවිරිණි.",
       power: "බලගැන්වීම:",
       pmvmu: "පොලේගොඩ මහා විද්‍යාලයීය මාධ්‍ය ඒකකය",
+      project: "ව්‍යාපෘතිය පිළිබඳ",
     },
   };
 
@@ -326,6 +327,7 @@ document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('address').textContent = translations.footer.address;
     document.getElementById('phone').textContent = translations.footer.phone;
     document.getElementById('email').textContent = translations.footer.email;
+    document.getElementById('project').textContent = translations.footer.project;
     document.getElementById('quick-links-title').textContent = translations.footer.quickLinksTitle;
     document.getElementById('home-link').textContent = translations.footer.home;
     document.getElementById('faculty-link').textContent = translations.footer.faculty;

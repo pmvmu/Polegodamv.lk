@@ -236,7 +236,7 @@ nav {
   max-width: 800px;
   animation: fadeIn 1s ease;
   background-color: #ffffff33;
-  backdrop-filter: blur(20px);
+  backdrop-filter: blur(15px);
   border: 1px solid #ffffff;
   border-radius: 15px;
   height: 40vh;
@@ -266,27 +266,27 @@ nav {
     height: 30vh;
     background-image: linear-gradient(rgba(0, 0, 0, 0.255),
         rgba(0, 0, 0, 0.666)),
-      url("./webhero-01.jpg");
+      url("./Herobg/hero-bg1.jpg");
     /* Adjust height for mobile screens */
     padding: 0 15px;
     /* Add some padding on the sides */
   }
 
   .hero-content {
-    width: 100%;
+    width: 80%;
+    height: 20vh;
     max-width: 100%;
     padding: 20px;
     text-align: center;
   }
 
   .hero-content h1 {
-    font-size: 28px;
+    font-size: 16px;
     /* Smaller font size for mobile */
-    margin-bottom: 10px;
   }
 
   .hero-content p {
-    font-size: 16px;
+    font-size: 12px;
     margin-bottom: 20px;
   }
 
@@ -313,18 +313,18 @@ nav {
 /* Extra small devices */
 @media screen and (max-width: 480px) {
   .hero {
-    height: 30vh;
+    height: 40vh;
   }
 
   .hero-content h1 {
-    font-size: 24px;
+    font-size: 10px;
     font-family: "Yaldevi", sans-serif;
     font-optical-sizing: auto;
     font-style: bold;
   }
 
   .hero-content p {
-    font-size: 14px;
+    font-size: 8px;
     line-height: 1.4;
     font-family: "Yaldevi", sans-serif;
     font-optical-sizing: auto;

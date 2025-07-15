@@ -24,15 +24,82 @@
             margin: 0 auto;
             padding: 20px;
             background-color: #f4f4f4;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
         }
 
-        header,
-        header h1 {
-            text-align: center;
-            background-color: #610030;
+        .background {
+            background-image: url("./historybg.jpg");
+            background-position: center top;
+            background-repeat: no-repeat;
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            z-index: -3;
+        }
+
+        .background-filter {
+            background-color: #ffffff3b;
+            backdrop-filter: blur(10px);
+            min-height: 100vh;
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            z-index: -2;
+        }
+
+        header {
+            background-color: transparent;
             color: white;
-            padding: 20px;
+            text-align: center;
+            padding: 0;
             position: relative;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+        }
+
+        .header-bg {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            border-bottom: 10px solid #ffffff;
+            border-radius: 0 0 15px 15px;
+            box-shadow: 0 5px 20px #070707;
+        }
+
+        .main-container {
+            padding: 1.2rem;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        .logo {
+            margin-top: 45%;
+            padding: 1.5rem;
+            /* background: linear-gradient(to bottom, #ffffff8f 30%, #ffffff00 60%); */
+            background-color: #ffffff6b;
+            backdrop-filter: blur(20px);
+            border-radius: 50% 50% 0 0;
+            position: absolute;
+            z-index: 1000;
+            justify-content: center;
+            display: flex;
+            box-shadow: 0px 5px 20px #07070770;
+        }
+
+        .scl-logo {
+            width: 250px;
+            height: 250px;
+            background-image: url("./logo.png");
+            background-size: cover;
+
         }
 
         .language-toggle {
@@ -69,11 +136,12 @@
 
         .history-section,
         .principals-section {
-            background-color: white;
-            margin: 20px 0;
+            background-image: linear-gradient(to bottom, #ffffff9a, #ffffff23);
+            backdrop-filter: blur(20px);
+            margin: 45% 0 20px 0;
             padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            box-shadow: 0 5px 20px #07070770;
         }
 
         .principal {
@@ -131,9 +199,11 @@
             text-indent: 2em;
         }
 
-        h1,
-        h2 {
+        h1 {
             color: #610030;
+            padding: 1rem 0;
+            border-bottom: 3px solid #610030;
+            font-size: 56px;
         }
 
         .loading {
@@ -164,131 +234,171 @@
         strong {
             color: #610030;
         }
+
+        @media screen and (max-width: 480px) {
+            h1 {
+                font-size: 20px;
+            }
+
+            p {
+                font-size: 12px;
+            }
+
+            .history-section {
+                margin: 25% 0 20px 0;
+            }
+        }
+
+        @media screen and (max-width: 992px) {
+            h1 {
+                font-size: 35px;
+            }
+
+            p {
+                font-size: 17px;
+            }
+
+            .history-section {
+                margin: 30% 0 20px 0;
+            }
+        }
     </style>
 </head>
 
 <body>
+    <div class="background"></div>
+    <div class="background-filter"></div>
     <div class="language-toggle">
         <button onclick="changeLanguage('en')" class="active" id="en-btn">English</button>
         <button onclick="changeLanguage('si')" id="si-btn">සිංහල</button>
     </div>
 
-    <header>
-        <h1 id="page-title">Polegoda M. V. : A Legacy of Excellence</h1>
-    </header>
+    <img src="./historybg.jpg" alt="What's NEW Header" class="header-bg">
+    <div class="main-container">
+        <header>
+            <div class="logo">
+                <div class="scl-logo"></div>
+            </div>
+        </header>
 
-    <section class="history-section">
-        <h2 id="history-title">Our School's History</h2>
-        <p id="history-para-1">According to the existing records of Polegoda
-            Maha Vidyalaya, Polegoda Maha Vidyalaya was
-            established in 1926. At the time of its establishment, there
-            were eight students and three teachers, and the
-            founding principal was <a href="#kularatne"> Mr.
-                P.C.M.Kularatne</a>. He served as the principal for a
-            long time.
-            The founding student was Mr. Somapala Kularatne, Mr.
-            P.C.M.Kularatne’s son. <br><br>
+        <section class="history-section">
+            <center>
+                <h1 id="history-title">History of Polegoda M.V.</h1>
+            </center>
+            <p id="history-para-1">According to the existing records of Polegoda
+                Maha Vidyalaya, Polegoda Maha Vidyalaya was
+                established in 1926. At the time of its establishment, there
+                were eight students and three teachers, and the
+                founding principal was <a href="#kularatne"> Mr.
+                    P.C.M.Kularatne</a>. He served as the principal for a
+                long time.
+                The founding student was Mr. Somapala Kularatne, Mr.
+                P.C.M.Kularatne’s son. <br><br>
 
-            It is mentioned in the book that our school was initially
-            located in a house in the Kurunduwatte area and
-            was brought to the current school site in 1929. Old records
-            state that in 1929, a Sanghagatha Dakshina was
-            established at the current Polegoda Maha Vidyalaya site, after
-            which the school was started. Initially,
-            three coconut frond sheds were used for teaching. <br><br>
+                It is mentioned in the book that our school was initially
+                located in a house in the Kurunduwatte area and
+                was brought to the current school site in 1929. Old records
+                state that in 1929, a Sanghagatha Dakshina was
+                established at the current Polegoda Maha Vidyalaya site, after
+                which the school was started. Initially,
+                three coconut frond sheds were used for teaching. <br><br>
 
-            The first permanent building built here is the building where
-            the media unit and the new Smart classroom are
-            currently located (Mahasen Hall). The main hall was built in
-            1972 and the other halls were built gradually
-            in various years. <br><br>
+                The first permanent building built here is the building where
+                the media unit and the new Smart classroom are
+                currently located (Mahasen Hall). The main hall was built in
+                1972 and the other halls were built gradually
+                in various years. <br><br>
 
-            Among the principals who served in our school after Mr.
-            Kularatne was a principal named <a href="#gunasena">Gunasena</a>. By the 60s, this school
-            received a teachers' residence and the golden era
-            of this
-            school is considered to be the service period of Principal <a href="#abeyawardena">Abeyawardena</a>. During
-            that period,
-            the school's playground was prepared. Also, several buildings
-            including the old laboratory and the home
-            laboratory were constructed. It is said that a Lord named <a href="#chandaloka">Chandaloka</a> served as the
-            Deputy
-            Principal of this school. During that time, many buildings were
-            constructed by holding fairs and screening
-            films. <br><br>
+                Among the principals who served in our school after Mr.
+                Kularatne was a principal named <a href="#gunasena">Gunasena</a>. By the 60s, this school
+                received a teachers' residence and the golden era
+                of this
+                school is considered to be the service period of Principal <a href="#abeyawardena">Abeyawardena</a>.
+                During
+                that period,
+                the school's playground was prepared. Also, several buildings
+                including the old laboratory and the home
+                laboratory were constructed. It is said that a Lord named <a href="#chandaloka">Chandaloka</a>
+                served as
+                the
+                Deputy
+                Principal of this school. During that time, many buildings were
+                constructed by holding fairs and screening
+                films. <br><br>
 
-            It is said that former Prime Minister S.W.R.D.Bandaranaike
-            visited this school in 1952. Initially, this
-            school was known as the <strong>South Mahagama
-                Sucharithawardhana Swabhasha Mixed School</strong>. <br><br>
+                It is said that former Prime Minister S.W.R.D.Bandaranaike
+                visited this school in 1952. Initially, this
+                school was known as the <strong>South Mahagama
+                    Sucharithawardhana Swabhasha Mixed School</strong>. <br><br>
 
-            In the 60s, it was a special event that a student from Polegoda
-            Maha Vidyalaya was elected to the university
-            for the first time. At that time, the Advanced Level classes
-            were half-full, and in the late 70s, Advanced
-            Level classes were resumed. Six other students entered the
-            university at the same time in the late 70s.
-            After Teacher Abhayawardhana left this school for another
-            temple, Principal <a href="#ranathunga">Ranatunga</a> and
-            then Principal <a href="#weerakoon">Weerakoon</a> served as
-            acting principals. During that time, <a href="#amarasena">Mr. Amarasena</a> also served as a
-            principal. In 1984, our school demonstrated an
-            all-Ceylon level skill in
-            throwing the hoop. <br><br>
+                In the 60s, it was a special event that a student from Polegoda
+                Maha Vidyalaya was elected to the university
+                for the first time. At that time, the Advanced Level classes
+                were half-full, and in the late 70s, Advanced
+                Level classes were resumed. Six other students entered the
+                university at the same time in the late 70s.
+                After Teacher Abhayawardhana left this school for another
+                temple, Principal <a href="#ranathunga">Ranatunga</a> and
+                then Principal <a href="#weerakoon">Weerakoon</a> served as
+                acting principals. During that time, <a href="#amarasena">Mr. Amarasena</a> also served as a
+                principal. In 1984, our school demonstrated an
+                all-Ceylon level skill in
+                throwing the hoop. <br><br>
 
-            From 1986 to 96, Principal <a href="#anuradha">Anuradha
-                Samaradiwakara</a> served in this school. Our
-            school's Buddha Temple was built with the patronage of Mr.
-            Calvin and the library building was built with
-            the patronage of
-            Mr. M.H. Piyasena. It is said that Mr. Ronnie De Mel, who was
-            the Minister of Finance at that time, attended
-            the opening of the library building. After Principal
-            Samaradiwakara, <a href="#piyasena">Mr. Piyasena Jayananda</a>
-            served as the principal for a while and then Principal <a href="#piyasoma">Piyasoma</a> also served here.
-                    After him,
-                    Principal <a href="#hemadasa">Hemadasa</a> passed away
-                    while serving in this school. <br><br>
+                From 1986 to 96, Principal <a href="#anuradha">Anuradha
+                    Samaradiwakara</a> served in this school. Our
+                school's Buddha Temple was built with the patronage of Mr.
+                Calvin and the library building was built with
+                the patronage of
+                Mr. M.H. Piyasena. It is said that Mr. Ronnie De Mel, who was
+                the Minister of Finance at that time, attended
+                the opening of the library building. After Principal
+                Samaradiwakara, <a href="#piyasena">Mr. Piyasena Jayananda</a>
+                served as the principal for a while and then Principal <a href="#piyasoma">Piyasoma</a> also served
+                here.
+                After him,
+                Principal <a href="#hemadasa">Hemadasa</a> passed away
+                while serving in this school. <br><br>
 
-                    Later, Principal <a href="#gunasekara">Gunasekara</a>
-                    served as the acting principal and then <a href="#siriyawathi">Mrs. Siriyawathi</a> served as
-                    the acting principal. Principal <a href="#jayasiri">Jayasiri</a> came
-                    to serve
-                    in this school and served in this school until almost
-                    2012. During that time, <strong>This school
-                        became a Secondary School and the Primary School was
-                        removed</strong>. The school also received
-                    the Mahindodaya Laboratory during this period. <br><br>
+                Later, Principal <a href="#gunasekara">Gunasekara</a>
+                served as the acting principal and then <a href="#siriyawathi">Mrs. Siriyawathi</a> served as
+                the acting principal. Principal <a href="#jayasiri">Jayasiri</a> came
+                to serve
+                in this school and served in this school until almost
+                2012. During that time, <strong>This school
+                    became a Secondary School and the Primary School was
+                    removed</strong>. The school also received
+                the Mahindodaya Laboratory during this period. <br><br>
 
-                    From 2012, <a href="#jayapala">K. D. Jayapala</a> served
-                            as the principal of this school until 2018.
-                            During
-                            that period, our school was also selected for
-                            the Best School Nearest School project.
-                            Several buildings were renovated by removing the
-                            entrance hall and installing roofing
-                            sheets. The school received two new teachers'
-                            houses and the old teachers' house was also
-                            renovated. <br><br>
+                From 2012, <a href="#jayapala">K. D. Jayapala</a> served
+                as the principal of this school until 2018.
+                During
+                that period, our school was also selected for
+                the Best School Nearest School project.
+                Several buildings were renovated by removing the
+                entrance hall and installing roofing
+                sheets. The school received two new teachers'
+                houses and the old teachers' house was also
+                renovated. <br><br>
 
-                            Principal <a href="#saman">Saman Rohana
-                                Karunaratne</a> served as the principal of
-                            this
-                            school
-                            from 2018 to 2024. Several buildings were
-                            renovated during the same period. In 2019, ten
-                            students enrolled in the university from this
-                            school. <br><br>
+                Principal <a href="#saman">Saman Rohana
+                    Karunaratne</a> served as the principal of
+                this
+                school
+                from 2018 to 2024. Several buildings were
+                renovated during the same period. In 2019, ten
+                students enrolled in the university from this
+                school. <br><br>
 
-                            The current Principal, <a href="#duleeka">Mrs.
-                                W.D.D.M. Premathilaka</a>, will assume the
-                            position
-                            of Principal from 14th February 2024.
+                The current Principal, <a href="#duleeka">Mrs.
+                    W.D.D.M. Premathilaka</a>, will assume the
+                position
+                of Principal from 14th February 2024.
 
-        </p>
-    </section>
+            </p>
+        </section>
 
-    <!-- <section class="principals-section">
+        <!-- <section class="principals-section">
         <h2 id="principals-title">School Principals Through
             the Years</h2>
         <div class="principal" id="kularatne">
@@ -492,6 +602,7 @@
             </div>
         </div>
     </section> -->
+    </div>
     <script>
         let currentLanguage = 'en';
 
@@ -561,7 +672,7 @@ The current Principal, <a href="#duleeka">Mrs. W.D.D.M. Premathilaka</a>, will a
             },
             si: {
                 'page-title': 'පොලේගොඩ ම. වි. : විශිෂ්ටත්වයේ උරුමය',
-                'history-title': 'අපේ පාසලේ ඉතිහාසය',
+                'history-title': 'පොලේගොඩ මහා විද්‍යාලයීය ඉතිහාසය',
                 'history-para-1': `පොලේගොඩ මහා විද්‍යාලයේ පවතින වාර්තාවලට අනුව, පොලේගොඩ මහා විද්‍යාලය 1926 දී ආරම්භ කරන ලදී. එය ආරම්භ කරන විට සිසුන් අට
 දෙනෙකු සහ ගුරුවරුන් තිදෙනෙකු සිටි අතර, ආරම්භක විදුහල්පතිවරයා <a href="#kularatne">පී.සී.එම්.කුලරත්න</a> මහතා විය. ඔහු
 දිගු කලක් විදුහල්පති ලෙස සේවය කළේය. ආරම්භක ශිෂ්‍යයා පී.සී.එම්.කුලරත්න මහතාගේ පුත් සෝමපාල කුලරත්න මහතා ය. <br><br>
