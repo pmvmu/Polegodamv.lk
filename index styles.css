@@ -973,6 +973,10 @@ footer {
   .mobile-menu {
     display: block;
   }
+
+  p, a {
+    font-size: 12px;
+  }
 }
 
 @media screen and (max-width: 768px) {
@@ -986,6 +990,10 @@ footer {
 
   .section-title h2 {
     font-size: 18px;
+  }
+
+  p, a {
+    font-size: 12px;
   }
 }
 
