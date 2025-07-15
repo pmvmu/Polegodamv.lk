@@ -11,6 +11,7 @@ body {
   position: sticky;
   overflow: hidden;
 }
+
 .header-container::before {
   content: "";
   position: absolute;
@@ -42,26 +43,23 @@ nav {
   background-size: contain;
   background-repeat: no-repeat;
   animation: perahera-flow 20s infinite linear;
+  top: 60px;
 }
 
 .perahera01 {
   left: 20px;
-  top: 60px;
 }
 
 .perahera02 {
   left: 120px;
-  top: 60px;
 }
 
 .perahera03 {
   left: 220px;
-  top: 60px;
 }
 
 .perahera04 {
   left: 320px;
-  top: 60px;
 }
 
 .kingdom {
@@ -187,19 +185,19 @@ nav {
   0% {
     transform: rotate(0deg) scale(1);
   }
-  
+
   25% {
     transform: rotate(90deg) scale(1.1);
   }
-  
+
   50% {
     transform: rotate(180deg) scale(1);
   }
-  
+
   75% {
     transform: rotate(270deg) scale(1.1);
   }
-  
+
   100% {
     transform: rotate(360deg) scale(1);
   }
@@ -278,6 +276,64 @@ nav {
     width: 150px;
     height: 150px;
   }
+
+  .header-container {
+    height: 100px;
+  }
+
+  .perahera {
+    width: 60px;
+    height: 60px;
+    top: 45px;
+  }
+
+  .perahera01 {
+    left: 10px;
+  }
+
+  .perahera02 {
+    left: 70px;
+  }
+
+  .perahera03 {
+    left: 130px;
+  }
+
+  .perahera04 {
+    left: 190px;
+  }
+
+  .cloud01 {
+    width: 20px;
+    height: 20px;
+  }
+  .cloud02 {
+    width: 15px;
+    height: 15px;
+  }
+  .cloud03 {
+    width: 10px;
+    height: 10px;
+  }
+  .cloud05 {
+    width: 20px;
+    height: 20px;
+  }
+  .cloud06 {
+    width: 25px;
+    height: 20px;
+    top: 30px;
+  }
+  .cloud07 {
+    width: 35px;
+    height: 18px;
+    top: 45px;
+  }
+
+  .palapethi {
+    width: 10px;
+    top: 40px;
+  }
 }
 
 @media (max-width: 480px) {
@@ -305,6 +361,11 @@ nav {
   .leaf {
     width: 100px;
     height: 100px;
+  }
+
+  .perahera {
+    transform: scale(0.1);
+    top: 21px;
   }
 }
 
