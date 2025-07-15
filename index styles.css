@@ -20,7 +20,6 @@
 html {
   scroll-behavior: smooth;
   font-family: "Yaldevi", sans-serif;
-
 }
 
 body {
@@ -71,6 +70,15 @@ body {
   z-index: 1000;
   text-transform: capitalize;
   backdrop-filter: blur(10px);
+}
+
+@media screen and (max-width: 720px) {
+  .special-btn {
+    top: 100px;
+    font-size: 5px;
+    padding: 5px 10px;
+    right: 10px;
+  }
 }
 
 .special-btn:hover {
@@ -230,8 +238,6 @@ nav {
   position: relative;
 }
 
-
-
 .hero-content {
   max-width: 800px;
   animation: fadeIn 1s ease;
@@ -264,8 +270,10 @@ nav {
 @media screen and (max-width: 768px) {
   .hero {
     height: 30vh;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.255),
-        rgba(0, 0, 0, 0.666)),
+    background-image: linear-gradient(
+        rgba(0, 0, 0, 0.255),
+        rgba(0, 0, 0, 0.666)
+      ),
       url("./Herobg/hero-bg1.jpg");
     /* Adjust height for mobile screens */
     padding: 0 15px;
@@ -329,7 +337,6 @@ nav {
     font-family: "Yaldevi", sans-serif;
     font-optical-sizing: auto;
     font-style: normal;
-
   }
 
   .nav-links a {
@@ -440,11 +447,13 @@ marquee {
   z-index: -1;
   border: inherit;
   border-radius: inherit;
-  background-image: conic-gradient(from var(--angle),
-      #ffffff 80%,
-      #610030 88%,
-      #610030 92%,
-      #ffffff 100%);
+  background-image: conic-gradient(
+    from var(--angle),
+    #ffffff 80%,
+    #610030 88%,
+    #610030 92%,
+    #ffffff 100%
+  );
   background-origin: border-box;
   -webkit-mask: linear-gradient(black, black) content-box,
     linear-gradient(black, black);
@@ -458,10 +467,12 @@ marquee {
 
 @supports not (background: paint(something)) {
   .media-object::before {
-    background-image: conic-gradient(#ffffff 80%,
-        #610030 88%,
-        #610030 92%,
-        #ffffff 100%);
+    background-image: conic-gradient(
+      #ffffff 80%,
+      #610030 88%,
+      #610030 92%,
+      #ffffff 100%
+    );
   }
 }
 
@@ -562,11 +573,13 @@ marquee {
   z-index: -1;
   border: inherit;
   border-radius: inherit;
-  background-image: conic-gradient(from var(--angle),
-      #ffffff 80%,
-      #610030 88%,
-      #610030 92%,
-      #ffffff 100%);
+  background-image: conic-gradient(
+    from var(--angle),
+    #ffffff 80%,
+    #610030 88%,
+    #610030 92%,
+    #ffffff 100%
+  );
   background-origin: border-box;
   -webkit-mask: linear-gradient(black, black) content-box,
     linear-gradient(black, black);
@@ -580,10 +593,12 @@ marquee {
 
 @supports not (background: paint(something)) {
   .media-object::before {
-    background-image: conic-gradient(#ffffff 80%,
-        #610030 88%,
-        #610030 92%,
-        #ffffff 100%);
+    background-image: conic-gradient(
+      #ffffff 80%,
+      #610030 88%,
+      #610030 92%,
+      #ffffff 100%
+    );
   }
 }
 
@@ -929,7 +944,6 @@ footer {
 
 /* Responsive */
 @media screen and (max-width: 992px) {
-
   .principal-content,
   .history-content {
     flex-direction: column;
@@ -963,7 +977,7 @@ footer {
 
 @media screen and (max-width: 768px) {
   .hero-content h1 {
-    font-size: 36px;
+    font-size: 22px;
   }
 
   .hero-content p {
@@ -971,7 +985,7 @@ footer {
   }
 
   .section-title h2 {
-    font-size: 28px;
+    font-size: 18px;
   }
 }
 
@@ -1084,10 +1098,12 @@ footer {
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(90deg,
-      rgb(0, 0, 0, 0.8) 0%,
-      rgba(0, 0, 0, 0.6) 100%,
-      transparent 100%);
+  background: linear-gradient(
+    90deg,
+    rgb(0, 0, 0, 0.8) 0%,
+    rgba(0, 0, 0, 0.6) 100%,
+    transparent 100%
+  );
   z-index: 5;
 }
 
@@ -1284,9 +1300,11 @@ footer {
   }
 
   .slide-overlay {
-    background: linear-gradient(to bottom,
-        rgba(0, 0, 0, 0.7) 0%,
-        rgba(0, 0, 0, 0.9) 100%);
+    background: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.7) 0%,
+      rgba(0, 0, 0, 0.9) 100%
+    );
   }
 
   .slide-content {
@@ -1414,6 +1432,18 @@ footer {
   .mission-vision-content {
     flex-direction: column;
   }
+
+  .logo-text {
+    font-size: 20px;
+  }
+
+  .logo img {
+    transform: scale(75%);
+  }
+
+  /* .logo-img {
+    he
+  } */
 }
 
 ::selection {
