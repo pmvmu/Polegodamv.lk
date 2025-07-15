@@ -19,6 +19,8 @@
 
 html {
   scroll-behavior: smooth;
+  font-family: "Yaldevi", sans-serif;
+
 }
 
 body {
@@ -77,9 +79,12 @@ body {
 
 .special-btn a {
   display: flex;
-  flex-direction: row; /* horizontal direction */
-  align-items: center; /* vertical alignment */
-  gap: 6px; /* space between icon and text */
+  flex-direction: row;
+  /* horizontal direction */
+  align-items: center;
+  /* vertical alignment */
+  gap: 6px;
+  /* space between icon and text */
   text-decoration: none;
   color: inherit;
 }
@@ -214,7 +219,7 @@ nav {
   height: 70vh;
   background-size: cover;
   background-image: linear-gradient(rgba(0, 0, 0, 0.118), rgba(0, 0, 0, 0.079)),
-    url("./webhero-01.jpg");
+    url("./Herobg/hero-bg1.jpg");
   background-position: center;
   color: var(--white);
   display: flex;
@@ -224,30 +229,42 @@ nav {
   position: relative;
 }
 
+
+
 .hero-content {
   max-width: 800px;
   animation: fadeIn 1s ease;
+  background-color: #ffffff33;
+  backdrop-filter: blur(20px);
+  border: 1px solid #ffffff;
+  border-radius: 15px;
+  height: 40vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .hero-content h1 {
   font-size: 48px;
-  margin-bottom: 20px;
+  /* margin-bottom: 20px; */
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.268);
+  margin: 0;
 }
 
 .hero-content p {
-  font-size: 70px;
+  font-size: 30px;
   margin-bottom: 30px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.268);
+  margin: 0;
 }
 
 /* Hero Section Mobile Optimization */
 @media screen and (max-width: 768px) {
   .hero {
     height: 30vh;
-    background-image: linear-gradient(
-        rgba(0, 0, 0, 0.255),
-        rgba(0, 0, 0, 0.666)
-      ),
+    background-image: linear-gradient(rgba(0, 0, 0, 0.255),
+        rgba(0, 0, 0, 0.666)),
       url("./webhero-01.jpg");
     /* Adjust height for mobile screens */
     padding: 0 15px;
@@ -300,11 +317,18 @@ nav {
 
   .hero-content h1 {
     font-size: 24px;
+    font-family: "Yaldevi", sans-serif;
+    font-optical-sizing: auto;
+    font-style: bold;
   }
 
   .hero-content p {
     font-size: 14px;
     line-height: 1.4;
+    font-family: "Yaldevi", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+
   }
 
   .nav-links a {
@@ -415,13 +439,11 @@ marquee {
   z-index: -1;
   border: inherit;
   border-radius: inherit;
-  background-image: conic-gradient(
-    from var(--angle),
-    #ffffff 80%,
-    #610030 88%,
-    #610030 92%,
-    #ffffff 100%
-  );
+  background-image: conic-gradient(from var(--angle),
+      #ffffff 80%,
+      #610030 88%,
+      #610030 92%,
+      #ffffff 100%);
   background-origin: border-box;
   -webkit-mask: linear-gradient(black, black) content-box,
     linear-gradient(black, black);
@@ -435,12 +457,10 @@ marquee {
 
 @supports not (background: paint(something)) {
   .media-object::before {
-    background-image: conic-gradient(
-      #ffffff 80%,
-      #610030 88%,
-      #610030 92%,
-      #ffffff 100%
-    );
+    background-image: conic-gradient(#ffffff 80%,
+        #610030 88%,
+        #610030 92%,
+        #ffffff 100%);
   }
 }
 
@@ -541,13 +561,11 @@ marquee {
   z-index: -1;
   border: inherit;
   border-radius: inherit;
-  background-image: conic-gradient(
-    from var(--angle),
-    #ffffff 80%,
-    #610030 88%,
-    #610030 92%,
-    #ffffff 100%
-  );
+  background-image: conic-gradient(from var(--angle),
+      #ffffff 80%,
+      #610030 88%,
+      #610030 92%,
+      #ffffff 100%);
   background-origin: border-box;
   -webkit-mask: linear-gradient(black, black) content-box,
     linear-gradient(black, black);
@@ -561,12 +579,10 @@ marquee {
 
 @supports not (background: paint(something)) {
   .media-object::before {
-    background-image: conic-gradient(
-      #ffffff 80%,
-      #610030 88%,
-      #610030 92%,
-      #ffffff 100%
-    );
+    background-image: conic-gradient(#ffffff 80%,
+        #610030 88%,
+        #610030 92%,
+        #ffffff 100%);
   }
 }
 
@@ -912,6 +928,7 @@ footer {
 
 /* Responsive */
 @media screen and (max-width: 992px) {
+
   .principal-content,
   .history-content {
     flex-direction: column;
@@ -1066,12 +1083,10 @@ footer {
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(
-    90deg,
-    rgb(0, 0, 0, 0.8) 0%,
-    rgba(0, 0, 0, 0.6) 100%,
-    transparent 100%
-  );
+  background: linear-gradient(90deg,
+      rgb(0, 0, 0, 0.8) 0%,
+      rgba(0, 0, 0, 0.6) 100%,
+      transparent 100%);
   z-index: 5;
 }
 
@@ -1268,11 +1283,9 @@ footer {
   }
 
   .slide-overlay {
-    background: linear-gradient(
-      to bottom,
-      rgba(0, 0, 0, 0.7) 0%,
-      rgba(0, 0, 0, 0.9) 100%
-    );
+    background: linear-gradient(to bottom,
+        rgba(0, 0, 0, 0.7) 0%,
+        rgba(0, 0, 0, 0.9) 100%);
   }
 
   .slide-content {
@@ -1406,6 +1419,7 @@ footer {
   color: gold;
   background: #610030;
 }
+
 ::-moz-selection {
   color: gold;
   background: #610030;

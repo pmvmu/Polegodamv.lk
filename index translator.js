@@ -24,9 +24,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Hero Section
     hero: {
-      title: "",
-      subtitle: "",
-      learnMoreBtn: "තව දැනගන්න"
+      title: "බප/හො/පොලේගොඩ ම. වි.",
+      subtitle: "විද්‍යා දදාති විනයං",
     },
     
     // Info Section
@@ -201,7 +200,6 @@ document.addEventListener('DOMContentLoaded', function () {
     // Hero Section
     document.getElementById('hero-title').textContent = translations.hero.title;
     document.getElementById('hero-subtitle').textContent = translations.hero.subtitle;
-    document.getElementById('learn-more-btn').textContent = translations.hero.learnMoreBtn;
 
     // Info Section
     document.getElementById('info').textContent = translations.info;
