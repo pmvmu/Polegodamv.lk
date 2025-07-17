@@ -236,16 +236,6 @@
             /* For dynamic field fade-in */
         }
 
-        .form-group a {
-            color: #610030;
-            font-size: 0.7em;
-            transition: 0.7s all ease-in-out;
-        }
-
-        .form-group a:hover {
-            font-weight: bold;
-        }
-
         /* Dynamic fields fade-in */
         .type-dependent {
             transition: opacity 0.4s ease-in-out;
@@ -289,7 +279,7 @@
             font-size: 0.85em;
         }
 
-        .form-group button {
+        .form-group .button {
             background-color: #610030;
             /* Primary color */
             color: white;
@@ -303,7 +293,7 @@
             transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
         }
 
-        .form-group button:hover {
+        .form-group .button:hover {
             background-color: #4b0025;
             /* Darker primary on hover */
             transform: translateY(-3px);
@@ -312,9 +302,26 @@
             box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
         }
 
-        .form-group button:active {
+        .form-group .button:active {
             transform: translateY(0);
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+        }
+
+        .form-group .discard {
+            color: #610030;
+            border: none;
+            cursor: pointer;
+            font-size: 0.7em;
+            transition: color 0.3s all ease-in-out;
+            text-decoration: underline;
+            background-color: transparent;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        .form-group .discard:hover {
+            color: #61003075;
+            text-decoration-color: #610030;
         }
 
         /* Responsive adjustments */
@@ -347,7 +354,8 @@
 
             .form-group input,
             .form-group select,
-            .form-group button {
+            .form-group .button,
+            .form-group .discard {
                 padding: 10px;
             }
         }
@@ -390,8 +398,8 @@
                     <input type="password" id="login_passcode" name="passcode" required>
                 </div>
                 <div class="form-group">
-                    <button type="submit" data-en="Login" data-si="පිවිසෙන්න">Login</button>
-                    <center><a data-en="Dicard" data-si="අවලංගු කරන්න" href="./index.html">Discard</a></center>
+                    <button class="button" type="submit" data-en="Login" data-si="පිවිසෙන්න">Login</button>
+                    <center><button class="discard" data-en="Dicard" data-si="අවලංගු කරන්න" onclick="goBack()">Discard</button></center>
                 </div>
             </form>
         </div>
@@ -491,8 +499,8 @@
                 </div>
 
                 <div class="form-group">
-                    <button type="submit" data-en="Register" data-si="ලියාපදිංචි වන්න">Register</button>
-                    <center><a data-en="Dicard" data-si="අවලංගු කරන්න" href="./index.html">Discard</a></center>
+                    <button class="button" type="submit" data-en="Register" data-si="ලියාපදිංචි වන්න">Register</button>
+                    <center><button class="discard" data-en="Dicard" data-si="අවලංගු කරන්න" onclick="goBack()">Discard</button></center>
                 </div>
             </form>
         </div>
@@ -727,6 +735,11 @@
             updateContent('en'); // Set initial content to English
             showLoginBtn.click(); // Show login form by default
         });
+
+        function goBack() {
+            window.history.back();
+        }
+
 
     </script>
 </body>
