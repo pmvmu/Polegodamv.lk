@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | WP/ Hr/ Polegoda M. V.</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="./logo.png">
+
+    <style>
+        /* Google Fonts - Optional: for nicer Sinhala fonts, consider Noto Sans Sinhala */
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Sinhala:wght@400;700&family=Segoe+UI:wght@400;700&display=swap');
+
+        body {
+            font-family: 'Segoe UI', 'Noto Sans Sinhala', sans-serif;
+            /* Prioritize Segoe UI for English, Noto Sans Sinhala for Sinhala */
+            background: linear-gradient(135deg, #610030, #3a001a);
+            /* Deep maroon gradient */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            color: #333;
+            overflow-x: hidden;
+            /* Prevent horizontal scroll due to animations */
+        }
+
+        /* Auth Container */
+        .auth-container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            max-width: 580px;
+            /* Slightly wider for better layout */
+            text-align: center;
+            overflow: hidden;
+            transform: scale(1);
+            /* Initial state for animation */
+            transition: transform 0.3s ease-out;
+            /* Pop effect on load/hover (optional) */
+            margin: 5%;
+        }
+
+        /* School Header */
+        .school-header {
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .school-logo {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 10px;
+            border: 3px solid gold;
+            transition: transform 0.3s ease-out;
+            box-shadow: 0 0 10px #00000088;
+        }
+
+        .school-logo:hover {
+            transform: rotate(10deg) scale(1.05);
+        }
+
+        .school-header h1 {
+            margin: 0;
+            color: #610030;
+            /* Primary color */
+            font-size: 2.5em;
+            letter-spacing: 1px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+            transition: color 0.3s ease-in-out;
+            text-shadow: 0 5px 8px #0000007e;
+        }
+
+        .school-header h2 {
+            text-shadow: 0 5px 8px #0000007e;
+        }
+
+        .school-header p {
+            margin: 5px 0 0;
+            color: #555;
+            font-size: 0.95em;
+        }
+
+        /* Language Selector */
+        .language-selector {
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .lang-btn {
+            padding: 8px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+            color: #555;
+            cursor: pointer;
+            font-size: 0.9em;
+            transition: all 0.3s ease;
+        }
+
+        .lang-btn:hover {
+            background-color: #eee;
+            color: #333;
+        }
+
+        .lang-btn.active {
+            background-color: #610030;
+            /* Primary color */
+            color: white;
+            border-color: #610030;
+            font-weight: bold;
+        }
+
+        /* Auth Toggle (Login/Register buttons) */
+        .auth-toggle {
+            display: flex;
+            margin-bottom: 25px;
+            border-bottom: 2px solid #eee;
+            /* Thicker separator */
+        }
+
+        .auth-toggle button {
+            flex: 1;
+            padding: 12px 0;
+            border: none;
+            background-color: transparent;
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            outline: none;
+            color: #555;
+            position: relative;
+            overflow: hidden;
+            /* For underline animation */
+        }
+
+        .auth-toggle button:hover {
+            color: #333;
+        }
+
+        .auth-toggle button.active {
+            color: #610030;
+            /* Primary color */
+            font-weight: bold;
+        }
+
+        .auth-toggle button.active::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            /* Adjust to sit on the border */
+            left: 0;
+            width: 100%;
+            height: 4px;
+            /* Thicker underline */
+            background-color: #610030;
+            /* Primary color */
+            border-radius: 2px;
+            transform: scaleX(1);
+            transition: transform 0.3s ease-out;
+        }
+
+        .auth-toggle button:not(.active)::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background-color: #610030;
+            /* Primary color */
+            border-radius: 2px;
+            transform: scaleX(0);
+            /* Hidden by default */
+            transition: transform 0.3s ease-out;
+        }
+
+        .auth-toggle button:not(.active):hover::after {
+            transform: scaleX(0.5);
+            /* Partial underline on hover */
+        }
+
+
+        /* Form specific styles */
+        .auth-form {
+            display: none;
+            opacity: 0;
+            /* For fade-in/out */
+            transform: translateY(20px);
+            /* For slide-in effect */
+            transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+        }
+
+        .auth-form.active {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .auth-form h2 {
+            margin-top: 0;
+            margin-bottom: 25px;
+            color: #610030;
+            /* Primary color */
+            font-size: 2.2em;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .auth-form h2::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: 0;
+            width: 50px;
+            height: 3px;
+            background-color: gold;
+            /* Accent color */
+            border-radius: 2px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+            position: relative;
+            /* For dynamic field fade-in */
+        }
+
+        .form-group a {
+            color: #610030;
+            font-size: 0.7em;
+            transition: 0.7s all ease-in-out;
+        }
+
+        .form-group a:hover {
+            font-weight: bold;
+        }
+
+        /* Dynamic fields fade-in */
+        .type-dependent {
+            transition: opacity 0.4s ease-in-out;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #444;
+        }
+
+        .form-group input[type="text"],
+        .form-group input[type="email"],
+        .form-group input[type="password"],
+        .form-group input[type="tel"],
+        .form-group select {
+            width: calc(100% - 28px);
+            /* Account for padding and border */
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            box-sizing: border-box;
+            font-size: 1em;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            border-color: gold;
+            /* Accent color on focus */
+            box-shadow: 0 0 0 4px rgba(255, 255, 0, 0.4);
+            /* gold shadow */
+            outline: none;
+        }
+
+        .form-group small {
+            display: block;
+            margin-top: 5px;
+            color: #777;
+            font-size: 0.85em;
+        }
+
+        .form-group button {
+            background-color: #610030;
+            /* Primary color */
+            color: white;
+            padding: 14px 25px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 1.1em;
+            font-weight: bold;
+            width: 100%;
+            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+        }
+
+        .form-group button:hover {
+            background-color: #4b0025;
+            /* Darker primary on hover */
+            transform: translateY(-3px);
+            /* Lift effect */
+            color: gold;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .form-group button:active {
+            transform: translateY(0);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 600px) {
+            body {
+                padding: 15px;
+                /* Add some padding on smaller screens */
+            }
+
+            .auth-container {
+                margin: 0;
+                padding: 20px;
+                border-radius: 0;
+                /* Full width on very small screens */
+                box-shadow: none;
+            }
+
+            .school-header h1 {
+                font-size: 2em;
+            }
+
+            .auth-toggle button {
+                font-size: 1em;
+                padding: 10px 0;
+            }
+
+            .auth-form h2 {
+                font-size: 1.8em;
+            }
+
+            .form-group input,
+            .form-group select,
+            .form-group button {
+                padding: 10px;
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="auth-container">
+        <div class="school-header">
+            <img src="./logo.png" alt="School Logo" class="school-logo">
+            <h1 data-en="WP/Hr/Polegoda Maha Vidyalaya" data-si="බප/හො/පොලේගොඩ මහා  විද්‍යාලය">WP/Hr/Polegoda Maha
+                Vidyalaya</h1>
+            <h2 data-en="Vidya Dadathi Vinayan" data-si="විද්‍යා දදාති විනයං">Vidya Dadathi Vinayan</h2>
+            <p data-en="Welcome to Our School Portal" data-si="අපගේ විද්‍යාලීය ද්වාරයට සාදරයෙන් පිළිගනිමු">Welcome to
+                Our School Portal</p>
+        </div>
+
+        <div class="language-selector">
+            <button class="lang-btn active" data-lang="en">English</button>
+            <button class="lang-btn" data-lang="si">සිංහල</button>
+        </div>
+
+        <div class="auth-toggle">
+            <button id="showLogin" class="active" data-en="Login" data-si="පිවිසෙන්න">Login</button>
+            <button id="showRegister" data-en="Register" data-si="ලියාපදිංචි වන්න">Register</button>
+        </div>
+
+        <div id="loginForm" class="auth-form active">
+            <h2 data-en="Login" data-si="පිවිසීම">Login</h2>
+            <form action="./About blank.html" method="get">
+                <div class="form-group">
+                    <label for="login_identifier" data-en="Email / ID / Admission No:"
+                        data-si="විද්‍යුත් තැපෑල / හැඳුනුම්පත / ඇතුළත් වීමේ අංකය:">Email / ID / Admission No:</label>
+                    <input type="text" id="login_identifier" name="identifier" required>
+                </div>
+                <div class="form-group">
+                    <label for="login_passcode" data-en="Issued Passcode / Password:"
+                        data-si="නිකුත් කළ මුරපදය / මුරපදය:">Issued Passcode / Password:</label>
+                    <input type="password" id="login_passcode" name="passcode" required>
+                </div>
+                <div class="form-group">
+                    <button type="submit" data-en="Login" data-si="පිවිසෙන්න">Login</button>
+                    <center><a data-en="Dicard" data-si="අවලංගු කරන්න" href="./index.html">Discard</a></center>
+                </div>
+            </form>
+        </div>
+
+        <div id="registerForm" class="auth-form">
+            <h2 data-en="Register" data-si="ලියාපදිංචි වන්න">Register</h2>
+            <form action="/api/register" method="POST">
+                <div class="form-group">
+                    <label for="user_type" data-en="Registering as:" data-si="ලියාපදිංචි වන්නේ:">Registering as:</label>
+                    <select id="user_type" name="user_type" required>
+                        <option value="" data-en="-- Select User Type --" data-si="-- පරිශීලක වර්ගය තෝරන්න --">-- Select
+                            User Type --</option>
+                        <option value="teacher" data-en="Teacher" data-si="ගුරුතුමා / ගුරුතුමිය">Teacher</option>
+                        <option value="student" data-en="Student" data-si="ශිෂ්‍යයා / ශිෂ්‍යාව">Student</option>
+                        <option value="parent" data-en="Parent" data-si="දෙමාපියන්">Parent</option>
+                        <option value="admin" data-en="Admin" data-si="පරිපාලක">Admin</option>
+                    </select>
+                </div>
+
+                <div class="form-group common-field">
+                    <label for="reg_email" data-en="Email:" data-si="විද්‍යුත් තැපෑල:">Email:</label>
+                    <input type="email" id="reg_email" name="email" required>
+                </div>
+                <div class="form-group common-field">
+                    <label for="reg_phone" data-en="Phone No:" data-si="දුරකථන අංකය:">Phone No:</label>
+                    <input type="tel" id="reg_phone" name="phone_no" pattern="[0-9]{10}" placeholder="e.g., 0712345678">
+                    <small data-en="Format: 10 digits (e.g., 0712345678)"
+                        data-si="ආකෘතිය: ඉලක්කම් 10 (උදා: 0712345678)">Format: 10 digits (e.g., 0712345678)</small>
+                </div>
+
+                <div class="form-group teacher-fields type-dependent" style="display: none;">
+                    <label for="teacher_name" data-en="Teacher Name:" data-si="ගුරුතුමා / ගුරුතුමියගේ නම:">Teacher
+                        Name:</label>
+                    <input type="text" id="teacher_name" name="name">
+                </div>
+                <div class="form-group teacher-fields type-dependent" style="display: none;">
+                    <label for="teacher_id" data-en="Teacher ID:" data-si="ගුරුතුමා / ගුරුතුමියගේ හැඳුනුම්පත:">Teacher
+                        ID:</label>
+                    <input type="text" id="teacher_id" name="id">
+                </div>
+                <div class="form-group teacher-fields type-dependent" style="display: none;">
+                    <label for="teacher_passcode" data-en="Issued Passcode:" data-si="නිකුත් කළ මුරපදය:">Issued
+                        Passcode:</label>
+                    <input type="password" id="teacher_passcode" name="passcode">
+                    <small data-en="Enter the passcode issued by the school."
+                        data-si="පාසලෙන් නිකුත් කළ මුරපදය ඇතුළත් කරන්න.">Enter the passcode issued by the
+                        school.</small>
+                </div>
+
+                <div class="form-group admin-fields type-dependent" style="display: none;">
+                    <label for="admin_name" data-en="Admin Name:" data-si="පරිපාලකගේ නම:">Admin Name:</label>
+                    <input type="text" id="admin_name" name="name">
+                </div>
+                <div class="form-group admin-fields type-dependent" style="display: none;">
+                    <label for="admin_id" data-en="Admin ID:" data-si="පරිපාලක හැඳුනුම්පත:">Admin ID:</label>
+                    <input type="text" id="admin_id" name="id">
+                </div>
+                <div class="form-group admin-fields type-dependent" style="display: none;">
+                    <label for="admin_code" data-en="Admin Code:" data-si="පරිපාලක කේතය:">Admin Code:</label>
+                    <input type="password" id="admin_code" name="admin_code">
+                    <small data-en="Enter the unique Admin Code provided by the school."
+                        data-si="පාසලෙන් ලබා දුන් අනන්‍ය පරිපාලක කේතය ඇතුළත් කරන්න.">Enter the unique Admin Code
+                        provided by the school.</small>
+                </div>
+                <div class="form-group admin-fields type-dependent" style="display: none;">
+                    <label for="admin_passcode" data-en="Issued Passcode:" data-si="නිකුත් කළ මුරපදය:">Issued
+                        Passcode:</label>
+                    <input type="password" id="admin_passcode" name="passcode">
+                    <small data-en="Enter the passcode issued by the school."
+                        data-si="පාසලෙන් නිකුත් කළ මුරපදය ඇතුළත් කරන්න.">Enter the passcode issued by the
+                        school.</small>
+                </div>
+
+                <div class="form-group student-fields type-dependent" style="display: none;">
+                    <label for="student_name" data-en="Student Name:" data-si="ශිෂ්‍යයා / ශිෂ්‍යාවගේ නම:">Student
+                        Name:</label>
+                    <input type="text" id="student_name" name="name">
+                </div>
+                <div class="form-group student-fields type-dependent" style="display: none;">
+                    <label for="student_grade" data-en="Grade:" data-si="ශ්‍රේණිය:">Grade:</label>
+                    <input type="text" id="student_grade" name="grade" placeholder="e.g., 10A">
+                </div>
+                <div class="form-group student-fields type-dependent" style="display: none;">
+                    <label for="student_admission_no" data-en="Admission No:" data-si="ඇතුළත් වීමේ අංකය:">Admission
+                        No:</label>
+                    <input type="text" id="student_admission_no" name="admission_no">
+                </div>
+
+                <div class="form-group parent-fields type-dependent" style="display: none;">
+                    <label for="parent_student_name" data-en="Child's Name:" data-si="දරුවාගේ නම:">Child's Name:</label>
+                    <input type="text" id="parent_student_name" name="child_name">
+                </div>
+                <div class="form-group parent-fields type-dependent" style="display: none;">
+                    <label for="parent_admission_no" data-en="Child's Admission No:"
+                        data-si="දරුවාගේ ඇතුළත් වීමේ අංකය:">Child's Admission No:</label>
+                    <input type="text" id="parent_admission_no" name="admission_no">
+                </div>
+
+                <div class="form-group">
+                    <button type="submit" data-en="Register" data-si="ලියාපදිංචි වන්න">Register</button>
+                    <center><a data-en="Dicard" data-si="අවලංගු කරන්න" href="./index.html">Discard</a></center>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Language specific strings
+        const translations = {
+            en: {
+                // School Header
+                'Polegodamv.lk': 'Polegodamv.lk',
+                'Welcome to Our School Portal': 'Welcome to Our School Portal',
+                // Toggle Buttons
+                'Login': 'Login',
+                'Register': 'Register',
+                'Discard': 'Discard',
+                // Login Form
+                'Login_H2': 'Login',
+                'Email / ID / Admission No:': 'Email / ID / Admission No:',
+                'Issued Passcode / Password:': 'Issued Passcode / Password:',
+                // Register Form
+                'Register_H2': 'Register',
+                'Registering as:': 'Registering as:',
+                '-- Select User Type --': '-- Select User Type --',
+                'Teacher': 'Teacher',
+                'Student': 'Student',
+                'Parent': 'Parent',
+                'Admin': 'Admin',
+                'Email:': 'Email:',
+                'Phone No:': 'Phone No:',
+                'Format: 10 digits (e.g., 0712345678)': 'Format: 10 digits (e.g., 0712345678)',
+                'Teacher Name:': 'Teacher Name:',
+                'Teacher ID:': 'Teacher ID:',
+                'Issued Passcode:': 'Issued Passcode:',
+                'Enter the passcode issued by the school.': 'Enter the passcode issued by the school.',
+                'Admin Name:': 'Admin Name:',
+                'Admin ID:': 'Admin ID:',
+                'Admin Code:': 'Admin Code:',
+                'Enter the unique Admin Code provided by the school.': 'Enter the unique Admin Code provided by the school.',
+                'Student Name:': 'Student Name:',
+                'Grade:': 'Grade:',
+                'Admission No:': 'Admission No:',
+                "Child's Name:": "Child's Name:",
+                "Child's Admission No:": "Child's Admission No:",
+                // Title
+                'Login & Registration - Polegodamv.lk': 'Login & Registration - Polegodamv.lk'
+            },
+            si: {
+                // School Header
+                'Polegodamv.lk': 'පොළේගොඩම්ව.lk',
+                'Welcome to Our School Portal': 'අපගේ විද්‍යාලීය ද්වාරයට සාදරයෙන් පිළිගනිමු',
+                // Toggle Buttons
+                'Login': 'පිවිසෙන්න',
+                'Register': 'ලියාපදිංචි වන්න',
+                'Dicard': 'අවලංගු කරන්න',
+                // Login Form
+                'Login_H2': 'පිවිසීම',
+                'Email / ID / Admission No:': 'විද්‍යුත් තැපෑල / හැඳුනුම්පත / ඇතුළත් වීමේ අංකය:',
+                'Issued Passcode / Password:': 'නිකුත් කළ මුරපදය / මුරපදය:',
+                // Register Form
+                'Register_H2': 'ලියාපදිංචි වන්න',
+                'Registering as:': 'ලියාපදිංචි වන්නේ:',
+                '-- Select User Type --': '-- පරිශීලක වර්ගය තෝරන්න --',
+                'Teacher': 'ගුරුතුමා / ගුරුතුමිය',
+                'Student': 'ශිෂ්‍යයා / ශිෂ්‍යාව',
+                'Parent': 'දෙමාපියන්',
+                'Admin': 'පරිපාලක',
+                'Email:': 'විද්‍යුත් තැපෑල:',
+                'Phone No:': 'දුරකථන අංකය:',
+                'Format: 10 digits (e.g., 0712345678)': 'ආකෘතිය: ඉලක්කම් 10 (උදා: 0712345678)',
+                'Teacher Name:': 'ගුරුතුමා / ගුරුතුමියගේ නම:',
+                'Teacher ID:': 'ගුරුතුමා / ගුරුතුමියගේ හැඳුනුම්පත:',
+                'Issued Passcode:': 'නිකුත් කළ මුරපදය:',
+                'Enter the passcode issued by the school.': 'පාසලෙන් නිකුත් කළ මුරපදය ඇතුළත් කරන්න.',
+                'Admin Name:': 'පරිපාලකගේ නම:',
+                'Admin ID:': 'පරිපාලක හැඳුනුම්පත:',
+                'Admin Code:': 'පරිපාලක කේතය:',
+                'Enter the unique Admin Code provided by the school.': 'පාසලෙන් ලබා දුන් අනන්‍ය පරිපාලක කේතය ඇතුළත් කරන්න.',
+                'Student Name:': 'ශිෂ්‍යයා / ශිෂ්‍යාවගේ නම:',
+                'Grade:': 'ශ්‍රේණිය:',
+                'Admission No:': 'ඇතුළත් වීමේ අංකය:',
+                "Child's Name:": "දරුවාගේ නම:",
+                "Child's Admission No:": "දරුවාගේ ඇතුළත් වීමේ අංකය:",
+                // Title
+                'Login & Registration - Polegodamv.lk': 'පිවිසීම සහ ලියාපදිංචිය - Polegodamv.lk'
+            }
+        };
+
+        const showLoginBtn = document.getElementById('showLogin');
+        const showRegisterBtn = document.getElementById('showRegister');
+        const loginForm = document.getElementById('loginForm');
+        const registerForm = document.getElementById('registerForm');
+        const userTypeSelect = document.getElementById('user_type');
+        const typeDependentFields = document.querySelectorAll('.type-dependent');
+        const langButtons = document.querySelectorAll('.lang-btn');
+        const htmlElement = document.documentElement; // Get the html element
+
+        // Function to update text content based on language
+        function updateContent(lang) {
+            document.querySelectorAll('[data-en], [data-si]').forEach(element => {
+                const enText = element.getAttribute('data-en');
+                const siText = element.getAttribute('data-si');
+
+                if (lang === 'en' && enText) {
+                    if (element.tagName === 'OPTION') {
+                        element.textContent = enText;
+                    } else if (element.tagName === 'TITLE') {
+                        document.title = enText;
+                    } else {
+                        element.textContent = enText;
+                    }
+                } else if (lang === 'si' && siText) {
+                    if (element.tagName === 'OPTION') {
+                        element.textContent = siText;
+                    } else if (element.tagName === 'TITLE') {
+                        document.title = siText;
+                    } else {
+                        element.textContent = siText;
+                    }
+                }
+            });
+            // Update input placeholders if needed (currently not in data-attributes)
+            document.getElementById('reg_phone').placeholder = lang === 'en' ? 'e.g., 0712345678' : 'උදා: 0712345678';
+            document.getElementById('student_grade').placeholder = lang === 'en' ? 'e.g., 10A' : 'උදා: 10A';
+
+        }
+
+        // Language button event listeners
+        langButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const selectedLang = button.getAttribute('data-lang');
+                htmlElement.setAttribute('lang', selectedLang); // Set html lang attribute
+                langButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+                updateContent(selectedLang);
+            });
+        });
+
+
+        // Form toggle logic with animations
+        function showForm(formToShow, formToHide) {
+            formToHide.style.opacity = '0';
+            formToHide.style.transform = 'translateY(20px)';
+            setTimeout(() => {
+                formToHide.classList.remove('active');
+                formToShow.classList.add('active');
+                formToShow.style.opacity = '0'; // Start faded
+                formToShow.style.transform = 'translateY(20px)'; // Start slightly down
+                setTimeout(() => {
+                    formToShow.style.transition = 'opacity 0.5s ease-out, transform 0.5s ease-out';
+                    formToShow.style.opacity = '1';
+                    formToShow.style.transform = 'translateY(0)';
+                }, 50); // Small delay to allow display change to register
+            }, 300); // Wait for fade-out to complete
+        }
+
+        showLoginBtn.addEventListener('click', () => {
+            showForm(loginForm, registerForm);
+            showLoginBtn.classList.add('active');
+            showRegisterBtn.classList.remove('active');
+        });
+
+        showRegisterBtn.addEventListener('click', () => {
+            showForm(registerForm, loginForm);
+            showRegisterBtn.classList.add('active');
+            showLoginBtn.classList.remove('active');
+            // Reset fields visibility when switching to register
+            hideAllTypeDependentFields();
+            userTypeSelect.value = ""; // Reset select dropdown
+            setRequiredAttribute(false); // Make all type-dependent fields not required initially
+        });
+
+        // Function to hide all type-dependent fields
+        function hideAllTypeDependentFields() {
+            typeDependentFields.forEach(fieldGroup => {
+                fieldGroup.style.display = 'none';
+                fieldGroup.style.opacity = '0'; // Hide with fade effect
+            });
+        }
+
+        // Function to set required attribute for fields
+        function setRequiredAttribute(isRequired) {
+            typeDependentFields.forEach(fieldGroup => {
+                const inputs = fieldGroup.querySelectorAll('input, select');
+                inputs.forEach(input => {
+                    if (isRequired) {
+                        input.setAttribute('required', '');
+                    } else {
+                        input.removeAttribute('required');
+                    }
+                });
+            });
+        }
+
+        // JavaScript to show/hide fields based on user type selection
+        userTypeSelect.addEventListener('change', (event) => {
+            const selectedType = event.target.value;
+            hideAllTypeDependentFields(); // Hide all first
+            setRequiredAttribute(false); // Remove required from all first
+
+            // Show relevant fields and set required attribute with fade-in
+            if (selectedType === 'teacher') {
+                document.querySelectorAll('.teacher-fields').forEach(field => {
+                    field.style.display = 'block';
+                    setTimeout(() => field.style.opacity = '1', 50);
+                    field.querySelectorAll('input').forEach(input => input.setAttribute('required', ''));
+                });
+            } else if (selectedType === 'admin') {
+                document.querySelectorAll('.admin-fields').forEach(field => {
+                    field.style.display = 'block';
+                    setTimeout(() => field.style.opacity = '1', 50);
+                    field.querySelectorAll('input').forEach(input => input.setAttribute('required', ''));
+                });
+            } else if (selectedType === 'student') {
+                document.querySelectorAll('.student-fields').forEach(field => {
+                    field.style.display = 'block';
+                    setTimeout(() => field.style.opacity = '1', 50);
+                    field.querySelectorAll('input').forEach(input => input.setAttribute('required', ''));
+                });
+            } else if (selectedType === 'parent') {
+                document.querySelectorAll('.parent-fields').forEach(field => {
+                    field.style.display = 'block';
+                    setTimeout(() => field.style.opacity = '1', 50);
+                    field.querySelectorAll('input').forEach(input => input.setAttribute('required', ''));
+                });
+            }
+        });
+
+        // Initial setup:
+        // Set default language and show login form
+        document.addEventListener('DOMContentLoaded', () => {
+            updateContent('en'); // Set initial content to English
+            showLoginBtn.click(); // Show login form by default
+        });
+
+    </script>
+</body>
+
+</html>

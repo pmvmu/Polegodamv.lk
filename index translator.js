@@ -19,7 +19,8 @@ document.addEventListener('DOMContentLoaded', function () {
       historyNav: "ඉතිහාසය",
       programsNav: "වැඩසටහන්",
       officeNav: "කාර්යාල වේලාවන්",
-      contactNav: "සම්බන්ධ වන්න"
+      contactNav: "සම්බන්ධ වන්න",
+      authNav: "පිවිසෙන්න"
     },
 
     // Hero Section
@@ -197,6 +198,7 @@ document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('programs-nav').textContent = translations.navigation.programsNav;
     document.getElementById('office-nav').textContent = translations.navigation.officeNav;
     document.getElementById('contact-nav').textContent = translations.navigation.contactNav;
+    document.getElementById('auth-naw').textContent = translations.navigation.authNav;
 
     // Hero Section
     document.getElementById('hero-title').textContent = translations.hero.title;

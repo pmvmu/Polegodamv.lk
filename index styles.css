@@ -259,6 +259,10 @@ nav {
   margin: 0;
 }
 
+.hero-subtitle {
+  font-style: italic;
+}
+
 .hero-content p {
   font-size: 30px;
   margin-bottom: 30px;
@@ -313,6 +317,10 @@ nav {
     color: var(--primary-color);
   }
 
+  .nav-links ul {
+    overflow-y: auto;
+  }
+
   .language-switch button {
     color: var(--primary-color);
   }
@@ -341,6 +349,10 @@ nav {
 
   .nav-links a {
     color: var(--primary-color);
+  }
+
+  .nav-links li {
+    margin: 0;
   }
 
   .language-switch button {
@@ -967,7 +979,15 @@ footer {
   }
 
   .nav-links li {
-    margin: 15px 0;
+    margin: 12px 0;
+  }
+
+  .nav-links a {
+    color: var(--primary-color);
+  }
+
+  .nav-links a:hover {
+    color: #f39c12;
   }
 
   .mobile-menu {
@@ -1449,17 +1469,9 @@ footer {
     transform: scale(75%);
   }
 
-  /* .logo-img {
-    he
-  } */
 }
 
 ::selection {
-  color: gold;
-  background: #610030;
-}
-
-::-moz-selection {
-  color: gold;
+  color: #ffffff;
   background: #610030;
 }
