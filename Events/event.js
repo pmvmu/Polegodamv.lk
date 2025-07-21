@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", function () {
       description:
         "Explore the wonders of science with projects from students across all grades. A day of innovation, discovery, and learning. Special guest lecture by Dr. Evelyn Reed, a renowned astrophysicist. Awards for the most creative and impactful projects will be presented at the closing ceremony.",
       thumbnailUrl:
-        "https://placehold.co/300x400/16a34a/ffffff?text=Science+Fair",
+        "pmvmu/Polegodamv.lk/Events/Event-tab-bg/bg1.jpg",
       facebookUrl: "https://facebook.com/events/1",
       youtubeUrl: "https://youtube.com/watch?v=1",
     },
