@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Events | WP/ Hr/ Polegoda M. V.</title>
+        <meta property="og:title" content="WP/ Hr/ Polegoda M. V.">
+        <meta property="og:description" content="Vidya Dadathi Vinayan">
+        <meta property="og:image" content="./preview.jpg">
+        <meta property="og:url"
+            content="https://harshana101.github.io/solopjt/">
+        <meta property="og:type" content="website">
+        <meta name="theme-color" content="#610030">
+        <link rel="icon" type="image/png"
+            href="E:\Scl Project solo\New\logo.png">
+        <link rel="stylesheet" href="./event.css">
+        <link rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    </head>
+
+    <body>
+        <div>
+            <div class="bgimage"></div>
+            <div class="bgblur"></div>
+        </div>
+        <header>
+            <nav>
+                <div class="nav-item">
+                    <a href="/New/index.html"><i class="fa fa-home"></i>
+                        Home</a>
+                </div>
+                <!-- Search container -->
+                <div class="nav-item search-container">
+                    <div class="search-wrapper">
+                        <input type="text" class="search-input"
+                            placeholder="Search for Events by Name or Date..."
+                            id="eventSearch">
+                        <button class="search-button" id="searchBtn"><i
+                                class="fas fa-search"> Search</i></button>
+                    </div>
+                </div>
+
+                <div class="nav-item right">
+                    <h1>Events & Programs</h1>
+                </div>
+            </nav>
+        </header>
+        <div class="container">
+            <div class="page-title">
+                <h1>Events & Programs</h1>
+            </div>
+            <div class="categories">
+                <!-- Latest Section -->
+                <section class="cat-item" id="latest">
+                    <div class="latest">
+                        <h2>Latest</h2>
+                        <div class="scroll-wrapper">
+                            <ul id="latest-events">
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Upcoming Section -->
+                <section class="cat-item" id="upcoming">
+                    <div class="latest">
+                        <h2>Upcoming</h2>
+                        <div class="scroll-wrapper">
+                            <ul id="upcoming-events">
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Sports Section -->
+                <section class="cat-item" id="sports">
+                    <div class="latest">
+                        <h2>Sports</h2>
+                        <div class="scroll-wrapper">
+                            <ul id="sports-events">
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Archive Section -->
+                <section class="cat-item" id="archive">
+                    <div class="archive">
+                        <h2>Archive</h2>
+                        <div class="scroll-wrapper">
+                            <ul id="archive-events">
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+        </div>
+        <script src="./event.js"></script>
+
+    </body>
+
+</html>
