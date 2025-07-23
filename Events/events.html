@@ -15,11 +15,34 @@
         <link rel="icon" type="image/png"
             href="E:\Scl Project solo\New\logo.png">
         <link rel="stylesheet" href="./event.css">
-        <link rel="stylesheet"
-            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+        <link rel="stylesheet"href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+         <link rel="stylesheet" href="./loader.css">
+          <meta name="google-adsense-account" content="ca-pub-5627799215744007">
     </head>
 
     <body>
+        <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-796S4JXDEK">
+  </script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-796S4JXDEK');
+  </script>
+
+        <!-- Loading screen -->
+  <div id="loading-screen">
+    <div class="logo-container">
+      <img src="./logo.png" alt="School Logo">
+    </div>
+    <div class="loading-bar-container">
+      <div id="loading-bar" class="loading-bar"></div>
+    </div>
+    <div id="loading-percentage" class="loading-percentage">0%</div>
+    <div class="school-name">WP/ Hr/ Polegoda M. V.</div>
+  </div>
+        
         <div>
             <div class="bgimage"></div>
             <div class="bgblur"></div>
@@ -98,6 +121,7 @@
             </div>
         </div>
         <script src="./event.js"></script>
+        <script src="./loader.js"></script>
 
     </body>
 
