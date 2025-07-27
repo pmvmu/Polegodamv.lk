@@ -324,6 +324,37 @@
             text-decoration-color: #610030;
         }
 
+        /* Password strength indicator */
+        .password-strength {
+            margin-top: 5px;
+            height: 4px;
+            background-color: #eee;
+            border-radius: 2px;
+            overflow: hidden;
+        }
+
+        .password-strength-bar {
+            height: 100%;
+            width: 0%;
+            transition: width 0.3s ease, background-color 0.3s ease;
+            border-radius: 2px;
+        }
+
+        .password-strength.weak .password-strength-bar {
+            width: 33%;
+            background-color: #ff4757;
+        }
+
+        .password-strength.medium .password-strength-bar {
+            width: 66%;
+            background-color: #ffa726;
+        }
+
+        .password-strength.strong .password-strength-bar {
+            width: 100%;
+            background-color: #2ed573;
+        }
+
         /* Responsive adjustments */
         @media (max-width: 600px) {
             body {
@@ -399,7 +430,10 @@
                 </div>
                 <div class="form-group">
                     <button class="button" type="submit" data-en="Login" data-si="පිවිසෙන්න">Login</button>
-                    <center><button class="discard" data-en="Dicard" data-si="අවලංගු කරන්න" onclick="goBack()">Discard</button></center>
+                    <center><button class="discard" data-en="Discard" data-si="අවලංගු කරන්න" onclick="goBack()">Discard</button></center>
+                </div>
+                <div>
+                    <center><p  style="color: #4d4d4d; font-size: x-small;">Powered by Media Unit of <b>Wp/Hr/Polegoda M. V.</b></p></center>
                 </div>
             </form>
         </div>
@@ -487,6 +521,20 @@
                         No:</label>
                     <input type="text" id="student_admission_no" name="admission_no">
                 </div>
+                <div class="form-group student-fields type-dependent" style="display: none;">
+                    <label for="student_password" data-en="Create Password:" data-si="මුරපදයක් සාදන්න:">Create Password:</label>
+                    <input type="password" id="student_password" name="password" minlength="6">
+                    <div class="password-strength" id="student_password_strength">
+                        <div class="password-strength-bar"></div>
+                    </div>
+                    <small data-en="Choose a strong password (minimum 6 characters)."
+                        data-si="ශක්තිමත් මුරපදයක් තෝරන්න (අවම අක්ෂර 6).">Choose a strong password (minimum 6 characters).</small>
+                </div>
+                <div class="form-group student-fields type-dependent" style="display: none;">
+                    <label for="student_confirm_password" data-en="Confirm Password:" data-si="මුරපදය තහවුරු කරන්න:">Confirm Password:</label>
+                    <input type="password" id="student_confirm_password" name="confirm_password">
+                    <small id="student_password_match" style="color: #777;"></small>
+                </div>
 
                 <div class="form-group parent-fields type-dependent" style="display: none;">
                     <label for="parent_student_name" data-en="Child's Name:" data-si="දරුවාගේ නම:">Child's Name:</label>
@@ -497,10 +545,27 @@
                         data-si="දරුවාගේ ඇතුළත් වීමේ අංකය:">Child's Admission No:</label>
                     <input type="text" id="parent_admission_no" name="admission_no">
                 </div>
+                <div class="form-group parent-fields type-dependent" style="display: none;">
+                    <label for="parent_password" data-en="Create Password:" data-si="මුරපදයක් සාදන්න:">Create Password:</label>
+                    <input type="password" id="parent_password" name="password" minlength="6">
+                    <div class="password-strength" id="parent_password_strength">
+                        <div class="password-strength-bar"></div>
+                    </div>
+                    <small data-en="Choose a strong password (minimum 6 characters)."
+                        data-si="ශක්තිමත් මුරපදයක් තෝරන්න (අවම අක්ෂර 6).">Choose a strong password (minimum 6 characters).</small>
+                </div>
+                <div class="form-group parent-fields type-dependent" style="display: none;">
+                    <label for="parent_confirm_password" data-en="Confirm Password:" data-si="මුරපදය තහවුරු කරන්න:">Confirm Password:</label>
+                    <input type="password" id="parent_confirm_password" name="confirm_password">
+                    <small id="parent_password_match" style="color: #777;"></small>
+                </div>
 
                 <div class="form-group">
                     <button class="button" type="submit" data-en="Register" data-si="ලියාපදිංචි වන්න">Register</button>
-                    <center><button class="discard" data-en="Dicard" data-si="අවලංගු කරන්න" onclick="goBack()">Discard</button></center>
+                    <center><button class="discard" data-en="Discard" data-si="අවලංගු කරන්න" onclick="goBack()">Discard</button></center>
+                </div>
+                <div>
+                    <center><p  style="color: #4d4d4d; font-size: x-small;">Powered by Media Unit of <b>Wp/Hr/Polegoda M. V.</b></p></center>
                 </div>
             </form>
         </div>
@@ -545,6 +610,11 @@
                 'Admission No:': 'Admission No:',
                 "Child's Name:": "Child's Name:",
                 "Child's Admission No:": "Child's Admission No:",
+                'Create Password:': 'Create Password:',
+                'Confirm Password:': 'Confirm Password:',
+                'Choose a strong password (minimum 6 characters).': 'Choose a strong password (minimum 6 characters).',
+                'Passwords match': 'Passwords match',
+                'Passwords do not match': 'Passwords do not match',
                 // Title
                 'Login & Registration - Polegodamv.lk': 'Login & Registration - Polegodamv.lk'
             },
@@ -555,7 +625,7 @@
                 // Toggle Buttons
                 'Login': 'පිවිසෙන්න',
                 'Register': 'ලියාපදිංචි වන්න',
-                'Dicard': 'අවලංගු කරන්න',
+                'Discard': 'අවලංගු කරන්න',
                 // Login Form
                 'Login_H2': 'පිවිසීම',
                 'Email / ID / Admission No:': 'විද්‍යුත් තැපෑල / හැඳුනුම්පත / ඇතුළත් වීමේ අංකය:',
@@ -584,6 +654,11 @@
                 'Admission No:': 'ඇතුළත් වීමේ අංකය:',
                 "Child's Name:": "දරුවාගේ නම:",
                 "Child's Admission No:": "දරුවාගේ ඇතුළත් වීමේ අංකය:",
+                'Create Password:': 'මුරපදයක් සාදන්න:',
+                'Confirm Password:': 'මුරපදය තහවුරු කරන්න:',
+                'Choose a strong password (minimum 6 characters).': 'ශක්තිමත් මුරපදයක් තෝරන්න (අවම අක්ෂර 6).',
+                'Passwords match': 'මුරපද ගැලපේ',
+                'Passwords do not match': 'මුරපද නොගැලපේ',
                 // Title
                 'Login & Registration - Polegodamv.lk': 'පිවිසීම සහ ලියාපදිංචිය - Polegodamv.lk'
             }
@@ -597,6 +672,48 @@
         const typeDependentFields = document.querySelectorAll('.type-dependent');
         const langButtons = document.querySelectorAll('.lang-btn');
         const htmlElement = document.documentElement; // Get the html element
+
+        // Password strength checker
+        function checkPasswordStrength(password) {
+            let strength = 0;
+            if (password.length >= 6) strength++;
+            if (password.match(/[a-z]/)) strength++;
+            if (password.match(/[A-Z]/)) strength++;
+            if (password.match(/[0-9]/)) strength++;
+            if (password.match(/[^a-zA-Z0-9]/)) strength++;
+            
+            if (strength < 2) return 'weak';
+            if (strength < 4) return 'medium';
+            return 'strong';
+        }
+
+        // Update password strength indicator
+        function updatePasswordStrength(passwordInput, strengthElement) {
+            const password = passwordInput.value;
+            const strength = checkPasswordStrength(password);
+            
+            strengthElement.className = 'password-strength ' + strength;
+        }
+
+        // Check password match
+        function checkPasswordMatch(passwordInput, confirmInput, matchElement, currentLang) {
+            const password = passwordInput.value;
+            const confirm = confirmInput.value;
+            
+            if (confirm === '') {
+                matchElement.textContent = '';
+                matchElement.style.color = '#777';
+                return;
+            }
+            
+            if (password === confirm) {
+                matchElement.textContent = currentLang === 'en' ? 'Passwords match' : 'මුරපද ගැලපේ';
+                matchElement.style.color = '#2ed573';
+            } else {
+                matchElement.textContent = currentLang === 'en' ? 'Passwords do not match' : 'මුරපද නොගැලපේ';
+                matchElement.style.color = '#ff4757';
+            }
+        }
 
         // Function to update text content based on language
         function updateContent(lang) {
@@ -626,6 +743,28 @@
             document.getElementById('reg_phone').placeholder = lang === 'en' ? 'e.g., 0712345678' : 'උදා: 0712345678';
             document.getElementById('student_grade').placeholder = lang === 'en' ? 'e.g., 10A' : 'උදා: 10A';
 
+            // Update password match messages
+            const currentLang = lang;
+            const studentPasswordMatch = document.getElementById('student_password_match');
+            const parentPasswordMatch = document.getElementById('parent_password_match');
+            
+            if (studentPasswordMatch.textContent) {
+                checkPasswordMatch(
+                    document.getElementById('student_password'),
+                    document.getElementById('student_confirm_password'),
+                    studentPasswordMatch,
+                    currentLang
+                );
+            }
+            
+            if (parentPasswordMatch.textContent) {
+                checkPasswordMatch(
+                    document.getElementById('parent_password'),
+                    document.getElementById('parent_confirm_password'),
+                    parentPasswordMatch,
+                    currentLang
+                );
+            }
         }
 
         // Language button event listeners
@@ -638,7 +777,6 @@
                 updateContent(selectedLang);
             });
         });
-
 
         // Form toggle logic with animations
         function showForm(formToShow, formToHide) {
@@ -720,12 +858,90 @@
                     setTimeout(() => field.style.opacity = '1', 50);
                     field.querySelectorAll('input').forEach(input => input.setAttribute('required', ''));
                 });
+                
+                // Setup password strength and match checking for students
+                const studentPassword = document.getElementById('student_password');
+                const studentConfirmPassword = document.getElementById('student_confirm_password');
+                const studentPasswordStrength = document.getElementById('student_password_strength');
+                const studentPasswordMatch = document.getElementById('student_password_match');
+                
+                studentPassword.addEventListener('input', () => {
+                    updatePasswordStrength(studentPassword, studentPasswordStrength);
+                    if (studentConfirmPassword.value) {
+                        const currentLang = document.querySelector('.lang-btn.active').getAttribute('data-lang');
+                        checkPasswordMatch(studentPassword, studentConfirmPassword, studentPasswordMatch, currentLang);
+                    }
+                });
+                
+                studentConfirmPassword.addEventListener('input', () => {
+                    const currentLang = document.querySelector('.lang-btn.active').getAttribute('data-lang');
+                    checkPasswordMatch(studentPassword, studentConfirmPassword, studentPasswordMatch, currentLang);
+                });
+                
             } else if (selectedType === 'parent') {
                 document.querySelectorAll('.parent-fields').forEach(field => {
                     field.style.display = 'block';
                     setTimeout(() => field.style.opacity = '1', 50);
                     field.querySelectorAll('input').forEach(input => input.setAttribute('required', ''));
                 });
+                
+                // Setup password strength and match checking for parents
+                const parentPassword = document.getElementById('parent_password');
+                const parentConfirmPassword = document.getElementById('parent_confirm_password');
+                const parentPasswordStrength = document.getElementById('parent_password_strength');
+                const parentPasswordMatch = document.getElementById('parent_password_match');
+                
+                parentPassword.addEventListener('input', () => {
+                    updatePasswordStrength(parentPassword, parentPasswordStrength);
+                    if (parentConfirmPassword.value) {
+                        const currentLang = document.querySelector('.lang-btn.active').getAttribute('data-lang');
+                        checkPasswordMatch(parentPassword, parentConfirmPassword, parentPasswordMatch, currentLang);
+                    }
+                });
+                
+                parentConfirmPassword.addEventListener('input', () => {
+                    const currentLang = document.querySelector('.lang-btn.active').getAttribute('data-lang');
+                    checkPasswordMatch(parentPassword, parentConfirmPassword, parentPasswordMatch, currentLang);
+                });
+            }
+        });
+
+        // Form validation before submission
+        document.querySelector('#registerForm form').addEventListener('submit', (e) => {
+            const userType = userTypeSelect.value;
+            
+            if (userType === 'student') {
+                const password = document.getElementById('student_password').value;
+                const confirmPassword = document.getElementById('student_confirm_password').value;
+                
+                if (password !== confirmPassword) {
+                    e.preventDefault();
+                    alert('Passwords do not match!');
+                    return false;
+                }
+                
+                if (password.length < 6) {
+                    e.preventDefault();
+                    alert('Password must be at least 6 characters long!');
+                    return false;
+                }
+            }
+            
+            if (userType === 'parent') {
+                const password = document.getElementById('parent_password').value;
+                const confirmPassword = document.getElementById('parent_confirm_password').value;
+                
+                if (password !== confirmPassword) {
+                    e.preventDefault();
+                    alert('Passwords do not match!');
+                    return false;
+                }
+                
+                if (password.length < 6) {
+                    e.preventDefault();
+                    alert('Password must be at least 6 characters long!');
+                    return false;
+                }
             }
         });
 
@@ -739,8 +955,6 @@
         function goBack() {
             window.history.back();
         }
-
-
     </script>
 </body>
 
