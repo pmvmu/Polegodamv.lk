@@ -1,12 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login | WP/ Hr/ Polegoda M. V.</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="icon" type="image/png" href="./logo.png">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Login/Register - WP/Hr/Polegoda M. V.</title>
 
     <!-- Firebase App (core) -->
     <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app.js"></script>
@@ -16,7 +13,15 @@
     <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-firestore.js"></script>
 
 
-    <style>
+
+<style>
+  /* Add your CSS here or link external */
+  .auth-form { display: none; }
+  .auth-form.active { display: block; }
+  .type-dependent { display: none; }
+  .password-strength-bar { height: 5px; background: green; width: 0%; }
+
+
         /* Google Fonts - Optional: for nicer Sinhala fonts, consider Noto Sans Sinhala */
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Sinhala:wght@400;700&family=Segoe+UI:wght@400;700&display=swap');
 
@@ -398,574 +403,307 @@
                 padding: 10px;
             }
         }
-    </style>
-
+</style>
 </head>
-
 <body>
-    <div class="auth-container">
-        <div class="school-header">
-            <img src="./logo.png" alt="School Logo" class="school-logo">
-            <h1 data-en="WP/Hr/Polegoda Maha Vidyalaya" data-si="බප/හො/පොලේගොඩ මහා  විද්‍යාලය">WP/Hr/Polegoda Maha
-                Vidyalaya</h1>
-            <h2 data-en="Vidya Dadathi Vinayan" data-si="විද්‍යා දදාති විනයං">Vidya Dadathi Vinayan</h2>
-            <p data-en="Welcome to Our School Portal" data-si="අපගේ විද්‍යාලීය ද්වාරයට සාදරයෙන් පිළිගනිමු">Welcome to
-                Our School Portal</p>
-        </div>
+  <div class="auth-container">
+    <div class="school-header">
+      <img src="./logo.png" alt="School Logo" class="school-logo" />
+      <h1 data-en="WP/Hr/Polegoda Maha Vidyalaya" data-si="බප/හො/පොලේගොඩ මහා  විද්‍යාලය">WP/Hr/Polegoda Maha Vidyalaya</h1>
+      <h2 data-en="Vidya Dadathi Vinayan" data-si="විද්‍යා දදාති විනයං">Vidya Dadathi Vinayan</h2>
+      <p data-en="Welcome to Our School Portal" data-si="අපගේ විද්‍යාලීය ද්වාරයට සාදරයෙන් පිළිගනිමු">Welcome to Our School Portal</p>
+      </div>
 
-        <div class="language-selector">
-            <button class="lang-btn active" data-lang="en">English</button>
-            <button class="lang-btn" data-lang="si">සිංහල</button>
-        </div>
-
-        <div class="auth-toggle">
-            <button id="showLogin" class="active" data-en="Login" data-si="පිවිසෙන්න">Login</button>
-            <button id="showRegister" data-en="Register" data-si="ලියාපදිංචි වන්න">Register</button>
-        </div>
-
-        <div id="loginForm" class="auth-form active">
-            <h2 data-en="Login" data-si="පිවිසීම">Login</h2>
-            <form action="./About blank.html" method="get">
-                <div class="form-group">
-                    <label for="login_identifier" data-en="Email / ID / Admission No:"
-                        data-si="විද්‍යුත් තැපෑල / හැඳුනුම්පත / ඇතුළත් වීමේ අංකය:">Email / ID / Admission No:</label>
-                    <input type="text" id="login_identifier" name="identifier" required>
-                </div>
-                <div class="form-group">
-                    <label for="login_passcode" data-en="Issued Passcode / Password:"
-                        data-si="නිකුත් කළ මුරපදය / මුරපදය:">Issued Passcode / Password:</label>
-                    <input type="password" id="login_passcode" name="passcode" required>
-                </div>
-                <div class="form-group">
-                    <button class="button" type="submit" data-en="Login" data-si="පිවිසෙන්න" onclick="login()">Login</button>
-                    <center><button class="discard" data-en="Discard" data-si="අවලංගු කරන්න" onclick="goBack()">Discard</button></center>
-                </div>
-                <div>
-                    <center><p  style="color: #4d4d4d; font-size: x-small;">Powered by Media Unit of <b>Wp/Hr/Polegoda M. V.</b></p></center>
-                </div>
-            </form>
-        </div>
-
-        <div id="registerForm" class="auth-form">
-            <h2 data-en="Register" data-si="ලියාපදිංචි වන්න">Register</h2>
-            <form action="/api/register" method="POST">
-                <div class="form-group">
-                    <label for="user_type" data-en="Registering as:" data-si="ලියාපදිංචි වන්නේ:">Registering as:</label>
-                    <select id="user_type" name="user_type" required>
-                        <option value="" data-en="-- Select User Type --" data-si="-- පරිශීලක වර්ගය තෝරන්න --">-- Select
-                            User Type --</option>
-                        <option value="teacher" data-en="Teacher" data-si="ගුරුතුමා / ගුරුතුමිය">Teacher</option>
-                        <option value="student" data-en="Student" data-si="ශිෂ්‍යයා / ශිෂ්‍යාව">Student</option>
-                        <option value="parent" data-en="Parent" data-si="දෙමාපියන්">Parent</option>
-                        <option value="admin" data-en="Admin" data-si="පරිපාලක">Admin</option>
-                    </select>
-                </div>
-
-                <div class="form-group common-field">
-                    <label for="reg_email" data-en="Email:" data-si="විද්‍යුත් තැපෑල:">Email:</label>
-                    <input type="email" id="reg_email" name="email" required>
-                </div>
-                <div class="form-group common-field">
-                    <label for="reg_phone" data-en="Phone No:" data-si="දුරකථන අංකය:">Phone No:</label>
-                    <input type="tel" id="reg_phone" name="phone_no" pattern="[0-9]{10}" placeholder="e.g., 0712345678">
-                    <small data-en="Format: 10 digits (e.g., 0712345678)"
-                        data-si="ආකෘතිය: ඉලක්කම් 10 (උදා: 0712345678)">Format: 10 digits (e.g., 0712345678)</small>
-                </div>
-
-                <div class="form-group teacher-fields type-dependent" style="display: none;">
-                    <label for="teacher_name" data-en="Teacher Name:" data-si="ගුරුතුමා / ගුරුතුමියගේ නම:">Teacher
-                        Name:</label>
-                    <input type="text" id="teacher_name" name="name">
-                </div>
-                <div class="form-group teacher-fields type-dependent" style="display: none;">
-                    <label for="teacher_id" data-en="Teacher ID:" data-si="ගුරුතුමා / ගුරුතුමියගේ හැඳුනුම්පත:">Teacher
-                        ID:</label>
-                    <input type="text" id="teacher_id" name="id">
-                </div>
-                <div class="form-group teacher-fields type-dependent" style="display: none;">
-                    <label for="teacher_passcode" data-en="Issued Passcode:" data-si="නිකුත් කළ මුරපදය:">Issued
-                        Passcode:</label>
-                    <input type="password" id="teacher_passcode" name="passcode">
-                    <small data-en="Enter the passcode issued by the school."
-                        data-si="පාසලෙන් නිකුත් කළ මුරපදය ඇතුළත් කරන්න.">Enter the passcode issued by the
-                        school.</small>
-                </div>
-
-                <div class="form-group admin-fields type-dependent" style="display: none;">
-                    <label for="admin_name" data-en="Admin Name:" data-si="පරිපාලකගේ නම:">Admin Name:</label>
-                    <input type="text" id="admin_name" name="name">
-                </div>
-                <div class="form-group admin-fields type-dependent" style="display: none;">
-                    <label for="admin_id" data-en="Admin ID:" data-si="පරිපාලක හැඳුනුම්පත:">Admin ID:</label>
-                    <input type="text" id="admin_id" name="id">
-                </div>
-                <div class="form-group admin-fields type-dependent" style="display: none;">
-                    <label for="admin_code" data-en="Admin Code:" data-si="පරිපාලක කේතය:">Admin Code:</label>
-                    <input type="password" id="admin_code" name="admin_code">
-                    <small data-en="Enter the unique Admin Code provided by the school."
-                        data-si="පාසලෙන් ලබා දුන් අනන්‍ය පරිපාලක කේතය ඇතුළත් කරන්න.">Enter the unique Admin Code
-                        provided by the school.</small>
-                </div>
-                <div class="form-group admin-fields type-dependent" style="display: none;">
-                    <label for="admin_passcode" data-en="Issued Passcode:" data-si="නිකුත් කළ මුරපදය:">Issued
-                        Passcode:</label>
-                    <input type="password" id="admin_passcode" name="passcode">
-                    <small data-en="Enter the passcode issued by the school."
-                        data-si="පාසලෙන් නිකුත් කළ මුරපදය ඇතුළත් කරන්න.">Enter the passcode issued by the
-                        school.</small>
-                </div>
-
-                <div class="form-group student-fields type-dependent" style="display: none;">
-                    <label for="student_name" data-en="Student Name:" data-si="ශිෂ්‍යයා / ශිෂ්‍යාවගේ නම:">Student
-                        Name:</label>
-                    <input type="text" id="student_name" name="name">
-                </div>
-                <div class="form-group student-fields type-dependent" style="display: none;">
-                    <label for="student_grade" data-en="Grade:" data-si="ශ්‍රේණිය:">Grade:</label>
-                    <input type="text" id="student_grade" name="grade" placeholder="e.g., 10A">
-                </div>
-                <div class="form-group student-fields type-dependent" style="display: none;">
-                    <label for="student_admission_no" data-en="Admission No:" data-si="ඇතුළත් වීමේ අංකය:">Admission
-                        No:</label>
-                    <input type="text" id="student_admission_no" name="admission_no">
-                </div>
-                <div class="form-group student-fields type-dependent" style="display: none;">
-                    <label for="student_password" data-en="Create Password:" data-si="මුරපදයක් සාදන්න:">Create Password:</label>
-                    <input type="password" id="student_password" name="password" minlength="6">
-                    <div class="password-strength" id="student_password_strength">
-                        <div class="password-strength-bar"></div>
-                    </div>
-                    <small data-en="Choose a strong password (minimum 6 characters)."
-                        data-si="ශක්තිමත් මුරපදයක් තෝරන්න (අවම අක්ෂර 6).">Choose a strong password (minimum 6 characters).</small>
-                </div>
-                <div class="form-group student-fields type-dependent" style="display: none;">
-                    <label for="student_confirm_password" data-en="Confirm Password:" data-si="මුරපදය තහවුරු කරන්න:">Confirm Password:</label>
-                    <input type="password" id="student_confirm_password" name="confirm_password">
-                    <small id="student_password_match" style="color: #777;"></small>
-                </div>
-
-                <div class="form-group parent-fields type-dependent" style="display: none;">
-                    <label for="parent_student_name" data-en="Child's Name:" data-si="දරුවාගේ නම:">Child's Name:</label>
-                    <input type="text" id="parent_student_name" name="child_name">
-                </div>
-                <div class="form-group parent-fields type-dependent" style="display: none;">
-                    <label for="parent_admission_no" data-en="Child's Admission No:"
-                        data-si="දරුවාගේ ඇතුළත් වීමේ අංකය:">Child's Admission No:</label>
-                    <input type="text" id="parent_admission_no" name="admission_no">
-                </div>
-                <div class="form-group parent-fields type-dependent" style="display: none;">
-                    <label for="parent_password" data-en="Create Password:" data-si="මුරපදයක් සාදන්න:">Create Password:</label>
-                    <input type="password" id="parent_password" name="password" minlength="6">
-                    <div class="password-strength" id="parent_password_strength">
-                        <div class="password-strength-bar"></div>
-                    </div>
-                    <small data-en="Choose a strong password (minimum 6 characters)."
-                        data-si="ශක්තිමත් මුරපදයක් තෝරන්න (අවම අක්ෂර 6).">Choose a strong password (minimum 6 characters).</small>
-                </div>
-                <div class="form-group parent-fields type-dependent" style="display: none;">
-                    <label for="parent_confirm_password" data-en="Confirm Password:" data-si="මුරපදය තහවුරු කරන්න:">Confirm Password:</label>
-                    <input type="password" id="parent_confirm_password" name="confirm_password">
-                    <small id="parent_password_match" style="color: #777;"></small>
-                </div>
-
-                <div class="form-group">
-                    <button class="button" type="submit" data-en="Register" data-si="ලියාපදිංචි වන්න" onclick="signUp()">Register</button>
-                    <center><button class="discard" data-en="Discard" data-si="අවලංගු කරන්න" onclick="goBack()">Discard</button></center>
-                </div>
-                <div>
-                    <center><p  style="color: #4d4d4d; font-size: x-small;">Powered by Media Unit of <b>Wp/Hr/Polegoda M. V.</b></p></center>
-                </div>
-            </form>
-        </div>
+    <div class="language-selector">
+      <button class="lang-btn active" data-lang="en">English</button>
+      <button class="lang-btn" data-lang="si">සිංහල</button>
     </div>
 
-    <script>
-        // Language specific strings
-        const translations = {
-            en: {
-                // School Header
-                'Polegodamv.lk': 'Polegodamv.lk',
-                'Welcome to Our School Portal': 'Welcome to Our School Portal',
-                // Toggle Buttons
-                'Login': 'Login',
-                'Register': 'Register',
-                'Discard': 'Discard',
-                // Login Form
-                'Login_H2': 'Login',
-                'Email / ID / Admission No:': 'Email / ID / Admission No:',
-                'Issued Passcode / Password:': 'Issued Passcode / Password:',
-                // Register Form
-                'Register_H2': 'Register',
-                'Registering as:': 'Registering as:',
-                '-- Select User Type --': '-- Select User Type --',
-                'Teacher': 'Teacher',
-                'Student': 'Student',
-                'Parent': 'Parent',
-                'Admin': 'Admin',
-                'Email:': 'Email:',
-                'Phone No:': 'Phone No:',
-                'Format: 10 digits (e.g., 0712345678)': 'Format: 10 digits (e.g., 0712345678)',
-                'Teacher Name:': 'Teacher Name:',
-                'Teacher ID:': 'Teacher ID:',
-                'Issued Passcode:': 'Issued Passcode:',
-                'Enter the passcode issued by the school.': 'Enter the passcode issued by the school.',
-                'Admin Name:': 'Admin Name:',
-                'Admin ID:': 'Admin ID:',
-                'Admin Code:': 'Admin Code:',
-                'Enter the unique Admin Code provided by the school.': 'Enter the unique Admin Code provided by the school.',
-                'Student Name:': 'Student Name:',
-                'Grade:': 'Grade:',
-                'Admission No:': 'Admission No:',
-                "Child's Name:": "Child's Name:",
-                "Child's Admission No:": "Child's Admission No:",
-                'Create Password:': 'Create Password:',
-                'Confirm Password:': 'Confirm Password:',
-                'Choose a strong password (minimum 6 characters).': 'Choose a strong password (minimum 6 characters).',
-                'Passwords match': 'Passwords match',
-                'Passwords do not match': 'Passwords do not match',
-                // Title
-                'Login & Registration - Polegodamv.lk': 'Login & Registration - Polegodamv.lk'
-            },
-            si: {
-                // School Header
-                'Polegodamv.lk': 'පොළේගොඩම්ව.lk',
-                'Welcome to Our School Portal': 'අපගේ විද්‍යාලීය ද්වාරයට සාදරයෙන් පිළිගනිමු',
-                // Toggle Buttons
-                'Login': 'පිවිසෙන්න',
-                'Register': 'ලියාපදිංචි වන්න',
-                'Discard': 'අවලංගු කරන්න',
-                // Login Form
-                'Login_H2': 'පිවිසීම',
-                'Email / ID / Admission No:': 'විද්‍යුත් තැපෑල / හැඳුනුම්පත / ඇතුළත් වීමේ අංකය:',
-                'Issued Passcode / Password:': 'නිකුත් කළ මුරපදය / මුරපදය:',
-                // Register Form
-                'Register_H2': 'ලියාපදිංචි වන්න',
-                'Registering as:': 'ලියාපදිංචි වන්නේ:',
-                '-- Select User Type --': '-- පරිශීලක වර්ගය තෝරන්න --',
-                'Teacher': 'ගුරුතුමා / ගුරුතුමිය',
-                'Student': 'ශිෂ්‍යයා / ශිෂ්‍යාව',
-                'Parent': 'දෙමාපියන්',
-                'Admin': 'පරිපාලක',
-                'Email:': 'විද්‍යුත් තැපෑල:',
-                'Phone No:': 'දුරකථන අංකය:',
-                'Format: 10 digits (e.g., 0712345678)': 'ආකෘතිය: ඉලක්කම් 10 (උදා: 0712345678)',
-                'Teacher Name:': 'ගුරුතුමා / ගුරුතුමියගේ නම:',
-                'Teacher ID:': 'ගුරුතුමා / ගුරුතුමියගේ හැඳුනුම්පත:',
-                'Issued Passcode:': 'නිකුත් කළ මුරපදය:',
-                'Enter the passcode issued by the school.': 'පාසලෙන් නිකුත් කළ මුරපදය ඇතුළත් කරන්න.',
-                'Admin Name:': 'පරිපාලකගේ නම:',
-                'Admin ID:': 'පරිපාලක හැඳුනුම්පත:',
-                'Admin Code:': 'පරිපාලක කේතය:',
-                'Enter the unique Admin Code provided by the school.': 'පාසලෙන් ලබා දුන් අනන්‍ය පරිපාලක කේතය ඇතුළත් කරන්න.',
-                'Student Name:': 'ශිෂ්‍යයා / ශිෂ්‍යාවගේ නම:',
-                'Grade:': 'ශ්‍රේණිය:',
-                'Admission No:': 'ඇතුළත් වීමේ අංකය:',
-                "Child's Name:": "දරුවාගේ නම:",
-                "Child's Admission No:": "දරුවාගේ ඇතුළත් වීමේ අංකය:",
-                'Create Password:': 'මුරපදයක් සාදන්න:',
-                'Confirm Password:': 'මුරපදය තහවුරු කරන්න:',
-                'Choose a strong password (minimum 6 characters).': 'ශක්තිමත් මුරපදයක් තෝරන්න (අවම අක්ෂර 6).',
-                'Passwords match': 'මුරපද ගැලපේ',
-                'Passwords do not match': 'මුරපද නොගැලපේ',
-                // Title
-                'Login & Registration - Polegodamv.lk': 'පිවිසීම සහ ලියාපදිංචිය - Polegodamv.lk'
-            }
-        };
+    <div class="auth-toggle">
+      <button id="showLogin" class="active" data-en="Login" data-si="පිවිසෙන්න">Login</button>
+      <button id="showRegister" data-en="Register" data-si="ලියාපදිංචි වන්න">Register</button>
+    </div>
 
-        const showLoginBtn = document.getElementById('showLogin');
-        const showRegisterBtn = document.getElementById('showRegister');
-        const loginForm = document.getElementById('loginForm');
-        const registerForm = document.getElementById('registerForm');
-        const userTypeSelect = document.getElementById('user_type');
-        const typeDependentFields = document.querySelectorAll('.type-dependent');
-        const langButtons = document.querySelectorAll('.lang-btn');
-        const htmlElement = document.documentElement; // Get the html element
+    <!-- Login Form -->
+    <div id="loginForm" class="auth-form active">
+      <h2 data-en="Login" data-si="පිවිසීම">Login</h2>
+      <form id="login_form" onsubmit="return handleLogin(event)">
+        <div class="form-group">
+          <label for="login_identifier" data-en="Email / ID / Admission No:" data-si="විද්‍යුත් තැපෑල / හැඳුනුම්පත / ඇතුළත් වීමේ අංකය:">Email / ID / Admission No:</label>
+          <input type="text" id="login_identifier" name="identifier" required />
+        </div>
+        <div class="form-group">
+          <label for="login_passcode" data-en="Issued Passcode / Password:" data-si="නිකුත් කළ මුරපදය / මුරපදය:">Issued Passcode / Password:</label>
+          <input type="password" id="login_passcode" name="passcode" required />
+        </div>
+        <div class="form-group">
+        <button class="button" type="submit" data-en="Login" data-si="පිවිසෙන්න">Login</button>
+          <center><button class="discard" type="button" data-en="Discard" data-si="අවලංගු කරන්න" onclick="goBack()">Discard</button></center>
+        </div>
+        <div>
+          <center><p style="color: #4d4d4d; font-size: x-small;">Powered by Media Unit of <b>Wp/Hr/Polegoda M. V.</b></p></center>
+        </div>
+      </form>
+    </div>
 
-        // Password strength checker
-        function checkPasswordStrength(password) {
-            let strength = 0;
-            if (password.length >= 6) strength++;
-            if (password.match(/[a-z]/)) strength++;
-            if (password.match(/[A-Z]/)) strength++;
-            if (password.match(/[0-9]/)) strength++;
-            if (password.match(/[^a-zA-Z0-9]/)) strength++;
-            
-            if (strength < 2) return 'weak';
-            if (strength < 4) return 'medium';
-            return 'strong';
-        }
+    <!-- Register Form -->
+    <div id="signupForm" class="auth-form">
+      <h2 data-en="Register" data-si="ලියාපදිංචි වන්න">Register</h2>
+      <form id="register_form" onsubmit="return handleSignUp(event)">
+        <div class="form-group">
+          <label for="user_type" data-en="Registering as:" data-si="ලියාපදිංචි වන්නේ:">Registering as:</label>
+          <select id="user_type" name="user_type" required>
+            <option value="" data-en="-- Select User Type --" data-si="-- පරිශීලක වර්ගය තෝරන්න --">-- Select User Type --</option>
+            <option value="teacher" data-en="Teacher" data-si="ගුරුතුමා / ගුරුතුමිය">Teacher</option>
+            <option value="student" data-en="Student" data-si="ශිෂ්‍යයා / ශිෂ්‍යාව">Student</option>
+            <option value="parent" data-en="Parent" data-si="දෙමාපියන්">Parent</option>
+            <option value="admin" data-en="Admin" data-si="පරිපාලක">Admin</option>
+          </select>
+        </div>
 
-        // Update password strength indicator
-        function updatePasswordStrength(passwordInput, strengthElement) {
-            const password = passwordInput.value;
-            const strength = checkPasswordStrength(password);
-            
-            strengthElement.className = 'password-strength ' + strength;
-        }
+        <div class="form-group common-field">
+          <label for="reg_email" data-en="Email:" data-si="විද්‍යුත් තැපෑල:">Email:</label>
+          <input type="email" id="email" name="email" required />
+        </div>
+        <div class="form-group common-field">
+          <label for="reg_phone" data-en="Phone No:" data-si="දුරකථන අංකය:">Phone No:</label>
+          <input type="tel" id="reg_phone" name="phone_no" pattern="[0-9]{10}" placeholder="e.g., 0712345678" />
+          <small data-en="Format: 10 digits (e.g., 0712345678)" data-si="ආකෘතිය: ඉලක්කම් 10 (උදා: 0712345678)">Format: 10 digits (e.g., 0712345678)</small>
+        </div>
 
-        // Check password match
-        function checkPasswordMatch(passwordInput, confirmInput, matchElement, currentLang) {
-            const password = passwordInput.value;
-            const confirm = confirmInput.value;
-            
-            if (confirm === '') {
-                matchElement.textContent = '';
-                matchElement.style.color = '#777';
-                return;
-            }
-            
-            if (password === confirm) {
-                matchElement.textContent = currentLang === 'en' ? 'Passwords match' : 'මුරපද ගැලපේ';
-                matchElement.style.color = '#2ed573';
-            } else {
-                matchElement.textContent = currentLang === 'en' ? 'Passwords do not match' : 'මුරපද නොගැලපේ';
-                matchElement.style.color = '#ff4757';
-            }
-        }
+        <!-- Teacher fields -->
+        <div class="form-group teacher-fields type-dependent">
+          <label for="teacher_name" data-en="Teacher Name:" data-si="ගුරුතුමා / ගුරුතුමියගේ නම:">Teacher Name:</label>
+          <input type="text" id="teacher_name" name="name" />
+        </div>
+        <div class="form-group teacher-fields type-dependent">
+          <label for="teacher_id" data-en="Teacher ID:" data-si="ගුරුතුමා / ගුරුතුමියගේ හැඳුනුම්පත:">Teacher ID:</label>
+          <input type="text" id="teacher_id" name="id" />
+          </div>
+        <div class="form-group teacher-fields type-dependent">
+          <label for="teacher_passcode" data-en="Issued Passcode:" data-si="නිකුත් කළ මුරපදය:">Issued Passcode:</label>
+          <input type="password" id="teacher_passcode" name="passcode" />
+          <small data-en="Enter the passcode issued by the school." data-si="පාසලෙන් නිකුත් කළ මුරපදය ඇතුළත් කරන්න.">Enter the passcode issued by the school.</small>
+        </div>
 
-        // Function to update text content based on language
-        function updateContent(lang) {
-            document.querySelectorAll('[data-en], [data-si]').forEach(element => {
-                const enText = element.getAttribute('data-en');
-                const siText = element.getAttribute('data-si');
+        <!-- Admin fields -->
+        <div class="form-group admin-fields type-dependent">
+          <label for="admin_name" data-en="Admin Name:" data-si="පරිපාලකගේ නම:">Admin Name:</label>
+          <input type="text" id="admin_name" name="name" />
+        </div>
+        <div class="form-group admin-fields type-dependent">
+          <label for="admin_id" data-en="Admin ID:" data-si="පරිපාලක හැඳුනුම්පත:">Admin ID:</label>
+          <input type="text" id="admin_id" name="id" />
+        </div>
+        <div class="form-group admin-fields type-dependent">
+          <label for="admin_code" data-en="Admin Code:" data-si="පරිපාලක කේතය:">Admin Code:</label>
+          <input type="password" id="admin_code" name="admin_code" />
+          <small data-en="Enter the unique Admin Code provided by the school." data-si="පාසලෙන් ලබා දුන් අනන්‍ය පරිපාලක කේතය ඇතුළත් කරන්න.">Enter the unique Admin Code provided by the school.</small>
+        </div>
+        <div class="form-group admin-fields type-dependent">
+          <label for="admin_passcode" data-en="Issued Passcode:" data-si="නිකුත් කළ මුරපදය:">Issued Passcode:</label>
+          <input type="password" id="admin_passcode" name="passcode" />
+          <small data-en="Enter the passcode issued by the school." data-si="පාසලෙන් නිකුත් කළ මුරපදය ඇතුළත් කරන්න.">Enter the passcode issued by the school.</small>
+        </div>
 
-                if (lang === 'en' && enText) {
-                    if (element.tagName === 'OPTION') {
-                        element.textContent = enText;
-                    } else if (element.tagName === 'TITLE') {
-                        document.title = enText;
-                    } else {
-                        element.textContent = enText;
-                    }
-                } else if (lang === 'si' && siText) {
-                    if (element.tagName === 'OPTION') {
-                        element.textContent = siText;
-                    } else if (element.tagName === 'TITLE') {
-                        document.title = siText;
-                    } else {
-                        element.textContent = siText;
-                    }
-                }
-            });
-            // Update input placeholders if needed (currently not in data-attributes)
-            document.getElementById('reg_phone').placeholder = lang === 'en' ? 'e.g., 0712345678' : 'උදා: 0712345678';
-            document.getElementById('student_grade').placeholder = lang === 'en' ? 'e.g., 10A' : 'උදා: 10A';
+        <!-- Student fields -->
+        <div class="form-group student-fields type-dependent">
+          <label for="student_name" data-en="Student Name:" data-si="ශිෂ්‍යයා / ශිෂ්‍යාවගේ නම:">Student Name:</label>
+          <input type="text" id="student_name" name="name" />
+        </div>
+        <div class="form-group student-fields type-dependent">
+          <label for="student_grade" data-en="Grade:" data-si="ශ්‍රේණිය:">Grade:</label>
+          <input type="text" id="student_grade" name="grade" placeholder="e.g., 10A" />
+        </div>
+        <div class="form-group student-fields type-dependent">
+          <label for="student_admission_no" data-en="Admission No:" data-si="ඇතුළත් වීමේ අංකය:">Admission No:</label>
+          <input type="text" id="student_admission_no" name="admission_no" />
+        </div>
+        <div class="form-group student-fields type-dependent">
+          <label for="student_password" data-en="Create Password:" data-si="මුරපදයක් සාදන්න:">Create Password:</label>
+          <input type="password" id="student_password" name="password" minlength="6" />
+          <div class="password-strength" id="student_password_strength">
+            <div class="password-strength-bar"></div>
+          </div>
+          <small data-en="Choose a strong password (minimum 6 characters)." data-si="ශක්තිමත් මුරපදයක් තෝරන්න (අවම අක්ෂර 6).">Choose a strong password (minimum 6 characters).</small>
+        </div>
+        <div class="form-group student-fields type-dependent">
+          <label for="student_confirm_password" data-en="Confirm Password:" data-si="මුරපදය තහවුරු කරන්න:">Confirm Password:</label>
+          <input type="password" id="student_confirm_password" name="confirm_password" />
+          <small id="student_password_match" style="color: #777;"></small>
+        </div>
 
-            // Update password match messages
-            const currentLang = lang;
-            const studentPasswordMatch = document.getElementById('student_password_match');
-            const parentPasswordMatch = document.getElementById('parent_password_match');
-            
-            if (studentPasswordMatch.textContent) {
-                checkPasswordMatch(
-                    document.getElementById('student_password'),
-                    document.getElementById('student_confirm_password'),
-                    studentPasswordMatch,
-                    currentLang
-                );
-            }
-            
-            if (parentPasswordMatch.textContent) {
-                checkPasswordMatch(
-                    document.getElementById('parent_password'),
-                    document.getElementById('parent_confirm_password'),
-                    parentPasswordMatch,
-                    currentLang
-                );
-            }
-        }
+        <!-- Parent fields -->
+        <div class="form-group parent-fields type-dependent">
+          <label for="parent_student_name" data-en="Child's Name:" data-si="දරුවාගේ නම:">Child's Name:</label>
+          <input type="text" id="parent_student_name" name="child_name" />
+        </div>
+        <div class="form-group parent-fields type-dependent">
+          <label for="parent_admission_no" data-en="Child's Admission No:" data-si="දරුවාගේ ඇතුළත් වීමේ අංකය:">Child's Admission No:</label>
+          <input type="text" id="parent_admission_no" name="admission_no" />
+          </div>
+        <div class="form-group parent-fields type-dependent">
+          <label for="parent_password" data-en="Create Password:" data-si="මුරපදයක් සාදන්න:">Create Password:</label>
+          <input type="password" id="parent_password" name="password" minlength="6" />
+          <div class="password-strength" id="parent_password_strength">
+            <div class="password-strength-bar"></div>
+          </div>
+          <small data-en="Choose a strong password (minimum 6 characters)." data-si="ශක්තිමත් මුරපදයක් තෝරන්න (අවම අක්ෂර 6).">Choose a strong password (minimum 6 characters).</small>
+        </div>
+        <div class="form-group parent-fields type-dependent">
+          <label for="parent_confirm_password" data-en="Confirm Password:" data-si="මුරපදය තහවුරු කරන්න:">Confirm Password:</label>
+          <input type="password" id="parent_confirm_password" name="confirm_password" />
+          <small id="parent_password_match" style="color: #777;"></small>
+        </div>
 
-        // Language button event listeners
-        langButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                const selectedLang = button.getAttribute('data-lang');
-                htmlElement.setAttribute('lang', selectedLang); // Set html lang attribute
-                langButtons.forEach(btn => btn.classList.remove('active'));
-                button.classList.add('active');
-                updateContent(selectedLang);
-            });
-        });
+        <div class="form-group">
+          <button class="button" type="submit" data-en="Register" data-si="ලියාපදිංචි වන්න">Register</button>
+          <center><button class="discard" type="button" data-en="Discard" data-si="අවලංගු කරන්න" onclick="goBack()">Discard</button></center>
+        </div><div>
+          <center><p style="color: #4d4d4d; font-size: x-small;">Powered by Media Unit of <b>Wp/Hr/Polegoda M. V.</b></p></center>
+        </div>
+      </form>
+    </div>
+  </div>
 
-        // Form toggle logic with animations
-        function showForm(formToShow, formToHide) {
-            formToHide.style.opacity = '0';
-            formToHide.style.transform = 'translateY(20px)';
-            setTimeout(() => {
-                formToHide.classList.remove('active');
-                formToShow.classList.add('active');
-                formToShow.style.opacity = '0'; // Start faded
-                formToShow.style.transform = 'translateY(20px)'; // Start slightly down
-                setTimeout(() => {
-                    formToShow.style.transition = 'opacity 0.5s ease-out, transform 0.5s ease-out';
-                    formToShow.style.opacity = '1';
-                    formToShow.style.transform = 'translateY(0)';
-                }, 50); // Small delay to allow display change to register
-            }, 300); // Wait for fade-out to complete
-        }
+<script>
+  // Show/hide forms
+  const loginForm = document.getElementById('loginForm');
+  const signupForm = document.getElementById('signupForm');
+  const showLoginBtn = document.getElementById('showLogin');
+  const showRegisterBtn = document.getElementById('showRegister');
 
-        showLoginBtn.addEventListener('click', () => {
-            showForm(loginForm, registerForm);
-            showLoginBtn.classList.add('active');
-            showRegisterBtn.classList.remove('active');
-        });
+  showLoginBtn.onclick = () => {
+    loginForm.classList.add('active');
+    signupForm.classList.remove('active');
+    showLoginBtn.classList.add('active');
+    showRegisterBtn.classList.remove('active');
+  };
+  showRegisterBtn.onclick = () => {
+    signupForm.classList.add('active');
+    loginForm.classList.remove('active');
+    showRegisterBtn.classList.add('active');
+    showLoginBtn.classList.remove('active');
+  };
 
-        showRegisterBtn.addEventListener('click', () => {
-            showForm(registerForm, loginForm);
-            showRegisterBtn.classList.add('active');
-            showLoginBtn.classList.remove('active');
-            // Reset fields visibility when switching to register
-            hideAllTypeDependentFields();
-            userTypeSelect.value = ""; // Reset select dropdown
-            setRequiredAttribute(false); // Make all type-dependent fields not required initially
-        });
+  // Show/hide dependent fields by user type
+  const userTypeSelect = document.getElementById('user_type');
+  const allDependentFields = document.querySelectorAll('.type-dependent');
 
-        // Function to hide all type-dependent fields
-        function hideAllTypeDependentFields() {
-            typeDependentFields.forEach(fieldGroup => {
-                fieldGroup.style.display = 'none';
-                fieldGroup.style.opacity = '0'; // Hide with fade effect
-            });
-        }
+  userTypeSelect.addEventListener('change', () => {
+    const val = userTypeSelect.value;
+    allDependentFields.forEach(el => {
+      if (el.classList.contains(val + '-fields')) {el.style.display = 'block';
+      } else {
+        el.style.display = 'none';
+      }
+    });
+  });
 
-        // Function to set required attribute for fields
-        function setRequiredAttribute(isRequired) {
-            typeDependentFields.forEach(fieldGroup => {
-                const inputs = fieldGroup.querySelectorAll('input, select');
-                inputs.forEach(input => {
-                    if (isRequired) {
-                        input.setAttribute('required', '');
-                    } else {
-                        input.removeAttribute('required');
-                    }
-                });
-            });
-        }
+  // Password match checking for Student and Parent
+  function checkPasswordMatch(passwordId, confirmId, msgId) {
+    const password = document.getElementById(passwordId);
+    const confirm = document.getElementById(confirmId);
+    const msg = document.getElementById(msgId);
 
-        // JavaScript to show/hide fields based on user type selection
-        userTypeSelect.addEventListener('change', (event) => {
-            const selectedType = event.target.value;
-            hideAllTypeDependentFields(); // Hide all first
-            setRequiredAttribute(false); // Remove required from all first
+    function validate() {
+      if(confirm.value === '') {
+        msg.textContent = '';
+        return;
+      }
+      if (password.value === confirm.value) {
+        msg.style.color = 'green';
+        msg.textContent = 'Passwords match';
+      } else {
+        msg.style.color = 'red';
+        msg.textContent = 'Passwords do not match';
+      }
+    }
+    password.addEventListener('input', validate);
+    confirm.addEventListener('input', validate);
+  }
+  checkPasswordMatch('student_password', 'student_confirm_password', 'student_password_match');
+  checkPasswordMatch('parent_password', 'parent_confirm_password', 'parent_password_match');
 
-            // Show relevant fields and set required attribute with fade-in
-            if (selectedType === 'teacher') {
-                document.querySelectorAll('.teacher-fields').forEach(field => {
-                    field.style.display = 'block';
-                    setTimeout(() => field.style.opacity = '1', 50);
-                    field.querySelectorAll('input').forEach(input => input.setAttribute('required', ''));
-                });
-            } else if (selectedType === 'admin') {
-                document.querySelectorAll('.admin-fields').forEach(field => {
-                    field.style.display = 'block';
-                    setTimeout(() => field.style.opacity = '1', 50);
-                    field.querySelectorAll('input').forEach(input => input.setAttribute('required', ''));
-                });
-            } else if (selectedType === 'student') {
-                document.querySelectorAll('.student-fields').forEach(field => {
-                    field.style.display = 'block';
-                    setTimeout(() => field.style.opacity = '1', 50);
-                    field.querySelectorAll('input').forEach(input => input.setAttribute('required', ''));
-                });
-                
-                // Setup password strength and match checking for students
-                const studentPassword = document.getElementById('student_password');
-                const studentConfirmPassword = document.getElementById('student_confirm_password');
-                const studentPasswordStrength = document.getElementById('student_password_strength');
-                const studentPasswordMatch = document.getElementById('student_password_match');
-                
-                studentPassword.addEventListener('input', () => {
-                    updatePasswordStrength(studentPassword, studentPasswordStrength);
-                    if (studentConfirmPassword.value) {
-                        const currentLang = document.querySelector('.lang-btn.active').getAttribute('data-lang');
-                        checkPasswordMatch(studentPassword, studentConfirmPassword, studentPasswordMatch, currentLang);
-                    }
-                });
-                
-                studentConfirmPassword.addEventListener('input', () => {
-                    const currentLang = document.querySelector('.lang-btn.active').getAttribute('data-lang');
-                    checkPasswordMatch(studentPassword, studentConfirmPassword, studentPasswordMatch, currentLang);
-                });
-                
-            } else if (selectedType === 'parent') {
-                document.querySelectorAll('.parent-fields').forEach(field => {
-                    field.style.display = 'block';
-                    setTimeout(() => field.style.opacity = '1', 50);
-                    field.querySelectorAll('input').forEach(input => input.setAttribute('required', ''));
-                });
-                
-                // Setup password strength and match checking for parents
-                const parentPassword = document.getElementById('parent_password');
-                const parentConfirmPassword = document.getElementById('parent_confirm_password');
-                const parentPasswordStrength = document.getElementById('parent_password_strength');
-                const parentPasswordMatch = document.getElementById('parent_password_match');
-                
-                parentPassword.addEventListener('input', () => {
-                    updatePasswordStrength(parentPassword, parentPasswordStrength);
-                    if (parentConfirmPassword.value) {
-                        const currentLang = document.querySelector('.lang-btn.active').getAttribute('data-lang');
-                        checkPasswordMatch(parentPassword, parentConfirmPassword, parentPasswordMatch, currentLang);
-                    }
-                });
-                
-                parentConfirmPassword.addEventListener('input', () => {
-                    const currentLang = document.querySelector('.lang-btn.active').getAttribute('data-lang');
-                    checkPasswordMatch(parentPassword, parentConfirmPassword, parentPasswordMatch, currentLang);
-                });
-            }
-        });
+  // Password strength bar (simple)
+  function passwordStrengthBar(passwordId, barSelector) {
+    const passwordInput = document.getElementById(passwordId);
+    const bar = document.querySelector(barSelector);
+    passwordInput.addEventListener('input', () => {const val = passwordInput.value;
+      let strength = 0;
+      if(val.length >= 6) strength += 1;
+      if(/[A-Z]/.test(val)) strength += 1;
+      if(/[0-9]/.test(val)) strength += 1;
+      if(/[\W]/.test(val)) strength += 1;
 
-        // Form validation before submission
-        document.querySelector('#registerForm form').addEventListener('submit', (e) => {
-            const userType = userTypeSelect.value;
-            
-            if (userType === 'student') {
-                const password = document.getElementById('student_password').value;
-                const confirmPassword = document.getElementById('student_confirm_password').value;
-                
-                if (password !== confirmPassword) {
-                    e.preventDefault();
-                    alert('Passwords do not match!');
-                    return false;
-                }
-                
-                if (password.length < 6) {
-                    e.preventDefault();
-                    alert('Password must be at least 6 characters long!');
-                    return false;
-                }
-            }
-            
-            if (userType === 'parent') {
-                const password = document.getElementById('parent_password').value;
-                const confirmPassword = document.getElementById('parent_confirm_password').value;
-                
-                if (password !== confirmPassword) {
-                    e.preventDefault();
-                    alert('Passwords do not match!');
-                    return false;
-                }
-                
-                if (password.length < 6) {
-                    e.preventDefault();
-                    alert('Password must be at least 6 characters long!');
-                    return false;
-                }
-            }
-        });
+      const widthPercent = (strength / 4) * 100;
+      bar.style.width = widthPercent + '%';
+      bar.style.backgroundColor = ['red', 'orange', 'yellow', 'green'][strength - 1] || 'transparent';
+    });
+  }
+  passwordStrengthBar('student_password', '#student_password_strength .password-strength-bar');
+  passwordStrengthBar('parent_password', '#parent_password_strength .password-strength-bar');
 
-        // Initial setup:
-        // Set default language and show login form
-        document.addEventListener('DOMContentLoaded', () => {
-            updateContent('en'); // Set initial content to English
-            showLoginBtn.click(); // Show login form by default
-        });
+  // Language toggle
+  const langBtns = document.querySelectorAll('.lang-btn');
+  langBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      langBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      setLanguage(btn.dataset.lang);
+    });
+  });
 
-        function goBack() {
-            window.history.back();
-        }
-    </script>
+  function setLanguage(lang) {
+    document.querySelectorAll('[data-en]').forEach(el => {
+      if (lang === 'si') {
+        el.textContent = el.dataset.si;
+        if(el.placeholder) el.placeholder = el.dataset.si;
+      } else {
+        el.textContent = el.dataset.en;
+        if(el.placeholder) el.placeholder = el.dataset.en;
+      }
+    });
+  }setLanguage('en'); // default
 
-    <script src="./auth.html"></script>
+  // Form submit handlers (mockup, replace with your Firebase or backend code)
+  function handleLogin(e) {
+    e.preventDefault();
+    alert('Login submitted');
+    // TODO: Your Firebase login logic here
+  }
+  function handleSignUp(e) {
+    e.preventDefault();
+    // Basic password confirm validation for Student and Parent before submit
+    const userType = userTypeSelect.value;
+    if(userType === 'student') {
+      const pass = document.getElementById('student_password').value;
+      const confirm = document.getElementById('student_confirm_password').value;
+      if(pass !== confirm) {
+        alert('Student passwords do not match!');
+        return false;
+      }
+    }
+    if(userType === 'parent') {
+      const pass = document.getElementById('parent_password').value;
+      const confirm = document.getElementById('parent_confirm_password').value;
+      if(pass !== confirm) {
+        alert('Parent passwords do not match!');
+        return false;
+      }
+    }
+    alert('Register submitted');
+    // TODO: Your Firebase signup logic here
+  }
+
+  // Go back function
+  function goBack() {
+    // Clear forms and switch to login
+    document.getElementById('register_form').reset();
+    document.getElementById('login_form').reset();showLoginBtn.click();
+  }
+</script>
+<script src="./auth.js"></script>
+
 </body>
-
 </html>
