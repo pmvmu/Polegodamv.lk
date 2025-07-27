@@ -8,6 +8,14 @@
     <link rel="stylesheet" href="style.css">
     <link rel="icon" type="image/png" href="./logo.png">
 
+    <!-- Firebase App (core) -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app.js"></script>
+    <!-- Firebase Auth -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-auth.js"></script>
+    <!-- Firebase Firestore -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-firestore.js"></script>
+
+
     <style>
         /* Google Fonts - Optional: for nicer Sinhala fonts, consider Noto Sans Sinhala */
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Sinhala:wght@400;700&family=Segoe+UI:wght@400;700&display=swap');
@@ -429,7 +437,7 @@
                     <input type="password" id="login_passcode" name="passcode" required>
                 </div>
                 <div class="form-group">
-                    <button class="button" type="submit" data-en="Login" data-si="පිවිසෙන්න">Login</button>
+                    <button class="button" type="submit" data-en="Login" data-si="පිවිසෙන්න" onclick="login()">Login</button>
                     <center><button class="discard" data-en="Discard" data-si="අවලංගු කරන්න" onclick="goBack()">Discard</button></center>
                 </div>
                 <div>
@@ -561,7 +569,7 @@
                 </div>
 
                 <div class="form-group">
-                    <button class="button" type="submit" data-en="Register" data-si="ලියාපදිංචි වන්න">Register</button>
+                    <button class="button" type="submit" data-en="Register" data-si="ලියාපදිංචි වන්න" onclick="signUp()">Register</button>
                     <center><button class="discard" data-en="Discard" data-si="අවලංගු කරන්න" onclick="goBack()">Discard</button></center>
                 </div>
                 <div>
@@ -956,6 +964,8 @@
             window.history.back();
         }
     </script>
+
+    <script src="./auth.html"></script>
 </body>
 
 </html>
