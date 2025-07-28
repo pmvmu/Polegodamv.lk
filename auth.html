@@ -432,11 +432,11 @@
       <form id="login_form" onsubmit="return handleLogin(event)">
         <div class="form-group">
           <label for="login_identifier" data-en="Email / ID / Admission No:" data-si="විද්‍යුත් තැපෑල / හැඳුනුම්පත / ඇතුළත් වීමේ අංකය:">Email / ID / Admission No:</label>
-          <input type="text" id="login_identifier" name="identifier" required />
+          <input autocomplete="email" type="text" id="login_identifier" name="identifier" required />
         </div>
         <div class="form-group">
           <label for="login_passcode" data-en="Issued Passcode / Password:" data-si="නිකුත් කළ මුරපදය / මුරපදය:">Issued Passcode / Password:</label>
-          <input type="password" id="login_passcode" name="passcode" required />
+          <input autocomplete="new-password" type="password" id="login_passcode" name="passcode" required />
         </div>
         <div class="form-group">
         <button class="button" type="submit" data-en="Login" data-si="පිවිසෙන්න">Login</button>
@@ -465,65 +465,66 @@
 
         <div class="form-group common-field">
           <label for="email" data-en="Email:" data-si="විද්‍යුත් තැපෑල:">Email:</label>
-          <input type="email" id="email" name="email" required />
+          <input autocomplete="email" type="email" id="email" name="email" required />
         </div>
         <div class="form-group common-field">
           <label for="reg_phone" data-en="Phone No:" data-si="දුරකථන අංකය:">Phone No:</label>
-          <input type="tel" id="reg_phone" name="phone_no" pattern="[0-9]{10}" placeholder="e.g., 0712345678" />
+          <input autocomplete="tel-national" type="tel" id="reg_phone" name="phone_no" pattern="[0-9]{10}" placeholder="e.g., 0712345678" />
           <small data-en="Format: 10 digits (e.g., 0712345678)" data-si="ආකෘතිය: ඉලක්කම් 10 (උදා: 0712345678)">Format: 10 digits (e.g., 0712345678)</small>
         </div>
 
         <!-- Teacher fields -->
         <div class="form-group teacher-fields type-dependent">
           <label for="teacher_name" data-en="Teacher Name:" data-si="ගුරුතුමා / ගුරුතුමියගේ නම:">Teacher Name:</label>
-          <input type="text" id="teacher_name" name="name" />
+          <input autocomplete="name" type="text" id="teacher_name" name="name" />
         </div>
         <div class="form-group teacher-fields type-dependent">
           <label for="teacher_id" data-en="Teacher ID:" data-si="ගුරුතුමා / ගුරුතුමියගේ හැඳුනුම්පත:">Teacher ID:</label>
-          <input type="text" id="teacher_id" name="id" />
+          <input autocomplete="username" type="text" id="teacher_id" name="id" />
           </div>
         <div class="form-group teacher-fields type-dependent">
           <label for="teacher_passcode" data-en="Issued Passcode:" data-si="නිකුත් කළ මුරපදය:">Issued Passcode:</label>
-          <input type="password" id="teacher_passcode" name="passcode" />
+          <input autocomplete="new-password" type="password" id="teacher_passcode" name="passcode" />
           <small data-en="Enter the passcode issued by the school." data-si="පාසලෙන් නිකුත් කළ මුරපදය ඇතුළත් කරන්න.">Enter the passcode issued by the school.</small>
         </div>
 
         <!-- Admin fields -->
         <div class="form-group admin-fields type-dependent">
           <label for="admin_name" data-en="Admin Name:" data-si="පරිපාලකගේ නම:">Admin Name:</label>
-          <input type="text" id="admin_name" name="name" />
+          <input autocomplete="name" type="text" id="admin_name" name="name" />
         </div>
         <div class="form-group admin-fields type-dependent">
           <label for="admin_id" data-en="Admin ID:" data-si="පරිපාලක හැඳුනුම්පත:">Admin ID:</label>
-          <input type="text" id="admin_id" name="id" />
+          <input autocomplete="username" type="text" id="admin_id" name="id" />
         </div>
         <div class="form-group admin-fields type-dependent">
           <label for="admin_code" data-en="Admin Code:" data-si="පරිපාලක කේතය:">Admin Code:</label>
-          <input type="password" id="admin_code" name="admin_code" />
+          <input autocomplete="new-password" type="password" id="admin_code" name="admin_code" />
           <small data-en="Enter the unique Admin Code provided by the school." data-si="පාසලෙන් ලබා දුන් අනන්‍ය පරිපාලක කේතය ඇතුළත් කරන්න.">Enter the unique Admin Code provided by the school.</small>
         </div>
         <div class="form-group admin-fields type-dependent">
           <label for="admin_passcode" data-en="Issued Passcode:" data-si="නිකුත් කළ මුරපදය:">Issued Passcode:</label>
-          <input type="password" id="admin_passcode" name="passcode" />
+          <input autocomplete="
+          new-password" type="password" id="admin_passcode" name="passcode" />
           <small data-en="Enter the passcode issued by the school." data-si="පාසලෙන් නිකුත් කළ මුරපදය ඇතුළත් කරන්න.">Enter the passcode issued by the school.</small>
         </div>
 
         <!-- Student fields -->
         <div class="form-group student-fields type-dependent">
           <label for="student_name" data-en="Student Name:" data-si="ශිෂ්‍යයා / ශිෂ්‍යාවගේ නම:">Student Name:</label>
-          <input type="text" id="student_name" name="name" />
+          <input autocomplete="name" type="text" id="student_name" name="name" />
         </div>
         <div class="form-group student-fields type-dependent">
           <label for="student_grade" data-en="Grade:" data-si="ශ්‍රේණිය:">Grade:</label>
-          <input type="text" id="student_grade" name="grade" placeholder="e.g., 10A" />
+          <input autocomplete="work" type="text" id="student_grade" name="grade" placeholder="e.g., 10A" />
         </div>
         <div class="form-group student-fields type-dependent">
           <label for="student_admission_no" data-en="Admission No:" data-si="ඇතුළත් වීමේ අංකය:">Admission No:</label>
-          <input type="text" id="student_admission_no" name="admission_no" />
+          <input autocomplete="username" type="text" id="student_admission_no" name="admission_no" />
         </div>
         <div class="form-group student-fields type-dependent">
           <label for="student_password" data-en="Create Password:" data-si="මුරපදයක් සාදන්න:">Create Password:</label>
-          <input type="password" id="student_password" name="password" minlength="6" />
+          <input autocomplete="new-password" type="password" id="student_password" name="password" minlength="6" />
           <div class="password-strength" id="student_password_strength">
             <div class="password-strength-bar"></div>
           </div>
@@ -531,22 +532,22 @@
         </div>
         <div class="form-group student-fields type-dependent">
           <label for="student_confirm_password" data-en="Confirm Password:" data-si="මුරපදය තහවුරු කරන්න:">Confirm Password:</label>
-          <input type="password" id="student_confirm_password" name="confirm_password" />
+          <input autocomplete="new-password" type="password" id="student_confirm_password" name="confirm_password" />
           <small id="student_password_match" style="color: #777;"></small>
         </div>
 
         <!-- Parent fields -->
         <div class="form-group parent-fields type-dependent">
           <label for="parent_student_name" data-en="Child's Name:" data-si="දරුවාගේ නම:">Child's Name:</label>
-          <input type="text" id="parent_student_name" name="child_name" />
+          <input autocomplete="name" type="text" id="parent_student_name" name="child_name" />
         </div>
         <div class="form-group parent-fields type-dependent">
           <label for="parent_admission_no" data-en="Child's Admission No:" data-si="දරුවාගේ ඇතුළත් වීමේ අංකය:">Child's Admission No:</label>
-          <input type="text" id="parent_admission_no" name="admission_no" />
+          <input autocomplete="username" type="text" id="parent_admission_no" name="admission_no" />
           </div>
         <div class="form-group parent-fields type-dependent">
           <label for="parent_password" data-en="Create Password:" data-si="මුරපදයක් සාදන්න:">Create Password:</label>
-          <input type="password" id="parent_password" name="password" minlength="6" />
+          <input autocomplete="new-password" type="password" id="parent_password" name="password" minlength="6" />
           <div class="password-strength" id="parent_password_strength">
             <div class="password-strength-bar"></div>
           </div>
@@ -554,7 +555,7 @@
         </div>
         <div class="form-group parent-fields type-dependent">
           <label for="parent_confirm_password" data-en="Confirm Password:" data-si="මුරපදය තහවුරු කරන්න:">Confirm Password:</label>
-          <input type="password" id="parent_confirm_password" name="confirm_password" />
+          <input autocomplete="new-password" type="password" id="parent_confirm_password" name="confirm_password" />
           <small id="parent_password_match" style="color: #777;"></small>
         </div>
 
