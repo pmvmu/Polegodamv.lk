@@ -2,7 +2,6 @@
 document.addEventListener('DOMContentLoaded', function () {
   // All translations organized by section
   const translations = {
-    // ... (paste the entire translations object from the original script)
 
     // Logo Text
     logo: {
@@ -86,56 +85,6 @@ document.addEventListener('DOMContentLoaded', function () {
     // Programs
     programs: {
       sectionTitle: "වැඩසටහන් සහ උත්සව",
-      slides: [
-        {
-          badge: "අලුත් දේ",
-          title: "වෙබ් අඩවිය විවෘත කිරීම",
-          subtitle: "නව ඩිජිටල් අත්දැකීමක් ඉක්මනින්",
-          description: "අපගේ නවීන පාසල් වැඩසටහන් අන්තර්ක්‍රීය ඩිජිටල් ප්‍රදර්ශනයක් තුළින් අත්විඳින්න. නිල විවෘත කිරීමේ උත්සවයට සහභාගී වී අපගේ අධ්‍යාපනික සාර්ථකත්වය මාරු මාර්ගයෙන් තොරව අන්තර්ජාලයෙන් අන්තර්ක්‍රීයව බලා සිටින්න.",
-          details: [
-            "අන්තර්ක්‍රීය වැඩසටහන් ප්‍රදර්ශන",
-            "නවීන, ප්‍රතිචාරාත්මක මෙවලම",
-            "යාවත්කාලීන අධ්‍යාපනික අන්තර්ගත",
-            "විශේෂ ඉදිරිපත් කිරීම් සහිත විවෘත කිරීමේ උත්සවය"
-          ]
-        },
-        {
-          badge: "ළඟ එන උත්සවය",
-          title: "පොයා දින සංගීත වැඩසටහන",
-          subtitle: "සංස්කෘතික උරුමය සංගීතය මඟින් සැමරීම",
-          description: "පොයා දිනය සැමරීම සඳහා අපගේ බුද්ධිමත් සිසුන් විසින් සාරධර්ම සහ සමකාලීන සංගීත ප්‍රදර්ශනයට සහභාගී වන්න. පොදු සම්ප්‍රදායික මෙන්ම නවීන තාලයන් හරහා අපගේ සංස්කෘතික උරුමය අත්විදින්න.",
-          details: [
-            "සම්ප්‍රදායික වාද්‍ය ප්‍රදර්ශන",
-            "බෞද්ධ ගී කොරස් ඉදිරිපත් කිරීම්",
-            "සිසු තනි ප්‍රදර්ශන",
-            "විශේෂ සඳු එළිය යටදී පැවැත්වෙන මාලිගාව"
-          ]
-        },
-        {
-          badge: "අධ්‍යාපනික සාර්ථකත්වය",
-          title: "වාර්ෂික විද්‍යා ප්‍රදර්ශනය",
-          subtitle: "සොයා දැනුම, නව්‍යකරණය, නිර්මාණය",
-          description: "අපගේ වාර්ෂික විද්‍යා ප්‍රදර්ශනය සිසුන්ගේ රොෙබෝටික්, පරිසර විද්‍යාව, ජීව විද්‍යාව සහ භෞතික විද්‍යාව යන ක්ෂේත්‍රයන්හි වැඩ සටහන් පෙන්වයි. අනාගතයේ දැවැන්ත මනස් විසින් යම් සැබෑ ලෝක ගැටලු සඳහා නවෝත්පාදන විසඳුම් මෙම ප්‍රදර්ශනයේ දී දකින්න.",
-          details: [
-            "අන්තර්ක්‍රීය ප්‍රදර්ශන",
-            "සිසුන් විසින් මෙහෙයවන පර්යේෂණ වැඩ සටහන්",
-            "තාක්ෂණ නවෝත්පාදන",
-            "විශ්ව විද්‍යාල නායකයන් විසින් විශේෂ කථා"
-          ]
-        },
-        {
-          badge: "ක්‍රීඩා",
-          title: "අන්තර් නිවාස ක්‍රීඩා තරඟය",
-          subtitle: "ශක්තිය, ආත්ම වීර්යය, ක්‍රීඩා සාරධර්ම",
-          description: "අවුරුදු පාරම්පරික අන්තර් නිවාස ක්‍රීඩා තරඟය සියලුම පන්තිවල සිසුන් එක් රැස් කොට විවිධ ක්‍රීඩා තරඟයන්ට සහභාගි කරවයි. පිදුම් සහ පිටවුම් ව්‍යායාම සිට කණ්ඩායම් ක්‍රීඩා දක්වා, අපේ තරුණ ක්‍රීඩකයන්ගේ දැඩි අධිෂ්ඨානය සහ කණ්ඩායම් ආත්ම වීර්යය දකින්න.",
-          details: [
-            "පිදුම් සහ පිටවුම් ඉවන්",
-            "කණ්ඩායම් ක්‍රීඩා තරඟ",
-            "සüයිම් තරඟය",
-            "සම්මාන ලැබීම් සහ සැමරුම්",
-          ]
-        }
-      ]
     },
 
     // Office Hours Section
@@ -198,7 +147,7 @@ document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('programs-nav').textContent = translations.navigation.programsNav;
     document.getElementById('office-nav').textContent = translations.navigation.officeNav;
     document.getElementById('contact-nav').textContent = translations.navigation.contactNav;
-    document.getElementById('auth-naw').textContent = translations.navigation.authNav;
+    document.getElementById('auth-nav').textContent = translations.navigation.authNav;
 
     // Hero Section
     document.getElementById('hero-title').textContent = translations.hero.title;
@@ -253,50 +202,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Programs & Events Section
     document.getElementById('programs-section-title').textContent = translations.programs.sectionTitle;
-
-    // Update the Programs & Events section slides
-    const programSlides = document.querySelectorAll('.slide');
-    if (programSlides.length >= 4) {
-      translations.programs.slides.forEach((slide, index) => {
-        const currentSlide = programSlides[index];
-
-        // Update badge
-        const badge = currentSlide.querySelector('.badge');
-        if (badge) badge.textContent = slide.badge;
-
-        // Update title
-        const title = currentSlide.querySelector('.slide-title');
-        if (title) title.textContent = slide.title;
-
-        // Update subtitle
-        const subtitle = currentSlide.querySelector('.slide-subtitle');
-        if (subtitle) subtitle.textContent = slide.subtitle;
-
-        // Update description
-        const description = currentSlide.querySelector('.slide-description');
-        if (description) description.textContent = slide.description;
-
-        // Update details
-        const detailItems = currentSlide.querySelectorAll('.detail-text');
-        if (detailItems.length >= slide.details.length) {
-          slide.details.forEach((detail, detailIndex) => {
-            detailItems[detailIndex].textContent = detail;
-          });
-        }
-      });
-    }
-    // Apply translations to carousel items
-    const carouselCaptions = document.querySelectorAll('.carousel-caption');
-    if (carouselCaptions.length >= 3) {
-      for (let i = 0; i < Math.min(carouselCaptions.length, translations.programs.events.length); i++) {
-        const caption = carouselCaptions[i];
-        const h3 = caption.querySelector('h3');
-        const p = caption.querySelector('p');
-
-        if (h3) h3.textContent = translations.programs.events[i].title;
-        if (p) p.textContent = translations.programs.events[i].description;
-      }
-    }
 
     // Office Hours Section
     document.getElementById('office-hours-title').textContent = translations.officeHours.title;
@@ -410,40 +315,4 @@ document.addEventListener('DOMContentLoaded', function () {
       applySinhalaTranslations();
     });
   }
-
-  // Programs & Events tab handling
-  const pastEventsTab = document.getElementById('past-events-tab');
-  const upcomingEventsTab = document.getElementById('upcoming-events-tab');
-  const pastEventsContent = document.getElementById('past-events-content');
-  const upcomingEventsContent = document.getElementById('upcoming-events-content');
-
-  if (pastEventsTab && upcomingEventsTab && pastEventsContent && upcomingEventsContent) {
-    pastEventsTab.addEventListener('click', function () {
-      // Switch to "Past Events" tab
-      pastEventsTab.classList.add('active');
-      upcomingEventsTab.classList.remove('active');
-      pastEventsContent.style.display = 'block';
-      upcomingEventsContent.style.display = 'none';
-    });
-
-    upcomingEventsTab.addEventListener('click', function () {
-      // Switch to "Upcoming Events" tab
-      upcomingEventsTab.classList.add('active');
-      pastEventsTab.classList.remove('active');
-      upcomingEventsContent.style.display = 'block';
-      pastEventsContent.style.display = 'none';
-    });
-  }
-
-  // Ensure the correct tab is displayed on language switch
-  function updateProgramsSection() {
-    if (pastEventsTab.classList.contains('active')) {
-      pastEventsContent.style.display = 'block';
-      upcomingEventsContent.style.display = 'none';
-    } else if (upcomingEventsTab.classList.contains('active')) {
-      upcomingEventsContent.style.display = 'block';
-      pastEventsContent.style.display = 'none';
-    }
-  }
-  updateProgramsSection();
 });

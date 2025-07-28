@@ -9,7 +9,8 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Sinhala:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Sinhala:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Yaldevi:wght@200..700&display=swap" rel="stylesheet">
@@ -21,8 +22,22 @@
   <meta property="og:url" content="https://pmvmu.github.io/Polegodamv.lk/">
   <meta property="og:type" content="website">
   <link rel="manifest" href="manifest.json">
-  <link rel="stylesheet" href="./loader.css">
+  <!-- <link rel="stylesheet" href="./loader.css"> -->
   <meta name="google-adsense-account" content="ca-pub-5627799215744007">
+
+
+  <!-- translator -->
+  <script type="text/javascript">
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: 'en',
+        includedLanguages: 'si,ta,ko,ja,zh-CN,fr,de,es,ar',
+        layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+      }, 'google_translate_element');
+    }
+  </script>
+  <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
 
   <!-- Event Header Styles -->
   <!-- <link rel="stylesheet" href="./Awrudu/Awrudu.css"> -->
@@ -31,8 +46,7 @@
   <link rel="stylesheet" href="./Event_Banners/Esala/esala.css">
 
   <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-796S4JXDEK">
-  </script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-796S4JXDEK"> </script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag() { dataLayer.push(arguments); }
@@ -43,7 +57,7 @@
 
 <body>
   <!-- Loading screen -->
-  <div id="loading-screen">
+  <!-- <div id="loading-screen">
     <div class="logo-container">
       <img src="./logo.png" alt="School Logo">
     </div>
@@ -53,7 +67,7 @@
     <div id="loading-percentage" class="loading-percentage">0%</div>
     <div class="school-name">WP/ Hr/ Polegoda M. V.</div>
   </div>
-
+ -->
   <!-- Main content -->
   <div id="content">
     <!-- Header -->
@@ -65,7 +79,7 @@
               <img src="./logo.png" alt="School Logo">
               <div>
                 <div class="logo-text" id="logo-text">WP/ Hr/ Polegoda M. V.</div>
-                <div class=" motto" id="logo-motto">Vidya Dadathi Vinayan</div>
+                <div class="motto" id="logo-motto"><i>Vidya Dadathi Vinayan</i></div>
               </div>
             </div>
             <ul class="nav-links" id="navLinks">
@@ -74,7 +88,7 @@
               <li><a href="#principal" id="principal-nav">Principal</a></li>
               <li><a href="#teachers" id="teachers-nav">Teachers</a></li>
               <li><a href="#history" id="history-nav">History</a></li>
-              <li><a href="./Events/events.html" id="programs-nav">Programs</a></li>
+              <li><a href="#programs" id="programs-nav">Programs</a></li>
               <li><a href="#office-hours" id="office-nav">Office Hours</a></li>
               <li><a href="#contact" id="contact-nav">Contact</a></li>
               <li><a href="./auth.html" id="auth-nav">Login</a></li>
@@ -151,6 +165,7 @@
 
       <!-- end -->
 
+      <!-- Theme Button -->
       <div class="special-btn">
         <a href="https://w.wiki/EigT">
           <div><i class="fa fa-circle-info"></i></div>
@@ -165,8 +180,10 @@
     <div class="alert-container" id="alertBox">
       <div class="alert-icon">⚠️</div>
       <div class="alert-message">
-        <p class="sinhala">මෙම විශේෂාංගය තවම සම්බන්ධ කර නොමැති බව කරුණාවෙන් සලකන්න..</p>
-        <p class="english">Please note that this feature is not yet Connected..</p>
+        <p class="sinhala">මෙම විශේෂාංගය තවම සම්බන්ධ කර නොමැති බව කරුණාවෙන්
+          සලකන්න..</p>
+        <p class="english">Please note that this feature is not yet
+          Connected..</p>
       </div>
       <button class="close-button" onclick="closeAlert()">OK</button>
     </div>
@@ -174,7 +191,7 @@
     <!-- Hero Banner -->
     <section class="hero">
       <div class="hero-content">
-        <h1 id="hero-title">WP/Hr/Polegoda M. V.</h1>
+        <h1 id="hero-title">WP /Hr /Polegoda Maha Vidyalaya</h1>
         <p id="hero-subtitle"><i>Vidya Dadathi Vinayan</i></p>
         <!-- <div class="hero-button-container">
           <a href="./whats-new.html" class="btn" id="learn-more-btn">Learn More</a>
@@ -183,10 +200,7 @@
     </section>
 
     <marquee direction="left" class="maqtxt" id="marquee">
-      <div><span id="marquee-text">WP/ Hr/ Polegoda M. V.</span>&nbsp; &nbsp; &ndash; &nbsp; &nbsp; <span
-          id="marquee-text2">Official Website.. </span>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span
-          id="marquee-text3">Powerd by :</span> <span id="marquee-text4">Media Unit of Polegoda M. V. (PMVMU)</span>
-        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &copy;PMV | PMVMU 2025</div>
+      <div><span id="marquee-text">WP /Hr /Polegoda M. V.</span> &nbsp; &nbsp; &ndash; &nbsp; &nbsp; <span id="marquee-text2">OfficialWebsite.. </span>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span id="marquee-text3">Powerd by :</span> <span id="marquee-text4">Media Unit of Polegoda M. V. (PMVMU)</span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &copy;PMV | PMVMU 2025</div>
     </marquee>
 
     <!-- Mission & Vision -->
@@ -198,8 +212,7 @@
         <div class="mission-vision-content">
           <div class="mission-content animate-fade-right">
             <h3 id="mv-titlem">Mission</h3>
-            <p id="mv-textm">It is our mission to raise a noble generation of children who are wise, spiritual, and
-              capable of standing on their own.</p>
+            <p id="mv-textm">It is our mission to raise a noble generation of children who are wise, spiritual, and  capable of standing on their own.</p>
           </div>
           <div class="vision-content animate-fade-left">
             <h3 id="mv-titlev">Vision</h3>
@@ -221,17 +234,24 @@
           </div>
           <div class="principal-text animate-fade-left">
             <h3 id="principal-name">Mrs. W.D.D.M.Premathilaka</h3>
-            <p id="principal-message">It is with great pleasure that I welcome you to the PW/ Hr/ Polegoda M. V.
+            <p id="principal-message">It is with great pleasure that I welcome
+              you to the PW/ Hr/ Polegoda M. V.
               website.
-              Our school is committed to providing a supportive and enriching environment where students can achieve
+              Our school is committed to providing a supportive and enriching
+              environment where students can achieve
               their
-              full potential. We believe in nurturing not just academic excellence, but also character, creativity, and
+              full potential. We believe in nurturing not just academic
+              excellence, but also character, creativity, and
               social responsibility.</p>
-            <p id="principal-message-2">Our dedicated team of teachers and staff work tirelessly to ensure that each
-              student receives the guidance and support they need to succeed. We pride ourselves on our strong
+            <p id="principal-message-2">Our dedicated team of teachers and
+              staff work tirelessly to ensure that each
+              student receives the guidance and support they need to succeed.
+              We pride ourselves on our strong
               partnership
-              with parents and the wider community, as we believe that education is a collaborative process.</p>
-            <p id="principal-quote">"Education is the most powerful weapon which you can use to change the world." -
+              with parents and the wider community, as we believe that
+              education is a collaborative process.</p>
+            <p id="principal-quote">"Education is the most powerful weapon which you can use to change the world."
+              -
               Nelson Mandela</p>
           </div>
         </div>
@@ -278,14 +298,22 @@
         </div>
         <div class="history-content">
           <div class="history-text animate-fade-right">
-            <p id="history-excerpt">According to the existing records of Polegoda Maha Vidyalaya, Polegoda Maha
-              Vidyalaya was established in 1926. At the time of its establishment, there were eight students and three
-              teachers, and the founding principal was Mr. P. C. M. Kularatne. He served as the principal for a long
-              time. The founding student was Mr. Somapala Kularatne, P. C. M. Kularatne’s son.</p>
-            <p id="history-excerpt-2">It is mentioned in the book that our school was initially located in a house in
-              the Kurunduwatte area and was brought to the current school site in 1929. Old records state that in 1929,
-              a Sanghagatha Dakshina was established at the current Polegoda Maha Vidyalaya site, after which the school
-              was started. Initially, three coconut frond sheds were used for teaching.</p>
+            <p id="history-excerpt">According to the existing records of
+              Polegoda Maha Vidyalaya, Polegoda Maha
+              Vidyalaya was established in 1926. At the time of its
+              establishment, there were eight students and three
+              teachers, and the founding principal was Mr. P. C. M. Kularatne.
+              He served as the principal for a long
+              time. The founding student was Mr. Somapala Kularatne, P. C. M.
+              Kularatne’s son.</p>
+            <p id="history-excerpt-2">It is mentioned in the book that our
+              school was initially located in a house in
+              the Kurunduwatte area and was brought to the current school site
+              in 1929. Old records state that in 1929,
+              a Sanghagatha Dakshina was established at the current Polegoda
+              Maha Vidyalaya site, after which the school
+              was started. Initially, three coconut frond sheds were used for
+              teaching.</p>
             <a href="./history.html" class="btn" id="read-more-history-btn">Read More</a>
           </div>
           <div class="audio-player animate-fade-left">
@@ -307,192 +335,27 @@
     <section class="programs-section" id="programs">
       <div class="container">
         <div class="section-title animate-fade-up">
-          <a href="./Events/event.html">
-            <h2 class="programs-section-title" id="programs-section-title">Programs & Events</h2>
-          </a>
+          <h2  id="programs-section-title">Events & Programs</h2>
         </div>
-
-
-        <div class="slideshow-container">
-          <!-- Slide 1: Website Launch (from your HTML) -->
-          <div id="slide1" class="slide active">
-            <div class="slide-overlay"></div>
-            <div class="slide-content">
-              <span class="badge">WHAT'S NEW</span>
-              <h1 class="slide-title">Website Launch</h1>
-              <h2 class="slide-subtitle">A New Digital Experience Coming Soon</h2>
-              <p class="slide-description">Experience our innovative school programs in an interactive digital
-                showcase. Join us for the official launch event and explore our educational excellence online.</p>
-
-              <div class="slide-details">
-                <div class="detail-item" style="animation-delay: 0.4s;">
-                  <div class="detail-marker"></div>
-                  <div class="detail-text">Interactive Program Showcases</div>
-                </div>
-                <div class="detail-item" style="animation-delay: 0.5s;">
-                  <div class="detail-marker"></div>
-                  <div class="detail-text">Modern, Responsive Design</div>
-                </div>
-                <div class="detail-item" style="animation-delay: 0.6s;">
-                  <div class="detail-marker"></div>
-                  <div class="detail-text">Immersive Educational Content</div>
-                </div>
-                <div class="detail-item" style="animation-delay: 0.7s;">
-                  <div class="detail-marker"></div>
-                  <div class="detail-text">Launch Event with Special Presentations</div>
-                </div>
-              </div>
-
-              <div class="countdown-container">
-                <div class="countdown-item">
-                  <div class="countdown-number" id="daysEl">00</div>
-                  <div class="countdown-label">Days</div>
-                </div>
-                <div class="countdown-item">
-                  <div class="countdown-number" id="hoursEl">00</div>
-                  <div class="countdown-label">Hours</div>
-                </div>
-                <div class="countdown-item">
-                  <div class="countdown-number" id="minsEl">00</div>
-                  <div class="countdown-label">Minutes</div>
-                </div>
-                <div class="countdown-item">
-                  <div class="countdown-number" id="secsEl">00</div>
-                  <div class="countdown-label">Seconds</div>
-                </div>
-              </div>
-            </div>
+        <div class="slide-container">
+          <div class="slider special">
+            <img src="./logo.png" />
           </div>
 
-          <!-- Slide 2: PoyaDay Musical Program -->
-          <!-- <div id="slide2" class="slide">
-            <div class="slide-overlay"></div>
-            <div class="slide-content">
-              <span class="badge">UPCOMING EVENT</span>
-              <h1 class="slide-title">PoyaDay Musical Program</h1>
-              <h2 class="slide-subtitle">Celebrating Cultural Heritage Through Music</h2>
-              <p class="slide-description">Join us for a special evening of traditional and contemporary music
-                performances by our talented students in celebration of Poya Day. Experience the rich cultural
-                heritage of our community through melodious tunes and rhythmic beats.</p>
+          <div class="slider educational">
+            <img src="C:\Users\pmv\Downloads\event-img.jpeg" />
+            <img src="C:\Users\pmv\Downloads\event-img.jpeg" />
+            <img src="C:\Users\pmv\Downloads\event-img.jpeg" />
+          </div>
 
-              <div class="slide-details">
-                <div class="detail-item">
-                  <div class="detail-marker"></div>
-                  <div class="detail-text">Traditional Instrumental Performances</div>
-                </div>
-                <div class="detail-item">
-                  <div class="detail-marker"></div>
-                  <div class="detail-text">Choir Presentations of Buddhist Hymns</div>
-                </div>
-                <div class="detail-item">
-                  <div class="detail-marker"></div>
-                  <div class="detail-text">Student Solo Performances</div>
-                </div>
-                <div class="detail-item">
-                  <div class="detail-marker"></div>
-                  <div class="detail-text">Special Moonlight Outdoor Concert</div>
-                </div>
-              </div>
-
-              <div class="countdown-container">
-                <div class="countdown-item">
-                  <div class="countdown-number" id="poyadaysEl">39</div>
-                  <div class="countdown-label">Days</div>
-                </div>
-                <div class="countdown-item">
-                  <div class="countdown-number">00</div>
-                  <div class="countdown-label">Hours</div>
-                </div>
-                <div class="countdown-item">
-                  <div class="countdown-number">00</div>
-                  <div class="countdown-label">Minutes</div>
-                </div>
-                <div class="countdown-item">
-                  <div class="countdown-number">00</div>
-                  <div class="countdown-label">Seconds</div>
-                </div>
-              </div>
-            </div>
-          </div> -->
-
-          <!-- Slide 3: Annual Science Exhibition -->
-          <!-- <div id="slide3" class="slide">
-            <div class="slide-overlay"></div>
-            <div class="slide-content">
-              <span class="badge">ACADEMIC EXCELLENCE</span>
-              <h1 class="slide-title">Annual Science Exhibition</h1>
-              <h2 class="slide-subtitle">Discover, Innovate, Create</h2>
-              <p class="slide-description">Our annual science exhibition showcases student projects spanning robotics,
-                environmental science, biology, and physics. Come witness the brilliant minds of tomorrow as they
-                demonstrate their innovative solutions to real-world problems.</p>
-
-              <div class="slide-details">
-                <div class="detail-item">
-                  <div class="detail-marker"></div>
-                  <div class="detail-text">Interactive Demonstrations</div>
-                </div>
-                <div class="detail-item">
-                  <div class="detail-marker"></div>
-                  <div class="detail-text">Student-Led Research Projects</div>
-                </div>
-                <div class="detail-item">
-                  <div class="detail-marker"></div>
-                  <div class="detail-text">Technology Innovations</div>
-                </div>
-                <div class="detail-item">
-                  <div class="detail-marker"></div>
-                  <div class="detail-text">Guest Speakers from Leading Universities</div>
-                </div>
-              </div>
-            </div>
-          </div> -->
-
-          <!-- Slide 4: Sports Tournament -->
-          <!-- <div id="slide4" class="slide">
-            <div class="slide-overlay"></div>
-            <div class="slide-content">
-              <span class="badge">SPORTS</span>
-              <h1 class="slide-title">Inter-House Sports Tournament</h1>
-              <h2 class="slide-subtitle">Strength, Spirit, Sportsmanship</h2>
-              <p class="slide-description">Our annual inter-house sports tournament brings together students from all
-                grades to compete in various athletic events. From track and field to team sports, witness the
-                determination and team spirit of our young athletes.</p>
-
-              <div class="slide-details">
-                <div class="detail-item">
-                  <div class="detail-marker"></div>
-                  <div class="detail-text">Track and Field Events</div>
-                </div>
-                <div class="detail-item">
-                  <div class="detail-marker"></div>
-                  <div class="detail-text">Team Sports Competitions</div>
-                </div>
-                <div class="detail-item">
-                  <div class="detail-marker"></div>
-                  <div class="detail-text">Swimming Gala</div>
-                </div>
-                <div class="detail-item">
-                  <div class="detail-marker"></div>
-                  <div class="detail-text">Award Ceremony and Celebrations</div>
-                </div>
-              </div>
-            </div>
-          </div> -->
-
-          <!-- Navigation Buttons -->
-          <button class="prev-btn" onclick="changeSlide(-1)">&#10094;</button>
-          <button class="next-btn" onclick="changeSlide(1)">&#10095;</button>
-
-          <div class="navigation-buttons">
-            <span class="dot active" onclick="currentSlide(1)"></span>
-            <span class="dot" onclick="currentSlide(2)"></span>
-            <span class="dot" onclick="currentSlide(3)"></span>
-            <span class="dot" onclick="currentSlide(4)"></span>
+          <div class="slider sports">
+            <img src="C:\Users\pmv\Downloads\event-img.jpeg" />
+            <!-- <img src="C:\Users\pmv\Downloads\event-img.jpeg" />
+      <img src="C:\Users\pmv\Downloads\event-img.jpeg" /> -->
           </div>
         </div>
       </div>
     </section>
-
 
     <!-- Office Hours -->
     <section class="office-hours" id="office-hours">
@@ -554,10 +417,12 @@
           <div class="footer-column">
             <h3 id="contact-us-title">Contact Us</h3>
             <a href="https://maps.app.goo.gl/42XZD7QHMBvcWh2h9">
-              <p><i class="fas fa-map-marker-alt"></i> <span id="address">Ihala Welgama rd, Polegoda, Mahagama</span></p>
+              <p><i class="fas fa-map-marker-alt"></i> <span id="address">Ihala Welgama rd, Polegoda, Mahagama</span>
+              </p>
             </a>
             <a href="tel:+94342244063">
-              <p><i class="fas fa-phone"></i> <span id="phone">+94 34 224 4063</span></p>
+              <p><i class="fas fa-phone"></i> <span id="phone">+94 34 224
+                  4063</span></p>
             </a>
             <a href="mailto:Pmvwpho@gmail.com">
               <p><i class="fas fa-envelope"></i> <span id="email">info@polegodamv.edu.lk</span></p>
@@ -576,7 +441,8 @@
               <li><a href="#" id="home-link">Home</a></li>
               <li><a href="#teachers" id="faculty-link">Teachers</a></li>
               <li><a href="#programs" id="events-link">Events</a></li>
-              <li><a href="history.html" id="full-history-link">Full History</a></li>
+              <li><a href="history.html" id="full-history-link">Full
+                  History</a></li>
               <li><a href="./FAQ.html" id="FAQ">FAQs</a></li>
             </ul>
           </div>
@@ -591,14 +457,15 @@
             <div class="map-container">
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4004.7423199213104!2d80.16255857504082!3d6.590050393403649!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae3cbbf80b2d27f%3A0x395e9c183e86775e!2sPolegoda%20National%20School!5e1!3m2!1sen!2slk!4v1742298886545!5m2!1sen!2slk"
-                width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                width="600" height="450" style="border:0;" allowfullscreen loading="lazy"
                 referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
           </div>
         </div>
         <div class="copyright">
           <strong>
-            <p id="copyright-text">&copy; 2025 WP/ Hr/ Polegoda M. V. All Rights Reserved.
+            <p id="copyright-text">&copy; 2025 WP/ Hr/ Polegoda M. V. All
+              Rights Reserved.
           </strong></p>
           <br>
           <p id="power">Powered by</p> <strong>
@@ -612,11 +479,18 @@
         </div>
       </div>
     </footer>
+    
+    <!-- Firebase App (core) -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app.js"></script>
+    <!-- Firebase Auth -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-auth.js"></script>
+    <!-- Firebase Firestore -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-firestore.js"></script>
 
     <script src="./index main.js"></script>
     <script src="./index translator.js"></script>
     <script src="./index animator.js"></script>
-    <script src="./loader.js"></script>
+    <!-- <script src="./loader.js"></script> -->
     <script src="./Awrudu/Events-theme.js"></script>
     <script src="./Event_Banners/Test Event Index/Vesak.js"></script>
     <script src="./Event_Banners/Test Event Index/poson.js"></script>
