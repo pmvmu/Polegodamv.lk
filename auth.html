@@ -5,33 +5,36 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Login/Register - WP/Hr/Polegoda M. V.</title>
 
-<script type="module">
-  // Import the functions you need from the SDKs you need
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-app.js";
-  import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-auth.js";
-  import { getFirestore, doc, setDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-firestore.js";
+<!-- Firebase App (core SDK) -->
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
 
-  const firebaseConfig = { ... };
+<!-- Firebase Authentication -->
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
 
-  const app = initializeApp(firebaseConfig);
-  const auth = getAuth(app);
-  const db = getFirestore(app);
+<!-- Firebase Firestore -->
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
 
-  async function signUp(email, password, username) {
-    try {
-      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-      const user = userCredential.user;await setDoc(doc(db, "users", user.uid), {
-        email,
-        username,
-        createdAt: serverTimestamp()
-      });
+<!-- Firebase Config & Custom Script -->
+<script>
+  const firebaseConfig = {
+    apiKey: "AIzaSyC0mm5lKSQIfyWfnFKxHZvgtJ_-JRiZzkU",
+    authDomain: "polegodamv-lk.firebaseapp.com",
+    projectId: "polegodamv-lk",
+    storageBucket: "polegodamv-lk.appspot.com",
+    messagingSenderId: "292171914502",
+    appId: "1:292171914502:web:124cc5711a838fd369d287"
+  };
 
-      console.log("User registered and data saved!");
-    } catch (error) {
-      console.error("Error signing up:", error.message);
-    }
-  }
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+
+  const auth = firebase.auth();
+  const db = firebase.firestore();
 </script>
+
+<!-- Your custom auth logic (signUp etc) -->
+<script src="auth.js"></script>
+
 
 <style>
 
