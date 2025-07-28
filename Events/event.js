@@ -113,7 +113,7 @@ addEventCard(
 addEventCard(
   "A/L freshman recruitment interviews",
   "Interviews for the recruitment of new Advanced Level students will be held on July 29th from 8:30 a.m.",
-  "./Event-imgs/event-img.jpeg",
+  "https://raw.githubusercontent.com/pmvmu/Polegodamv.lk/refs/heads/main/Events/Event-imgs/event-img.jpeg",
   "latest-events",
   "24 july 2025 | 11:30",
   "",
