@@ -30,6 +30,17 @@ body {
   overflow-x: hidden;
 }
 
+.header-bg {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  top: 20px;
+  left: 0;
+  border-radius: 0 0 15px 15px;
+  box-shadow: 0 5px 20px #070707;
+  margin-bottom: 20px;
+}
+
 .bgimage {
   background-image: url("./logo.png");
   background-position: center top;
@@ -39,7 +50,7 @@ body {
   height: 100%;
   z-index: -3;
   top: 20%;
-  opacity: 0.3;
+  opacity: 0.2;
   transform: scale(1.5);
 }
 
@@ -239,7 +250,6 @@ li {
   white-space: normal; /* Ensure wrapping */
   word-wrap: break-word; /* Break long words if needed */
   word-break: break-word;
-
 }
 
 .event-card p {

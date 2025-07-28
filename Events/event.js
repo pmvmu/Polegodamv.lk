@@ -110,6 +110,16 @@ addEventCard(
   "https://whatsapp.com/channel/0029VaqpXrqHVvTdKdBGjn1T/120"
 );
 
+addEventCard(
+  "A/L freshman recruitment interviews",
+  "Interviews for the recruitment of new Advanced Level students will be held on July 29th from 8:30 a.m.",
+  "./event-img.jpeg",
+  "latest-events",
+  "24 july 2025 | 11:30",
+  "",
+  "https://whatsapp.com/channel/0029VaqpXrqHVvTdKdBGjn1T/121"
+);
+
 
 // Search Function
 const searchInput = document.getElementById("eventSearch");
@@ -118,7 +128,7 @@ searchInput.addEventListener("input", () => {
   const query = searchInput.value.toLowerCase().trim();
 
   // Search inside all three event lists
-  ["latest-events", "upcoming-events", "sports-events"].forEach((sectionId) => {
+  ["latest-events", "upcoming-events", "sports-events", "archive-events"].forEach((sectionId) => {
     const section = document.getElementById(sectionId);
     const cards = section.querySelectorAll(".event-card");
 
