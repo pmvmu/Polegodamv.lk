@@ -26,19 +26,6 @@
   <meta name="google-adsense-account" content="ca-pub-5627799215744007">
 
 
-  <!-- translator -->
-  <script type="text/javascript">
-    function googleTranslateElementInit() {
-      new google.translate.TranslateElement({
-        pageLanguage: 'en',
-        includedLanguages: 'si,ta,ko,ja,zh-CN,fr,de,es,ar',
-        layout: google.translate.TranslateElement.InlineLayout.SIMPLE
-      }, 'google_translate_element');
-    }
-  </script>
-  <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-
-
   <!-- Event Header Styles -->
   <!-- <link rel="stylesheet" href="./Awrudu/Awrudu.css"> -->
   <!-- <link rel="stylesheet" href="./Event_Banners/Test Event Index/Vesak.css"> -->
@@ -68,6 +55,7 @@
     <div class="school-name">WP/ Hr/ Polegoda M. V.</div>
   </div>
 
+  
   <!-- Main content -->
   <div id="content">
     <!-- Header -->
@@ -92,10 +80,10 @@
               <li><a href="#office-hours" id="office-nav">Office Hours</a></li>
               <li><a href="#contact" id="contact-nav">Contact</a></li>
               <li><a href="./auth.html" id="auth-nav">Login</a></li>
-              <li class="language-switch">
+              <!-- <li class="language-switch">
                 <a href="./index.html"><button id="en-btn" class="active">EN</button></a>
                 <button id="si-btn" style="color: #ffffff;">සිං</button>
-              </li>
+              </li> -->
             </ul>
             <div class="mobile-menu" id="mobileMenuBtn">
               <i class="fas fa-bars"></i>
@@ -165,15 +153,53 @@
 
       <!-- end -->
 
-      <!-- Theme Button -->
-      <div class="special-btn">
-        <a href="https://w.wiki/EigT">
-          <div><i class="fa fa-circle-info"></i></div>
-          <div id="info">About This Theme</div>
-        </a>
+      <!-- More Options -->
+      <div class="more-container">
+        <div class="more-ico" id="opt-menu">
+          <!-- Language dropdown -->
+          <div class="icon-wrapper language-dropdown-container">
+            <a href="#" class="prevent-hash" onclick="toggleLanguageMenu()" id="language-toggle">
+              <i class="fa fas fa-language"></i>
+            </a>
+            <span class="tooltip-text" id="more-lang">Change Language</span>
+      
+            <!-- Language dropdown menu -->
+            <div class="language-dropdown" id="language-menu">
+              <div class="language-option" onclick="switchLanguage('en')">
+                <span class="lang-code" id="lang-code-en">EN</span>
+              </div>
+              <div class="language-option" onclick="switchLanguage('si')">
+                <span class="lang-code" id="lang-code-si">SI</span>
+              </div>
+            </div>
+          </div>
+          <div class="icon-wrapper">
+            <a href="#" class="prevent-hash"><i class="fa fa-user"></i></a>
+            <span class="tooltip-text" id="more-user">User Profile</span>
+          </div>
+          <div class="icon-wrapper">
+            <a href="tel:+94342243063" class="prevent-hash"><i class="fa fas fa-donate"></i></a>
+            <span class="tooltip-text" id="more-donate">Donate</span>
+          </div>
+          <div class="icon-wrapper">
+            <a href="https://w.wiki/EigT" target="_blank"><i class="fa fas fa-info-circle"></i></a>
+            <span class="tooltip-text" id="more-theme">About Theme of Header</span>
+          </div>
+          <div class="icon-wrapper">
+            <a href="#" class="prevent-hash" onclick="toggleTheme()"><i class="fa-solid fa-moon"></i></a>
+            <span class="tooltip-text" id="more-dark">Dark Mode</span>
+          </div>
+          <div class="icon-wrapper">
+            <a href="mailto:pmvmediaunit@gmail.com"><i class="fa-solid fa-comments"></i></a>
+            <span class="tooltip-text" id="more-feed">Feedback</span>
+          </div>
+        </div>
+        <div class="more-opt" onclick="optMenu()">
+          <i class="fa fa-th-large" id="toggle-icon"></i>
+        </div>
       </div>
-
     </header>
+
     <!-- Alert Message -->
     <div class="overlay" id="overlay"></div>
 
@@ -285,7 +311,7 @@
           </div>
         </div>
         <div class="view-all-teachers animate-fade-up">
-          <a href="./About blank.html" class="btn" id="view-all-teachers-btn">View All Teachers</a>
+          <a href="./About blank.html" target="_blank" class="btn" id="view-all-teachers-btn">View All Teachers</a>
         </div>
       </div>
     </section>
@@ -314,7 +340,7 @@
               Maha Vidyalaya site, after which the school
               was started. Initially, three coconut frond sheds were used for
               teaching.</p>
-            <a href="./history.html" class="btn" id="read-more-history-btn">Read More</a>
+            <a href="./history.html" target="_blank" class="btn" id="read-more-history-btn">Read More</a>
           </div>
           <div class="audio-player animate-fade-left">
             <h3 id="listen-history-title">Listen to Our History (Si)</h3>
@@ -339,30 +365,32 @@
         </div>
         <div class="event-tab-container">
           <div class="event-tab">
-            <h3 id="special-event-title">Special</h3>
+            <h3 id="event-title-special">Special</h3>
             <div class="slide-container">
               <div class="slider special">
-                <img src="./Web-eventy-01.jpg">
+                <img src="./Events/Event-imgs/Scl post for web-01.jpg" alt="Official Website">
+                <img src="./Events/Event-imgs/Scl post for Jathrabhimani-01.jpg" alt="Jathrabhimani">
+                <img src="./Events/Event-imgs/Web-eventy-01.jpg" alt="">
               </div>
             </div>
           </div>
           <div class="event-tab">
-            <h3 id="special-event-title">Educational</h3>
+            <h3 id="event-title-educational">Educational</h3>
             <div class="slider educational">
               <img src="./Events/Event-imgs/event-img.jpeg">
               <img src="./Web-eventy-01.jpg">
             </div>
           </div>
           <div class="event-tab">
-            <h3 id="special-event-title">Sports</h3>
+            <h3 id="event-title-sports">Sports</h3>
             <div class="slider sports">
               <img src="./Web-eventy-01.jpg">
             </div>
           </div>
         </div>
           <div class="event-button">
-            <a href="./Events/events.html" class="action-button fill-button">
-              <span class="button-text">View All</span>
+            <a href="./Events/events.html" target="_blank" class="action-button fill-button">
+              <span class="button-text" id="event-btn">View All</span>
               <div class="arrow-icon">
                 <svg viewBox="0 0 24 24">
                   <path d="M3 12h18M15 6l6 6-6 6" />
@@ -436,20 +464,19 @@
               <p><i class="fas fa-map-marker-alt"></i> <span id="address">Ihala Welgama rd, Polegoda, Mahagama</span>
               </p>
             </a>
-            <a href="tel:+94342244063">
-              <p><i class="fas fa-phone"></i> <span id="phone">+94 34 224
-                  4063</span></p>
+            <a href="tel:+94342243063">
+              <p><i class="fas fa-phone"></i> <span id="phone">+94 34 224 3063</span></p>
             </a>
             <a href="mailto:Pmvwpho@gmail.com">
               <p><i class="fas fa-envelope"></i> <span id="email">info@polegodamv.edu.lk</span></p>
             </a>
             <br>
             <h3 id="developed-title">Developed By</h3>
-            <a href="https://harshana101.github.io/T.D.K.H.Premalal/">
+            <a href="https://harshana101.github.io/T.D.K.H.Premalal/" target="_blank">
               <p id="developed-name">Kasun Harshana Premalal</p>
             </a>
             <h3 id="project">About the Project</h3>
-            <a href="./whats-new.html">What's New</a>
+            <a href="./whats-new.html" target="_blank">What's New</a>
           </div>
           <div class="footer-column">
             <h3 id="quick-links-title">Quick Links</h3>
@@ -459,16 +486,16 @@
               <li><a href="#programs" id="events-link">Events</a></li>
               <li><a href="history.html" id="full-history-link">Full
                   History</a></li>
-              <li><a href="./FAQ.html" id="FAQ">FAQs</a></li>
+              <li><a href="./FAQ.html" target="_blank" id="FAQ">FAQs</a></li>
             </ul>
           </div>
           <div class="footer-column">
             <h3 id="connect-title">Connect With Us</h3>
             <div class="social-links">
-              <a href="./About blank.html"><i class="fab fa-facebook-f"></i></a>
-              <a href="./About blank.html"><i class="fab fa-instagram"></i></a>
-              <a href="./About blank.html"><i class="fab fa-youtube"></i></a>
-              <a href="./About blank.html"><i class="fab fa-twitter"></i></a>
+              <a href="https://www.facebook.com/polegodamahavidyalayamediaunit?mibextid=ZbWKwL" target="_blank"><i class="fab fa-facebook-f"></i></a>
+              <a href="https://whatsapp.com/channel/0029VaqpXrqHVvTdKdBGjn1T" target="_blank"><i class="fab fa-whatsapp"></i></a>
+              <a href="https://www.youtube.com/@PMV_MU" target="_blank"><i class="fab fa-youtube"></i></a>
+              <!-- <a href="./About blank.html" target="_blank"><i class="fab fa-twitter"></i></a> -->
             </div>
             <div class="map-container">
               <iframe
@@ -495,6 +522,7 @@
         </div>
       </div>
     </footer>
+
     
     <!-- Firebase App (core) -->
     <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app.js"></script>

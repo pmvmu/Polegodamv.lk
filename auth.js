@@ -1,14 +1,3 @@
-const firebaseConfig = {
-  apiKey: "AIzaSyC0mm5lKSQIfyWfnFKxHZvgtJ_-JRiZzkU",
-  authDomain: "polegodamv-lk.firebaseapp.com",
-  projectId: "polegodamv-lk",
-  storageBucket: "polegodamv-lk.firebasestorage.app",
-  messagingSenderId: "292171914502",
-  appId: "1:292171914502:web:124cc5711a838fd369d287",
-};
-
-firebase.initializeApp(firebaseConfig);
-
 const auth = firebase.auth();
 const db = firebase.firestore()
 
@@ -43,3 +32,13 @@ function login(email, password) {
       console.error("Error logging in:", error.message);
     });
 }
+
+document.getElementById('signupForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+
+  const email = document.getElementById('email').value;
+  const password = document.getElementById('password').value;
+  const username = document.getElementById('username').value;
+
+  signUp(email, password, username);
+});

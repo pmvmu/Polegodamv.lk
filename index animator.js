@@ -188,3 +188,35 @@ updateCountdown();
   // Initialize
   showSlide(1);
 });
+
+
+// Event Button
+// Add subtle interaction feedback
+document.querySelectorAll('.action-button').forEach(button => {
+    button.addEventListener('mouseenter', function() {
+        this.style.transform = 'translateY(-1px)';
+    });
+    
+    button.addEventListener('mouseleave', function() {
+        this.style.transform = 'translateY(0)';
+    });
+
+    button.addEventListener('mousedown', function() {
+        this.style.transform = 'translateY(0) scale(0.98)';
+    });
+
+    button.addEventListener('mouseup', function() {
+        this.style.transform = 'translateY(-1px) scale(1)';
+    });
+});
+
+// Add keyboard navigation support
+document.querySelectorAll('.action-button').forEach(button => {
+    button.addEventListener('focus', function() {
+        this.style.boxShadow = '0 0 0 3px rgba(59, 130, 246, 0.3)';
+    });
+    
+    button.addEventListener('blur', function() {
+        this.style.boxShadow = '';
+    });
+});

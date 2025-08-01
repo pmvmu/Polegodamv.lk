@@ -105,93 +105,171 @@ document.addEventListener("DOMContentLoaded", function () {
   document.getElementById("overlay").addEventListener("click", closeAlert);
 });
 
-// Function to format Sri Lanka time
-function formatDateTimeSriLanka() {
-  const now = new Date();
-  const sriLankaOffset = 5.5 * 60; // minutes
-  const sriLankaTime = new Date(now.getTime() + sriLankaOffset * 60000);
 
-  const day = sriLankaTime.getUTCDate();
-  const monthNames = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December",
-  ];
-  const month = monthNames[sriLankaTime.getUTCMonth()];
-  const year = sriLankaTime.getUTCFullYear();
 
-  const hours = String(sriLankaTime.getUTCHours()).padStart(2, "0");
-  const minutes = String(sriLankaTime.getUTCMinutes()).padStart(2, "0");
-
-  return `${day} ${month} ${year} | ${hours}:${minutes}`;
+// Option Button (existing function)
+function optMenu() {
+  document.getElementById("opt-menu").classList.toggle("show");
 }
 
-// New Event Card
-function addEventCard(
-  title = "Sample Title",
-  description = "Event description goes here.",
-  imageUrl = ""
-) {
-  const container = document.querySelector("#events-container"); // parent element
-  const timestamp = formatDateTimeSriLanka();
-
-  const card = document.createElement("li");
-  card.innerHTML = `
-    <div class="event-card">
-      <div class="img" style="background-image: url('${imageUrl}');"></div>
-      <h3>${title}</h3>
-      <p class="description">${description}</p>
-      <div class="option">
-        <i class="fa-regular fa-share-from-square"></i>
-        <i class="fa-regular fa-heart"></i>
-        <i class="fa-regular fa-comment"></i>
-      </div>
-      <p class="tnd">${timestamp}</p>
-    </div>
-  `;
-
-  container.appendChild(card);
-  // 🔁 Reapply behavior to new elements
-  setupIconClicks();
+// Toggle Language Dropdown Menu
+function toggleLanguageMenu() {
+  const languageMenu = document.getElementById("language-menu");
+  const languageContainer = document.querySelector(".language-dropdown-container");
+  
+  languageMenu.classList.toggle("show");
+  languageContainer.classList.toggle("active");
 }
 
-addEventCard(
-  "New Event 2",
-  "Details about this awesome event 2.",
-  "./link.jpg" // your image URL here
-);
-
-addEventCard(
-  "Website Launch",
-  "WP/ Hr/ Polegoda M.V. - Official Website.",
-  "E:/Scl Project solo/New/webhero-01.jpg"
-);
-
-// Icon change
-function setupIconClicks() {
-  const allOptionGroups = document.querySelectorAll(".option");
-
-  allOptionGroups.forEach((optionGroup) => {
-    const icons = optionGroup.querySelectorAll("i");
-
-    icons.forEach((icon) => {
-      icon.addEventListener("click", () => {
-        icons.forEach((i) => {
-          i.classList.remove("fa-solid");
-          i.classList.add("fa-regular");
-        });
-        icon.classList.remove("fa-regular");
-        icon.classList.add("fa-solid");
-      });
-    });
+// Switch Language Function
+function switchLanguage(lang) {
+  // Remove active class from all options
+  document.querySelectorAll('.language-option').forEach(option => {
+    option.classList.remove('active');
   });
+  
+  // Add active class to selected option
+  if (lang === 'en') {
+    document.querySelector('.language-option:first-child').classList.add('active');
+    // Redirect to English version or update content
+    window.location.href = './index.html';
+  } else if (lang === 'si') {
+    document.querySelector('.language-option:last-child').classList.add('active');
+    // Redirect to Sinhala version or update content
+    // window.location.href = './index-si.html'; // if you have separate Sinhala page
+    console.log('Switched to Sinhala');
+  }
+  
+  // Close the dropdown
+  toggleLanguageMenu();
 }
+
+// Close dropdown when clicking outside
+document.addEventListener('click', function(event) {
+  const languageContainer = document.querySelector('.language-dropdown-container');
+  const languageMenu = document.getElementById('language-menu');
+  
+  if (!languageContainer.contains(event.target)) {
+    languageMenu.classList.remove('show');
+    languageContainer.classList.remove('active');
+  }
+});
+
+// Set initial active language (call this on page load)
+function setInitialLanguage() {
+  // Check current page or stored preference
+  const currentPath = window.location.pathname;
+  
+  if (currentPath.includes('index.html') || currentPath.endsWith('/')) {
+    document.querySelector('.language-option:first-child').classList.add('active');
+  } else if (currentPath.includes('si') || currentPath.includes('sinhala')) {
+    document.querySelector('.language-option:last-child').classList.add('active');
+  }
+}
+
+// Call when page loads
+document.addEventListener('DOMContentLoaded', setInitialLanguage);
+
+
+// # Scroll Stop
+document.querySelectorAll('.prevent-hash').forEach(btn => {
+  btn.addEventListener('click', function(e) {
+    if (this.getAttribute('href')
+    === '#') {
+      e.preventDefault();
+    }
+  });
+});
+
+
+// Dark Mode
+const toggleTheme = () => {
+  const currentTheme = document.documentElement.getAttribute('data-theme');
+  document.documentElement.setAttribute(
+    'data-theme',
+    currentTheme === 'dark' ? 'light' : 'dark'
+  );
+};
+
+
+
+
+// ======================================
+// ======================================
+// ============Update Report=============
+// ======================================
+// ======================================
+
+// Scroll to top functionality
+        const scrollToTopBtn = document.getElementById('scrollToTop');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                scrollToTopBtn.classList.add('visible');
+            } else {
+                scrollToTopBtn.classList.remove('visible');
+            }
+        });
+        
+        scrollToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Add animation delays to version containers
+        const versionContainers = document.querySelectorAll('.version-container');
+        versionContainers.forEach((container, index) => {
+            container.style.animationDelay = `${index * 0.2}s`;
+        });
+
+        // Add hover effects to feature items
+        const featureItems = document.querySelectorAll('.feature-item');
+        featureItems.forEach(item => {
+            item.addEventListener('mouseenter', () => {
+                item.style.transform = 'translateX(10px) scale(1.02)';
+            });
+            
+            item.addEventListener('mouseleave', () => {
+                item.style.transform = 'translateX(5px) scale(1)';
+            });
+        });
+
+        // Animate stats on scroll
+        const observerOptions = {
+            threshold: 0.5,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const statNumbers = entry.target.querySelectorAll('.stat-number');
+                    statNumbers.forEach(stat => {
+                        stat.style.animation = 'countUp 2s ease-out forwards';
+                    });
+                }
+            });
+        }, observerOptions);
+
+        const statsContainer = document.querySelector('.stats-container');
+        if (statsContainer) {
+            observer.observe(statsContainer);
+        }
+
+        // Add CSS animation for count up effect
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes countUp {
+                from {
+                    opacity: 0;
+                    transform: translateY(20px) scale(0.5);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0) scale(1);
+                }
+            }
+        `;
+        document.head.appendChild(style);
