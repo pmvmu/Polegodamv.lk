@@ -267,7 +267,7 @@ body.desaturated {
   opacity: 0;
   visibility: hidden;
   transition: all 0.3s ease;
-  z-index: 1200;
+  z-index: 1000;
   border: 2px solid var(--sec-nav-color);
   background-color: var(--sec-nav-bg);
   border-radius: 25px;
@@ -1631,7 +1631,7 @@ footer {
 
   .language-dropdown {
     right: 0%;
-    bottom: 102%;
+    bottom: 85%;
     height: auto;
     width: 50px;
     flex-direction: column;
