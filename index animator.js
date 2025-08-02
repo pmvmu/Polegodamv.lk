@@ -220,3 +220,20 @@ document.querySelectorAll('.action-button').forEach(button => {
         this.style.boxShadow = '';
     });
 });
+
+
+// Optins Menu
+const toggleBtn = document.getElementById("toggleBtn");
+const menu = document.getElementById("opt-menu");
+const icon = document.getElementById("toggle-icon");
+const icon2 = document.getElementById("toggle-icon");
+
+document.addEventListener('click', function(e) {
+  if (toggleBtn.contains(e.target)) {
+    menu.classList.toggle('active');
+    icon.classList.toggle('rotated');
+  } else if (!menu.contains(e.target)) {
+    menu.classList.remove('active');
+    icon.classList.remove('rotated');
+  }
+});

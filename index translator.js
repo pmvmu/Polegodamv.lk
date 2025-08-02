@@ -42,12 +42,9 @@ function applyEnglishTranslations() {
 
   // Navigation
   document.getElementById('home-nav').textContent = "Home";
-  document.getElementById('mv-nav').textContent = "Mission & Vision";
-  document.getElementById('principal-nav').textContent = "Principal";
-  document.getElementById('teachers-nav').textContent = "Teachers";
-  document.getElementById('history-nav').textContent = "History";
   document.getElementById('programs-nav').textContent = "Programs";
-  document.getElementById('office-nav').textContent = "Office Hours";
+  document.getElementById('gallery-nav').textContent = "Gallery";
+  document.getElementById('about-nav').textContent = "About Us";
   document.getElementById('contact-nav').textContent = "Contact";
   document.getElementById('auth-nav').textContent = "Login";
 
@@ -60,11 +57,6 @@ function applyEnglishTranslations() {
   document.getElementById('more-feed').textContent = "Feedback";
   document.getElementById('lang-code-en').textContent = "EN";
   document.getElementById('lang-code-si').textContent = "SI";
-
-
-  // Hero Section
-  document.getElementById('hero-title').textContent = "WP /Hr /Polegoda Maha Vidyalaya";
-  document.getElementById('hero-subtitle').textContent = "Vidya Dadathi Vinayan";
 
   // Marquee Section
   document.getElementById('marquee-text').textContent = "WP /Hr /Polegoda M. V.";
@@ -183,12 +175,9 @@ function applySinhalaTranslations() {
 
   // Navigation
   document.getElementById('home-nav').textContent = "මුල් පිටුව";
-  document.getElementById('mv-nav').textContent = "මෙහෙවර හා දැක්ම";
-  document.getElementById('principal-nav').textContent = "විදුහල්පති";
-  document.getElementById('teachers-nav').textContent = "ගුරුවරු";
-  document.getElementById('history-nav').textContent = "ඉතිහාසය";
   document.getElementById('programs-nav').textContent = "වැඩසටහන්";
-  document.getElementById('office-nav').textContent = "කාර්යාල වේලාවන්";
+  document.getElementById('gallery-nav').textContent = "ගැලරිය";
+  document.getElementById('about-nav').textContent = "අප ගැන";
   document.getElementById('contact-nav').textContent = "සම්බන්ධ වන්න";
   document.getElementById('auth-nav').textContent = "පිවිසෙන්න";
 
@@ -201,10 +190,6 @@ function applySinhalaTranslations() {
   document.getElementById('more-feed').textContent = "ප්‍රතිපෝෂණ";
   document.getElementById('lang-code-en').textContent = "ඉං";
   document.getElementById('lang-code-si').textContent = "සිං";
-
-  // Hero Section
-  document.getElementById('hero-title').textContent = "බප/හො/පොලේගොඩ ම. වි.";
-  document.getElementById('hero-subtitle').textContent = "විද්‍යා දදාති විනයං";
 
   // Marquee Section
   document.getElementById('marquee-text').textContent = "බප/ හො/ පොලේගොඩ මහා විද්‍යාලය";

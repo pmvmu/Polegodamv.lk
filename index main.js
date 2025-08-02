@@ -155,6 +155,17 @@ document.addEventListener('click', function(event) {
   }
 });
 
+document.addEventListener('click', function(event) {
+  const languageContainer = document.querySelector('.more-container');
+  const languageMenu = document.getElementById('opt-menu');
+  
+  if (!languageContainer.contains(event.target)) {
+    languageMenu.classList.remove('show');
+    languageContainer.classList.remove('active');
+  }
+});
+
+
 // Set initial active language (call this on page load)
 function setInitialLanguage() {
   // Check current page or stored preference
@@ -169,6 +180,7 @@ function setInitialLanguage() {
 
 // Call when page loads
 document.addEventListener('DOMContentLoaded', setInitialLanguage);
+
 
 
 // # Scroll Stop
@@ -200,76 +212,91 @@ const toggleTheme = () => {
 // ======================================
 // ======================================
 
-// Scroll to top functionality
-        const scrollToTopBtn = document.getElementById('scrollToTop');
+// // Scroll to top functionality
+//         const scrollToTopBtn = document.getElementById('scrollToTop');
         
-        window.addEventListener('scroll', () => {
-            if (window.pageYOffset > 300) {
-                scrollToTopBtn.classList.add('visible');
-            } else {
-                scrollToTopBtn.classList.remove('visible');
-            }
-        });
+//         window.addEventListener('scroll', () => {
+//             if (window.pageYOffset > 300) {
+//                 scrollToTopBtn.classList.add('visible');
+//             } else {
+//                 scrollToTopBtn.classList.remove('visible');
+//             }
+//         });
         
-        scrollToTopBtn.addEventListener('click', () => {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        });
+//         scrollToTopBtn.addEventListener('click', () => {
+//             window.scrollTo({
+//                 top: 0,
+//                 behavior: 'smooth'
+//             });
+//         });
 
-        // Add animation delays to version containers
-        const versionContainers = document.querySelectorAll('.version-container');
-        versionContainers.forEach((container, index) => {
-            container.style.animationDelay = `${index * 0.2}s`;
-        });
+//         // Add animation delays to version containers
+//         const versionContainers = document.querySelectorAll('.version-container');
+//         versionContainers.forEach((container, index) => {
+//             container.style.animationDelay = `${index * 0.2}s`;
+//         });
 
-        // Add hover effects to feature items
-        const featureItems = document.querySelectorAll('.feature-item');
-        featureItems.forEach(item => {
-            item.addEventListener('mouseenter', () => {
-                item.style.transform = 'translateX(10px) scale(1.02)';
-            });
+//         // Add hover effects to feature items
+//         const featureItems = document.querySelectorAll('.feature-item');
+//         featureItems.forEach(item => {
+//             item.addEventListener('mouseenter', () => {
+//                 item.style.transform = 'translateX(10px) scale(1.02)';
+//             });
             
-            item.addEventListener('mouseleave', () => {
-                item.style.transform = 'translateX(5px) scale(1)';
-            });
-        });
+//             item.addEventListener('mouseleave', () => {
+//                 item.style.transform = 'translateX(5px) scale(1)';
+//             });
+//         });
 
-        // Animate stats on scroll
-        const observerOptions = {
-            threshold: 0.5,
-            rootMargin: '0px 0px -100px 0px'
-        };
+//         // Animate stats on scroll
+//         const observerOptions = {
+//             threshold: 0.5,
+//             rootMargin: '0px 0px -100px 0px'
+//         };
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const statNumbers = entry.target.querySelectorAll('.stat-number');
-                    statNumbers.forEach(stat => {
-                        stat.style.animation = 'countUp 2s ease-out forwards';
-                    });
-                }
-            });
-        }, observerOptions);
+//         const observer = new IntersectionObserver((entries) => {
+//             entries.forEach(entry => {
+//                 if (entry.isIntersecting) {
+//                     const statNumbers = entry.target.querySelectorAll('.stat-number');
+//                     statNumbers.forEach(stat => {
+//                         stat.style.animation = 'countUp 2s ease-out forwards';
+//                     });
+//                 }
+//             });
+//         }, observerOptions);
 
-        const statsContainer = document.querySelector('.stats-container');
-        if (statsContainer) {
-            observer.observe(statsContainer);
-        }
+//         const statsContainer = document.querySelector('.stats-container');
+//         if (statsContainer) {
+//             observer.observe(statsContainer);
+//         }
 
-        // Add CSS animation for count up effect
-        const style = document.createElement('style');
-        style.textContent = `
-            @keyframes countUp {
-                from {
-                    opacity: 0;
-                    transform: translateY(20px) scale(0.5);
-                }
-                to {
-                    opacity: 1;
-                    transform: translateY(0) scale(1);
-                }
-            }
-        `;
-        document.head.appendChild(style);
+//         // Add CSS animation for count up effect
+//         const style = document.createElement('style');
+//         style.textContent = `
+//             @keyframes countUp {
+//                 from {
+//                     opacity: 0;
+//                     transform: translateY(20px) scale(0.5);
+//                 }
+//                 to {
+//                     opacity: 1;
+//                     transform: translateY(0) scale(1);
+//                 }
+//             }
+//         `;
+//         document.head.appendChild(style);
+
+// Saturate / Desaturate
+const satBtn = document.getElementById("toggleSaturation");
+
+satBtn.addEventListener("click", () => {
+  const body = document.body;
+
+  if (body.classList.contains("desaturated")) {
+    body.classList.remove("desaturated");
+    body.classList.add("saturated");
+  } else {
+    body.classList.remove("saturated");
+    body.classList.add("desaturated");
+  }
+});
