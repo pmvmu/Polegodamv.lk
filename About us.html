@@ -1,0 +1,1002 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | WP/ Hr/ Polegoda M. V.</title>
+    <style>
+
+    :root {
+    /* Day Theme (Light Mode) */
+    --primary-color: #610030;
+    --secondary-color: #ffd700;
+    --accent-color: #e50914;
+    --text-color: #2c2c2c;
+    --text-secondary: #555555;
+    --light-bg: #ffffff;
+    --card-bg: #f9f9f9a6;
+    --white: #ffffff;
+    --gray: #666666;
+    --light-gray: #e5e5e5;
+    --border-color: #e0e0e0;
+    --shadow-light: rgba(0, 0, 0, 0.1);
+    --shadow-medium: rgba(0, 0, 0, 0.15);
+    --shadow-heavy: rgba(0, 0, 0, 0.25);
+    --transition: all 0.3s ease;
+    --hero-bg: radial-gradient(#610030, transparent);
+
+    /* Theme specific colors */
+    --footer-text-white: #ffffff;
+    --button-colorborder: #610030;
+    --selection-color: #ffffff;
+    --selection-bg: #610030;
+    --popup-bg: rgba(255, 255, 255, 0.95);
+    --log-gradient: linear-gradient(135deg, #610030, #3a011d);
+    --log-gradient-lite: linear-gradient(135deg, #61003080, #3a011d80);
+    --overlay-gradient: linear-gradient(90deg, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.6) 100%);
+    
+    /* Navigation colors */
+    --nav-text: #ffffff;
+    --nav-hover: #ffd700;
+
+    /* Secondary Navigations */
+    --sec-nav-color:#ffffff;
+    --sec-nav-bg:#610030;
+    --sec-nav-color-hover:#d1d1d1;
+    --sec-nav-bg-hover:#610030c4;
+
+    /* Marquee */
+    --marquee-bg: linear-gradient(to right, #61003000 0%, #610030, #61003000);
+    --marquee-text: #ffffff;
+
+    /* footer Special */
+    --footer-special-h3:#ffd700;
+    --footer-special-li:#ffffff;
+    --footer-special-li-hover:#ffd700;
+    --copy:#747474;
+    
+    /* Interactive elements */
+    --hover-transform: translateY(-2px);
+    --hover-shadow: 0 8px 25px rgba(97, 0, 48, 0.15);
+    
+    /* Glassmorphism effects */
+    --glass-bg: rgba(255, 255, 255, 0.25);
+    --glass-border: rgba(255, 255, 255, 0.18);
+    --backdrop-blur: blur(15px);
+    }
+
+    /* Dark Theme */
+    [data-theme="dark"] {
+    /* Night Theme (Dark Mode) */
+    --primary-color: #ffd700;
+    --secondary-color: #610030;
+    --accent-color: #ff6b6b;
+    --text-color: #e8e8e8;
+    --text-secondary: #b8b8b8;
+    --light-bg: #252525;
+    --card-bg: #1f1f1f;
+    --white: #1d1d1d;
+    --gray: #888888;
+    --light-gray: #333333;
+    --border-color: #2a2a2a;
+    --shadow-light: rgba(255, 255, 255, 0.05);
+    --shadow-medium: rgba(255, 255, 255, 0.1);
+    --shadow-heavy: rgba(255, 255, 255, 0.15);
+    
+    /* Theme specific colors */
+    --footer-text-white: #e8e8e8;
+    --button-colorborder: #ffd700;
+    --selection-color: #121212;
+    --selection-bg: #ffd700;
+    --popup-bg: rgba(18, 18, 18, 0.95);
+    --log-gradient: linear-gradient(135deg, #1a1a1a, #000000);
+    --overlay-gradient: linear-gradient(90deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+    
+    /* Navigation colors */
+    --nav-text: #e8e8e8;
+    --nav-hover: #ffd700;
+
+    /* Secondary Navigations */
+    --sec-nav-color:#ffffff;
+    --sec-nav-bg:#610030;
+    --sec-nav-color-hover:#d1d1d1;
+    --sec-nav-bg-hover:#610030c4;
+
+    /* Marquee */
+    --marquee-bg: linear-gradient(to right, #61003000 0%, #610030, #61003000);
+    --marquee-text: #ffd700;
+
+    /* footer Special */
+    --footer-special-h3:#810041;
+    --footer-special-li:#ffffff;
+    --footer-special-li-hover:#ffd700;
+    
+    /* Interactive elements */
+    --hover-transform: translateY(-2px);
+    --hover-shadow: 0 8px 25px rgba(255, 215, 0, 0.2);
+    
+    /* Glassmorphism effects for dark mode */
+    --glass-bg: rgba(18, 18, 18, 0.4);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --backdrop-blur: blur(20px);
+    }
+
+    /* ======================================================================
+    =========================================================================
+    ========================================================================= */
+
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: var(--light-bg);
+            min-height: 100vh;
+        }
+
+        .about-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border-radius: 25px;
+            border: solid 3px var(--glass-border);
+            box-shadow: var(--shadow-heavy);
+            color: var(--primary-color);
+            flex-wrap: wrap;
+            position: sticky;
+            top: 30px;
+            margin-bottom: 40px;
+            z-index: 1000;
+        }
+
+        .nav-btn {
+            color: var(--primary-color);
+            text-decoration: none;
+            margin: 0 10px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .nav-btn:hover {
+            text-decoration: underline;
+            color: var(--secondary-color);
+        }
+
+        .nav-left i {
+            margin-right: 5px;
+        }
+
+        .background {
+            background-image: url("./historybg.jpg");
+            background-position: center top;
+            background-repeat: no-repeat;
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            z-index: -3;
+        }
+
+        .background-filter {
+            background-color: #ffffff3b;
+            backdrop-filter: blur(10px);
+            min-height: 100vh;
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            z-index: -2;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .school-logo {
+            width: 200px;
+            height: 200px;
+            margin: 0 auto 20px auto;
+            background: url('./logo.png');
+            background-size: cover;
+            background-position: center;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+            font-weight: bold;
+            box-shadow: 0 10px 30px rgba(74, 144, 226, 0.3);
+        }
+        
+        .school-name {
+            font-size: 2.5em;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        
+        .establishment-year {
+            color: var(--primary-color);
+            font-size: 1.2em;
+            margin-bottom: 20px;
+        }
+        
+        .motto {
+            font-style: italic;
+            color: var(--primary-color);
+            font-size: 1.3em;
+            font-weight: 500;
+            padding-left: 20px;
+            margin: 20px auto;
+            max-width: 600px;
+        }
+
+        .former-name {
+            font-size: 1.1em;
+            color: var(--primary-color);
+            margin-top: 10px;
+            padding: 10px;
+        }
+        
+        .section {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            margin-bottom: 30px;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .section:hover {
+            transform: translateY(-5px);
+        }
+        
+        .section-title {
+            font-size: 1.8em;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            border-bottom: 3px solid var(--primary-color);
+            padding-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .section-title::before {
+            content: "◆";
+            color: var(--primary-color);
+            margin-right: 10px;
+            font-size: 0.8em;
+        }
+        
+        .insignia-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .insignia-item {
+            text-align: center;
+            padding: 20px;
+            background: var(--card-bg);
+            border-radius: 10px;
+            border: 2px solid #e9ecef;
+            transition: all 0.3s ease;
+        }
+        
+        .insignia-item:hover {
+            border-color: var(--primary-color);
+            background: #e3f2fd;
+        }
+        
+        .insignia-placeholder {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 15px auto;
+            background: var(--primary-color);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgb(66, 66, 66);
+            font-weight: bold;
+        }
+
+        .insignia-placeholder.ip-logo {
+            background: url('./logo.png') no-repeat center center;
+            background-size: cover;
+        }
+
+        .insignia-placeholder.ip-flag {
+            background: url('./flag.png') no-repeat center center;
+            background-size: cover;
+        }
+
+        .insignia-placeholder.ip-sc {
+            background: url('./sc.png') no-repeat center center;
+            background-size: cover;
+        }
+
+        .insignia-placeholder.ip-uni {
+            background: url('./uniform.png') no-repeat center center;
+            background-size: cover;
+        }
+        
+        .uniform-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
+        }
+        
+        .uniform-item {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 10px;
+            text-align: center;
+            border: 2px solid #e9ecef;
+            transition: all 0.3s ease;
+        }
+        
+        .uniform-item:hover {
+            border-color: var(--primary-color);
+            background: #e3f2fd;
+        }
+        
+        .uniform-placeholder {
+            width: 250px;
+            height: 350px;
+            margin: 0 auto 15px auto;
+            background: #6c757d;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 12px;
+        }
+
+        .lyrics-card {
+            background-color: var(--glass-bg);
+            backdrop-filter: var(--backdrop-blur);
+            padding: 25px;
+            border-radius: 25px;
+            color: var(--primary-color);
+        }
+
+        .audio-player {
+            width: 80%;
+            max-width: 500px;
+            margin-top: 15px;
+        }
+
+         #anthem {
+            background: var(--glass-bg);
+            padding: 30px;
+            border-radius: 25px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        #anthem h2 {
+            color: var(--primary-color);
+            font-family: 'Segoe UI', sans-serif;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .stat-item {
+            text-align: center;
+            padding: 25px;
+            background: var(--log-gradient-lite);
+            color: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(74, 144, 226, 0.3);
+        }
+        
+        .stat-number {
+            font-size: 2.5em;
+            font-weight: bold;
+            display: block;
+        }
+        
+        .staff-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .staff-category {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid var(--primary-color);
+        }
+        
+        .staff-category h4 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            font-size: 1.2em;
+            border-bottom: solid 1px var(--primary-color);
+        }
+        
+        .staff-list {
+            list-style: none;
+        }
+        
+        .staff-list li {
+            padding: 8px 0;
+            border-bottom: 1px solid #e9ecef;
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .leadership-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
+        }
+        
+        .leadership-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 25px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border: 2px solid #f0f0f0;
+            transition: all 0.3s ease;
+        }
+        
+        .leadership-card:hover {
+            transform: translateY(-5px);
+            background-color: var(--glass-bg);
+            border-color: var(--primary-color);
+            box-shadow: 0 15px 40px rgba(74, 144, 226, 0.2);
+        }
+        
+        .principal-photo, .deputy1-photo, .deputy2-photo, .assistant-photo {
+            width: 160px;
+            height: 160px;
+            border-radius: 15px;
+            margin: 0 auto 20px auto;
+            background-size: cover;
+            background-position: top center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 48px;
+            font-weight: bold;
+            box-shadow: 0 10px 30px rgba(74, 144, 226, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .principal-photo {
+            background: url('./madam.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .deputy1-photo {
+            background: url('./deputy1.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .deputy2-photo {
+            background: url('./deputy2.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .assistant-photo {
+            background: url('./assistant.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .leadership-photo {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            margin: 0 auto 20px auto;
+            background: var(--primary-color);
+            background-size: cover;
+            background-position: top center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 48px;
+            font-weight: bold;
+            box-shadow: 0 10px 30px rgba(74, 144, 226, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .leadership-name {
+            font-size: 1.3em;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 8px;
+        }
+        
+        .leadership-title {
+            color: var(--primary-color);
+            font-weight: 600;
+            font-size: 1.1em;
+            margin-bottom: 15px;
+        }
+        
+        .leadership-description {
+            color: #6c757d;
+            font-size: 0.95em;
+            line-height: 1.5;
+        }
+        
+        .staff-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .staff-name {
+            font-weight: 600;
+            color: #2c3e50;
+        }
+        
+        .staff-subject {
+            color: #6c757d;
+            font-style: italic;
+        }
+        
+        .vision-mission {
+            background: var(--log-gradient-lite);
+            color: white;
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+        }
+        
+        .vision-mission h3 {
+            font-size: 1.8em;
+            margin-bottom: 20px;
+        }
+        
+        .vision-mission p {
+            font-size: 1.1em;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        footer {
+            background: var(--primary-color);
+            color: var(--text-color);
+            text-align: center;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 40px;
+        }
+
+        footer p {
+            margin: 5px 0;
+            font-size: 0.9em;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+            
+            .school-name {
+                font-size: 2em;
+            }
+            
+            .section {
+                padding: 20px;
+            }
+            
+            .section-title {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="background"></div>
+    <div class="background-filter"></div>
+    <div class="container" id="top">
+
+        <!-- Navigation Bar -->
+        <nav class="about-nav" id="navLinks">
+            <div class="nav-left">
+                <a href="index.html" class="nav-btn"><i class="fas fa-home"></i> Home</a>
+            </div>
+            <div class="nav-right">
+                <a href="#top" class="nav-btn">Top</a>
+                <a href="#symbols" class="nav-btn">Symbols</a>
+                <a href="#anthem" class="nav-btn">Anthem</a>
+                <a href="#leadership" class="nav-btn">Leadership</a>
+                <a href="#staff" class="nav-btn">Staff</a>
+                <a href="#contact" class="nav-btn">Contact</a>
+            </div>
+        </nav>
+
+        <!-- Header Section -->
+        <div class="header">
+            <div class="school-logo"></div>
+            <h1 class="school-name">WP/ Hr/ Polegoda M. V.</h1>
+            <p class="establishment-year">Established in 1926</p>
+            <p class="motto">"Vidya Dadathi Vinayan"</p>
+            <p class="former-name">Formerly known as: <strong>Mahagama South Sucharithawardhana Swabhasha Mixed School.</strong>
+            </p>
+        </div>
+
+        <!-- School Symbols Section -->
+        <div class="section" id="symbols">
+            <h2 class="section-title">School Symbols</h2>
+            <div class="insignia-grid">
+                <div class="insignia-item">
+                    <div class="insignia-placeholder ip-logo" alt="logo"></div>
+                    <h4>School Logo</h4>
+                    <p>Replace with your school logo</p>
+                </div>
+                <div class="insignia-item">
+                    <div class="insignia-placeholder ip-flag" alt="flag">FLAG</div>
+                    <h4>School Flag</h4>
+                    <p>Replace with your school flag</p>
+                </div>
+                <div class="insignia-item">
+                    <div class="insignia-placeholder ip-sc">SC</div>
+                    <h4>Student Council Insignia</h4>
+                    <p>Replace with student council symbol</p>
+                </div>
+                <div class="insignia-item">
+                    <div class="insignia-placeholder ip-uni">UNI</div>
+                    <h4>Uniform Insignia</h4>
+                    <p>Replace with uniform badge</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- School Uniforms Section -->
+        <div class="section">
+            <h2 class="section-title">School Uniforms</h2>
+            <div class="uniform-grid">
+                <div class="uniform-item">
+                    <div class="uniform-placeholder">GIRLS<br>UNIFORM</div>
+                    <h4>Girls' Uniform</h4>
+                    <p>[Description of girls' uniform - colors, style, accessories]</p>
+                </div>
+                <div class="uniform-item">
+                    <div class="uniform-placeholder">BOYS<br>UNIFORM</div>
+                    <h4>Boys' Uniform</h4>
+                    <p>[Description of boys' uniform - colors, style, accessories]</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Vision and Mission Section -->
+        <div class="section vision-mission">
+            <h3>Our Vision</h3>
+            <p>A quality child through good management..</p>
+            
+            <h3>Our Mission</h3>
+            <p>It is our mission to raise a noble generation of children who are wise, spiritual, and  capable of standing on their own.</p>
+        </div>
+
+        <!-- School Anthem -->
+        <div class="section" id="anthem">
+            <h2 class="section-title">School Anthem</h2>
+            <div class="staff-grid">
+                <div class="lyrics-card">
+                    <p>
+                        සිරි සුබ සෙත සලසා සැරදේ විදුහල් මෑණි අපේ...<br>
+                        සිසු කැළ නහවා සිප් මිහිරේ...//<br><br>
+
+                        සාමය සැනසුම නිතර සෙවූ<br>
+                        විදුහල් මෑණි අජේ...//<br><br>
+
+                        පොලේගොඩ මහ විදුහල් මාතා - අපහට මිහිර ගෙනා...//<br>
+                        නංවා සැමදා ජය කෙහෙලී - දෙස බස රැස සනහා...//<br><br>
+
+                        සිරීසුබ සෙත...<br><br>
+
+                        ඇදුරු මඩලේ සේවය අගයයි - අප හද පුබුදු කරයි...//<br>
+                        කලා ශිල්ප විදු සතර සියල් - නිති නැණ කිරණ ගෙනෙයි...//<br><br>
+
+                        සිරි සුබ සෙත සලසා සැරදේ විදුහල් මෑණි අපේ...<br><br>
+                        සිරිසුබ සෙත...
+                    </p>
+                </div>
+                <div class="lyrics-card">
+                    <p>
+                        Siri Suba Setha Salasa Saradē Viduhal Māṇi Apē...<br>
+                        Sisu Kaḷa Nahavā Sip Mihirē...//<br><br>
+
+                        Sāmaya Saenasuma Nitara Sevū<br>
+                        Viduhal Māṇi Apē...//<br><br>
+
+                        Polegoda Maha Viduhal Mātā - Apahata Mihira Genā...//<br>
+                        Nanvā Samadā Jaya Kehelī - Desa Basa Rasa Sanahā...//<br><br>
+
+                        Siri Suba Setha...<br><br>
+
+                        Æduru Maḍalē Sēvaya Agayayi - Apa Hada Pubudu Karayi...//<br>
+                        Kalā Śilpa Vidu Sathara Siyal - Nithi Naṇa Kiraṇa Geneyi...//<br><br>
+
+                        Siri Suba Setha Salasa Saradē Viduhal Māṇi Apē..<br><br>
+                        Siri Suba Setha...
+                    </p>
+                </div>
+            </div>
+            <section id="anthem" style="text-align: center; margin-top: 30px;">
+                <h2>Listen to Our School Anthem</h2>
+                <audio controls class="audio-player">
+                    <source src="school_anthem.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+            </section>
+        </div>
+
+
+
+        <!-- Statistics Section -->
+        <div class="section">
+            <h2 class="section-title">School Statistics</h2>
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <span class="stat-number">550+</span>
+                    <span>Total Students</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">43</span>
+                    <span>Teaching Staff</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Academic Leadership Section -->
+        <div class="section" id="leadership">
+            <h2 class="section-title">Academic Leadership</h2>
+            
+            <!-- Senior Leadership with Photos -->
+            <h3 style="color: #2c3e50; margin-bottom: 20px; font-size: 1.4em;">Senior Leadership Team</h3>
+            <div class="leadership-grid">
+                <div class="leadership-card">
+                    <div class="principal-photo"></div>
+                    <div class="leadership-name">Mrs&nbsp;&nbsp;W.D. Duleeka Madhumali Premathilaka</div>
+                    <div class="leadership-title">Principal</div>
+                    <div class="leadership-description">
+                        [Brief description of principal's background, qualifications, and vision for the school]
+                    </div>
+                </div>
+                
+                <div class="leadership-card">
+                    <div class="deputy1-photo"></div>
+                    <div class="leadership-name">Mr&nbsp;&nbsp;Ruwan P. Kumara</div>
+                    <div class="leadership-title">Deputy Principal</div>
+                    <div class="leadership-description">
+                        [Brief description of deputy principal's role, specialization, and contributions to the school]
+                    </div>
+                </div>
+                
+                <div class="leadership-card">
+                    <div class="deputy2-photo"></div>
+                    <div class="leadership-name">Mrs&nbsp;&nbsp;W.Dushanthi Duleeka</div>
+                    <div class="leadership-title">Deputy Principal</div>
+                    <div class="leadership-description">
+                        [Brief description of deputy principal's expertise, achievements, and focus areas]
+                    </div>
+                </div>
+                
+                <div class="leadership-card">
+                    <div class="assistant-photo"></div>
+                    <div class="leadership-name">Mrs&nbsp;&nbsp;S.W. Lilani Madhubhashini</div>
+                    <div class="leadership-title">Assistant Principal</div>
+                    <div class="leadership-description">
+                        [Brief description of assistant principal's responsibilities and educational background]
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Heads of Departments -->
+            <h3 style="color: #2c3e50; margin: 40px 0 20px 0; font-size: 1.4em;">Heads of Departments</h3>
+            <div class="leadership-grid">
+                <div class="leadership-card">
+                    <div class="leadership-photo">
+                        <!-- Replace with actual photo: <img src="hod1-photo.jpg" alt="HOD Grades 6-9"> -->
+                        H1
+                    </div>
+                    <div class="leadership-name">Mrs&nbsp;&nbsp;Pushpalatha</div>
+                    <div class="leadership-title">Head of Department - Grades 6-9</div>
+                    <div class="leadership-description">
+                        [Brief description of HOD's experience with middle school education and teaching philosophy]
+                    </div>
+                </div>
+                
+                <div class="leadership-card">
+                    <div class="leadership-photo">
+                        <!-- Replace with actual photo: <img src="hod2-photo.jpg" alt="HOD Grades 10-11"> -->
+                        H2
+                    </div>
+                    <div class="leadership-name">Mrs&nbsp;&nbsp;Chandrika Manel</div>
+                    <div class="leadership-title">Head of Department - Grades 10-11</div>
+                    <div class="leadership-description">
+                        [Brief description of HOD's expertise in senior secondary education and curriculum development]
+                    </div>
+                </div>
+                
+                <div class="leadership-card">
+                    <div class="leadership-photo">
+                        <!-- Replace with actual photo: <img src="hod3-photo.jpg" alt="HOD Grades 12-13"> -->
+                        H3
+                    </div>
+                    <div class="leadership-name">Mrs&nbsp;&nbsp;D.C.E. Walpiita</div>
+                    <div class="leadership-title">Head of Department - Grades 12-13</div>
+                    <div class="leadership-description">
+                        [Brief description of HOD's experience with A-Level education and university preparation]
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Teaching Staff Section -->
+        <div class="section" id="staff">
+            <h2 class="section-title">Teaching Staff</h2>
+            <div class="staff-grid">
+                
+                <div class="staff-category">
+                    <h4>Arts Department</h4>
+                    <ul class="staff-list">
+                        <li><span class="staff-name">Mr Prabhath Pushpakumara</span><span class="staff-subject">Geography</span></li>
+                        <li><span class="staff-name">Mrs. P.D. Chathurika Manori</span><span class="staff-subject">History</span></li>
+                        <li><span class="staff-name">Mrs M. Senani Senarathna</span><span class="staff-subject">Media</span></li>
+                        <li><span class="staff-name">Mrs Madhushani Liyanage</span><span class="staff-subject">Agriculture</span></li>
+                        <li><span class="staff-name">Mrs Chandima Kumudini</span><span class="staff-subject">Home Science</span></li>
+                        <li><span class="staff-name">Mrs D.C.E. Walpita</span><span class="staff-subject">Buddhist Civilization</span></li>
+                        <li><span class="staff-name">Mr Nuwan Kumara</span><span class="staff-subject">Political Science </span></li>
+                        <li><span class="staff-name">Ms J. Vishwa Sandeepani</span><span class="staff-subject">Economics</span></li>
+                    </ul>
+                </div>
+                
+                <div class="staff-category">
+                    <h4>Commers Department</h4>
+                    <ul class="staff-list">
+                        <li><span class="staff-name">Mr S. Sudheera Sampath</span><span class="staff-subject">Accounting</span></li>
+                        <li><span class="staff-name">Mr Vimukthi Madhujith</span><span class="staff-subject">Business Studies</span></li>
+                        <li><span class="staff-name">Ms J. Vishwa Sandeepani</span><span class="staff-subject">Economics</span></li>
+                        <!-- Add more teachers -->
+                    </ul>
+                </div>
+
+                <div class="staff-category">
+                    <h4>Mathematics Department</h4>
+                    <ul class="staff-list">
+                        <li><span class="staff-name">Mrs Niluka Dilrukshi</span><span class="staff-subject">Combined Maths</span></li>
+                        <li><span class="staff-name">Mrs Srinali Anjani</span><span class="staff-subject">Chemistry</span></li>
+                        <li><span class="staff-name">Mrs T. Sumudu S. Peiris</span><span class="staff-subject">Physics</span></li>
+                        <!-- Add more teachers -->
+                    </ul>
+                </div>
+
+                <div class="staff-category">
+                    <h4>Science Department</h4>
+                    <ul class="staff-list">
+                        <li><span class="staff-name">[Teacher Name]</span><span class="staff-subject">Chemistry</span></li>
+                        <li><span class="staff-name">[Teacher Name]</span><span class="staff-subject">Physics</span></li>
+                        <li><span class="staff-name">[Teacher Name]</span><span class="staff-subject">Biology</span></li>
+                        <!-- Add more teachers -->
+                    </ul>
+                </div>
+
+                <div class="staff-category">
+                    <h4>Aesthetics Department</h4>
+                    <ul class="staff-list">
+                        <li><span class="staff-name">Mrs Sanjeewani Hewage</span><span class="staff-subject">Music</span></li>
+                        <li><span class="staff-name">Mr Lenin P. Liyanage</span><span class="staff-subject">Drama</span></li>
+                        <li><span class="staff-name">Mrs T. Anuradha N. Fernando</span><span class="staff-subject">Dance</span></li>
+                        <li><span class="staff-name">Mrs S.W.L. Madhubhashini</span><span class="staff-subject">Art</span></li>
+                        <!-- Add more aesthetics teachers -->
+                    </ul>
+                </div>
+                
+                <div class="staff-category">
+                    <h4>Other Subjects</h4>
+                    <ul class="staff-list">
+                        <li><span class="staff-name">[Teacher Name]</span><span class="staff-subject">History</span></li>
+                        <li><span class="staff-name">[Teacher Name]</span><span class="staff-subject">Geography</span></li>
+                        <li><span class="staff-name">[Teacher Name]</span><span class="staff-subject">Art</span></li>
+                        <li><span class="staff-name">[Teacher Name]</span><span class="staff-subject">Music</span></li>
+                        <li><span class="staff-name">[Teacher Name]</span><span class="staff-subject">Physical Education</span></li>
+                        <!-- Add more teachers -->
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Non-Academic Staff Section -->
+        <div class="section">
+            <h2 class="section-title">Non-Academic Staff</h2>
+            <div class="staff-grid">
+                <div class="staff-category">
+                    <h4>Administrative Staff</h4>
+                    <ul class="staff-list">
+                        <li><span class="staff-name">[Staff Name]</span><span class="staff-subject">Office Manager</span></li>
+                        <li><span class="staff-name">[Staff Name]</span><span class="staff-subject">Secretary</span></li>
+                        <li><span class="staff-name">[Staff Name]</span><span class="staff-subject">Librarian</span></li>
+                        <li><span class="staff-name">[Staff Name]</span><span class="staff-subject">IT Support</span></li>
+                        <!-- Add more non-academic staff -->
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer Section -->
+        <footer class="section" id="contact">
+            <p><strong>*Please note that the above information is accurate as of 3rd August 2025.</strong></p>
+            <p>© 2025 WP/ Hr/ Polegoda M. V. All rights reserved.</p>
+            <p>Contact us at: <a href="mailto:pmvmediaunit@gmail.com">pmvmediaunit@gmail.com</a></p>
+        </footer>
+    </div>
+
+    <script>
+          // Smooth scrolling for navigation links
+            const navScrollLinks = document.querySelectorAll('a[href^="#"]');
+
+            navScrollLinks.forEach((link) => {
+                link.addEventListener("click", function (e) {
+                const targetId = this.getAttribute("href");
+
+                if (targetId !== "#") {
+                    e.preventDefault();
+
+                    const targetElement = document.querySelector(targetId);
+
+                    if (targetElement) {
+                    // Close mobile menu if open
+                    if (navLinks && navLinks.classList.contains("active")) {
+                        navLinks.classList.remove("active");
+                        mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                    }
+
+                    // Scroll to the target element
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80, // Accounting for fixed header
+                        behavior: "smooth",
+                    });
+                    }
+                }
+                });
+            });
+
+    </script>
+</body>
+</html>
