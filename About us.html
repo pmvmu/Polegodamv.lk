@@ -4,6 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Us | WP/ Hr/ Polegoda M. V.</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Sinhala:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Yaldevi:wght@200..700&display=swap" rel="stylesheet">
+    <meta name="theme-color" content="#610030">
+    <link rel="icon" type="image/png" href="./logo.png">
+    <meta property="og:title" content="WP/ Hr/ Polegoda M. V.">
+    <meta property="og:description" content="Vidya Dadathi Vinayan">
+    <meta property="og:image" content="./link.jpg">
+    <meta property="og:url" content="https://pmvmu.github.io/Polegodamv.lk/">
+    <meta property="og:type" content="website">
     <style>
 
     :root {
@@ -164,6 +178,7 @@
             margin: 0 10px;
             font-weight: bold;
             transition: 0.3s;
+            cursor: pointer;
         }
 
         .nav-btn:hover {
@@ -627,6 +642,52 @@
                 font-size: 1.5em;
             }
         }
+
+        /* Animations */
+        .animate-fade-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .animate-fade-up.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .animate-fade-right {
+            opacity: 0;
+            transform: translateX(-30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .animate-fade-right.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .animate-fade-left {
+            opacity: 0;
+            transform: translateX(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .animate-fade-left.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .animate-fade {
+            opacity: 0;
+            transform: scale(0.5);
+            transition: opacity  0.8s ease, transform 0.8s ease;
+        }
+
+        .animate-fade.active {
+            opacity: 1;
+            transform: scale(1);
+        }
+
     </style>
 </head>
 <body>
@@ -637,7 +698,7 @@
         <!-- Navigation Bar -->
         <nav class="about-nav" id="navLinks">
             <div class="nav-left">
-                <a href="index.html" class="nav-btn"><i class="fas fa-home"></i> Home</a>
+                <div onclick="window.close()" class="nav-btn"><i class="fas fa-home"></i> Home</div>
             </div>
             <div class="nav-right">
                 <a href="#top" class="nav-btn">Top</a>
@@ -651,34 +712,34 @@
 
         <!-- Header Section -->
         <div class="header">
-            <div class="school-logo"></div>
-            <h1 class="school-name">WP/ Hr/ Polegoda M. V.</h1>
-            <p class="establishment-year">Established in 1926</p>
-            <p class="motto">"Vidya Dadathi Vinayan"</p>
-            <p class="former-name">Formerly known as: <strong>Mahagama South Sucharithawardhana Swabhasha Mixed School.</strong>
+            <div class="school-logo animate-fade"></div>
+            <h1 class="school-name animate-fade-up">WP/ Hr/ Polegoda M. V.</h1>
+            <p class="establishment-year animate-fade-up">Established in 1926</p>
+            <p class="motto animate-fade-up">"Vidya Dadathi Vinayan"</p>
+            <p class="former-name animate-fade-up">Formerly known as: <strong>Mahagama South Sucharithawardhana Swabhasha Mixed School.</strong>
             </p>
         </div>
 
         <!-- School Symbols Section -->
-        <div class="section" id="symbols">
+        <div class="section animate-fade-up" id="symbols">
             <h2 class="section-title">School Symbols</h2>
             <div class="insignia-grid">
-                <div class="insignia-item">
+                <div class="insignia-item animate-fade-up">
                     <div class="insignia-placeholder ip-logo" alt="logo"></div>
                     <h4>School Logo</h4>
                     <p>Replace with your school logo</p>
                 </div>
-                <div class="insignia-item">
+                <div class="insignia-item animate-fade-up">
                     <div class="insignia-placeholder ip-flag" alt="flag">FLAG</div>
                     <h4>School Flag</h4>
                     <p>Replace with your school flag</p>
                 </div>
-                <div class="insignia-item">
+                <div class="insignia-item animate-fade-up">
                     <div class="insignia-placeholder ip-sc">SC</div>
                     <h4>Student Council Insignia</h4>
                     <p>Replace with student council symbol</p>
                 </div>
-                <div class="insignia-item">
+                <div class="insignia-item animate-fade-up">
                     <div class="insignia-placeholder ip-uni">UNI</div>
                     <h4>Uniform Insignia</h4>
                     <p>Replace with uniform badge</p>
@@ -687,15 +748,15 @@
         </div>
 
         <!-- School Uniforms Section -->
-        <div class="section">
-            <h2 class="section-title">School Uniforms</h2>
+        <div class="section animate-fade-up" animate-fade-up>
+            <h2 class="section-title animate-fade-right">School Uniforms</h2>
             <div class="uniform-grid">
-                <div class="uniform-item">
+                <div class="uniform-item animate-fade-right">
                     <div class="uniform-placeholder">GIRLS<br>UNIFORM</div>
                     <h4>Girls' Uniform</h4>
                     <p>[Description of girls' uniform - colors, style, accessories]</p>
                 </div>
-                <div class="uniform-item">
+                <div class="uniform-item animate-fade-left">
                     <div class="uniform-placeholder">BOYS<br>UNIFORM</div>
                     <h4>Boys' Uniform</h4>
                     <p>[Description of boys' uniform - colors, style, accessories]</p>
@@ -705,18 +766,18 @@
 
         <!-- Vision and Mission Section -->
         <div class="section vision-mission">
-            <h3>Our Vision</h3>
-            <p>A quality child through good management..</p>
+            <h3 class="animate-fade-up">Our Vision</h3>
+            <p class="animate-fade-up">A quality child through good management..</p>
             
-            <h3>Our Mission</h3>
-            <p>It is our mission to raise a noble generation of children who are wise, spiritual, and  capable of standing on their own.</p>
+            <h3 class="animate-fade-up">Our Mission</h3>
+            <p class="animate-fade-up">It is our mission to raise a noble generation of children who are wise, spiritual, and  capable of standing on their own.</p>
         </div>
 
         <!-- School Anthem -->
-        <div class="section" id="anthem">
+        <div class="section animate-fade-up" id="anthem">
             <h2 class="section-title">School Anthem</h2>
             <div class="staff-grid">
-                <div class="lyrics-card">
+                <div class="lyrics-card animate-fade-right">
                     <p>
                         සිරි සුබ සෙත සලසා සැරදේ විදුහල් මෑණි අපේ...<br>
                         සිසු කැළ නහවා සිප් මිහිරේ...//<br><br>
@@ -736,7 +797,7 @@
                         සිරිසුබ සෙත...
                     </p>
                 </div>
-                <div class="lyrics-card">
+                <div class="lyrics-card animate-fade-left">
                     <p>
                         Siri Suba Setha Salasa Saradē Viduhal Māṇi Apē...<br>
                         Sisu Kaḷa Nahavā Sip Mihirē...//<br><br>
@@ -757,7 +818,7 @@
                     </p>
                 </div>
             </div>
-            <section id="anthem" style="text-align: center; margin-top: 30px;">
+            <section class="animate-fade-up" id="anthem" style="text-align: center; margin-top: 30px;">
                 <h2>Listen to Our School Anthem</h2>
                 <audio controls class="audio-player">
                     <source src="school_anthem.mp3" type="audio/mpeg">
@@ -769,14 +830,14 @@
 
 
         <!-- Statistics Section -->
-        <div class="section">
+        <div class="section animate-fade-up">
             <h2 class="section-title">School Statistics</h2>
             <div class="stats-grid">
-                <div class="stat-item">
+                <div class="stat-item animate-fade-right">
                     <span class="stat-number">550+</span>
                     <span>Total Students</span>
                 </div>
-                <div class="stat-item">
+                <div class="stat-item animate-fade-left">
                     <span class="stat-number">43</span>
                     <span>Teaching Staff</span>
                 </div>
@@ -784,13 +845,13 @@
         </div>
 
         <!-- Academic Leadership Section -->
-        <div class="section" id="leadership">
-            <h2 class="section-title">Academic Leadership</h2>
+        <div class="section animate-fade-up" id="leadership">
+            <h2 class="section-title animate-fade-right">Academic Leadership</h2>
             
             <!-- Senior Leadership with Photos -->
             <h3 style="color: #2c3e50; margin-bottom: 20px; font-size: 1.4em;">Senior Leadership Team</h3>
             <div class="leadership-grid">
-                <div class="leadership-card">
+                <div class="leadership-card animate-fade-up">
                     <div class="principal-photo"></div>
                     <div class="leadership-name">Mrs&nbsp;&nbsp;W.D. Duleeka Madhumali Premathilaka</div>
                     <div class="leadership-title">Principal</div>
@@ -799,7 +860,7 @@
                     </div>
                 </div>
                 
-                <div class="leadership-card">
+                <div class="leadership-card animate-fade-up">
                     <div class="deputy1-photo"></div>
                     <div class="leadership-name">Mr&nbsp;&nbsp;Ruwan P. Kumara</div>
                     <div class="leadership-title">Deputy Principal</div>
@@ -808,7 +869,7 @@
                     </div>
                 </div>
                 
-                <div class="leadership-card">
+                <div class="leadership-card animate-fade-up">
                     <div class="deputy2-photo"></div>
                     <div class="leadership-name">Mrs&nbsp;&nbsp;W.Dushanthi Duleeka</div>
                     <div class="leadership-title">Deputy Principal</div>
@@ -817,7 +878,7 @@
                     </div>
                 </div>
                 
-                <div class="leadership-card">
+                <div class="leadership-card animate-fade-up">
                     <div class="assistant-photo"></div>
                     <div class="leadership-name">Mrs&nbsp;&nbsp;S.W. Lilani Madhubhashini</div>
                     <div class="leadership-title">Assistant Principal</div>
@@ -830,7 +891,7 @@
             <!-- Heads of Departments -->
             <h3 style="color: #2c3e50; margin: 40px 0 20px 0; font-size: 1.4em;">Heads of Departments</h3>
             <div class="leadership-grid">
-                <div class="leadership-card">
+                <div class="leadership-card animate-fade-up">
                     <div class="leadership-photo">
                         <!-- Replace with actual photo: <img src="hod1-photo.jpg" alt="HOD Grades 6-9"> -->
                         H1
@@ -842,7 +903,7 @@
                     </div>
                 </div>
                 
-                <div class="leadership-card">
+                <div class="leadership-card animate-fade-up">
                     <div class="leadership-photo">
                         <!-- Replace with actual photo: <img src="hod2-photo.jpg" alt="HOD Grades 10-11"> -->
                         H2
@@ -854,7 +915,7 @@
                     </div>
                 </div>
                 
-                <div class="leadership-card">
+                <div class="leadership-card animate-fade-up">
                     <div class="leadership-photo">
                         <!-- Replace with actual photo: <img src="hod3-photo.jpg" alt="HOD Grades 12-13"> -->
                         H3
@@ -869,90 +930,92 @@
         </div>
 
         <!-- Teaching Staff Section -->
-        <div class="section" id="staff">
-            <h2 class="section-title">Teaching Staff</h2>
+        <section id="staff">
+        <div class="section animate-fade-up">
+            <h2 class="section-title animate-fade-right">Teaching Staff</h2>
             <div class="staff-grid">
                 
-                <div class="staff-category">
-                    <h4>Arts Department</h4>
+                <div class="staff-category animate-fade-up">
+                    <h4 class="animate-fade-right">Department</h4>
                     <ul class="staff-list">
-                        <li><span class="staff-name">Mr Prabhath Pushpakumara</span><span class="staff-subject">Geography</span></li>
-                        <li><span class="staff-name">Mrs. P.D. Chathurika Manori</span><span class="staff-subject">History</span></li>
-                        <li><span class="staff-name">Mrs M. Senani Senarathna</span><span class="staff-subject">Media</span></li>
-                        <li><span class="staff-name">Mrs Madhushani Liyanage</span><span class="staff-subject">Agriculture</span></li>
-                        <li><span class="staff-name">Mrs Chandima Kumudini</span><span class="staff-subject">Home Science</span></li>
-                        <li><span class="staff-name">Mrs D.C.E. Walpita</span><span class="staff-subject">Buddhist Civilization</span></li>
-                        <li><span class="staff-name">Mr Nuwan Kumara</span><span class="staff-subject">Political Science </span></li>
-                        <li><span class="staff-name">Ms J. Vishwa Sandeepani</span><span class="staff-subject">Economics</span></li>
+                        <li><span class="staff-name animate-fade-up">Mr Prabhath Pushpakumara</span><span class="staff-subject animate-fade-up">Geography</span></li>
+                        <li><span class="staff-name animate-fade-up">Mrs. P.D. Chathurika Manori</span><span class="staff-subject animate-fade-up">History</span></li>
+                        <li><span class="staff-name animate-fade-up">Mrs M. Senani Senarathna</span><span class="staff-subject animate-fade-up">Media</span></li>
+                        <li><span class="staff-name animate-fade-up">Mrs Madhushani Liyanage</span><span class="staff-subject animate-fade-up">Agriculture</span></li>
+                        <li><span class="staff-name animate-fade-up">Mrs Chandima Kumudini</span><span class="staff-subject animate-fade-up">Home Science</span></li>
+                        <li><span class="staff-name animate-fade-up">Mrs D.C.E. Walpita</span><span class="staff-subject animate-fade-up">Buddhist Civilization</span></li>
+                        <li><span class="staff-name animate-fade-up">Mr Nuwan Kumara</span><span class="staff-subject animate-fade-up">Political Science </span></li>
+                        <li><span class="staff-name animate-fade-up">Ms J. Vishwa Sandeepani</span><span class="staff-subject animate-fade-up">Economics</span></li>
                     </ul>
                 </div>
                 
-                <div class="staff-category">
-                    <h4>Commers Department</h4>
+                <div class="staff-category animate-fade-up">
+                    <h4 class="animate-fade-right">Commers Department</h4>
                     <ul class="staff-list">
-                        <li><span class="staff-name">Mr S. Sudheera Sampath</span><span class="staff-subject">Accounting</span></li>
-                        <li><span class="staff-name">Mr Vimukthi Madhujith</span><span class="staff-subject">Business Studies</span></li>
-                        <li><span class="staff-name">Ms J. Vishwa Sandeepani</span><span class="staff-subject">Economics</span></li>
+                        <li><span class="staff-name animate-fade-up">Mr S. Sudheera Sampath</span><span class="staff-subject animate-fade-up">Accounting</span></li>
+                        <li><span class="staff-name animate-fade-up">Mr Vimukthi Madhujith</span><span class="staff-subject animate-fade-up">Business Studies</span></li>
+                        <li><span class="staff-name animate-fade-up">Ms J. Vishwa Sandeepani</span><span class="staff-subject animate-fade-up">Economics</span></li>
                         <!-- Add more teachers -->
                     </ul>
                 </div>
 
-                <div class="staff-category">
-                    <h4>Mathematics Department</h4>
+                <div class="staff-category animate-fade-up">
+                    <h4 class="animate-fade-right">Mathematics Department</h4>
                     <ul class="staff-list">
-                        <li><span class="staff-name">Mrs Niluka Dilrukshi</span><span class="staff-subject">Combined Maths</span></li>
-                        <li><span class="staff-name">Mrs Srinali Anjani</span><span class="staff-subject">Chemistry</span></li>
-                        <li><span class="staff-name">Mrs T. Sumudu S. Peiris</span><span class="staff-subject">Physics</span></li>
+                        <li><span class="staff-name animate-fade-up">Mrs Niluka Dilrukshi</span><span class="staff-subject animate-fade-up">Combined Maths</span></li>
+                        <li><span class="staff-name animate-fade-up">Mrs Srinali Anjani</span><span class="staff-subject animate-fade-up">Chemistry</span></li>
+                        <li><span class="staff-name animate-fade-up">Mrs T. Sumudu S. Peiris</span><span class="staff-subject animate-fade-up">Physics</span></li>
                         <!-- Add more teachers -->
                     </ul>
                 </div>
 
-                <div class="staff-category">
-                    <h4>Science Department</h4>
+                <div class="staff-category animate-fade-up">
+                    <h4 class="animate-fade-right">Science Department</h4>
                     <ul class="staff-list">
-                        <li><span class="staff-name">[Teacher Name]</span><span class="staff-subject">Chemistry</span></li>
-                        <li><span class="staff-name">[Teacher Name]</span><span class="staff-subject">Physics</span></li>
-                        <li><span class="staff-name">[Teacher Name]</span><span class="staff-subject">Biology</span></li>
+                        <li><span class="staff-name animate-fade-up">[Teacher Name]</span><span class="staff-subject animate-fade-up">Chemistry</span></li>
+                        <li><span class="staff-name animate-fade-up">[Teacher Name]</span><span class="staff-subject animate-fade-up">Physics</span></li>
+                        <li><span class="staff-name animate-fade-up">[Teacher Name]</span><span class="staff-subject animate-fade-up">Biology</span></li>
                         <!-- Add more teachers -->
                     </ul>
                 </div>
 
-                <div class="staff-category">
-                    <h4>Aesthetics Department</h4>
+                <div class="staff-category animate-fade-up">
+                    <h4 class="animate-fade-right">Aesthetics Department</h4>
                     <ul class="staff-list">
-                        <li><span class="staff-name">Mrs Sanjeewani Hewage</span><span class="staff-subject">Music</span></li>
-                        <li><span class="staff-name">Mr Lenin P. Liyanage</span><span class="staff-subject">Drama</span></li>
-                        <li><span class="staff-name">Mrs T. Anuradha N. Fernando</span><span class="staff-subject">Dance</span></li>
-                        <li><span class="staff-name">Mrs S.W.L. Madhubhashini</span><span class="staff-subject">Art</span></li>
+                        <li><span class="staff-name animate-fade-up">Mrs Sanjeewani Hewage</span><span class="staff-subject animate-fade-up">Music</span></li>
+                        <li><span class="staff-name animate-fade-up">Mr Lenin P. Liyanage</span><span class="staff-subject animate-fade-up">Drama</span></li>
+                        <li><span class="staff-name animate-fade-up">Mrs T. Anuradha N. Fernando</span><span class="staff-subject animate-fade-up">Dance</span></li>
+                        <li><span class="staff-name animate-fade-up">Mrs S.W.L. Madhubhashini</span><span class="staff-subject animate-fade-up">Art</span></li>
                         <!-- Add more aesthetics teachers -->
                     </ul>
                 </div>
                 
-                <div class="staff-category">
-                    <h4>Other Subjects</h4>
+                <div class="staff-category animate-fade-up">
+                    <h4 class="animate-fade-right">Other Subjects</h4>
                     <ul class="staff-list">
-                        <li><span class="staff-name">[Teacher Name]</span><span class="staff-subject">History</span></li>
-                        <li><span class="staff-name">[Teacher Name]</span><span class="staff-subject">Geography</span></li>
-                        <li><span class="staff-name">[Teacher Name]</span><span class="staff-subject">Art</span></li>
-                        <li><span class="staff-name">[Teacher Name]</span><span class="staff-subject">Music</span></li>
-                        <li><span class="staff-name">[Teacher Name]</span><span class="staff-subject">Physical Education</span></li>
+                        <li><span class="staff-name animate-fade-up">[Teacher Name]</span><span class="staff-subject animate-fade-up">History</span></li>
+                        <li><span class="staff-name animate-fade-up">[Teacher Name]</span><span class="staff-subject animate-fade-up">Geography</span></li>
+                        <li><span class="staff-name animate-fade-up">[Teacher Name]</span><span class="staff-subject animate-fade-up">Art</span></li>
+                        <li><span class="staff-name animate-fade-up">[Teacher Name]</span><span class="staff-subject animate-fade-up">Music</span></li>
+                        <li><span class="staff-name animate-fade-up">[Teacher Name]</span><span class="staff-subject animate-fade-up">Physical Education</span></li>
                         <!-- Add more teachers -->
                     </ul>
                 </div>
             </div>
         </div>
+        </section>
 
         <!-- Non-Academic Staff Section -->
-        <div class="section">
-            <h2 class="section-title">Non-Academic Staff</h2>
+        <div class="section animate-fade-up">
+                <h2 class="section-title animate-fade-right">Non-Academic Staff</h2>
             <div class="staff-grid">
                 <div class="staff-category">
-                    <h4>Administrative Staff</h4>
+                        <h4 class="animate-fade-right">Administrative Staff</h4>
                     <ul class="staff-list">
-                        <li><span class="staff-name">[Staff Name]</span><span class="staff-subject">Office Manager</span></li>
-                        <li><span class="staff-name">[Staff Name]</span><span class="staff-subject">Secretary</span></li>
-                        <li><span class="staff-name">[Staff Name]</span><span class="staff-subject">Librarian</span></li>
-                        <li><span class="staff-name">[Staff Name]</span><span class="staff-subject">IT Support</span></li>
+                        <li><span class="staff-name animate-fade-up">[Staff Name]</span><span class="staff-subject animate-fade-up">Office Manager</span></li>
+                        <li><span class="staff-name animate-fade-up">[Staff Name]</span><span class="staff-subject animate-fade-up">Secretary</span></li>
+                        <li><span class="staff-name animate-fade-up">[Staff Name]</span><span class="staff-subject animate-fade-up">Librarian</span></li>
+                        <li><span class="staff-name animate-fade-up">[Staff Name]</span><span class="staff-subject animate-fade-up">IT Support</span></li>
                         <!-- Add more non-academic staff -->
                     </ul>
                 </div>
@@ -968,7 +1031,22 @@
     </div>
 
     <script>
-          // Smooth scrolling for navigation links
+            // Animation on scroll
+            const animatedElements = document.querySelectorAll('.animate-fade, .animate-fade-up, .animate-fade-right, .animate-fade-left');
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+                });
+            }, { threshold: 0.2 });
+
+            animatedElements.forEach(el => {
+                observer.observe(el);
+            });        
+
+            // Smooth scrolling for navigation links
             const navScrollLinks = document.querySelectorAll('a[href^="#"]');
 
             navScrollLinks.forEach((link) => {
