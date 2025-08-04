@@ -46,6 +46,7 @@
     --selection-bg: #610030;
     --popup-bg: rgba(255, 255, 255, 0.95);
     --log-gradient: linear-gradient(135deg, #610030, #3a011d);
+    --log-gradient-hover: linear-gradient(135deg, #3a011d, #610030);
     --log-gradient-lite: linear-gradient(135deg, #61003080, #3a011d80);
     --overlay-gradient: linear-gradient(90deg, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.6) 100%);
     
@@ -154,6 +155,15 @@
             min-height: 100vh;
         }
 
+        .navbg {
+            background-color: var(--glass-gradient);
+            width: 100%;
+            height: 50px;
+            padding: 10px 5px;
+            position: fixed;
+            top: 0;
+        }
+
         .about-nav {
             display: flex;
             justify-content: space-between;
@@ -162,7 +172,7 @@
             background-color: var(--card-bg);
             backdrop-filter: blur(10px);
             border-radius: 25px;
-            border: solid 3px var(--glass-border);
+            border: solid 3px var(--primary-color);
             box-shadow: var(--shadow-heavy);
             color: var(--primary-color);
             flex-wrap: wrap;
@@ -391,6 +401,13 @@
             font-size: 12px;
         }
 
+        .anthem-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
         .lyrics-card {
             background-color: var(--glass-bg);
             backdrop-filter: var(--backdrop-blur);
@@ -398,12 +415,171 @@
             border-radius: 25px;
             color: var(--primary-color);
         }
-
-        .audio-player {
-            width: 80%;
-            max-width: 500px;
-            margin-top: 15px;
+        
+        .anthem {
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
         }
+
+        .audio-player-container {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 60px;
+            padding: 5px 30px;
+            width: 100%;
+            max-width: 800px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            min-height: 80px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .play-pause-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 5px;
+            border-radius: 50%;
+            transition: all 0.2s ease;
+            flex-shrink: 0;
+        }
+
+        .play-pause-btn:hover {
+            background: rgba(109, 0, 54, 0.1);
+        }
+
+        .play-pause-btn svg {
+            fill: var(--primary-color);
+            width: 24px;
+            height: 24px;
+        }
+
+        .time-display {
+            color: var(--primary-color);
+            font-size: 0.9rem;
+            font-weight: 500;
+            flex-shrink: 0;
+            font-family: monospace;
+        }
+
+        .progress-container {
+            flex: 1;
+            height: 6px;
+            background: #ddd;
+            border-radius: 3px;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            margin: 0 15px;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: var(--primary-color);
+            border-radius: 3px;
+            width: 0%;
+            transition: width 0.1s ease;
+        }
+
+        .progress-container:hover .progress-bar {
+            background: var(--primary-color);
+        }
+
+        .volume-container {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-shrink: 0;
+        }
+
+        .volume-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 5px;
+            border-radius: 50%;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .volume-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .volume-btn svg {
+            fill: var(--primary-color);
+            width: 20px;
+            height: 20px;
+        }
+
+        .volume-slider {
+            width: 60px;
+            height: 4px;
+            background: var(--light-gray);
+            border-radius: 2px;
+            outline: none;
+            -webkit-appearance: none;
+            cursor: pointer;
+        }
+
+        .volume-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 12px;
+            height: 12px;
+            background: var(--primary-color);
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        .volume-slider::-moz-range-thumb {
+            width: 12px;
+            height: 12px;
+            background: #666;
+            border-radius: 50%;
+            cursor: pointer;
+            border: none;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        @media (max-width: 600px) {
+            .audio-player-container {
+                padding: 12px 20px;
+                gap: 15px;
+            }
+            
+            .progress-container {
+                margin: 0 10px;
+            }
+            
+            .volume-slider {
+                width: 40px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .volume-container {
+                display: none;
+            }
+            
+            .time-display {
+                font-size: 0.8rem;
+            }
+        }
+
 
          #anthem {
             background: var(--glass-bg);
@@ -416,6 +592,36 @@
             color: var(--primary-color);
             font-family: 'Segoe UI', sans-serif;
         }
+
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 15px 30px;
+            margin: 10px;
+            background: var(--log-gradient);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 600;
+            transition: all 0.8s ease;
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
+            border: none;
+            cursor: pointer;
+            min-width: 200px;
+        }
+
+        .download-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 25px rgba(102, 126, 234, 0.4);
+            background: var(--log-gradient-hover);
+        }
+
+        .download-btn:active {
+            transform: translateY(-1px);
+        }
+
         
         .stats-grid {
             display: grid;
@@ -441,7 +647,7 @@
         
         .staff-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, 1, 1fr);
             gap: 20px;
             margin-top: 20px;
         }
@@ -700,15 +906,15 @@
             <div class="nav-left">
                 <div onclick="window.close()" class="nav-btn"><i class="fas fa-home"></i> Home</div>
             </div>
-            <div class="nav-right">
-                <a href="#top" class="nav-btn">Top</a>
-                <a href="#symbols" class="nav-btn">Symbols</a>
-                <a href="#anthem" class="nav-btn">Anthem</a>
-                <a href="#leadership" class="nav-btn">Leadership</a>
-                <a href="#staff" class="nav-btn">Staff</a>
-                <a href="#contact" class="nav-btn">Contact</a>
-            </div>
-        </nav>
+                <div class="nav-right">
+                    <a href="#top" class="nav-btn">Top</a>
+                    <a href="#symbols" class="nav-btn">Symbols</a>
+                    <a href="#anthem" class="nav-btn">Anthem</a>
+                    <a href="#leadership" class="nav-btn">Leadership</a>
+                    <a href="#staff" class="nav-btn">Staff</a>
+                    <a href="#contact" class="nav-btn">Contact</a>
+                </div>
+            </nav>
 
         <!-- Header Section -->
         <div class="header">
@@ -776,7 +982,7 @@
         <!-- School Anthem -->
         <div class="section animate-fade-up" id="anthem">
             <h2 class="section-title">School Anthem</h2>
-            <div class="staff-grid">
+            <div class="anthem-grid">
                 <div class="lyrics-card animate-fade-right">
                     <p>
                         සිරි සුබ සෙත සලසා සැරදේ විදුහල් මෑණි අපේ...<br>
@@ -818,12 +1024,53 @@
                     </p>
                 </div>
             </div>
-            <section class="animate-fade-up" id="anthem" style="text-align: center; margin-top: 30px;">
+            <section class="animate-fade-up anthem" id="anthem" style="text-align: center; margin-top: 30px;">
                 <h2>Listen to Our School Anthem</h2>
-                <audio controls class="audio-player">
-                    <source src="school_anthem.mp3" type="audio/mpeg">
-                    Your browser does not support the audio element.
-                </audio>
+                <div class="audio-player-container">
+                    <button class="play-pause-btn" id="playPauseBtn">
+                        <svg class="play-icon" viewBox="0 0 24 24">
+                            <path d="M8 5v14l11-7z" />
+                        </svg>
+                        <svg class="pause-icon hidden" viewBox="0 0 24 24">
+                            <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" />
+                        </svg>
+                    </button>
+            
+                    <span class="time-display" id="currentTime">0:00</span>
+                    <span class="time-display">/</span>
+                    <span class="time-display" id="duration">2:24</span>
+            
+                    <div class="progress-container" id="progressContainer">
+                        <div class="progress-bar" id="progressBar"></div>
+                    </div>
+            
+                    <div class="volume-container">
+                        <button class="volume-btn" id="volumeBtn">
+                            <svg class="volume-on" viewBox="0 0 24 24">
+                                <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z" />
+                            </svg>
+                            <svg class="volume-off hidden" viewBox="0 0 24 24">
+                                <path
+                                    d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z" />
+                            </svg>
+                        </button>
+                        <input type="range" class="volume-slider" id="volumeSlider" min="0" max="100" value="100">
+                    </div>
+                    <audio id="audioPlayer" preload="metadata" download="https://drive.google.com/file/d/1gojdsbKhIXuwRlZv8oewoK-O3bF0_xaP/view?usp=drive_link" src="./National_Anthem.mp3"></audio>
+                </div>
+                <div>
+                    <div class="download-section">
+                        <button class="download-btn" onclick="downloadLyrics()">
+                            <i class="fa fas fa-download"></i>&nbsp;&nbsp;
+                            Download Lyrics (PDF)
+                        </button>
+
+                        <button class="download-btn" onclick="downloadAudio()">
+                            <i class="fa fas fa-download"></i>&nbsp;&nbsp;
+                            Download Audio (MP3)
+                        </button>
+                    </div>
+                </div>
             </section>
         </div>
 
@@ -936,69 +1183,101 @@
             <div class="staff-grid">
                 
                 <div class="staff-category animate-fade-up">
-                    <h4 class="animate-fade-right">Department</h4>
+                    <h4 class="animate-fade-right">Arts Department</h4>
                     <ul class="staff-list">
-                        <li><span class="staff-name animate-fade-up">Mr Prabhath Pushpakumara</span><span class="staff-subject animate-fade-up">Geography</span></li>
+                        <li><span class="staff-name animate-fade-up">Mr H.S.N. Prabhath Pushpakumara</span><span class="staff-subject animate-fade-up">Geography</span></li>
                         <li><span class="staff-name animate-fade-up">Mrs. P.D. Chathurika Manori</span><span class="staff-subject animate-fade-up">History</span></li>
                         <li><span class="staff-name animate-fade-up">Mrs M. Senani Senarathna</span><span class="staff-subject animate-fade-up">Media</span></li>
-                        <li><span class="staff-name animate-fade-up">Mrs Madhushani Liyanage</span><span class="staff-subject animate-fade-up">Agriculture</span></li>
-                        <li><span class="staff-name animate-fade-up">Mrs Chandima Kumudini</span><span class="staff-subject animate-fade-up">Home Science</span></li>
+                        <li><span class="staff-name animate-fade-up">Mrs D.L. S. Madhushani Liyanage</span><span class="staff-subject animate-fade-up">Agriculture</span></li>
+                        <li><span class="staff-name animate-fade-up">Mrs M.D. Chandima Kumudini</span><span class="staff-subject animate-fade-up">Home Science</span></li>
                         <li><span class="staff-name animate-fade-up">Mrs D.C.E. Walpita</span><span class="staff-subject animate-fade-up">Buddhist Civilization</span></li>
-                        <li><span class="staff-name animate-fade-up">Mr Nuwan Kumara</span><span class="staff-subject animate-fade-up">Political Science </span></li>
-                        <li><span class="staff-name animate-fade-up">Ms J. Vishwa Sandeepani</span><span class="staff-subject animate-fade-up">Economics</span></li>
+                        <li><span class="staff-name animate-fade-up">Mr B.L.P. Nuwan Kumara</span><span class="staff-subject animate-fade-up">Political Science </span></li>
+                        <li><span class="staff-name animate-fade-up">Ms J. Vishwa Sandeepani Siriwadhana</span><span class="staff-subject animate-fade-up">Economics</span></li>
+                        <li><span class="staff-name animate-fade-up">Mr M.G. Sanjeewa</span><span class="staff-subject animate-fade-up">Sinhala</span></li>
+                        <li><span class="staff-name animate-fade-up">Mrs. D. Kalyani Ranasinghe</span><span class="staff-subject animate-fade-up">Buddhist Civilization</span></li>
                     </ul>
                 </div>
                 
                 <div class="staff-category animate-fade-up">
-                    <h4 class="animate-fade-right">Commers Department</h4>
+                    <h4 class="animate-fade-right">Commerce Department</h4>
                     <ul class="staff-list">
                         <li><span class="staff-name animate-fade-up">Mr S. Sudheera Sampath</span><span class="staff-subject animate-fade-up">Accounting</span></li>
-                        <li><span class="staff-name animate-fade-up">Mr Vimukthi Madhujith</span><span class="staff-subject animate-fade-up">Business Studies</span></li>
-                        <li><span class="staff-name animate-fade-up">Ms J. Vishwa Sandeepani</span><span class="staff-subject animate-fade-up">Economics</span></li>
-                        <!-- Add more teachers -->
+                        <li><span class="staff-name animate-fade-up">Mr Vimukthi Madhujith Kumarasinghe</span><span class="staff-subject animate-fade-up">Business Studies</span></li>
+                        <li><span class="staff-name animate-fade-up">Ms J. Vishwa Sandeepani Siriwadhana</span><span class="staff-subject animate-fade-up">Economics</span></li>
                     </ul>
                 </div>
 
                 <div class="staff-category animate-fade-up">
                     <h4 class="animate-fade-right">Mathematics Department</h4>
                     <ul class="staff-list">
-                        <li><span class="staff-name animate-fade-up">Mrs Niluka Dilrukshi</span><span class="staff-subject animate-fade-up">Combined Maths</span></li>
-                        <li><span class="staff-name animate-fade-up">Mrs Srinali Anjani</span><span class="staff-subject animate-fade-up">Chemistry</span></li>
-                        <li><span class="staff-name animate-fade-up">Mrs T. Sumudu S. Peiris</span><span class="staff-subject animate-fade-up">Physics</span></li>
-                        <!-- Add more teachers -->
+                        <li><span class="staff-name animate-fade-up">Mrs D. Niluka Dilrukshi</span><span class="staff-subject animate-fade-up">Combined Maths</span></li>
+                        <li><span class="staff-name animate-fade-up">Mrs H.P. Srinali Anjani Premarathna</span><span class="staff-subject animate-fade-up">Chemistry</span></li>
+                        <li><span class="staff-name animate-fade-up">Mrs T. Sumudu Shashikala Peiris</span><span class="staff-subject animate-fade-up">Physics</span></li>
                     </ul>
                 </div>
 
                 <div class="staff-category animate-fade-up">
                     <h4 class="animate-fade-right">Science Department</h4>
                     <ul class="staff-list">
-                        <li><span class="staff-name animate-fade-up">[Teacher Name]</span><span class="staff-subject animate-fade-up">Chemistry</span></li>
-                        <li><span class="staff-name animate-fade-up">[Teacher Name]</span><span class="staff-subject animate-fade-up">Physics</span></li>
-                        <li><span class="staff-name animate-fade-up">[Teacher Name]</span><span class="staff-subject animate-fade-up">Biology</span></li>
-                        <!-- Add more teachers -->
+                        <li><span class="staff-name animate-fade-up">Mrs H.P. Srinali Anjani Premarathna</span><span class="staff-subject animate-fade-up">Chemistry</span></li>
+                        <li><span class="staff-name animate-fade-up"></span><span class="staff-subject animate-fade-up">Physics</span></li>
+                        <li><span class="staff-name animate-fade-up"></span><span class="staff-subject animate-fade-up">Biology</span></li>
                     </ul>
                 </div>
 
                 <div class="staff-category animate-fade-up">
                     <h4 class="animate-fade-right">Aesthetics Department</h4>
                     <ul class="staff-list">
-                        <li><span class="staff-name animate-fade-up">Mrs Sanjeewani Hewage</span><span class="staff-subject animate-fade-up">Music</span></li>
-                        <li><span class="staff-name animate-fade-up">Mr Lenin P. Liyanage</span><span class="staff-subject animate-fade-up">Drama</span></li>
-                        <li><span class="staff-name animate-fade-up">Mrs T. Anuradha N. Fernando</span><span class="staff-subject animate-fade-up">Dance</span></li>
-                        <li><span class="staff-name animate-fade-up">Mrs S.W.L. Madhubhashini</span><span class="staff-subject animate-fade-up">Art</span></li>
-                        <!-- Add more aesthetics teachers -->
+                        <li><span class="staff-name animate-fade-up">Mrs H. Sanjeewani Hewage</span><span class="staff-subject animate-fade-up">Music</span></li>
+                        <li><span class="staff-name animate-fade-up">Mrs T. Anuradha Niroshini Fernando</span><span class="staff-subject animate-fade-up">Dancing</span></li>
+                        <li><span class="staff-name animate-fade-up">Mr Lenin Priyantha Liyanage</span><span class="staff-subject animate-fade-up">Drama</span></li>
+                        <li><span class="staff-name animate-fade-up">Mrs S.W. Lilani Madhubhashini</span><span class="staff-subject animate-fade-up">Art</span></li>
                     </ul>
                 </div>
                 
                 <div class="staff-category animate-fade-up">
+                    <h4 class="animate-fade-right">IT Department</h4>
+                    <ul class="staff-list">
+                        <li><span class="staff-name animate-fade-up">Mrs K. Kanchana Samanpura</span><span class="staff-subject animate-fade-up">ICT</span></li>
+                        <li><span class="staff-name animate-fade-up">Mrs H.D. Chamari Kanchanamala</span><span class="staff-subject animate-fade-up">ICT</span></li>
+                    </ul>
+                </div>
+
+                <div class="staff-category animate-fade-up">
                     <h4 class="animate-fade-right">Other Subjects</h4>
                     <ul class="staff-list">
-                        <li><span class="staff-name animate-fade-up">[Teacher Name]</span><span class="staff-subject animate-fade-up">History</span></li>
-                        <li><span class="staff-name animate-fade-up">[Teacher Name]</span><span class="staff-subject animate-fade-up">Geography</span></li>
-                        <li><span class="staff-name animate-fade-up">[Teacher Name]</span><span class="staff-subject animate-fade-up">Art</span></li>
-                        <li><span class="staff-name animate-fade-up">[Teacher Name]</span><span class="staff-subject animate-fade-up">Music</span></li>
-                        <li><span class="staff-name animate-fade-up">[Teacher Name]</span><span class="staff-subject animate-fade-up">Physical Education</span></li>
-                        <!-- Add more teachers -->
+                        <li><span class="staff-name animate-fade-up">Mrs D. Kalyani Ranasinghe</span><span class="staff-subject animate-fade-up">Buddhism</span></li>
+                        <li><span class="staff-name animate-fade-up">Mrs D.C.E. Walpita</span><span class="staff-subject animate-fade-up">Buddhism</span></li>
+                        <li><span class="staff-name animate-fade-up">Mr A.D. Thiraj Lasantha</span><span class="staff-subject animate-fade-up">Sinhala</span></li>
+                        <li><span class="staff-name animate-fade-up">Mrs W. Dinusha Darshani Piyasoma</span><span class="staff-subject animate-fade-up">Sinhala</span></li>
+                        <li><span class="staff-name animate-fade-up">Mr M.G. Sanjeewa</span><span class="staff-subject animate-fade-up">Sinhala</span></li>
+                        <li><span class="staff-name animate-fade-up">Mrs A. Kokila</span><span class="staff-subject animate-fade-up">English</span></li>
+                        <li><span class="staff-name animate-fade-up">Mrs E.M.S. Probodhini Edirisinghe</span><span class="staff-subject animate-fade-up">English</span></li>
+                        <li><span class="staff-name animate-fade-up">Ms V.K. Senarathna</span><span class="staff-subject animate-fade-up">English</span></li>
+                        <li><span class="staff-name animate-fade-up">Mrs D. Niluka Dilrukshi</span><span class="staff-subject animate-fade-up">Mathematics</span></li>
+                        <li><span class="staff-name animate-fade-up">Mrs T. Sumudu Sashikala Peiris</span><span class="staff-subject animate-fade-up">Mathematics</span></li>
+                        <li><span class="staff-name animate-fade-up">Mr Priyashan Dilruk Senevirathna</span><span class="staff-subject animate-fade-up">Mathematics</span></li>
+                        <li><span class="staff-name animate-fade-up">Mrs W. Dushanthi Duleeka</span><span class="staff-subject animate-fade-up">History</span></li>
+                        <li><span class="staff-name animate-fade-up">Mrs P.D. Manori Chathurika</span><span class="staff-subject animate-fade-up">History</span></li>
+                        <li><span class="staff-name animate-fade-up">Mrs Kaushani Chathurika Disanayaka</span><span class="staff-subject animate-fade-up">Science</span></li>
+                        <li><span class="staff-name animate-fade-up">Mrs H.P. Srinali Anjani Premarathna</span><span class="staff-subject animate-fade-up">Science</span></li>
+                        <li><span class="staff-name animate-fade-up">Mrs P.A. Pushpalatha</span><span class="staff-subject animate-fade-up">Science</span></li>
+                        <li><span class="staff-name animate-fade-up">Mrs A.A. Chandrika Manel</span><span class="staff-subject animate-fade-up">Science</span></li>
+                        <li><span class="staff-name animate-fade-up">Mr S. Sudheera Sampath</span><span class="staff-subject animate-fade-up">Accounting</span></li>
+                        <li><span class="staff-name animate-fade-up">Mr H.S.N. Prabhath Pushpakumara</span><span class="staff-subject animate-fade-up">Geography</span></li>
+                        <li><span class="staff-name animate-fade-up">Mr B.L.P. Nuwan Kumara</span><span class="staff-subject animate-fade-up">Civic Education</span></li>
+                        <li><span class="staff-name animate-fade-up">Mr Vimukthi Madhujith Kumarasinghe</span><span class="staff-subject animate-fade-up">Business Studies</span></li>
+                        <li><span class="staff-name animate-fade-up">Mrs U. Chalani Madhusanka</span><span class="staff-subject animate-fade-up">Tamil</span></li>
+                        <li><span class="staff-name animate-fade-up">Mrs D.L.S. Madhushani</span><span class="staff-subject animate-fade-up">Agricuture</span></li>
+                        <li><span class="staff-name animate-fade-up">Mrs M.D. Chamdima Kumudini</span><span class="staff-subject animate-fade-up">Home Economics</span></li>
+                        <li><span class="staff-name animate-fade-up">Mrs W.H.M. Janakanthi</span><span class="staff-subject animate-fade-up">Health Education</span></li>
+                        <li><span class="staff-name animate-fade-up">Mrs M. Senani Senarathna</span><span class="staff-subject animate-fade-up">Media</span></li>
+                        <li><span class="staff-name animate-fade-up">Ms J. Wishwa Sandeepani Siriwadhana</span><span class="staff-subject animate-fade-up">Economics</span></li>
+                        <li><span class="staff-name animate-fade-up">Mrs A.A. Nirmali Amarasinghe</span><span class="staff-subject animate-fade-up">Counseling</span></li>
+                        <li><span class="staff-name animate-fade-up">Mrs M.M.P. Munidasa</span><span class="staff-subject animate-fade-up">Relief</span></li>
+                        <li><span class="staff-name animate-fade-up">Mr U. Ishara Lakmal Nuwansiri</span><span class="staff-subject animate-fade-up">Relief</span></li>
+                        <li><span class="staff-name animate-fade-up">Mrs A.G. Chandrangani Senevirathna</span><span class="staff-subject animate-fade-up">Relief</span></li>
+                        <li><span class="staff-name animate-fade-up">Mrs D.D. Wajira Nandani</span><span class="staff-subject animate-fade-up">Special Education</span></li>
                     </ul>
                 </div>
             </div>
@@ -1012,11 +1291,13 @@
                 <div class="staff-category">
                         <h4 class="animate-fade-right">Administrative Staff</h4>
                     <ul class="staff-list">
-                        <li><span class="staff-name animate-fade-up">[Staff Name]</span><span class="staff-subject animate-fade-up">Office Manager</span></li>
-                        <li><span class="staff-name animate-fade-up">[Staff Name]</span><span class="staff-subject animate-fade-up">Secretary</span></li>
-                        <li><span class="staff-name animate-fade-up">[Staff Name]</span><span class="staff-subject animate-fade-up">Librarian</span></li>
-                        <li><span class="staff-name animate-fade-up">[Staff Name]</span><span class="staff-subject animate-fade-up">IT Support</span></li>
-                        <!-- Add more non-academic staff -->
+                        <li><span class="staff-name animate-fade-up">Mrs B.G.M. Randisha Batagalla</span><span class="staff-subject animate-fade-up">Development Officer</span></li>
+                        <li><span class="staff-name animate-fade-up">Mrs K.M. Uthpala Ireshani</span><span class="staff-subject animate-fade-up">Development Officer</span></li>
+                        <li><span class="staff-name animate-fade-up">Mrs A.D. Kaumadi Niroshana</span><span class="staff-subject animate-fade-up">School Work Assistant</span></li>
+                        <li><span class="staff-name animate-fade-up">Mrs M.M.D. Chandima Dilrukshi</span><span class="staff-subject animate-fade-up">Laboratory Assistant</span></li>
+                        <li><span class="staff-name animate-fade-up">Mrs P.M. Kanthi</span><span class="staff-subject animate-fade-up">Sanitation Worker</span></li>
+                        <li><span class="staff-name animate-fade-up">Mr R.D. Premachandra</span><span class="staff-subject animate-fade-up">School Guard</span></li>
+                        <li><span class="staff-name animate-fade-up">Mr W.H.N. Rizan</span><span class="staff-subject animate-fade-up">School Guard</span></li>
                     </ul>
                 </div>
             </div>
@@ -1031,26 +1312,26 @@
     </div>
 
     <script>
-            // Animation on scroll
-            const animatedElements = document.querySelectorAll('.animate-fade, .animate-fade-up, .animate-fade-right, .animate-fade-left');
+        // Animation on scroll
+        const animatedElements = document.querySelectorAll('.animate-fade, .animate-fade-up, .animate-fade-right, .animate-fade-left');
 
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('active');
                 }
-                });
-            }, { threshold: 0.2 });
+            });
+        }, { threshold: 0.2 });
 
-            animatedElements.forEach(el => {
-                observer.observe(el);
-            });        
+        animatedElements.forEach(el => {
+            observer.observe(el);
+        });
 
-            // Smooth scrolling for navigation links
-            const navScrollLinks = document.querySelectorAll('a[href^="#"]');
+        // Smooth scrolling for navigation links
+        const navScrollLinks = document.querySelectorAll('a[href^="#"]');
 
-            navScrollLinks.forEach((link) => {
-                link.addEventListener("click", function (e) {
+        navScrollLinks.forEach((link) => {
+            link.addEventListener("click", function (e) {
                 const targetId = this.getAttribute("href");
 
                 if (targetId !== "#") {
@@ -1059,22 +1340,185 @@
                     const targetElement = document.querySelector(targetId);
 
                     if (targetElement) {
-                    // Close mobile menu if open
-                    if (navLinks && navLinks.classList.contains("active")) {
-                        navLinks.classList.remove("active");
-                        mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
-                    }
+                        // Close mobile menu if open
+                        if (navLinks && navLinks.classList.contains("active")) {
+                            navLinks.classList.remove("active");
+                            mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                        }
 
-                    // Scroll to the target element
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 80, // Accounting for fixed header
-                        behavior: "smooth",
-                    });
+                        // Scroll to the target element
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80, // Accounting for fixed header
+                            behavior: "smooth",
+                        });
                     }
                 }
-                });
             });
+        });
+
+
+        // Audio Player Functionality
+        const audioPlayer = document.getElementById('audioPlayer');
+        const playPauseBtn = document.getElementById('playPauseBtn');
+        const playIcon = document.querySelector('.play-icon');
+        const pauseIcon = document.querySelector('.pause-icon');
+        const currentTimeEl = document.getElementById('currentTime');
+        const durationEl = document.getElementById('duration');
+        const progressContainer = document.getElementById('progressContainer');
+        const progressBar = document.getElementById('progressBar');
+        const volumeBtn = document.getElementById('volumeBtn');
+        const volumeSlider = document.getElementById('volumeSlider');
+        const volumeOnIcon = document.querySelector('.volume-on');
+        const volumeOffIcon = document.querySelector('.volume-off');
+
+        let isPlaying = false;
+
+        // Format time helper
+        function formatTime(seconds) {
+            if (isNaN(seconds)) return '0:00';
+            const mins = Math.floor(seconds / 60);
+            const secs = Math.floor(seconds % 60);
+            return `${mins}:${secs.toString().padStart(2, '0')}`;
+        }
+
+        // Play/Pause functionality
+        playPauseBtn.addEventListener('click', () => {
+            if (isPlaying) {
+                audioPlayer.pause();
+            } else {
+                audioPlayer.play().catch(e => {
+                    console.log('Play failed:', e);
+                });
+            }
+        });
+
+        audioPlayer.addEventListener('play', () => {
+            isPlaying = true;
+            playIcon.classList.add('hidden');
+            pauseIcon.classList.remove('hidden');
+        });
+
+        audioPlayer.addEventListener('pause', () => {
+            isPlaying = false;
+            playIcon.classList.remove('hidden');
+            pauseIcon.classList.add('hidden');
+        });
+
+        // Time updates
+        audioPlayer.addEventListener('loadedmetadata', () => {
+            durationEl.textContent = formatTime(audioPlayer.duration);
+        });
+
+        audioPlayer.addEventListener('timeupdate', () => {
+            currentTimeEl.textContent = formatTime(audioPlayer.currentTime);
+            const progress = (audioPlayer.currentTime / audioPlayer.duration) * 100;
+            progressBar.style.width = `${progress}%`;
+        });
+
+        // Progress bar click
+        progressContainer.addEventListener('click', (e) => {
+            const rect = progressContainer.getBoundingClientRect();
+            const clickX = e.clientX - rect.left;
+            const width = rect.width;
+            const percentage = clickX / width;
+            audioPlayer.currentTime = percentage * audioPlayer.duration;
+        });
+
+        // Volume controls
+        volumeBtn.addEventListener('click', () => {
+            if (audioPlayer.muted) {
+                audioPlayer.muted = false;
+                volumeOnIcon.classList.remove('hidden');
+                volumeOffIcon.classList.add('hidden');
+                volumeSlider.value = audioPlayer.volume * 100;
+            } else {
+                audioPlayer.muted = true;
+                volumeOnIcon.classList.add('hidden');
+                volumeOffIcon.classList.remove('hidden');
+                volumeSlider.value = 0;
+            }
+        });
+
+        volumeSlider.addEventListener('input', (e) => {
+            const volume = e.target.value / 100;
+            audioPlayer.volume = volume;
+            audioPlayer.muted = volume === 0;
+
+            if (volume === 0) {
+                volumeOnIcon.classList.add('hidden');
+                volumeOffIcon.classList.remove('hidden');
+            } else {
+                volumeOnIcon.classList.remove('hidden');
+                volumeOffIcon.classList.add('hidden');
+            }
+        });
+
+        // Keyboard shortcuts
+        document.addEventListener('keydown', (e) => {
+            if (e.code === 'Space') {
+                e.preventDefault();
+                playPauseBtn.click();
+            }
+        });
+
+        // Initialize volume
+        audioPlayer.volume = 1;
+
+
+                function showStatus(message, isSuccess = true) {
+            const statusElement = document.getElementById('statusMessage');
+            statusElement.textContent = message;
+            statusElement.className = `status-message ${isSuccess ? 'success' : 'error'}`;
+            statusElement.style.display = 'block';
+            
+            setTimeout(() => {
+                statusElement.style.display = 'none';
+            }, 3000);
+        }
+
+        function downloadLyrics() {
+            try {
+                // Replace 'path/to/your/lyrics.pdf' with the actual path to your PDF file
+                const pdfUrl = './Downloads/School Anthem.pdf'; // Update this path
+
+                const a = document.createElement('a');
+                a.href = pdfUrl;
+                a.download = 'School Anthem.pdf'; // You can customize the download filename
+                a.target = '_blank'; // Fallback for some browsers
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                
+                showStatus('Lyrics PDF downloaded successfully!');
+                
+            } catch (error) {
+                showStatus('Error downloading lyrics: ' + error.message, false);
+            }
+        }
+
+        function downloadAudio() {
+            try {
+                // Replace 'path/to/your/audio.mp3' with the actual path to your MP3 file
+                const mp3Url = './Downloads/National_Anthem.mp3'; // Update this path
+
+                const a = document.createElement('a');
+                a.href = mp3Url;
+                a.download = 'National_Anthem.mp3'; // You can customize the download filename
+                a.target = '_blank'; // Fallback for some browsers
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                
+                showStatus('Audio MP3 downloaded successfully!');
+                
+            } catch (error) {
+                showStatus('Error downloading audio: ' + error.message, false);
+            }
+        }
+
+
 
     </script>
 </body>
+    
 </html>
