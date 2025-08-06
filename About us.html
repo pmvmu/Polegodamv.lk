@@ -1136,6 +1136,39 @@
             }
         }
 
+  .more-container {
+    bottom: 20px;
+    right: 20px;
+    flex-direction: column; 
+    align-items: flex-end;
+  }
+
+  .more-ico {
+    flex-direction: column;
+    gap: 10px;
+    transform-origin: bottom;
+    height: auto;
+    padding: 10px;
+    opacity: 0;
+    transform: scaleY(0);
+    transition: 0.3s ease;
+  }
+
+  .more-container.active .more-ico {
+    opacity: 1;
+    transform: scaleY(1);
+  }
+
+  .language-dropdown {
+    right: 0%;
+    bottom: 85%;
+    height: auto;
+    width: 50px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
         /* Animations */
         .animate-fade-up {
             opacity: 0;
