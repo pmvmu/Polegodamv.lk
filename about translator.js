@@ -87,7 +87,7 @@ function applyEnglishTranslations() {
   document.getElementById('anthem-listen').textContent = "Listen to Our School Anthem";
   document.getElementById('downloadLyricsBtn').innerHTML = '<i class="fa fas fa-download"></i>&nbsp;&nbsp;Download Lyrics (PDF)';
   document.getElementById('downloadAudioBtn').innerHTML = '<i class="fa fas fa-download"></i>&nbsp;&nbsp;Download Audio (MP3)';
-
+  document.getElementById('downloadMusicBtn').innerHTML = '<i class="fa fas fa-download"></i>&nbsp;&nbsp;Download Karaoke (MP3)';  
   // Statistics Section
   document.getElementById('stats-title').textContent = "School Statistics";
   document.getElementById('stats-students').textContent = "Total Students";
@@ -374,9 +374,9 @@ function applySinhalaTranslations() {
   // School Anthem Section
   document.getElementById('anthem-title').textContent = "පාසල් ගීය";
   document.getElementById('anthem-listen').textContent = "අපගේ පාසල් ගීය අසන්න";
-  document.getElementById('downloadLyricsBtn').innerHTML = '<i class="fa fas fa-download"></i>&nbsp;&nbsp;ගීත පද බාගන්න (PDF)';
-  document.getElementById('downloadAudioBtn').innerHTML = '<i class="fa fas fa-download"></i>&nbsp;&nbsp;ගීතය බාගන්න (MP3)';
-  document.getElementById('downloadMusicBtn').innerHTML = '<i class="fa fas fa-download"></i>&nbsp;&nbsp;කැරෝකේ ගීතය බාගන්න (MP3)';
+  document.getElementById('downloadLyricsBtn').innerHTML = '<i class="fa fas fa-download"></i>&nbsp;&nbsp;ගීත පද බාගතකරන්න (PDF)';
+  document.getElementById('downloadAudioBtn').innerHTML = '<i class="fa fas fa-download"></i>&nbsp;&nbsp;ගීතය බාගතකරන්න (MP3)';
+  document.getElementById('downloadMusicBtn').innerHTML = '<i class="fa fas fa-download"></i>&nbsp;&nbsp;කැරෝකේ ගීතය බාගතකරන්න (MP3)';
 
   // Statistics Section
   document.getElementById('stats-title').textContent = "පාසල් සංඛ්‍යාලේඛන";
