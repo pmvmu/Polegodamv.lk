@@ -208,11 +208,11 @@ function applyEnglishTranslations() {
   // Non-Academic Staff Section
   document.getElementById('non-ac-staff').textContent = "Non-Academic Staff";
   const nonAcademicNames = {
-    'non-ac-staff1-name': 'Mr. A. Development',
-    'non-ac-staff2-name': 'Ms. B. Development',
-    'non-ac-staff3-name': 'Mr. C. School Work',
-    'non-ac-staff4-name': 'Ms. D. Laboratory',
-    'non-ac-staff5-name': 'Mr. E. Sanitation',
+    'non-ac-staff1-name': 'Mrs B.G.M. Randisha Batagalla',
+    'non-ac-staff2-name': 'Mrs K.M. Uthpala Ireshani',
+    'non-ac-staff3-name': 'Mrs A.D. Kaumadi Niroshana',
+    'non-ac-staff4-name': 'Mrs M.M.D. Chandima Dilrukshi',
+    'non-ac-staff5-name': 'Mrs P.M. Kanthi',
     'non-ac-staff6-name': 'Mr R.D. Premachandra',
     'non-ac-staff7-sname': 'Mr W.H.N. Rizan'
   };
@@ -375,7 +375,8 @@ function applySinhalaTranslations() {
   document.getElementById('anthem-title').textContent = "පාසල් ගීය";
   document.getElementById('anthem-listen').textContent = "අපගේ පාසල් ගීය අසන්න";
   document.getElementById('downloadLyricsBtn').innerHTML = '<i class="fa fas fa-download"></i>&nbsp;&nbsp;ගීත පද බාගන්න (PDF)';
-  document.getElementById('downloadAudioBtn').innerHTML = '<i class="fa fas fa-download"></i>&nbsp;&nbsp;ශ්‍රව්‍ය ගොනුව බාගන්න (MP3)';
+  document.getElementById('downloadAudioBtn').innerHTML = '<i class="fa fas fa-download"></i>&nbsp;&nbsp;ගීතය බාගන්න (MP3)';
+  document.getElementById('downloadMusicBtn').innerHTML = '<i class="fa fas fa-download"></i>&nbsp;&nbsp;කැරෝකේ ගීතය බාගන්න (MP3)';
 
   // Statistics Section
   document.getElementById('stats-title').textContent = "පාසල් සංඛ්‍යාලේඛන";

@@ -910,19 +910,19 @@
         }
 
         .deputy1-photo {
-            background: url('./deputy1.jpg');
+            background: var(--primary-color);
             background-size: cover;
             background-position: center;
         }
 
         .deputy2-photo {
-            background: url('./deputy2.jpg');
+            background: var(--primary-color);
             background-size: cover;
             background-position: center;
         }
 
         .assistant-photo {
-            background: url('./assistant.jpg');
+            background: var(--primary-color);
             background-size: cover;
             background-position: center;
         }
@@ -1435,9 +1435,9 @@
                         </svg>
                     </button>
             
-                    <span class="time-display" id="currentTime">00:00</span>
+                    <span class="time-display" id="currentTime">0:00</span>
                     <span class="time-display">/</span>
-                    <span class="time-display" id="duration">03:21</span>
+                    <span class="time-display" id="duration">2:24</span>
             
                     <div class="progress-container" id="progressContainer">
                         <div class="progress-bar" id="progressBar"></div>
@@ -1455,7 +1455,7 @@
                         </button>
                         <input type="range" class="volume-slider" id="volumeSlider" min="0" max="100" value="100">
                     </div>
-                    <audio id="audioPlayer" preload="metadata" download="School Anthem.mp3" src="./Resources/School Anthem.mp3"></audio>
+                    <audio id="audioPlayer" preload="metadata" download="School Anthem" src="./Resources/School Anthem.mp3"></audio>
                 </div>
                 <div>
                     <div class="download-section">
@@ -1467,6 +1467,11 @@
                         <button class="download-btn" onclick="downloadAudio()" id="downloadAudioBtn">
                             <i class="fa fas fa-download"></i>&nbsp;&nbsp;
                             Download Audio (MP3)
+                        </button>
+
+                        <button class="download-btn" onclick="downloadMusic()" id="downloadMusicBtn">
+                            <i class="fa fas fa-download"></i>&nbsp;&nbsp;
+                            Download Music (MP3)
                         </button>
                     </div>
                 </div>
@@ -1510,19 +1515,19 @@
                 </div>
                 
                 <div class="leadership-card animate-fade-up">
-                    <div class="deputy1-photo"></div>
+                    <div class="deputy1-photo"><i class="fas fa-user-alt"></i></div>
                     <div class="leadership-name" id="deputy1-name">Mr&nbsp;&nbsp;Ruwan P. Kumara</div>
                     <div class="leadership-title" id="deputy1-title">Deputy Principal</div>
                 </div>
                 
                 <div class="leadership-card animate-fade-up">
-                    <div class="deputy2-photo"></div>
+                    <div class="deputy2-photo"><i class="fas fa-user-alt"></i></div>
                     <div class="leadership-name" id="deputy2-name">Mrs&nbsp;&nbsp;W.Dushanthi Duleeka</div>
                     <div class="leadership-title" id="deputy2-title">Deputy Principal</div>
                 </div>
                 
                 <div class="leadership-card animate-fade-up">
-                    <div class="assistant-photo"></div>
+                    <div class="assistant-photo"><i class="fas fa-user-alt"></i></div>
                     <div class="leadership-name" id="assistant-name">Mrs&nbsp;&nbsp;S.W. Lilani Madhubhashini</div>
                     <div class="leadership-title" id="assistant-title">Assistant Principal</div>
                 </div>
@@ -1534,7 +1539,7 @@
                 <div class="leadership-card animate-fade-up">
                     <div class="leadership-photo">
                         <!-- Replace with actual photo: <img src="hod1-photo.jpg" alt="HOD Grades 6-9"> -->
-                        H1
+                        <i class="fas fas fa-user-alt"></i>
                     </div>
                     <div class="leadership-name" id="hod1-name">Mrs&nbsp;&nbsp;Pushpalatha</div>
                     <div class="leadership-title" id="hod1-title">Head of Department - Grades 6-9</div>
@@ -1543,7 +1548,7 @@
                 <div class="leadership-card animate-fade-up">
                     <div class="leadership-photo">
                         <!-- Replace with actual photo: <img src="hod2-photo.jpg" alt="HOD Grades 10-11"> -->
-                        H2
+                        <i class="fas fas fa-user-alt"></i>
                     </div>
                     <div class="leadership-name" id="hod2-name">Mrs&nbsp;&nbsp;Chandrika Manel</div>
                     <div class="leadership-title" id="hod2-title">Head of Department - Grades 10-11</div>
@@ -1552,7 +1557,7 @@
                 <div class="leadership-card animate-fade-up">
                     <div class="leadership-photo">
                         <!-- Replace with actual photo: <img src="hod3-photo.jpg" alt="HOD Grades 12-13"> -->
-                        H3
+                        <i class="fas fas fa-user-alt"></i>
                     </div>
                     <div class="leadership-name" id="hod3-name">Mrs&nbsp;&nbsp;D.C.E. Walpiita</div>
                     <div class="leadership-title" id="hod3-title">Head of Department - Grades 12-13</div>
@@ -1863,7 +1868,7 @@
         function downloadLyrics() {
             try {
                 // Replace 'path/to/your/lyrics.pdf' with the actual path to your PDF file
-                const pdfUrl = './Downloads/School Anthem.pdf'; // Update this path
+                const pdfUrl = './Resources/School Anthem.pdf'; // Update this path
 
                 const a = document.createElement('a');
                 a.href = pdfUrl;
@@ -1883,17 +1888,37 @@
         function downloadAudio() {
             try {
                 // Replace 'path/to/your/audio.mp3' with the actual path to your MP3 file
-                const mp3Url = './Downloads/National_Anthem.mp3'; // Update this path
+                const mp3Url = './Resources/School_Anthem.mp3'; // Update this path
 
                 const a = document.createElement('a');
                 a.href = mp3Url;
-                a.download = 'National_Anthem.mp3'; // You can customize the download filename
+                a.download = 'School_Anthem.mp3'; // You can customize the download filename
                 a.target = '_blank'; // Fallback for some browsers
                 document.body.appendChild(a);
                 a.click();
                 document.body.removeChild(a);
                 
                 showStatus('Audio MP3 downloaded successfully!');
+                
+            } catch (error) {
+                showStatus('Error downloading audio: ' + error.message, false);
+            }
+        }
+
+        function downloadMusic() {
+            try {
+                // Replace 'path/to/your/audio.mp3' with the actual path to your MP3 file
+                const mp3Url = './Resources/National_Anthem_karaoke.mp3'; // Update this path
+
+                const a = document.createElement('a');
+                a.href = mp3Url;
+                a.download = 'School Anthem Karaoke.mp3'; // You can customize the download filename
+                a.target = '_blank'; // Fallback for some browsers
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                
+                showStatus('Karaoke MP3 downloaded successfully!');
                 
             } catch (error) {
                 showStatus('Error downloading audio: ' + error.message, false);
@@ -2040,6 +2065,4 @@ const toggleTheme = () => {
     <script src="./about translator.js"></script>
     
 </body>
-
 </html>
-
