@@ -1,440 +1,477 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Login/Register - WP/Hr/Polegoda M. V.</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Login/Register - WP/Hr/Polegoda M. V.</title>
+      <meta name="theme-color" content="#610030">
+    <link rel="icon" type="image/png" href="./logo.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Sinhala:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <meta property="og:title" content="WP/ Hr/ Polegoda M. V.">
+    <meta property="og:description" content="Vidya Dadathi Vinayan">
+    <meta property="og:image" content="./preview.jpg">
+    <meta property="og:url" content="https://pmvmu.github.io/Polegodamv.lk/">
+    <meta property="og:type" content="website">
 
-<!-- Firebase App (core SDK) -->
-<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
-
-<!-- Firebase Authentication -->
-<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
-
-<!-- Firebase Firestore -->
-<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
-
-<!-- Firebase Config & Custom Script -->
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-X971R64FQV"></script>
 <script>
-  const firebaseConfig = {
-    apiKey: "AIzaSyC0mm5lKSQIfyWfnFKxHZvgtJ_-JRiZzkU",
-    authDomain: "polegodamv-lk.firebaseapp.com",
-    projectId: "polegodamv-lk",
-    storageBucket: "polegodamv-lk.appspot.com",
-    messagingSenderId: "292171914502",
-    appId: "1:292171914502:web:124cc5711a838fd369d287"
-  };
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
-  // Initialize Firebase
-  firebase.initializeApp(firebaseConfig);
-
-  const auth = firebase.auth();
-  const db = firebase.firestore();
+  gtag('config', 'G-X971R64FQV');
 </script>
 
-<!-- Your custom auth logic (signUp etc) -->
-<script src="auth.js"></script>
+
+  <!-- Firebase App (core SDK) -->
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+
+  <!-- Firebase Authentication -->
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+
+  <!-- Firebase Firestore -->
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+
+  <!-- Firebase Config & Custom Script -->
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyC0mm5lKSQIfyWfnFKxHZvgtJ_-JRiZzkU",
+      authDomain: "polegodamv-lk.firebaseapp.com",
+      projectId: "polegodamv-lk",
+      storageBucket: "polegodamv-lk.appspot.com",
+      messagingSenderId: "292171914502",
+      appId: "1:292171914502:web:124cc5711a838fd369d287"
+    };
+
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+
+    const auth = firebase.auth();
+    const db = firebase.firestore();
+  </script>
+
+  <!-- Your custom auth logic (signUp etc) -->
+  <script src="auth.js"></script>
 
 
-<style>
-
+  <style>
     /* Google Fonts - Optional: for nicer Sinhala fonts, consider Noto Sans Sinhala */
-        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Sinhala:wght@400;700&family=Segoe+UI:wght@400;700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Sinhala:wght@400;700&family=Segoe+UI:wght@400;700&display=swap');
 
-  /* Add your CSS here or link external */
-  .auth-form { display: none; }
-  .auth-form.active { display: block; }
-  .type-dependent { display: none; }
-  .password-strength-bar { height: 5px; background: green; width: 0%; }
+    /* Add your CSS here or link external */
+    .auth-form {
+      display: none;
+    }
 
-        body {
-            font-family: 'Segoe UI', 'Noto Sans Sinhala', sans-serif;
-            /* Prioritize Segoe UI for English, Noto Sans Sinhala for Sinhala */
-            background: linear-gradient(135deg, #610030, #3a001a);
-            /* Deep maroon gradient */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            margin: 0;
-            color: #333;
-            overflow-x: hidden;
-            /* Prevent horizontal scroll due to animations */
-        }
+    .auth-form.active {
+      display: block;
+    }
 
-        /* Auth Container */
-        .auth-container {
-            background-color: #fff;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-            width: 100%;
-            max-width: 580px;
-            /* Slightly wider for better layout */
-            text-align: center;
-            overflow: hidden;
-            transform: scale(1);
-            /* Initial state for animation */
-            transition: transform 0.3s ease-out;
-            /* Pop effect on load/hover (optional) */
-            margin: 5%;
-        }
+    .type-dependent {
+      display: none;
+    }
 
-        /* School Header */
-        .school-header {
-            margin-bottom: 25px;
-            padding-bottom: 15px;
-            border-bottom: 1px solid #eee;
-        }
+    .password-strength-bar {
+      height: 5px;
+      background: green;
+      width: 0%;
+    }
 
-        .school-logo {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            object-fit: cover;
-            margin-bottom: 10px;
-            border: 3px solid gold;
-            transition: transform 0.3s ease-out;
-            box-shadow: 0 0 10px #00000088;
-        }
+    body {
+      font-family: 'Segoe UI', 'Noto Sans Sinhala', sans-serif;
+      /* Prioritize Segoe UI for English, Noto Sans Sinhala for Sinhala */
+      background: linear-gradient(135deg, #610030, #3a001a);
+      /* Deep maroon gradient */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+      color: #333;
+      overflow-x: hidden;
+      /* Prevent horizontal scroll due to animations */
+    }
 
-        .school-logo:hover {
-            transform: rotate(10deg) scale(1.05);
-        }
+    /* Auth Container */
+    .auth-container {
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+      width: 100%;
+      max-width: 580px;
+      /* Slightly wider for better layout */
+      text-align: center;
+      overflow: hidden;
+      transform: scale(1);
+      /* Initial state for animation */
+      transition: transform 0.3s ease-out;
+      /* Pop effect on load/hover (optional) */
+      margin: 5%;
+    }
 
-        .school-header h1 {
-            margin: 0;
-            color: #610030;
-            /* Primary color */
-            font-size: 2.5em;
-            letter-spacing: 1px;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
-            transition: color 0.3s ease-in-out;
-            text-shadow: 0 5px 8px #0000007e;
-        }
+    /* School Header */
+    .school-header {
+      margin-bottom: 25px;
+      padding-bottom: 15px;
+      border-bottom: 1px solid #eee;
+    }
 
-        .school-header h2 {
-            text-shadow: 0 5px 8px #0000007e;
-        }
+    .school-logo {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 10px;
+      border: 3px solid gold;
+      transition: transform 0.3s ease-out;
+      box-shadow: 0 0 10px #00000088;
+    }
 
-        .school-header p {
-            margin: 5px 0 0;
-            color: #555;
-            font-size: 0.95em;
-        }
+    .school-logo:hover {
+      transform: rotate(10deg) scale(1.05);
+    }
 
-        /* Language Selector */
-        .language-selector {
-            margin-bottom: 20px;
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-        }
+    .school-header h1 {
+      margin: 0;
+      color: #610030;
+      /* Primary color */
+      font-size: 2.5em;
+      letter-spacing: 1px;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+      transition: color 0.3s ease-in-out;
+      text-shadow: 0 5px 8px #0000007e;
+    }
 
-        .lang-btn {
-            padding: 8px 15px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            background-color: #f9f9f9;
-            color: #555;
-            cursor: pointer;
-            font-size: 0.9em;
-            transition: all 0.3s ease;
-        }
+    .school-header h2 {
+      text-shadow: 0 5px 8px #0000007e;
+    }
 
-        .lang-btn:hover {
-            background-color: #eee;
-            color: #333;
-        }
+    .school-header p {
+      margin: 5px 0 0;
+      color: #555;
+      font-size: 0.95em;
+    }
 
-        .lang-btn.active {
-            background-color: #610030;
-            /* Primary color */
-            color: white;
-            border-color: #610030;
-            font-weight: bold;
-        }
+    /* Language Selector */
+    .language-selector {
+      margin-bottom: 20px;
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+    }
 
-        /* Auth Toggle (Login/Register buttons) */
-        .auth-toggle {
-            display: flex;
-            margin-bottom: 25px;
-            border-bottom: 2px solid #eee;
-            /* Thicker separator */
-        }
+    .lang-btn {
+      padding: 8px 15px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      background-color: #f9f9f9;
+      color: #555;
+      cursor: pointer;
+      font-size: 0.9em;
+      transition: all 0.3s ease;
+    }
 
-        .auth-toggle button {
-            flex: 1;
-            padding: 12px 0;
-            border: none;
-            background-color: transparent;
-            font-size: 1.1em;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            outline: none;
-            color: #555;
-            position: relative;
-            overflow: hidden;
-            /* For underline animation */
-        }
+    .lang-btn:hover {
+      background-color: #eee;
+      color: #333;
+    }
 
-        .auth-toggle button:hover {
-            color: #333;
-        }
+    .lang-btn.active {
+      background-color: #610030;
+      /* Primary color */
+      color: white;
+      border-color: #610030;
+      font-weight: bold;
+    }
 
-        .auth-toggle button.active {
-            color: #610030;
-            /* Primary color */
-            font-weight: bold;
-        }
+    /* Auth Toggle (Login/Register buttons) */
+    .auth-toggle {
+      display: flex;
+      margin-bottom: 25px;
+      border-bottom: 2px solid #eee;
+      /* Thicker separator */
+    }
 
-        .auth-toggle button.active::after {
-            content: '';
-            position: absolute;
-            bottom: -2px;
-            /* Adjust to sit on the border */
-            left: 0;
-            width: 100%;
-            height: 4px;
-            /* Thicker underline */
-            background-color: #610030;
-            /* Primary color */
-            border-radius: 2px;
-            transform: scaleX(1);
-            transition: transform 0.3s ease-out;
-        }
+    .auth-toggle button {
+      flex: 1;
+      padding: 12px 0;
+      border: none;
+      background-color: transparent;
+      font-size: 1.1em;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      outline: none;
+      color: #555;
+      position: relative;
+      overflow: hidden;
+      /* For underline animation */
+    }
 
-        .auth-toggle button:not(.active)::after {
-            content: '';
-            position: absolute;
-            bottom: -2px;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background-color: #610030;
-            /* Primary color */
-            border-radius: 2px;
-            transform: scaleX(0);
-            /* Hidden by default */
-            transition: transform 0.3s ease-out;
-        }
+    .auth-toggle button:hover {
+      color: #333;
+    }
 
-        .auth-toggle button:not(.active):hover::after {
-            transform: scaleX(0.5);
-            /* Partial underline on hover */
-        }
+    .auth-toggle button.active {
+      color: #610030;
+      /* Primary color */
+      font-weight: bold;
+    }
+
+    .auth-toggle button.active::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      /* Adjust to sit on the border */
+      left: 0;
+      width: 100%;
+      height: 4px;
+      /* Thicker underline */
+      background-color: #610030;
+      /* Primary color */
+      border-radius: 2px;
+      transform: scaleX(1);
+      transition: transform 0.3s ease-out;
+    }
+
+    .auth-toggle button:not(.active)::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background-color: #610030;
+      /* Primary color */
+      border-radius: 2px;
+      transform: scaleX(0);
+      /* Hidden by default */
+      transition: transform 0.3s ease-out;
+    }
+
+    .auth-toggle button:not(.active):hover::after {
+      transform: scaleX(0.5);
+      /* Partial underline on hover */
+    }
 
 
-        /* Form specific styles */
-        .auth-form {
-            display: none;
-            opacity: 0;
-            /* For fade-in/out */
-            transform: translateY(20px);
-            /* For slide-in effect */
-            transition: opacity 0.5s ease-out, transform 0.5s ease-out;
-        }
+    /* Form specific styles */
+    .auth-form {
+      display: none;
+      opacity: 0;
+      /* For fade-in/out */
+      transform: translateY(20px);
+      /* For slide-in effect */
+      transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+    }
 
-        .auth-form.active {
-            display: block;
-            opacity: 1;
-            transform: translateY(0);
-        }
+    .auth-form.active {
+      display: block;
+      opacity: 1;
+      transform: translateY(0);
+    }
 
-        .auth-form h2 {
-            margin-top: 0;
-            margin-bottom: 25px;
-            color: #610030;
-            /* Primary color */
-            font-size: 2.2em;
-            position: relative;
-            padding-bottom: 10px;
-        }
+    .auth-form h2 {
+      margin-top: 0;
+      margin-bottom: 25px;
+      color: #610030;
+      /* Primary color */
+      font-size: 2.2em;
+      position: relative;
+      padding-bottom: 10px;
+    }
 
-        .auth-form h2::after {
-            content: '';
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            bottom: 0;
-            width: 50px;
-            height: 3px;
-            background-color: gold;
-            /* Accent color */
-            border-radius: 2px;
-        }
+    .auth-form h2::after {
+      content: '';
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      bottom: 0;
+      width: 50px;
+      height: 3px;
+      background-color: gold;
+      /* Accent color */
+      border-radius: 2px;
+    }
 
-        .form-group {
-            margin-bottom: 20px;
-            text-align: left;
-            position: relative;
-            /* For dynamic field fade-in */
-        }
+    .form-group {
+      margin-bottom: 20px;
+      text-align: left;
+      position: relative;
+      /* For dynamic field fade-in */
+    }
 
-        /* Dynamic fields fade-in */
-        .type-dependent {
-            transition: opacity 0.4s ease-in-out;
-        }
+    /* Dynamic fields fade-in */
+    .type-dependent {
+      transition: opacity 0.4s ease-in-out;
+    }
 
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 600;
-            color: #444;
-        }
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 600;
+      color: #444;
+    }
 
-        .form-group input[type="text"],
-        .form-group input[type="email"],
-        .form-group input[type="password"],
-        .form-group input[type="tel"],
-        .form-group select {
-            width: calc(100% - 28px);
-            /* Account for padding and border */
-            padding: 12px;
-            border: 1px solid #ddd;
-            border-radius: 6px;
-            box-sizing: border-box;
-            font-size: 1em;
-            transition: border-color 0.3s ease, box-shadow 0.3s ease;
-        }
+    .form-group input[type="text"],
+    .form-group input[type="email"],
+    .form-group input[type="password"],
+    .form-group input[type="tel"],
+    .form-group select {
+      width: calc(100% - 28px);
+      /* Account for padding and border */
+      padding: 12px;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      box-sizing: border-box;
+      font-size: 1em;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
 
-        .form-group input:focus,
-        .form-group select:focus {
-            border-color: gold;
-            /* Accent color on focus */
-            box-shadow: 0 0 0 4px rgba(255, 255, 0, 0.4);
-            /* gold shadow */
-            outline: none;
-        }
+    .form-group input:focus,
+    .form-group select:focus {
+      border-color: gold;
+      /* Accent color on focus */
+      box-shadow: 0 0 0 4px rgba(255, 255, 0, 0.4);
+      /* gold shadow */
+      outline: none;
+    }
 
-        .form-group small {
-            display: block;
-            margin-top: 5px;
-            color: #777;
-            font-size: 0.85em;
-        }
+    .form-group small {
+      display: block;
+      margin-top: 5px;
+      color: #777;
+      font-size: 0.85em;
+    }
 
-        .form-group .button {
-            background-color: #610030;
-            /* Primary color */
-            color: white;
-            padding: 14px 25px;
-            border: none;
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 1.1em;
-            font-weight: bold;
-            width: 100%;
-            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
-        }
+    .form-group .button {
+      background-color: #610030;
+      /* Primary color */
+      color: white;
+      padding: 14px 25px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1.1em;
+      font-weight: bold;
+      width: 100%;
+      transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    }
 
-        .form-group .button:hover {
-            background-color: #4b0025;
-            /* Darker primary on hover */
-            transform: translateY(-3px);
-            /* Lift effect */
-            color: gold;
-            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
-        }
+    .form-group .button:hover {
+      background-color: #4b0025;
+      /* Darker primary on hover */
+      transform: translateY(-3px);
+      /* Lift effect */
+      color: gold;
+      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+    }
 
-        .form-group .button:active {
-            transform: translateY(0);
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-        }
+    .form-group .button:active {
+      transform: translateY(0);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    }
 
-        .form-group .discard {
-            color: #610030;
-            border: none;
-            cursor: pointer;
-            font-size: 0.7em;
-            transition: color 0.3s all ease-in-out;
-            text-decoration: underline;
-            background-color: transparent;
-            font-weight: bold;
-            margin-top: 10px;
-        }
+    .form-group .discard {
+      color: #610030;
+      border: none;
+      cursor: pointer;
+      font-size: 0.7em;
+      transition: color 0.3s all ease-in-out;
+      text-decoration: underline;
+      background-color: transparent;
+      font-weight: bold;
+      margin-top: 10px;
+    }
 
-        .form-group .discard:hover {
-            color: #61003075;
-            text-decoration-color: #610030;
-        }
+    .form-group .discard:hover {
+      color: #61003075;
+      text-decoration-color: #610030;
+    }
 
-        /* Password strength indicator */
-        .password-strength {
-            margin-top: 5px;
-            height: 4px;
-            background-color: #eee;
-            border-radius: 2px;
-            overflow: hidden;
-        }
+    /* Password strength indicator */
+    .password-strength {
+      margin-top: 5px;
+      height: 4px;
+      background-color: #eee;
+      border-radius: 2px;
+      overflow: hidden;
+    }
 
-        .password-strength-bar {
-            height: 100%;
-            width: 0%;
-            transition: width 0.3s ease, background-color 0.3s ease;
-            border-radius: 2px;
-        }
+    .password-strength-bar {
+      height: 100%;
+      width: 0%;
+      transition: width 0.3s ease, background-color 0.3s ease;
+      border-radius: 2px;
+    }
 
-        .password-strength.weak .password-strength-bar {
-            width: 33%;
-            background-color: #ff4757;
-        }
+    .password-strength.weak .password-strength-bar {
+      width: 33%;
+      background-color: #ff4757;
+    }
 
-        .password-strength.medium .password-strength-bar {
-            width: 66%;
-            background-color: #ffa726;
-        }
+    .password-strength.medium .password-strength-bar {
+      width: 66%;
+      background-color: #ffa726;
+    }
 
-        .password-strength.strong .password-strength-bar {
-            width: 100%;
-            background-color: #2ed573;
-        }
+    .password-strength.strong .password-strength-bar {
+      width: 100%;
+      background-color: #2ed573;
+    }
 
-        /* Responsive adjustments */
-        @media (max-width: 600px) {
-            body {
-                padding: 15px;
-                /* Add some padding on smaller screens */
-            }
+    /* Responsive adjustments */
+    @media (max-width: 600px) {
+      body {
+        padding: 15px;
+        /* Add some padding on smaller screens */
+      }
 
-            .auth-container {
-                margin: 0;
-                padding: 20px;
-                border-radius: 0;
-                /* Full width on very small screens */
-                box-shadow: none;
-            }
+      .auth-container {
+        margin: 0;
+        padding: 20px;
+        border-radius: 0;
+        /* Full width on very small screens */
+        box-shadow: none;
+      }
 
-            .school-header h1 {
-                font-size: 2em;
-            }
+      .school-header h1 {
+        font-size: 2em;
+      }
 
-            .auth-toggle button {
-                font-size: 1em;
-                padding: 10px 0;
-            }
+      .auth-toggle button {
+        font-size: 1em;
+        padding: 10px 0;
+      }
 
-            .auth-form h2 {
-                font-size: 1.8em;
-            }
+      .auth-form h2 {
+        font-size: 1.8em;
+      }
 
-            .form-group input,
-            .form-group select,
-            .form-group .button,
-            .form-group .discard {
-                padding: 10px;
-            }
-        }
-</style>
+      .form-group input,
+      .form-group select,
+      .form-group .button,
+      .form-group .discard {
+        padding: 10px;
+      }
+    }
+  </style>
 </head>
+
 <body>
   <div class="auth-container">
     <div class="school-header">
       <img src="./logo.png" alt="School Logo" class="school-logo" />
-      <h1 data-en="WP/Hr/Polegoda Maha Vidyalaya" data-si="බප/හො/පොලේගොඩ මහා  විද්‍යාලය">WP/Hr/Polegoda Maha Vidyalaya</h1>
+      <h1 data-en="WP/Hr/Polegoda Maha Vidyalaya" data-si="බප/හො/පොලේගොඩ මහා  විද්‍යාලය">WP/Hr/Polegoda Maha Vidyalaya
+      </h1>
       <h2 data-en="Vidya Dadathi Vinayan" data-si="විද්‍යා දදාති විනයං">Vidya Dadathi Vinayan</h2>
-      <p data-en="Welcome to Our School Portal" data-si="අපගේ විද්‍යාලීය ද්වාරයට සාදරයෙන් පිළිගනිමු">Welcome to Our School Portal</p>
-      </div>
+      <p data-en="Welcome to Our School Portal" data-si="අපගේ විද්‍යාලීය ද්වාරයට සාදරයෙන් පිළිගනිමු">Welcome to Our
+        School Portal</p>
+    </div>
 
     <div class="language-selector">
       <button class="lang-btn active" data-lang="en">English</button>
@@ -451,31 +488,37 @@
       <h2 data-en="Login" data-si="පිවිසීම">Login</h2>
       <form id="login_form" onsubmit="return handleLogin(event)">
         <div class="form-group">
-          <label for="login_identifier" data-en="Email / ID / Admission No:" data-si="විද්‍යුත් තැපෑල / හැඳුනුම්පත / ඇතුළත් වීමේ අංකය:">Email / ID / Admission No:</label>
+          <label for="login_identifier" data-en="Email / ID / Admission No:"
+            data-si="විද්‍යුත් තැපෑල / හැඳුනුම්පත / ඇතුළත් වීමේ අංකය:">Email / ID / Admission No:</label>
           <input autocomplete="email" type="text" id="login_identifier" name="identifier" required />
         </div>
         <div class="form-group">
-          <label for="login_passcode" data-en="Issued Passcode / Password:" data-si="නිකුත් කළ මුරපදය / මුරපදය:">Issued Passcode / Password:</label>
+          <label for="login_passcode" data-en="Issued Passcode / Password:" data-si="නිකුත් කළ මුරපදය / මුරපදය:">Issued
+            Passcode / Password:</label>
           <input autocomplete="new-password" type="password" id="login_passcode" name="passcode" required />
         </div>
         <div class="form-group">
-        <button class="button" type="submit" data-en="Login" data-si="පිවිසෙන්න">Login</button>
-          <center><button class="discard" type="button" data-en="Discard" data-si="අවලංගු කරන්න" onclick="goBack()">Discard</button></center>
+          <button class="button" type="submit" data-en="Login" data-si="පිවිසෙන්න">Login</button>
+          <center><button class="discard" type="button" data-en="Discard" data-si="අවලංගු කරන්න"
+              onclick="goBack()">Discard</button></center>
         </div>
         <div>
-          <center><p style="color: #4d4d4d; font-size: x-small;">Powered by Media Unit of <b>Wp/Hr/Polegoda M. V.</b></p></center>
+          <center>
+            <p style="color: #4d4d4d; font-size: x-small;">Powered by Media Unit of <b>Wp/Hr/Polegoda M. V.</b></p>
+          </center>
         </div>
       </form>
     </div>
 
     <!-- Register Form -->
-    <div id="signupForm" class="auth-form">
+    <div id="register_form" class="auth-form">
       <h2 data-en="Register" data-si="ලියාපදිංචි වන්න">Register</h2>
-      <form id="register_form" onsubmit="return handleSignUp(event)">
+      <form id="signupForm" onsubmit="return handleSignUp(event)">
         <div class="form-group">
           <label for="user_type" data-en="Registering as:" data-si="ලියාපදිංචි වන්නේ:">Registering as:</label>
           <select id="user_type" name="user_type" required>
-            <option value="" data-en="-- Select User Type --" data-si="-- පරිශීලක වර්ගය තෝරන්න --">-- Select User Type --</option>
+            <option value="" data-en="-- Select User Type --" data-si="-- පරිශීලක වර්ගය තෝරන්න --">-- Select User Type
+              --</option>
             <option value="teacher" data-en="Teacher" data-si="ගුරුතුමා / ගුරුතුමිය">Teacher</option>
             <option value="student" data-en="Student" data-si="ශිෂ්‍යයා / ශිෂ්‍යාව">Student</option>
             <option value="parent" data-en="Parent" data-si="දෙමාපියන්">Parent</option>
@@ -489,8 +532,10 @@
         </div>
         <div class="form-group common-field">
           <label for="reg_phone" data-en="Phone No:" data-si="දුරකථන අංකය:">Phone No:</label>
-          <input autocomplete="tel-national" type="tel" id="reg_phone" name="phone_no" pattern="[0-9]{10}" placeholder="e.g., 0712345678" />
-          <small data-en="Format: 10 digits (e.g., 0712345678)" data-si="ආකෘතිය: ඉලක්කම් 10 (උදා: 0712345678)">Format: 10 digits (e.g., 0712345678)</small>
+          <input autocomplete="tel-national" type="tel" id="reg_phone" name="phone_no" pattern="[0-9]{10}"
+            placeholder="e.g., 0712345678" />
+          <small data-en="Format: 10 digits (e.g., 0712345678)" data-si="ආකෘතිය: ඉලක්කම් 10 (උදා: 0712345678)">Format:
+            10 digits (e.g., 0712345678)</small>
         </div>
 
         <!-- Teacher fields -->
@@ -501,11 +546,12 @@
         <div class="form-group teacher-fields type-dependent">
           <label for="teacher_id" data-en="Teacher ID:" data-si="ගුරුතුමා / ගුරුතුමියගේ හැඳුනුම්පත:">Teacher ID:</label>
           <input autocomplete="username" type="text" id="teacher_id" name="id" />
-          </div>
+        </div>
         <div class="form-group teacher-fields type-dependent">
           <label for="teacher_passcode" data-en="Issued Passcode:" data-si="නිකුත් කළ මුරපදය:">Issued Passcode:</label>
           <input autocomplete="new-password" type="password" id="teacher_passcode" name="passcode" />
-          <small data-en="Enter the passcode issued by the school." data-si="පාසලෙන් නිකුත් කළ මුරපදය ඇතුළත් කරන්න.">Enter the passcode issued by the school.</small>
+          <small data-en="Enter the passcode issued by the school."
+            data-si="පාසලෙන් නිකුත් කළ මුරපදය ඇතුළත් කරන්න.">Enter the passcode issued by the school.</small>
         </div>
 
         <!-- Admin fields -->
@@ -520,13 +566,16 @@
         <div class="form-group admin-fields type-dependent">
           <label for="admin_code" data-en="Admin Code:" data-si="පරිපාලක කේතය:">Admin Code:</label>
           <input autocomplete="new-password" type="password" id="admin_code" name="admin_code" />
-          <small data-en="Enter the unique Admin Code provided by the school." data-si="පාසලෙන් ලබා දුන් අනන්‍ය පරිපාලක කේතය ඇතුළත් කරන්න.">Enter the unique Admin Code provided by the school.</small>
+          <small data-en="Enter the unique Admin Code provided by the school."
+            data-si="පාසලෙන් ලබා දුන් අනන්‍ය පරිපාලක කේතය ඇතුළත් කරන්න.">Enter the unique Admin Code provided by the
+            school.</small>
         </div>
         <div class="form-group admin-fields type-dependent">
           <label for="admin_passcode" data-en="Issued Passcode:" data-si="නිකුත් කළ මුරපදය:">Issued Passcode:</label>
           <input autocomplete="
           new-password" type="password" id="admin_passcode" name="passcode" />
-          <small data-en="Enter the passcode issued by the school." data-si="පාසලෙන් නිකුත් කළ මුරපදය ඇතුළත් කරන්න.">Enter the passcode issued by the school.</small>
+          <small data-en="Enter the passcode issued by the school."
+            data-si="පාසලෙන් නිකුත් කළ මුරපදය ඇතුළත් කරන්න.">Enter the passcode issued by the school.</small>
         </div>
 
         <!-- Student fields -->
@@ -548,10 +597,12 @@
           <div class="password-strength" id="student_password_strength">
             <div class="password-strength-bar"></div>
           </div>
-          <small data-en="Choose a strong password (minimum 6 characters)." data-si="ශක්තිමත් මුරපදයක් තෝරන්න (අවම අක්ෂර 6).">Choose a strong password (minimum 6 characters).</small>
+          <small data-en="Choose a strong password (minimum 6 characters)."
+            data-si="ශක්තිමත් මුරපදයක් තෝරන්න (අවම අක්ෂර 6).">Choose a strong password (minimum 6 characters).</small>
         </div>
         <div class="form-group student-fields type-dependent">
-          <label for="student_confirm_password" data-en="Confirm Password:" data-si="මුරපදය තහවුරු කරන්න:">Confirm Password:</label>
+          <label for="student_confirm_password" data-en="Confirm Password:" data-si="මුරපදය තහවුරු කරන්න:">Confirm
+            Password:</label>
           <input autocomplete="new-password" type="password" id="student_confirm_password" name="confirm_password" />
           <small id="student_password_match" style="color: #777;"></small>
         </div>
@@ -562,171 +613,181 @@
           <input autocomplete="name" type="text" id="parent_student_name" name="child_name" />
         </div>
         <div class="form-group parent-fields type-dependent">
-          <label for="parent_admission_no" data-en="Child's Admission No:" data-si="දරුවාගේ ඇතුළත් වීමේ අංකය:">Child's Admission No:</label>
+          <label for="parent_admission_no" data-en="Child's Admission No:" data-si="දරුවාගේ ඇතුළත් වීමේ අංකය:">Child's
+            Admission No:</label>
           <input autocomplete="username" type="text" id="parent_admission_no" name="admission_no" />
-          </div>
+        </div>
         <div class="form-group parent-fields type-dependent">
           <label for="parent_password" data-en="Create Password:" data-si="මුරපදයක් සාදන්න:">Create Password:</label>
           <input autocomplete="new-password" type="password" id="parent_password" name="password" minlength="6" />
           <div class="password-strength" id="parent_password_strength">
             <div class="password-strength-bar"></div>
           </div>
-          <small data-en="Choose a strong password (minimum 6 characters)." data-si="ශක්තිමත් මුරපදයක් තෝරන්න (අවම අක්ෂර 6).">Choose a strong password (minimum 6 characters).</small>
+          <small data-en="Choose a strong password (minimum 6 characters)."
+            data-si="ශක්තිමත් මුරපදයක් තෝරන්න (අවම අක්ෂර 6).">Choose a strong password (minimum 6 characters).</small>
         </div>
         <div class="form-group parent-fields type-dependent">
-          <label for="parent_confirm_password" data-en="Confirm Password:" data-si="මුරපදය තහවුරු කරන්න:">Confirm Password:</label>
+          <label for="parent_confirm_password" data-en="Confirm Password:" data-si="මුරපදය තහවුරු කරන්න:">Confirm
+            Password:</label>
           <input autocomplete="new-password" type="password" id="parent_confirm_password" name="confirm_password" />
           <small id="parent_password_match" style="color: #777;"></small>
         </div>
 
         <div class="form-group">
           <button class="button" type="submit" data-en="Register" data-si="ලියාපදිංචි වන්න">Register</button>
-          <center><button class="discard" type="button" data-en="Discard" data-si="අවලංගු කරන්න" onclick="goBack()">Discard</button></center>
-        </div><div>
-          <center><p style="color: #4d4d4d; font-size: x-small;">Powered by Media Unit of <b>Wp/Hr/Polegoda M. V.</b></p></center>
+          <center><button class="discard" type="button" data-en="Discard" data-si="අවලංගු කරන්න"
+              onclick="goBack()">Discard</button></center>
+        </div>
+        <div>
+          <center>
+            <p style="color: #4d4d4d; font-size: x-small;">Powered by Media Unit of <b>Wp/Hr/Polegoda M. V.</b></p>
+          </center>
         </div>
       </form>
     </div>
   </div>
 
-<script>
-  // Show/hide forms
-  const loginForm = document.getElementById('loginForm');
-  const signupForm = document.getElementById('signupForm');
-  const showLoginBtn = document.getElementById('showLogin');
-  const showRegisterBtn = document.getElementById('showRegister');
+  <script>
+    // Show/hide forms
+    const loginForm = document.getElementById('loginForm');
+    const signupForm = document.getElementById('signupForm');
+    const showLoginBtn = document.getElementById('showLogin');
+    const showRegisterBtn = document.getElementById('showRegister');
 
-  showLoginBtn.onclick = () => {
-    loginForm.classList.add('active');
-    signupForm.classList.remove('active');
-    showLoginBtn.classList.add('active');
-    showRegisterBtn.classList.remove('active');
-  };
-  showRegisterBtn.onclick = () => {
-    signupForm.classList.add('active');
-    loginForm.classList.remove('active');
-    showRegisterBtn.classList.add('active');
-    showLoginBtn.classList.remove('active');
-  };
+    showLoginBtn.onclick = () => {
+      loginForm.classList.add('active');
+      signupForm.classList.remove('active');
+      showLoginBtn.classList.add('active');
+      showRegisterBtn.classList.remove('active');
+    };
+    showRegisterBtn.onclick = () => {
+      signupForm.classList.add('active');
+      loginForm.classList.remove('active');
+      showRegisterBtn.classList.add('active');
+      showLoginBtn.classList.remove('active');
+    };
 
-  // Show/hide dependent fields by user type
-  const userTypeSelect = document.getElementById('user_type');
-  const allDependentFields = document.querySelectorAll('.type-dependent');
+    // Show/hide dependent fields by user type
+    const userTypeSelect = document.getElementById('user_type');
+    const allDependentFields = document.querySelectorAll('.type-dependent');
 
-  userTypeSelect.addEventListener('change', () => {
-    const val = userTypeSelect.value;
-    allDependentFields.forEach(el => {
-      if (el.classList.contains(val + '-fields')) {el.style.display = 'block';
-      } else {
-        el.style.display = 'none';
-      }
+    userTypeSelect.addEventListener('change', () => {
+      const val = userTypeSelect.value;
+      allDependentFields.forEach(el => {
+        if (el.classList.contains(val + '-fields')) {
+          el.style.display = 'block';
+        } else {
+          el.style.display = 'none';
+        }
+      });
     });
-  });
 
-  // Password match checking for Student and Parent
-  function checkPasswordMatch(passwordId, confirmId, msgId) {
-    const password = document.getElementById(passwordId);
-    const confirm = document.getElementById(confirmId);
-    const msg = document.getElementById(msgId);
+    // Password match checking for Student and Parent
+    function checkPasswordMatch(passwordId, confirmId, msgId) {
+      const password = document.getElementById(passwordId);
+      const confirm = document.getElementById(confirmId);
+      const msg = document.getElementById(msgId);
 
-    function validate() {
-      if(confirm.value === '') {
-        msg.textContent = '';
-        return;
+      function validate() {
+        if (confirm.value === '') {
+          msg.textContent = '';
+          return;
+        }
+        if (password.value === confirm.value) {
+          msg.style.color = 'green';
+          msg.textContent = 'Passwords match';
+        } else {
+          msg.style.color = 'red';
+          msg.textContent = 'Passwords do not match';
+        }
       }
-      if (password.value === confirm.value) {
-        msg.style.color = 'green';
-        msg.textContent = 'Passwords match';
-      } else {
-        msg.style.color = 'red';
-        msg.textContent = 'Passwords do not match';
-      }
+      password.addEventListener('input', validate);
+      confirm.addEventListener('input', validate);
     }
-    password.addEventListener('input', validate);
-    confirm.addEventListener('input', validate);
-  }
-  checkPasswordMatch('student_password', 'student_confirm_password', 'student_password_match');
-  checkPasswordMatch('parent_password', 'parent_confirm_password', 'parent_password_match');
+    checkPasswordMatch('student_password', 'student_confirm_password', 'student_password_match');
+    checkPasswordMatch('parent_password', 'parent_confirm_password', 'parent_password_match');
 
-  // Password strength bar (simple)
-  function passwordStrengthBar(passwordId, barSelector) {
-    const passwordInput = document.getElementById(passwordId);
-    const bar = document.querySelector(barSelector);
-    passwordInput.addEventListener('input', () => {const val = passwordInput.value;
-      let strength = 0;
-      if(val.length >= 6) strength += 1;
-      if(/[A-Z]/.test(val)) strength += 1;
-      if(/[0-9]/.test(val)) strength += 1;
-      if(/[\W]/.test(val)) strength += 1;
+    // Password strength bar (simple)
+    function passwordStrengthBar(passwordId, barSelector) {
+      const passwordInput = document.getElementById(passwordId);
+      const bar = document.querySelector(barSelector);
+      passwordInput.addEventListener('input', () => {
+        const val = passwordInput.value;
+        let strength = 0;
+        if (val.length >= 6) strength += 1;
+        if (/[A-Z]/.test(val)) strength += 1;
+        if (/[0-9]/.test(val)) strength += 1;
+        if (/[\W]/.test(val)) strength += 1;
 
-      const widthPercent = (strength / 4) * 100;
-      bar.style.width = widthPercent + '%';
-      bar.style.backgroundColor = ['red', 'orange', 'yellow', 'green'][strength - 1] || 'transparent';
-    });
-  }
-  passwordStrengthBar('student_password', '#student_password_strength .password-strength-bar');
-  passwordStrengthBar('parent_password', '#parent_password_strength .password-strength-bar');
-
-  // Language toggle
-  const langBtns = document.querySelectorAll('.lang-btn');
-  langBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      langBtns.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      setLanguage(btn.dataset.lang);
-    });
-  });
-
-  function setLanguage(lang) {
-    document.querySelectorAll('[data-en]').forEach(el => {
-      if (lang === 'si') {
-        el.textContent = el.dataset.si;
-        if(el.placeholder) el.placeholder = el.dataset.si;
-      } else {
-        el.textContent = el.dataset.en;
-        if(el.placeholder) el.placeholder = el.dataset.en;
-      }
-    });
-  }setLanguage('en'); // default
-
-  // Form submit handlers (mockup, replace with your Firebase or backend code)
-  function handleLogin(e) {
-    e.preventDefault();
-    alert('Login submitted');
-    // TODO: Your Firebase login logic here
-  }
-  function handleSignUp(e) {
-    e.preventDefault();
-    // Basic password confirm validation for Student and Parent before submit
-    const userType = userTypeSelect.value;
-    if(userType === 'student') {
-      const pass = document.getElementById('student_password').value;
-      const confirm = document.getElementById('student_confirm_password').value;
-      if(pass !== confirm) {
-        alert('Student passwords do not match!');
-        return false;
-      }
+        const widthPercent = (strength / 4) * 100;
+        bar.style.width = widthPercent + '%';
+        bar.style.backgroundColor = ['red', 'orange', 'yellow', 'green'][strength - 1] || 'transparent';
+      });
     }
-    if(userType === 'parent') {
-      const pass = document.getElementById('parent_password').value;
-      const confirm = document.getElementById('parent_confirm_password').value;
-      if(pass !== confirm) {
-        alert('Parent passwords do not match!');
-        return false;
-      }
-    }
-    alert('Register submitted');
-    // TODO: Your Firebase signup logic here
-  }
+    passwordStrengthBar('student_password', '#student_password_strength .password-strength-bar');
+    passwordStrengthBar('parent_password', '#parent_password_strength .password-strength-bar');
 
-  // Go back function
-  function goBack() {
-    // Clear forms and switch to login
-    document.getElementById('register_form').reset();
-    document.getElementById('login_form').reset();showLoginBtn.click();
-  }
-</script>
-<script src="./auth.js"></script>
+    // Language toggle
+    const langBtns = document.querySelectorAll('.lang-btn');
+    langBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        langBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        setLanguage(btn.dataset.lang);
+      });
+    });
+
+    function setLanguage(lang) {
+      document.querySelectorAll('[data-en]').forEach(el => {
+        if (lang === 'si') {
+          el.textContent = el.dataset.si;
+          if (el.placeholder) el.placeholder = el.dataset.si;
+        } else {
+          el.textContent = el.dataset.en;
+          if (el.placeholder) el.placeholder = el.dataset.en;
+        }
+      });
+    } setLanguage('en'); // default
+
+    // Form submit handlers (mockup, replace with your Firebase or backend code)
+    function handleLogin(e) {
+      e.preventDefault();
+      alert('Login submitted');
+      // TODO: Your Firebase login logic here
+    }
+    function handleSignUp(e) {
+      e.preventDefault();
+      // Basic password confirm validation for Student and Parent before submit
+      const userType = userTypeSelect.value;
+      if (userType === 'student') {
+        const pass = document.getElementById('student_password').value;
+        const confirm = document.getElementById('student_confirm_password').value;
+        if (pass !== confirm) {
+          alert('Student passwords do not match!');
+          return false;
+        }
+      }
+      if (userType === 'parent') {
+        const pass = document.getElementById('parent_password').value;
+        const confirm = document.getElementById('parent_confirm_password').value;
+        if (pass !== confirm) {
+          alert('Parent passwords do not match!');
+          return false;
+        }
+      }
+      alert('Register submitted');
+      // TODO: Your Firebase signup logic here
+    }
+
+    // Go back function
+    function goBack() {
+      // Clear forms and switch to login
+      document.getElementById('register_form').reset();
+      document.getElementById('login_form').reset(); showLoginBtn.click();
+    }
+  </script>
+  <script src="./auth.js"></script>
 
 </body>
+
 </html>
