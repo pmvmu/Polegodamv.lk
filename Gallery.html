@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery | WP/ Hr/ Polegoda M. V.</title>
+    <meta name="theme-color" content="#610030">
+    <link rel="icon" type="image/png" href="./logo.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta property="og:title" content="WP/ Hr/ Polegoda M. V.">
+    <meta property="og:description" content="Vidya Dadathi Vinayan">
+    <meta property="og:image" content="./preview.jpg">
+    <meta property="og:url" content="https://pmvmu.github.io/Polegodamv.lk/">
+    <meta property="og:type" content="website">
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-X971R64FQV"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-X971R64FQV');
+    </script>
+    <style>
+        :root {
+            /* Day Theme (Light Mode) */
+            --primary-color: #610030;
+            --secondary-color: #ffd700;
+            --accent-color: #e50914;
+            --text-color: #2c2c2c;
+            --text-secondary: #555555;
+            --light-bg: #ffffff;
+            --card-bg: #f9f9f9;
+            --white: #ffffff;
+            --gray: #666666;
+            --light-gray: #e5e5e5;
+            --border-color: #e0e0e0;
+            --shadow-light: rgba(0, 0, 0, 0.1);
+            --shadow-medium: rgba(0, 0, 0, 0.15);
+            --shadow-heavy: rgba(0, 0, 0, 0.25);
+            --transition: all 0.3s ease;
+            --hero-bg: radial-gradient(#610030, transparent);
+            --footer-text-white: #ffffff;
+            --button-colorborder: #610030;
+            --selection-color: #ffffff;
+            --selection-bg: #610030;
+            --popup-bg: rgba(255, 255, 255, 0.95);
+            --log-gradient: linear-gradient(135deg, #610030, #3a011d);
+            --overlay-gradient: linear-gradient(90deg, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.6) 100%);
+            --nav-text: #ffffff;
+            --nav-hover: #ffd700;
+            --sec-nav-color: #ffffff;
+            --sec-nav-bg: #610030;
+            --sec-nav-color-hover: #d1d1d1;
+            --sec-nav-bg-hover: #610030c4;
+            --marquee-bg: linear-gradient(to right, #61003000 0%, #610030, #61003000);
+            --marquee-text: #ffffff;
+            --footer-special-h3: #ffd700;
+            --footer-special-li: #ffffff;
+            --footer-special-li-hover: #ffd700;
+            --copy: #747474;
+            --hover-transform: translateY(-2px);
+            --hover-shadow: 0 8px 25px rgba(97, 0, 48, 0.15);
+            --glass-bg: rgba(255, 255, 255, 0.25);
+            --glass-border: rgba(255, 255, 255, 0.18);
+            --backdrop-blur: blur(15px);
+            --model: #ffffff;
+            --modal-bg: #ffffff8f;
+        }
+
+        /* Dark Theme */
+        [data-theme="dark"] {
+            --primary-color: #ffd700;
+            --secondary-color: #610030;
+            --accent-color: #ff6b6b;
+            --text-color: #e8e8e8;
+            --text-secondary: #b8b8b8;
+            --light-bg: #252525;
+            --card-bg: #1f1f1f;
+            --white: #1d1d1d;
+            --gray: #888888;
+            --light-gray: #333333;
+            --border-color: #2a2a2a;
+            --shadow-light: rgba(255, 255, 255, 0.05);
+            --shadow-medium: rgba(255, 255, 255, 0.1);
+            --shadow-heavy: rgba(255, 255, 255, 0.15);
+            --footer-text-white: #e8e8e8;
+            --button-colorborder: #ffd700;
+            --selection-color: #121212;
+            --selection-bg: #ffd700;
+            --popup-bg: rgba(18, 18, 18, 0.95);
+            --log-gradient: linear-gradient(135deg, #1a1a1a, #000000);
+            --overlay-gradient: linear-gradient(90deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+            --nav-text: #e8e8e8;
+            --nav-hover: #ffd700;
+            --marquee-text: #ffd700;
+            --footer-special-h3: #810041;
+            --hover-shadow: 0 8px 25px rgba(255, 215, 0, 0.2);
+            --glass-bg: rgba(18, 18, 18, 0.4);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --backdrop-blur: blur(20px);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            min-height: 100vh;
+        }
+
+        .background {
+            background-image: url("./historybg.jpg");
+            background-position: center top;
+            background-repeat: no-repeat;
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            z-index: -3;
+        }
+
+        .background-filter {
+            background-color: var(--glass-bg);
+            backdrop-filter: var(--backdrop-blur);
+            min-height: 100vh;
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            z-index: -2;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            color: var(--primary-color);
+            margin-bottom: 40px;
+            padding: 40px 20px;
+            background: var(--glass-bg);
+            backdrop-filter: var(--backdrop-blur);
+            border-radius: 20px;;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            border: solid 4px var(--glass-border);
+        }
+
+        .backbtn {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+        }
+
+            .backbtn button {
+            background-color: var(--glass-bg);
+            color: var(--primary-color);
+            border: 2px solid var(--button-colorborder);
+            padding: 8px 15px;
+            cursor: pointer;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+
+        .header h1 {
+            color: var(--primary-color);
+            font-size: 3rem;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .album-card {
+            background: var(--glass-bg);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow-heavy);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            cursor: default;
+            border: solid 2px var(--glass-border);
+        }
+
+        .album-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: var(--hover-shadow);
+        }
+
+        .album-cover {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .album-card:hover .album-cover {
+            transform: scale(1.05);
+        }
+
+        .album-info {
+            padding: 25px;
+            text-align: center;
+        }
+
+        .album-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+            font-weight: bolder;
+        }
+
+        .album-count {
+            color: var(--text-color);
+            font-size: 0.6rem;
+            margin: 20px 0;
+            text-align: right;
+        }
+
+        .album-description {
+            color: var(--text-color);
+            font-size: 0.95rem;
+            line-height: 1.5;
+            text-align: justify;
+            border-left: solid 4px var(--primary-color);
+            padding: 10px;
+        }
+
+        .album-btn {
+            padding: 5px 10px;
+            background-color: var(--primary-color);
+            border: solid 2px var(--button-colorborder);
+            color: var(--white);
+            cursor: pointer;
+            border-radius: 10px;
+            margin-top: 20px;
+            text-align: center;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .album-btn:hover {
+            border: solid 2px var(--button-colorborder);
+            color: var(--button-colorborder);
+            background-color: var(--glass-bg);
+            box-shadow: var(--hover-shadow);
+            transform: translateY(-5px);
+        }
+
+        .contact-info {
+            background: var(--glass-bg);
+            backdrop-filter: var(--backdrop-blur);
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            margin-bottom: 30px;
+            border: 3px solid var(--glass-border);
+        }
+
+        .contact-info h3 {
+            color: var(--text-color);
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+
+        .contact-details {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        .contact-item {
+            color: var(--text-color);
+            text-decoration: none;
+            padding: 10px 20px;
+            background: var(--glass-bg);
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            border: 2px solid var(--text-color);
+            font-family: Arial, Helvetica, sans-serif;
+            font-style: normal;
+        }
+
+        .contact-item:hover {
+            color: var(--primary-color);
+            transform: translateY(-2px);
+            border: 2px solid var(--primary-color);
+        }
+
+        .footer {
+            text-align: center;
+            color: var(--text-color);
+            padding: 20px;
+            font-size: 0.9rem;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--modal-bg);
+            backdrop-filter: var(--backdrop-blur);
+        }
+
+        .modal-content {
+            position: relative;
+            margin: 2% auto;
+            width: 95%;
+            max-width: 1200px;
+            max-height: 90vh;
+            overflow-y: auto;
+            background: var(--model);
+            border-radius: 20px;
+            box-shadow: var(--shadow-heavy);
+        }
+
+        .modal-header {
+            background: var(--log-gradient);
+            color: var(--white);
+            padding: 30px;
+            text-align: center;
+            border-radius: 20px 20px 0 0;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            font-size: 2rem;
+            font-weight: bold;
+            cursor: pointer;
+            background: transparent;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .close:hover {
+            transform: rotate(90deg);
+        }
+
+        .modal-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 30px;
+        }
+
+        .modal-image-container {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow-medium);
+            transition: transform 0.3s ease;
+        }
+
+        .modal-image-container:hover {
+            transform: scale(1.05);
+        }
+
+        .modal-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            cursor: pointer;
+        }
+
+        .image-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 20px 15px 15px;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .modal-image-container:hover .image-overlay {
+            transform: translateY(0);
+        }
+
+        /* Lightbox for individual images */
+        .lightbox {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--modal-bg);
+            backdrop-filter: var(--backdrop-blur);
+        }
+
+        .lightbox-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            max-width: 100vw;
+            max-height: 100vh;
+        }
+
+        .lightbox-image {
+            max-width: 100%;
+            max-height: 100%;
+            box-shadow: var(--shadow-medium);
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: -50px;
+            right: 0;
+            font-size: 2rem;
+            color: var(--text-color);
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .contact-details {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .modal-content {
+                width: 98%;
+                margin: 1% auto;
+            }
+            
+            .modal-gallery {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                gap: 15px;
+                padding: 20px;
+            }
+            
+            .album-info {
+                padding: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .gallery-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .modal-gallery {
+                grid-template-columns: 1fr;
+            }
+            
+            .header {
+                padding: 30px 15px;
+            }
+        }
+
+        /* Loading animation */
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: #fff;
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="background"></div>
+    <div class="background-filter"></div>
+
+    <div class="container">
+        <div class="header">
+            <div class="backbtn">
+                <button onclick="window.close()"><i class="fa fa-home"></i> Home</button>
+            </div>
+            <h1>School Gallery</h1>
+            <p>Capturing memories and celebrating our journey together</p>
+        </div>
+
+        <div class="gallery-grid" id="galleryGrid">
+            <!-- Albums will be populated here -->
+        </div>
+
+        <div class="contact-info">
+            <h3>Contact Us</h3>
+            <div class="contact-details">
+                <a href="pmvmediaunit@gmail.com" class="contact-item">
+                    <i class="fa far fas fa-envelope"></i> pmvmediaunit@gmail.com
+                </a>
+                <a href="tel:+94342243063" class="contact-item">
+                    <i class="fa fas fas fa-phone-square"></i> +94 34 224 3063
+                </a>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>&copy; 2025 WP/Hr/Polegoda M.V. - All rights reserved. | <strong>*Photos may not be used without permission.</strong></p>
+        </div>
+    </div>
+
+    <!-- Modal for album view -->
+    <div id="albumModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="close">&times;</span>
+                <h2 id="modalTitle">Album Title</h2>
+                <p id="modalDescription">Album Description</p>
+                <p id="modalHeld"></p>
+
+            </div>
+            <div class="modal-gallery" id="modalGallery">
+                <!-- Images will be populated here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Lightbox for individual images -->
+    <div id="lightbox" class="lightbox">
+        <div class="lightbox-content">
+            <span class="lightbox-close">&times;</span>
+            <img class="lightbox-image" id="lightboxImage" src="" alt="">
+        </div>
+    </div>
+
+    <script src="./Gallery.js"></script>
+</body>
+</html>
