@@ -87,7 +87,7 @@ function applyEnglishTranslations() {
   document.getElementById('anthem-listen').textContent = "Listen to Our School Anthem";
   document.getElementById('downloadLyricsBtn').innerHTML = '<i class="fa fas fa-download"></i>&nbsp;&nbsp;Download Lyrics (PDF)';
   document.getElementById('downloadAudioBtn').innerHTML = '<i class="fa fas fa-download"></i>&nbsp;&nbsp;Download Audio (MP3)';
-  
+  // document.getElementById('downloadMusicBtn').innerHTML = '<i class="fa fas fa-download"></i>&nbsp;&nbsp;Download Karaoke (MP3)';  
   // Statistics Section
   document.getElementById('stats-title').textContent = "School Statistics";
   document.getElementById('stats-students').textContent = "Total Students";
@@ -351,7 +351,7 @@ function applySinhalaTranslations() {
   document.getElementById('header-name').textContent = "බප/ හො/ පොලේගොඩ ම.වි.";
   document.getElementById('header-year').textContent = "1926 දී ආරම්භ කරන ලදී";
   document.getElementById('header-motto').textContent = '"විද්‍යා දදාති විනයං"';
-  document.getElementById('header-former').innerHTML =පෙර හැඳින්වූ නම: <strong id="header-former-text">දකුණු මහගම සුචරිතවර්ධන ස්වභාෂා මිශ්‍ර පාසල.</strong>';
+  document.getElementById('header-former').innerHTML = 'පෙර හැඳින්වූ නම: <strong id="header-former-text">මහගම දකුණු සුචරිතවර්ධන ස්වභාෂා මිශ්‍ර පාසල.</strong>';
 
   // School Symbols Section
   document.getElementById('symbols-title').textContent = "පාසල් සංකේත";
@@ -376,6 +376,7 @@ function applySinhalaTranslations() {
   document.getElementById('anthem-listen').textContent = "අපගේ පාසල් ගීය අසන්න";
   document.getElementById('downloadLyricsBtn').innerHTML = '<i class="fa fas fa-download"></i>&nbsp;&nbsp;ගීත පද බාගතකරන්න (PDF)';
   document.getElementById('downloadAudioBtn').innerHTML = '<i class="fa fas fa-download"></i>&nbsp;&nbsp;ගීතය බාගතකරන්න (MP3)';
+  // document.getElementById('downloadMusicBtn').innerHTML = '<i class="fa fas fa-download"></i>&nbsp;&nbsp;කැරෝකේ ගීතය බාගතකරන්න (MP3)';
 
   // Statistics Section
   document.getElementById('stats-title').textContent = "පාසල් සංඛ්‍යාලේඛන";
@@ -876,5 +877,4 @@ document.addEventListener('DOMContentLoaded', function() {
   
   console.log('About page translator loaded successfully');
   console.log('Keyboard shortcuts: Alt+L (toggle menu), Alt+E (English), Alt+S (Sinhala)');
-
 });
