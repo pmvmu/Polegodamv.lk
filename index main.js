@@ -116,7 +116,7 @@ function optMenu() {
 function toggleLanguageMenu() {
   const languageMenu = document.getElementById("language-menu");
   const languageContainer = document.querySelector(".language-dropdown-container");
-  
+
   languageMenu.classList.toggle("show");
   languageContainer.classList.toggle("active");
 }
@@ -127,7 +127,7 @@ function switchLanguage(lang) {
   document.querySelectorAll('.language-option').forEach(option => {
     option.classList.remove('active');
   });
-  
+
   // Add active class to selected option
   if (lang === 'en') {
     document.querySelector('.language-option:first-child').classList.add('active');
@@ -139,26 +139,26 @@ function switchLanguage(lang) {
     // window.location.href = './index-si.html'; // if you have separate Sinhala page
     console.log('Switched to Sinhala');
   }
-  
+
   // Close the dropdown
   toggleLanguageMenu();
 }
 
 // Close dropdown when clicking outside
-document.addEventListener('click', function(event) {
+document.addEventListener('click', function (event) {
   const languageContainer = document.querySelector('.language-dropdown-container');
   const languageMenu = document.getElementById('language-menu');
-  
+
   if (!languageContainer.contains(event.target)) {
     languageMenu.classList.remove('show');
     languageContainer.classList.remove('active');
   }
 });
 
-document.addEventListener('click', function(event) {
+document.addEventListener('click', function (event) {
   const languageContainer = document.querySelector('.more-container');
   const languageMenu = document.getElementById('opt-menu');
-  
+
   if (!languageContainer.contains(event.target)) {
     languageMenu.classList.remove('show');
     languageContainer.classList.remove('active');
@@ -170,7 +170,7 @@ document.addEventListener('click', function(event) {
 function setInitialLanguage() {
   // Check current page or stored preference
   const currentPath = window.location.pathname;
-  
+
   if (currentPath.includes('index.html') || currentPath.endsWith('/')) {
     document.querySelector('.language-option:first-child').classList.add('active');
   } else if (currentPath.includes('si') || currentPath.includes('sinhala')) {
@@ -185,9 +185,9 @@ document.addEventListener('DOMContentLoaded', setInitialLanguage);
 
 // # Scroll Stop
 document.querySelectorAll('.prevent-hash').forEach(btn => {
-  btn.addEventListener('click', function(e) {
+  btn.addEventListener('click', function (e) {
     if (this.getAttribute('href')
-    === '#') {
+      === '#') {
       e.preventDefault();
     }
   });
@@ -214,7 +214,7 @@ const toggleTheme = () => {
 
 // // Scroll to top functionality
 //         const scrollToTopBtn = document.getElementById('scrollToTop');
-        
+
 //         window.addEventListener('scroll', () => {
 //             if (window.pageYOffset > 300) {
 //                 scrollToTopBtn.classList.add('visible');
@@ -222,7 +222,7 @@ const toggleTheme = () => {
 //                 scrollToTopBtn.classList.remove('visible');
 //             }
 //         });
-        
+
 //         scrollToTopBtn.addEventListener('click', () => {
 //             window.scrollTo({
 //                 top: 0,
@@ -242,7 +242,7 @@ const toggleTheme = () => {
 //             item.addEventListener('mouseenter', () => {
 //                 item.style.transform = 'translateX(10px) scale(1.02)';
 //             });
-            
+
 //             item.addEventListener('mouseleave', () => {
 //                 item.style.transform = 'translateX(5px) scale(1)';
 //             });
@@ -299,4 +299,69 @@ satBtn.addEventListener("click", () => {
     body.classList.remove("saturated");
     body.classList.add("desaturated");
   }
+});
+
+
+// Popup Message
+function LoginPopup() {
+  this.overlay = document.getElementById('popupOverlay');
+  this.showBtn = document.getElementById('showPopupBtn');
+  this.cancelBtn = document.getElementById('cancelBtn');
+  this.loginBtn = document.getElementById('loginBtn');
+
+  this.initEventListeners();
+}
+
+LoginPopup.prototype.initEventListeners = function () {
+  var self = this;
+
+  // Show popup
+  this.showBtn.addEventListener('click', function () {
+    self.showPopup();
+  });
+
+  // Hide popup on cancel
+  this.cancelBtn.addEventListener('click', function () {
+    self.hidePopup();
+  });
+
+  // Login button action
+  this.loginBtn.addEventListener('click', function () {
+    self.handleLogin();
+  });
+
+  // Hide popup when clicking outside
+  this.overlay.addEventListener('click', function (e) {
+    if (e.target === self.overlay) {
+      self.hidePopup();
+    }
+  });
+
+  // Hide popup on Escape key
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && self.overlay.classList.contains('active')) {
+      self.hidePopup();
+    }
+  });
+};
+
+LoginPopup.prototype.showPopup = function () {
+  this.overlay.classList.add('active');
+  document.body.style.overflow = 'hidden';
+};
+
+LoginPopup.prototype.hidePopup = function () {
+  this.overlay.classList.remove('active');
+  document.body.style.overflow = '';
+};
+
+LoginPopup.prototype.handleLogin = function () {
+  console.log('Login button clicked');
+  window.open('./auth.html', '_blank');
+  this.hidePopup();
+};
+
+// Initialize the popup when DOM is loaded
+document.addEventListener('DOMContentLoaded', function () {
+  new LoginPopup();
 });

@@ -12,6 +12,9 @@
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Sinhala:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Yaldevi:wght@200..700&display=swap" rel="stylesheet">
   <meta name="theme-color" content="#610030">
   <link rel="icon" type="image/png" href="./logo.png">
@@ -53,7 +56,40 @@
     <div id="loading-percentage" class="loading-percentage">0%</div>
     <div class="school-name">WP/ Hr/ Polegoda M. V.</div>
   </div>
-
+  
+  <!-- Update Alert -->
+  <div id="alertBox"  class="alertOverlay">
+      <div class="alertAlert">
+          <span class="alertClosebtn" onclick="closeAlert()">&times;</span>
+          <div class="update">
+              <h3>Update Log</h3>
+              <h1 class="update-title">V - 1.0.1</h1>
+              <ul class="update-detailes">
+                  <li class="detail-section">
+                      <h4>1. Hero Banner</h4>
+                      <ul>
+                          <li><p>The way the Hero Banner is displayed has been changed.</p></li>
+                      </ul>
+                  </li>
+                  <li class="detail-section">
+                      <h4>2. Option Button</h4>
+                      <ul>
+                          <li><p>The user profile button in the options button has been updated and you can go to the login page through it. *But don't use that page as it is still under development.</p></li>
+                      </ul>
+                  </li>
+                  <!-- <li>
+                      <h4>Third</h4>
+                      <ul>
+                          <li><p>update Details</p></li>
+                      </ul>
+                  </li> -->
+              </ul>
+          </div>
+            <div>
+                <p class="up-date">20/Aug/2025</p>
+            </div>
+      </div>
+  </div>
   
   <!-- Main content -->
   <div id="content">
@@ -149,6 +185,8 @@
 
       <!-- end -->
 
+
+
       <!-- More Options -->
       <div class="more-container">
         <div class="more-ico" id="opt-menu">
@@ -170,7 +208,7 @@
             </div>
           </div>
           <div class="icon-wrapper">
-            <a href="#" class="prevent-hash"><i class="fa fa-user"></i></a>
+            <a href="#" class="prevent-hash" id="showPopupBtn"><i class="fa fa-user"></i></a>
             <span class="tooltip-text" id="more-user">User Profile</span>
           </div>
           <div class="icon-wrapper">
@@ -200,6 +238,22 @@
       </div>
     </header>
 
+    <!-- Popup Modal -->
+    <div class="popup-overlay" id="popupOverlay">
+        <div class="popup-window">
+            <div class="popup-icon">
+            </div>
+            
+            <h2 class="popup-title">Please Login First</h2>
+            <p class="popup-message">You need to be logged in to access this feature.</p>
+            
+            <div class="popup-buttons">
+              <button class="popup-btn login-btn" id="loginBtn">Login</button>
+                <button class="popup-btn cancel-btn" id="cancelBtn">Cancel</button>
+            </div>
+        </div>
+    </div>
+    
     <!-- Alert Message -->
     <div class="overlay" id="overlay"></div>
 
@@ -215,6 +269,7 @@
     </div>
 
     <!-- Hero Banner -->
+    <div class="head-content">
     <section class="hero">
       <div class="hero-content">
         <img src="./logo-y.png" alt="School Logo" class="hero-logo">
@@ -224,6 +279,7 @@
     <marquee direction="left" class="maqtxt" id="marquee">
       <div><span id="marquee-text">WP /Hr /Polegoda M. V.</span> &nbsp; &nbsp; &ndash; &nbsp; &nbsp; <span id="marquee-text2">OfficialWebsite.. </span>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span id="marquee-text3">Powerd by :</span> <span id="marquee-text4">Media Unit of Polegoda M. V. (PMVMU)</span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &copy;PMV | PMVMU 2025</div>
     </marquee>
+    </div>
 
     <!-- Mission & Vision -->
     <section class="mission-vision-section" id="mv">
@@ -364,7 +420,7 @@
             <h3 id="event-title-special">Special</h3>
             <div class="slide-container">
               <div class="slider special">
-                <img src="./Events/Event-imgs/Scl post for web-01.jpg" alt="Official Website">
+                <!-- <img src="./Events/Event-imgs/Scl post for web-01.jpg" alt="Official Website"> -->
                 <img src="./Events/Event-imgs/Scl post for Jathrabhimani-01.jpg" alt="Jathrabhimani">
                 <img src="./Events/Event-imgs/Web-eventy-01.jpg" alt="">
               </div>
@@ -373,14 +429,14 @@
           <div class="event-tab">
             <h3 id="event-title-educational">Educational</h3>
             <div class="slider educational">
-              <img src="./Events/Event-imgs/event-img.jpeg">
+              <!-- <img src="./Events/Event-imgs/event-img.jpeg"> -->
               <img src="./Web-eventy-01.jpg">
             </div>
           </div>
           <div class="event-tab">
             <h3 id="event-title-sports">Sports</h3>
             <div class="slider sports">
-              <img src="./Events/Event-imgs/Scl post for Cricket match-01.jpg" alt="Cricket Match">
+              <!-- <img src="./Events/Event-imgs/Scl post for Cricket match-01.jpg" alt="Cricket Match"> -->
               <img src="./Web-eventy-01.jpg">
             </div>
           </div>
@@ -520,14 +576,6 @@
       </div>
     </footer>
 
-    
-    <!-- Firebase App (core) -->
-    <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app.js"></script>
-    <!-- Firebase Auth -->
-    <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-auth.js"></script>
-    <!-- Firebase Firestore -->
-    <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-firestore.js"></script>
-
     <script src="./index main.js"></script>
     <script src="./index translator.js"></script>
     <script src="./index animator.js"></script>
@@ -537,6 +585,53 @@
     <script src="./Event_Banners/Test Event Index/poson.js"></script>
     <script src="./Event_Banners/Esala/esala.js"></script>
     <script src="./history-audio-player.js"></script>
+
+    <script>
+      // Update Alert
+        // Function to generate a simple hash of the alert content
+        function generateContentHash(content) {
+            let hash = 0;
+            for (let i = 0; i < content.length; i++) {
+                const char = content.charCodeAt(i);
+                hash = ((hash << 5) - hash) + char;
+                hash = hash & hash; // Convert to 32-bit integer
+            }
+            return hash.toString();
+        }
+
+        // Function to close the alert and mark it as seen
+        function closeAlert() {
+            const alertBox = document.getElementById('alertBox');
+            alertBox.classList.add('alertHidden');
+
+            // Get the current content and generate hash
+            const alertContent = alertBox.innerHTML;
+            const contentHash = generateContentHash(alertContent);
+
+            // Store the hash to remember this content was seen
+            const seenAlerts = JSON.parse(sessionStorage.getItem('seenAlerts') || '[]');
+            seenAlerts.push(contentHash);
+            sessionStorage.setItem('seenAlerts', JSON.stringify(seenAlerts));
+        }
+
+        // Check if alert should be shown when page loads
+        function checkAlertVisibility() {
+            const alertBox = document.getElementById('alertBox');
+            const alertContent = alertBox.innerHTML;
+            const contentHash = generateContentHash(alertContent);
+
+            // Get previously seen alerts
+            const seenAlerts = JSON.parse(sessionStorage.getItem('seenAlerts') || '[]');
+
+            // If this content hash has been seen before, hide the alert
+            if (seenAlerts.includes(contentHash)) {
+                alertBox.classList.add('alertHidden');
+            }
+        }
+
+        // Run the check when the page loads
+        window.addEventListener('load', checkAlertVisibility);
+    </script>
 </body>
 
 </html>
