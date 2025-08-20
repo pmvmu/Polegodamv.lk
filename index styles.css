@@ -1639,20 +1639,20 @@ ul {
   .nav-links {
     position: fixed;
     top: 80px;
-    left: -100%;
+    left: -110%;
     background-color: var(--light-bg);
     backdrop-filter: blur(15px);
-    width: 100%;
+    width: 100vw;
     height: calc(100vh - 80px);
     flex-direction: column;
     align-items: center;
     padding: 50px 0;
     transition: all 0.3s ease;
-    z-index: 999;
+    z-index: 1100;
   }
 
   .nav-links.active {
-    left: 0;
+    left: -2.5%;
   }
 
   .nav-links li {
