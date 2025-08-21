@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News & Events | School Events</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="./News.css">
+    <meta name="theme-color" content="#610030">
+    <link rel="icon" type="image/png" href="./logo.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Sinhala:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <meta property="og:title" content="WP/ Hr/ Polegoda M. V.">
+    <meta property="og:description" content="Vidya Dadathi Vinayan">
+    <meta property="og:image" content="./preview.jpg">
+    <meta property="og:url" content="https://pmvmu.github.io/Polegodamv.lk/">
+    <meta property="og:type" content="website">
+
+
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-X971R64FQV"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-X971R64FQV');
+</script>
+</head>
+<body>
+    <div class="background"></div>
+    <div class="background-filter"></div>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <div class="header-left">
+                <button class="nav-btn" id="backBtn" onclick="window.close()">
+                    <i class="fas fa-arrow-left"></i>
+                    <span class="btn-text">Back</span>
+                </button>
+            </div>
+                        
+            <div class="search-container">
+                <div class="search-box">
+                    <input type="text" class="search-input" placeholder="Search by Title or date" id="searchInput">
+                    <button class="search-btn" id="searchBtn">
+                        <i class="fas fa-search"></i>
+                        <span class="btn-text">Search</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-content">
+            <h2>News & Events</h2>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Events Grid -->
+        <div class="events-grid" id="eventsGrid">
+            <!-- Events will be loaded here by JavaScript -->
+        </div>
+
+        <!-- No Results Message -->
+        <div class="no-results" id="noResults" style="display: none;">
+            <i class="fas fa-search"></i>
+            <h3>No Events Found</h3>
+            <p>Try adjusting your search or category filter</p>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p id="copyright">© 2025 WP/ Hr/ Polegoda M. V. &nbsp;&dash;&nbsp; All rights reserved.</p>
+            <p><span id="contact-info">Contact us at: </span><a href="mailto:pmvmediaunit@gmail.com">pmvmediaunit@gmail.com</a></p>
+        </div>
+    </footer>
+
+    <!-- Modal -->
+    <div class="modal-overlay" id="eventModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitle">Event Details</h2>
+                <button class="modal-close" onclick="closeModal()">&times;</button>
+            </div>
+            <div class="modal-body" id="modalBody">
+                <!-- Modal content will be populated here -->
+            </div>
+        </div>
+    </div>
+
+    <script src="./News.js"></script>
+</body>
+</html>

@@ -42,7 +42,7 @@ function applyEnglishTranslations() {
 
   // Navigation
   document.getElementById('home-nav').textContent = "Home";
-  document.getElementById('programs-nav').textContent = "Programs";
+  document.getElementById('programs-nav').textContent = "News & Events";
   document.getElementById('gallery-nav').textContent = "Gallery";
   document.getElementById('about-nav').textContent = "About Us";
   document.getElementById('contact-nav').textContent = "Contact";
@@ -113,8 +113,8 @@ function applyEnglishTranslations() {
   document.getElementById('read-more-history-btn').textContent = "Read More";
   document.getElementById('listen-history-title').textContent = "Listen to Our History";
 
-  // Programs & Events Section
-  document.getElementById('programs-section-title').textContent = "Events & Programs";
+  // News & Events Section
+  document.getElementById('programs-section-title').textContent = "News & Events";
   document.getElementById('event-title-special').textContent = "Special";
   document.getElementById('event-title-educational').textContent = "Eduacational";
   document.getElementById('event-title-sports').textContent = "Sports";
@@ -165,6 +165,9 @@ function applyEnglishTranslations() {
   document.getElementById('copyright-text').textContent = "© 2025 WP/ Hr/ Polegoda M. V. All Rights Reserved.";
   document.getElementById('power').textContent = "Powered by";
   document.getElementById('PMVMU').textContent = "Media Unit of Polegoda M. V.";
+
+  // Notify audio player of language change
+  document.dispatchEvent(new CustomEvent('languageChanged', { detail: { language: 'en' } }));
 }
 
 // Apply Sinhala translations (your existing function works, just make sure it's accessible)
@@ -175,7 +178,7 @@ function applySinhalaTranslations() {
 
   // Navigation
   document.getElementById('home-nav').textContent = "මුල් පිටුව";
-  document.getElementById('programs-nav').textContent = "වැඩසටහන්";
+  document.getElementById('programs-nav').textContent = "පුවත් සහ වැඩසටහන්";
   document.getElementById('gallery-nav').textContent = "ගැලරිය";
   document.getElementById('about-nav').textContent = "අප ගැන";
   document.getElementById('contact-nav').textContent = "සම්බන්ධ වන්න";
@@ -247,7 +250,7 @@ function applySinhalaTranslations() {
   document.getElementById('listen-history-title').textContent = "අපගේ ඉතිහාසය අසන්න";
 
   // Programs & Events Section
-  document.getElementById('programs-section-title').textContent = "වැඩසටහන්";
+  document.getElementById('programs-section-title').textContent = "පුවත් සහ වැඩසටහන්";
   document.getElementById('event-title-special').textContent = "විශේෂ";
   document.getElementById('event-title-educational').textContent = "අධ්‍යාපනික";
   document.getElementById('event-title-sports').textContent = "ක්‍රීඩා";
@@ -297,6 +300,9 @@ function applySinhalaTranslations() {
   document.getElementById('copyright-text').textContent = "© 2025 බප/ හො/ පොලේගොඩ මහා විද්‍යාලය. සියලුම හිමිකම් ඇවිරිණි.";
   document.getElementById('power').textContent = "බලගැන්වීම:";
   document.getElementById('PMVMU').textContent = "පොලේගොඩ මහා විද්‍යාලයීය මාධ්‍ය ඒකකය";
+
+  // Notify audio player of language change
+  document.dispatchEvent(new CustomEvent('languageChanged', { detail: { language: 'si' } }));
 }
 
 // Close dropdown when clicking outside
