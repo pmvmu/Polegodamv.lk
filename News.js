@@ -3,10 +3,10 @@ const events = [
     {
         id: 1,
         title: "Application For IT Club",
-        description: 'New members are being recruited for the IT Club.<br><br>Join us to improve your technical and creative skills..<br><br>Reserve your seat befor September 10th.<br><br>Click "Read More" and "Apply" to join.',
+        description: 'New members are being recruited for the IT Club. Join us to improve your technical and creative skills.. Reserve your seat befor <strong>September 10th</strong>.<br><br>Click "Read More" and "Apply" to join.',
         category: "educational",
-        date: "2025-08-21",
-        time: "8:30 PM",
+        date: "2025-08-20",
+        time: "8:30 AM",
         status: "ongoing",
         link: "https://whatsapp.com/channel/0029VaqpXrqHVvTdKdBGjn1T/131",
         image: "./Events/Event-imgs/ITS poster-01.jpg",
@@ -15,6 +15,17 @@ const events = [
     },
     {
         id: 2,
+        title: "Chhathrabhimani Magazine Launch",
+        description: 'Launching of the monthly magazine <strong>"Chhathrabhimani"</strong>, a group project of A/L Arts students.<br><br>Coming Soon..',
+        category: "special",
+        date: "2025-08-20",
+        time: "8:30 AM",
+        status: "upcoming",
+        image: "./Events/Event-imgs/Scl post for Jathrabhimani-01.jpg",
+        showRegister: false
+    },
+    {
+        id: 3,
         title: "Teachers And Non-Academics friendly Cricket Tournament",
         description: "A friendly cricket tournament between teachers, non-academic staff and students. Join us for a day of fun and sportsmanship!",
         category: "Sports",
@@ -24,17 +35,6 @@ const events = [
         link: "https://whatsapp.com/channel/0029VaqpXrqHVvTdKdBGjn1T/120",
         image: "./Events/Event-imgs/Scl post for Cricket match-01.jpg",
         showRegister: false // No register button for completed events
-    },
-    {
-        id: 3,
-        title: "Chathrabhimani Magazine Launch",
-        description: "Coming Soon..",
-        category: "special",
-        date: "2025-08-20",
-        time: "8:30 AM",
-        status: "upcoming",
-        image: "./Events/Event-imgs/Scl post for Jathrabhimani-01.jpg",
-        showRegister: false
     },
     {
         id: 4,
@@ -50,18 +50,6 @@ const events = [
     },
     {
         id: 5,
-        title: "What's NEW Project Launch",
-        description: "Launching of the monthly magazine Jathrabhimani, a group project of A/L Arts students.",
-        category: "Educational",
-        date: "2025-08-15",
-        time: "8:30 AM",
-        status: "completed",
-        link: "https://whatsapp.com/channel/0029VaqpXrqHVvTdKdBGjn1T/120",
-        image: "./webhero-01.jpg",
-        showRegister: false // No register button for completed events
-    },
-    {
-        id: 6,
         title: "A/L Freshman Recruitment",
         description: "Interviews for the recruitment of new Advanced Level students. Join us for this important academic milestone and opportunity.",
         category: "educational",
@@ -73,7 +61,7 @@ const events = [
         showRegister: false // No register button for completed events
     },
     {
-        id: 7,
+        id: 6,
         title: "Leadership Badge Ceremony",
         description: "The Student Leader Badge Ceremony recognizing outstanding student leadership and academic excellence. A prestigious event celebrating our future leaders.",
         category: "special",
