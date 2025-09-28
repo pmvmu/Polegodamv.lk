@@ -1,7 +1,20 @@
 // Event data array
 const events = [
-    {
+        {
         id: 1,
+        title: "Rangawatharanaya Drama Festival - 2025",
+        description: 'Book your Tickets now..<br>Only Rs.100.00',
+        category: "special",
+        date: "2025-10-17",
+        time: "2:30 PM",
+        status: "ongoing",
+        link: "https://whatsapp.com/channel/0029VaqpXrqHVvTdKdBGjn1T/136",
+        image: "./Events/Event-imgs/drama-post.jpg",
+        showRegister: true, // Add register button for this event
+        registerLink: "https://pmvmu.github.io/Drama-Tickets-Pre-Order" // Direct link for registration/application
+    },
+    {
+        id: 2,
         title: "Application For IT Club",
         description: 'New members are being recruited for the IT Club. Join us to improve your technical and creative skills.. Reserve your seat befor <strong>September 10th</strong>.<br><br>Click "Read More" and "Apply" to join.',
         category: "educational",
@@ -14,7 +27,7 @@ const events = [
         registerLink: "https://forms.gle/91wW16PmJNfWpNYe6" // Direct link for registration/application
     },
     {
-        id: 2,
+        id: 3,
         title: "Chhathrabhimani Magazine Launch",
         description: 'Launching of the monthly magazine <strong>"Chhathrabhimani"</strong>, a group project of A/L Arts students.<br><br>Coming Soon..',
         category: "special",
@@ -25,7 +38,7 @@ const events = [
         showRegister: false
     },
     {
-        id: 3,
+        id: 4,
         title: "Teachers And Non-Academics friendly Cricket Tournament",
         description: "A friendly cricket tournament between teachers, non-academic staff and students. Join us for a day of fun and sportsmanship!",
         category: "Sports",
@@ -37,7 +50,7 @@ const events = [
         showRegister: false // No register button for completed events
     },
     {
-        id: 4,
+        id: 5,
         title: "Official Website Launch",
         description: "WP/ Hr/ Polegoda M.V. - Official Website Launch. A milestone in digital presence and modern communication for our school community.",
         category: "Special",
@@ -49,7 +62,7 @@ const events = [
         showRegister: false // No register button for completed events
     },
     {
-        id: 5,
+        id: 6,
         title: "A/L Freshman Recruitment",
         description: "Interviews for the recruitment of new Advanced Level students. Join us for this important academic milestone and opportunity.",
         category: "educational",
@@ -61,7 +74,7 @@ const events = [
         showRegister: false // No register button for completed events
     },
     {
-        id: 6,
+        id: 7,
         title: "Leadership Badge Ceremony",
         description: "The Student Leader Badge Ceremony recognizing outstanding student leadership and academic excellence. A prestigious event celebrating our future leaders.",
         category: "special",
