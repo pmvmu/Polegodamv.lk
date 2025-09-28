@@ -469,6 +469,11 @@ nav {
   cursor: pointer;
 }
 
+.first-img {
+  width: 100%;
+  background: url("./Events/Event-imgs/Drama Post 1.jpg");
+}
+
 /* Head Content */
 .head-content {
   position: fixed;
@@ -565,9 +570,59 @@ marquee {
   font-weight: bold;
 }
 
+.special-slideshow {
+  margin-top: 90vh;
+  padding: 80px 0;
+  background-color: var(--light-bg);
+}
+
+.update-slide {
+  /* Position all slides over one another */
+  width: 100%;
+  border-radius: 10px;
+  box-shadow: var(--shadow-medium);
+}
+
+/* Container to establish a viewing window */
+.slideshow-container {
+  background-color: var(--light-bg);
+  max-width: 100%;
+  position: relative;
+  overflow: hidden; /* This is key to hide banners that are off-screen */
+}
+
+/* Individual slide styling */
+.slide {
+  /* Position all slides over one another */
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  opacity: 0; /* Start them all hidden */
+  transition: opacity 3s ease-in-out; /* Smooth fade for a simple transition */
+
+  /* If you want the right-to-left slide animation, you'll need to use transform */
+  transform: translateX(100%); /* Start off-screen to the right */
+  transition: transform 1.5s ease-out, opacity 1.5s; /* Combine transitions */
+}
+
+/* Make the active slide visible */
+.slide.active {
+  opacity: 1;
+  transform: translateX(0); /* Move into the view */
+  position: relative; /* Set to relative so the container takes its height */
+}
+
+/* Make images fill their slide container */
+.slide img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+
 /* Mision and Visin */
 .mission-vision-section {
-  margin-top: 90vh;
   padding: 80px 0;
   background-color: var(--light-bg);
 }

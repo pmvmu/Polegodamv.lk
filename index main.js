@@ -365,3 +365,31 @@ LoginPopup.prototype.handleLogin = function () {
 document.addEventListener('DOMContentLoaded', function () {
   new LoginPopup();
 });
+
+
+// Slide Show main
+    document.addEventListener('DOMContentLoaded', function () {
+  const slides = document.querySelectorAll('.slide');
+  let currentSlide = 0;
+  const slideInterval = 5000; // Change slide every 5 seconds (5000 milliseconds)
+
+  function nextSlide() {
+    // 1. Hide the current slide
+    slides[currentSlide].classList.remove('active');
+
+    // 2. Determine the next slide index (loop back to 0 if it's the last one)
+    currentSlide = (currentSlide + 1) % slides.length;
+
+    // 3. Show the next slide
+    slides[currentSlide].classList.add('active');
+  }
+
+  // Set the first slide as active when the page loads
+  if (slides.length > 0) {
+    slides[currentSlide].classList.add('active');
+
+    // Start the slideshow timer
+    setInterval(nextSlide, slideInterval);
+  }
+});
+
