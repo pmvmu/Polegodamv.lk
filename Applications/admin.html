@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin — Applications</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600;700&family=Noto+Serif+Sinhala:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="brand">
+    <div class="brand-crest"><i class="fa-solid fa-graduation-cap"></i></div>
+    <div class="brand-text">
+      <div class="name-si">බප/හො/පොලේගොඩ මහා විද්‍යාලය</div>
+      <div class="name-en">WP/ Hr/ Polegoda Maha Vidyalaya</div>
+    </div>
+  </div>
+  <div class="page-title">ADMIN</div>
+</header>
+
+<div id="loginScreen" class="login-box">
+  <i class="fa-solid fa-lock"></i>
+  <h2 style="font-family:'Playfair Display',serif;color:var(--maroon-800);margin:0;">Admin Access</h2>
+  <p style="color:var(--muted);font-size:.9rem;">Enter the passcode to manage applications.</p>
+  <input type="password" id="passInput" placeholder="Passcode">
+  <p class="error-msg" id="loginError"></p>
+  <button class="pill-btn gold" id="loginBtn"><i class="fa-solid fa-right-to-bracket"></i> Sign in</button>
+  <a href="index.html" style="display:block;margin-top:16px;font-size:.85rem;color:var(--muted);">
+    <i class="fa-solid fa-arrow-left"></i> Back to Applications
+  </a>
+</div>
+
+<div id="adminScreen" class="admin-wrap" style="display:none;">
+
+  <div class="admin-topbar">
+    <a class="pill-btn outline" href="index.html"><i class="fa-solid fa-arrow-left"></i> View public site</a>
+    <div class="admin-actions">
+      <button class="pill-btn outline" id="exportBtn"><i class="fa-solid fa-file-export"></i> Export JSON</button>
+      <button class="pill-btn outline" id="importBtn"><i class="fa-solid fa-file-import"></i> Import JSON</button>
+      <input type="file" id="importFile" accept="application/json" style="display:none;">
+      <button class="pill-btn outline" id="resetBtn"><i class="fa-solid fa-rotate-left"></i> Reset defaults</button>
+      <button class="pill-btn" id="logoutBtn"><i class="fa-solid fa-right-from-bracket"></i> Sign out</button>
+    </div>
+  </div>
+  <p class="helper-text">
+    <i class="fa-solid fa-circle-info"></i>
+    Changes save to this browser only. Use Export after editing, then share the file with whoever publishes
+    the site (or use Import on another computer) to bring the update live everywhere.
+  </p>
+
+  <!-- School settings -->
+  <div class="admin-card">
+    <h2><i class="fa-solid fa-school"></i> School settings</h2>
+    <div class="form-row">
+      <div class="form-field">
+        <label>Contact phone (shown on preview page)</label>
+        <input type="text" id="schoolPhone">
+      </div>
+      <div class="form-field">
+        <label>Place name</label>
+        <input type="text" id="schoolPlace">
+      </div>
+      <div class="form-field">
+        <label>Footer year</label>
+        <input type="text" id="schoolYear">
+      </div>
+    </div>
+    <button class="pill-btn gold" id="saveSchoolBtn"><i class="fa-solid fa-check"></i> Save settings</button>
+  </div>
+
+  <!-- Categories -->
+  <div class="admin-card">
+    <h2><i class="fa-solid fa-layer-group"></i> Categories</h2>
+    <div class="form-row">
+      <div class="form-field">
+        <label>English name</label>
+        <input type="text" id="catEnInput" placeholder="e.g. Issued by the Office">
+      </div>
+      <div class="form-field">
+        <label>Sinhala name</label>
+        <input type="text" id="catSiInput" placeholder="e.g. කාර්යාලය මගින් නිකුත් කරන ලද">
+      </div>
+    </div>
+    <button class="pill-btn gold" id="addCatBtn"><i class="fa-solid fa-plus"></i> Add category</button>
+
+    <table class="table" id="catTable">
+      <thead><tr><th>English</th><th>Sinhala</th><th>Applications</th><th></th></tr></thead>
+      <tbody></tbody>
+    </table>
+  </div>
+
+  <!-- Applications -->
+  <div class="admin-card">
+    <h2><i class="fa-solid fa-file-pdf"></i> Applications</h2>
+    <form id="appForm">
+      <input type="hidden" id="appId">
+      <div class="form-row">
+        <div class="form-field">
+          <label>Category</label>
+          <select id="appCategory"></select>
+        </div>
+        <div class="form-field">
+          <label>Title (English)</label>
+          <input type="text" id="appTitleEn" required>
+        </div>
+        <div class="form-field">
+          <label>Title (Sinhala)</label>
+          <input type="text" id="appTitleSi">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-field">
+          <label>PDF URL (optional if uploading a file below)</label>
+          <input type="text" id="appPdfUrl" placeholder="https://example.com/form.pdf">
+        </div>
+        <div class="form-field">
+          <label>Or upload a PDF file</label>
+          <input type="file" id="appPdfFile" accept="application/pdf">
+        </div>
+        <div class="form-field">
+          <label>Date</label>
+          <input type="date" id="appDate">
+        </div>
+      </div>
+      <div class="file-drop" id="fileStatus" style="display:none;"></div>
+      <div class="form-row" style="margin-top:6px;">
+        <button type="submit" class="pill-btn gold"><i class="fa-solid fa-plus"></i> <span id="appSubmitLabel">Add application</span></button>
+        <button type="button" class="pill-btn outline" id="cancelEditBtn" style="display:none;">Cancel edit</button>
+      </div>
+    </form>
+
+    <table class="table" id="appTable">
+      <thead><tr><th>Title</th><th>Category</th><th>Date</th><th>File</th><th></th></tr></thead>
+      <tbody></tbody>
+    </table>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="app.js"></script>
+<script>
+let DATA = loadData();
+
+/* ---------------- login ---------------- */
+
+function isLoggedIn(){ return sessionStorage.getItem('wpmv_admin_ok') === '1'; }
+function setLoggedIn(v){ v ? sessionStorage.setItem('wpmv_admin_ok','1') : sessionStorage.removeItem('wpmv_admin_ok'); }
+
+function showAdmin(){
+  document.getElementById('loginScreen').style.display = 'none';
+  document.getElementById('adminScreen').style.display = 'block';
+  renderAll();
+}
+function showLogin(){
+  document.getElementById('loginScreen').style.display = 'block';
+  document.getElementById('adminScreen').style.display = 'none';
+}
+
+document.getElementById('loginBtn').addEventListener('click', tryLogin);
+document.getElementById('passInput').addEventListener('keydown', e => { if (e.key === 'Enter') tryLogin(); });
+
+function tryLogin(){
+  const val = document.getElementById('passInput').value;
+  if (val === (DATA.school.adminPassword || 'admin123')){
+    setLoggedIn(true);
+    showAdmin();
+  } else {
+    document.getElementById('loginError').textContent = 'Incorrect passcode. Please try again.';
+  }
+}
+
+document.getElementById('logoutBtn').addEventListener('click', () => {
+  setLoggedIn(false);
+  showLogin();
+});
+
+if (isLoggedIn()) showAdmin(); else showLogin();
+
+/* ---------------- toast ---------------- */
+
+let toastTimer;
+function toast(msg){
+  const el = document.getElementById('toast');
+  el.textContent = msg;
+  el.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => el.classList.remove('show'), 2200);
+}
+
+/* ---------------- school settings ---------------- */
+
+function renderSchool(){
+  document.getElementById('schoolPhone').value = DATA.school.phone || '';
+  document.getElementById('schoolPlace').value = DATA.school.place || '';
+  document.getElementById('schoolYear').value = DATA.school.year || '';
+}
+document.getElementById('saveSchoolBtn').addEventListener('click', () => {
+  DATA.school.phone = document.getElementById('schoolPhone').value.trim();
+  DATA.school.place = document.getElementById('schoolPlace').value.trim();
+  DATA.school.year = document.getElementById('schoolYear').value.trim();
+  saveData(DATA);
+  toast('School settings saved.');
+});
+
+/* ---------------- categories ---------------- */
+
+function renderCategories(){
+  const tbody = document.querySelector('#catTable tbody');
+  tbody.innerHTML = '';
+  DATA.categories.forEach(cat => {
+    const count = DATA.applications.filter(a => a.categoryId === cat.id).length;
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td>${escapeHtml(cat.en)}</td>
+      <td>${escapeHtml(cat.si)}</td>
+      <td>${count}</td>
+      <td class="row-actions">
+        <button class="icon-btn danger" data-del="${escapeHtml(cat.id)}" title="Delete"><i class="fa-solid fa-trash"></i></button>
+      </td>`;
+    tbody.appendChild(tr);
+  });
+  tbody.querySelectorAll('[data-del]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const id = btn.dataset.del;
+      const count = DATA.applications.filter(a => a.categoryId === id).length;
+      if (count > 0){
+        alert(`Can't delete: ${count} application(s) still use this category. Move or delete them first.`);
+        return;
+      }
+      if (!confirm('Delete this category?')) return;
+      DATA.categories = DATA.categories.filter(c => c.id !== id);
+      saveData(DATA);
+      renderAll();
+      toast('Category deleted.');
+    });
+  });
+
+  const sel = document.getElementById('appCategory');
+  const prev = sel.value;
+  sel.innerHTML = DATA.categories.map(c => `<option value="${escapeHtml(c.id)}">${escapeHtml(c.en)}</option>`).join('');
+  if (prev) sel.value = prev;
+}
+
+document.getElementById('addCatBtn').addEventListener('click', () => {
+  const en = document.getElementById('catEnInput').value.trim();
+  const si = document.getElementById('catSiInput').value.trim();
+  if (!en){ toast('Please enter an English category name.'); return; }
+  let id = slugify(en);
+  let unique = id, n = 2;
+  while (DATA.categories.some(c => c.id === unique)) unique = `${id}-${n++}`;
+  DATA.categories.push({ id: unique, en, si: si || en });
+  saveData(DATA);
+  document.getElementById('catEnInput').value = '';
+  document.getElementById('catSiInput').value = '';
+  renderAll();
+  toast('Category added.');
+});
+
+/* ---------------- applications ---------------- */
+
+let uploadedDataUrl = null;
+
+document.getElementById('appPdfFile').addEventListener('change', (e) => {
+  const file = e.target.files[0];
+  const status = document.getElementById('fileStatus');
+  if (!file){ uploadedDataUrl = null; status.style.display = 'none'; return; }
+  if (file.size > 4.5 * 1024 * 1024){
+    status.style.display = 'block';
+    status.textContent = 'File is larger than ~4.5MB, which may not fit in this browser\'s storage. Consider hosting it elsewhere and pasting a URL instead.';
+    uploadedDataUrl = null;
+    return;
+  }
+  const reader = new FileReader();
+  reader.onload = () => {
+    uploadedDataUrl = reader.result;
+    status.style.display = 'block';
+    status.innerHTML = `<i class="fa-solid fa-circle-check" style="color:#2f7a3a;"></i> "${escapeHtml(file.name)}" ready to attach.`;
+  };
+  reader.readAsDataURL(file);
+});
+
+function renderApplications(){
+  const tbody = document.querySelector('#appTable tbody');
+  tbody.innerHTML = '';
+  const catName = id => (DATA.categories.find(c => c.id === id) || {}).en || '—';
+  DATA.applications.slice().sort((a,b) => (b.date||'').localeCompare(a.date||'')).forEach(app => {
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td>${escapeHtml(app.title_en)}</td>
+      <td>${escapeHtml(catName(app.categoryId))}</td>
+      <td>${escapeHtml(app.date || '')}</td>
+      <td>${app.pdfUrl ? '<i class="fa-solid fa-circle-check" style="color:#2f7a3a;"></i>' : '<i class="fa-solid fa-circle-minus" style="color:#b98;"></i>'}</td>
+      <td class="row-actions">
+        <button class="icon-btn" data-edit="${escapeHtml(app.id)}" title="Edit"><i class="fa-solid fa-pen"></i></button>
+        <button class="icon-btn danger" data-del="${escapeHtml(app.id)}" title="Delete"><i class="fa-solid fa-trash"></i></button>
+      </td>`;
+    tbody.appendChild(tr);
+  });
+
+  tbody.querySelectorAll('[data-edit]').forEach(btn => {
+    btn.addEventListener('click', () => loadAppIntoForm(btn.dataset.edit));
+  });
+  tbody.querySelectorAll('[data-del]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      if (!confirm('Delete this application?')) return;
+      DATA.applications = DATA.applications.filter(a => a.id !== btn.dataset.del);
+      saveData(DATA);
+      renderAll();
+      toast('Application deleted.');
+    });
+  });
+}
+
+function loadAppIntoForm(id){
+  const app = DATA.applications.find(a => a.id === id);
+  if (!app) return;
+  document.getElementById('appId').value = app.id;
+  document.getElementById('appCategory').value = app.categoryId;
+  document.getElementById('appTitleEn').value = app.title_en || '';
+  document.getElementById('appTitleSi').value = app.title_si || '';
+  document.getElementById('appPdfUrl').value = app.pdfUrl && !app.pdfUrl.startsWith('data:') ? app.pdfUrl : '';
+  document.getElementById('appDate').value = app.date || '';
+  uploadedDataUrl = app.pdfUrl && app.pdfUrl.startsWith('data:') ? app.pdfUrl : null;
+  document.getElementById('appSubmitLabel').textContent = 'Save changes';
+  document.getElementById('cancelEditBtn').style.display = 'inline-flex';
+  window.scrollTo({ top: document.getElementById('appForm').offsetTop - 20, behavior: 'smooth' });
+}
+
+document.getElementById('cancelEditBtn').addEventListener('click', resetAppForm);
+
+function resetAppForm(){
+  document.getElementById('appForm').reset();
+  document.getElementById('appId').value = '';
+  document.getElementById('appDate').value = new Date().toISOString().slice(0,10);
+  document.getElementById('appSubmitLabel').textContent = 'Add application';
+  document.getElementById('cancelEditBtn').style.display = 'none';
+  document.getElementById('fileStatus').style.display = 'none';
+  uploadedDataUrl = null;
+}
+
+document.getElementById('appForm').addEventListener('submit', (e) => {
+  e.preventDefault();
+  const id = document.getElementById('appId').value;
+  const categoryId = document.getElementById('appCategory').value;
+  const title_en = document.getElementById('appTitleEn').value.trim();
+  const title_si = document.getElementById('appTitleSi').value.trim();
+  const typedUrl = document.getElementById('appPdfUrl').value.trim();
+  const date = document.getElementById('appDate').value || new Date().toISOString().slice(0,10);
+
+  if (!title_en){ toast('Please enter an English title.'); return; }
+  if (!categoryId){ toast('Please add a category first.'); return; }
+
+  const pdfUrl = uploadedDataUrl || typedUrl || '';
+
+  if (id){
+    const app = DATA.applications.find(a => a.id === id);
+    Object.assign(app, { categoryId, title_en, title_si, pdfUrl, date });
+    toast('Application updated.');
+  } else {
+    let newId = 'app-' + slugify(title_en);
+    let unique = newId, n = 2;
+    while (DATA.applications.some(a => a.id === unique)) unique = `${newId}-${n++}`;
+    DATA.applications.push({ id: unique, categoryId, title_en, title_si, pdfUrl, date });
+    toast('Application added.');
+  }
+  saveData(DATA);
+  resetAppForm();
+  renderAll();
+});
+
+/* ---------------- export / import / reset ---------------- */
+
+document.getElementById('exportBtn').addEventListener('click', () => {
+  const blob = new Blob([JSON.stringify(DATA, null, 2)], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'applications-data.json';
+  a.click();
+  URL.revokeObjectURL(url);
+});
+
+document.getElementById('importBtn').addEventListener('click', () => document.getElementById('importFile').click());
+document.getElementById('importFile').addEventListener('change', (e) => {
+  const file = e.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = () => {
+    try {
+      const parsed = JSON.parse(reader.result);
+      if (!parsed.categories || !parsed.applications) throw new Error('Invalid file format.');
+      DATA = parsed;
+      saveData(DATA);
+      renderAll();
+      toast('Data imported successfully.');
+    } catch (err) {
+      alert('Could not import this file: ' + err.message);
+    }
+  };
+  reader.readAsText(file);
+  e.target.value = '';
+});
+
+document.getElementById('resetBtn').addEventListener('click', () => {
+  if (!confirm('Reset all data back to the original defaults? This cannot be undone.')) return;
+  resetData();
+  DATA = loadData();
+  renderAll();
+  toast('Data reset to defaults.');
+});
+
+/* ---------------- init ---------------- */
+
+function renderAll(){
+  renderSchool();
+  renderCategories();
+  renderApplications();
+  if (!document.getElementById('appDate').value){
+    document.getElementById('appDate').value = new Date().toISOString().slice(0,10);
+  }
+}
+</script>
+</body>
+</html>
