@@ -58,7 +58,7 @@
 
 <script src="app.js"></script>
 <script>
-let DATA = loadData();
+let DATA = loadCachedData();
 
 function applyStaticText(){
   const lang = getLang();
@@ -173,6 +173,7 @@ document.getElementById('langSelect').addEventListener('change', (e) => {
 });
 
 render();
+loadData().then(fresh => { DATA = fresh; render(); });
 </script>
 </body>
 </html>

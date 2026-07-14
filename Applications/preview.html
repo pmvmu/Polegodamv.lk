@@ -52,45 +52,52 @@
 
 <script src="app.js"></script>
 <script>
-const DATA = loadData();
+let DATA = loadCachedData();
 const appId = qs('id');
-const app = DATA.applications.find(a => a.id === appId);
-const lang = getLang();
-document.documentElement.lang = lang;
-document.body.classList.toggle('lang-si', lang === 'si');
-
-document.getElementById('pageTitle').textContent = t('applications');
-document.getElementById('backLabel').textContent = t('back');
-document.getElementById('downloadLabel').textContent = t('download');
-document.getElementById('instructionsTitle').textContent = t('instructions');
-document.getElementById('step1').textContent = t('stepDownload');
-document.getElementById('step2').textContent = t('stepPrint');
-document.getElementById('step3').textContent = t('stepHandOver');
-document.getElementById('contactNote').textContent = t('contactNote');
-document.getElementById('contactPhone').textContent = DATA.school.phone || '';
-document.getElementById('rightsText').textContent = t('rights');
-document.getElementById('maintainedText').textContent = t('maintainedBy');
-document.getElementById('yearLine').textContent = `${DATA.school.year} Polegoda Maha Vidyalaya - ${DATA.school.place}`;
 
 document.getElementById('backBtn').addEventListener('click', () => {
   window.location.href = 'index.html';
 });
 
-const frame = document.getElementById('previewFrame');
-const downloadBtn = document.getElementById('downloadBtn');
-const titleEl = document.getElementById('docTitle');
+function renderPreview(){
+  const app = DATA.applications.find(a => a.id === appId);
+  const lang = getLang();
+  document.documentElement.lang = lang;
+  document.body.classList.toggle('lang-si', lang === 'si');
 
-if (!app){
-  titleEl.textContent = t('notFound');
-  frame.innerHTML = `<div class="preview-placeholder"><i class="fa-solid fa-triangle-exclamation"></i>${t('notFound')}</div>`;
-  downloadBtn.style.display = 'none';
-} else {
+  document.getElementById('pageTitle').textContent = t('applications');
+  document.getElementById('backLabel').textContent = t('back');
+  document.getElementById('downloadLabel').textContent = t('download');
+  document.getElementById('instructionsTitle').textContent = t('instructions');
+  document.getElementById('step1').textContent = t('stepDownload');
+  document.getElementById('step2').textContent = t('stepPrint');
+  document.getElementById('step3').textContent = t('stepHandOver');
+  document.getElementById('contactNote').textContent = t('contactNote');
+  document.getElementById('contactPhone').textContent = DATA.school.phone || '';
+  document.getElementById('rightsText').textContent = t('rights');
+  document.getElementById('maintainedText').textContent = t('maintainedBy');
+  document.getElementById('yearLine').textContent = `${DATA.school.year} Polegoda Maha Vidyalaya - ${DATA.school.place}`;
+
+  const frame = document.getElementById('previewFrame');
+  const downloadBtn = document.getElementById('downloadBtn');
+  const titleEl = document.getElementById('docTitle');
+
+  if (!app){
+    titleEl.textContent = t('notFound');
+    frame.innerHTML = `<div class="preview-placeholder"><i class="fa-solid fa-triangle-exclamation"></i>${t('notFound')}</div>`;
+    downloadBtn.style.display = 'none';
+    return;
+  }
+
   titleEl.textContent = lang === 'si' ? app.title_si : app.title_en;
 
   if (app.pdfUrl){
     frame.innerHTML = `<iframe src="${escapeHtml(app.pdfUrl)}" title="PDF preview"></iframe>`;
     downloadBtn.href = app.pdfUrl;
     downloadBtn.setAttribute('download', slugify(app.title_en) + '.pdf');
+    downloadBtn.style.display = '';
+    downloadBtn.style.opacity = '';
+    downloadBtn.style.pointerEvents = '';
   } else {
     frame.innerHTML = `<div class="preview-placeholder">
       <i class="fa-solid fa-file-pdf"></i>
@@ -102,6 +109,9 @@ if (!app){
     downloadBtn.style.pointerEvents = 'none';
   }
 }
+
+renderPreview();
+loadData().then(fresh => { DATA = fresh; renderPreview(); });
 </script>
 </body>
 </html>

@@ -46,7 +46,7 @@
       <button class="pill-btn" id="logoutBtn"><i class="fa-solid fa-right-from-bracket"></i> Sign out</button>
     </div>
   </div>
-  <p class="helper-text">
+  <p class="helper-text" id="syncHelperText">
     <i class="fa-solid fa-circle-info"></i>
     Changes save to this browser only. Use Export after editing, then share the file with whoever publishes
     the site (or use Import on another computer) to bring the update live everywhere.
@@ -148,17 +148,28 @@
 
 <script src="app.js"></script>
 <script>
-let DATA = loadData();
+let DATA = loadCachedData();
+
+if (hasApi()){
+  document.getElementById('syncHelperText').innerHTML =
+    '<i class="fa-solid fa-cloud-arrow-up"></i> Changes save straight to the spreadsheet database and appear everywhere. ' +
+    'Export/Import below still work as a manual backup.';
+}
 
 /* ---------------- login ---------------- */
 
 function isLoggedIn(){ return sessionStorage.getItem('wpmv_admin_ok') === '1'; }
 function setLoggedIn(v){ v ? sessionStorage.setItem('wpmv_admin_ok','1') : sessionStorage.removeItem('wpmv_admin_ok'); }
 
-function showAdmin(){
+async function showAdmin(){
   document.getElementById('loginScreen').style.display = 'none';
   document.getElementById('adminScreen').style.display = 'block';
   renderAll();
+  if (hasApi()){
+    toast('Loading latest data from the spreadsheet…');
+    DATA = await loadData();
+    renderAll();
+  }
 }
 function showLogin(){
   document.getElementById('loginScreen').style.display = 'block';
@@ -168,7 +179,11 @@ function showLogin(){
 document.getElementById('loginBtn').addEventListener('click', tryLogin);
 document.getElementById('passInput').addEventListener('keydown', e => { if (e.key === 'Enter') tryLogin(); });
 
-function tryLogin(){
+async function tryLogin(){
+  // Check the passcode against the freshest copy we can get, so a
+  // password change made from another device/browser is respected.
+  const current = hasApi() ? await loadData() : DATA;
+  DATA = current;
   const val = document.getElementById('passInput').value;
   if (val === (DATA.school.adminPassword || 'admin123')){
     setLoggedIn(true);
@@ -203,12 +218,12 @@ function renderSchool(){
   document.getElementById('schoolPlace').value = DATA.school.place || '';
   document.getElementById('schoolYear').value = DATA.school.year || '';
 }
-document.getElementById('saveSchoolBtn').addEventListener('click', () => {
+document.getElementById('saveSchoolBtn').addEventListener('click', async () => {
   DATA.school.phone = document.getElementById('schoolPhone').value.trim();
   DATA.school.place = document.getElementById('schoolPlace').value.trim();
   DATA.school.year = document.getElementById('schoolYear').value.trim();
-  saveData(DATA);
-  toast('School settings saved.');
+  const ok = await saveData(DATA);
+  toast(ok ? 'School settings saved.' : "Saved locally, but couldn't reach the spreadsheet — check your connection.");
 });
 
 /* ---------------- categories ---------------- */
@@ -229,7 +244,7 @@ function renderCategories(){
     tbody.appendChild(tr);
   });
   tbody.querySelectorAll('[data-del]').forEach(btn => {
-    btn.addEventListener('click', () => {
+    btn.addEventListener('click', async () => {
       const id = btn.dataset.del;
       const count = DATA.applications.filter(a => a.categoryId === id).length;
       if (count > 0){
@@ -237,10 +252,12 @@ function renderCategories(){
         return;
       }
       if (!confirm('Delete this category?')) return;
+      const previousCategories = structuredClone(DATA.categories);
       DATA.categories = DATA.categories.filter(c => c.id !== id);
-      saveData(DATA);
+      const ok = await saveData(DATA);
+      if (!ok) DATA.categories = previousCategories;
       renderAll();
-      toast('Category deleted.');
+      toast(ok ? 'Category deleted.' : "Couldn't reach the spreadsheet — change not saved.");
     });
   });
 
@@ -250,19 +267,21 @@ function renderCategories(){
   if (prev) sel.value = prev;
 }
 
-document.getElementById('addCatBtn').addEventListener('click', () => {
+document.getElementById('addCatBtn').addEventListener('click', async () => {
   const en = document.getElementById('catEnInput').value.trim();
   const si = document.getElementById('catSiInput').value.trim();
   if (!en){ toast('Please enter an English category name.'); return; }
   let id = slugify(en);
   let unique = id, n = 2;
   while (DATA.categories.some(c => c.id === unique)) unique = `${id}-${n++}`;
+  const previousCategories = structuredClone(DATA.categories);
   DATA.categories.push({ id: unique, en, si: si || en });
-  saveData(DATA);
+  const ok = await saveData(DATA);
+  if (!ok) DATA.categories = previousCategories;
   document.getElementById('catEnInput').value = '';
   document.getElementById('catSiInput').value = '';
   renderAll();
-  toast('Category added.');
+  toast(ok ? 'Category added.' : "Couldn't reach the spreadsheet — change not saved.");
 });
 
 /* ---------------- applications ---------------- */
@@ -274,7 +293,15 @@ document.getElementById('appPdfFile').addEventListener('change', (e) => {
   const file = e.target.files[0];
   const status = document.getElementById('fileStatus');
   if (!file){ uploadedDataUrl = null; fileReading = false; status.style.display = 'none'; return; }
-  if (file.size > 4.5 * 1024 * 1024){
+  if (hasApi() && file.size > 30 * 1024){
+    status.style.display = 'block';
+    status.textContent = "This file is too large to store as a spreadsheet cell (Google Sheets caps cells at ~50,000 characters). Please host the PDF elsewhere (e.g. Google Drive, set to 'Anyone with the link') and paste its direct link in the field above instead.";
+    uploadedDataUrl = null;
+    fileReading = false;
+    e.target.value = '';
+    return;
+  }
+  if (!hasApi() && file.size > 4.5 * 1024 * 1024){
     status.style.display = 'block';
     status.textContent = 'File is larger than ~4.5MB, which may not fit in this browser\'s storage. Consider hosting it elsewhere and pasting a URL instead.';
     uploadedDataUrl = null;
@@ -321,12 +348,14 @@ function renderApplications(){
     btn.addEventListener('click', () => loadAppIntoForm(btn.dataset.edit));
   });
   tbody.querySelectorAll('[data-del]').forEach(btn => {
-    btn.addEventListener('click', () => {
+    btn.addEventListener('click', async () => {
       if (!confirm('Delete this application?')) return;
+      const previousApplications = structuredClone(DATA.applications);
       DATA.applications = DATA.applications.filter(a => a.id !== btn.dataset.del);
-      saveData(DATA);
+      const ok = await saveData(DATA);
+      if (!ok) DATA.applications = previousApplications;
       renderAll();
-      toast('Application deleted.');
+      toast(ok ? 'Application deleted.' : "Couldn't reach the spreadsheet — change not saved.");
     });
   });
 }
@@ -358,7 +387,7 @@ function resetAppForm(){
   uploadedDataUrl = null;
 }
 
-document.getElementById('appForm').addEventListener('submit', (e) => {
+document.getElementById('appForm').addEventListener('submit', async (e) => {
   e.preventDefault();
 
   if (fileReading){
@@ -391,13 +420,15 @@ document.getElementById('appForm').addEventListener('submit', (e) => {
     DATA.applications.push({ id: unique, categoryId, title_en, title_si, pdfUrl, date });
   }
 
-  if (saveData(DATA)){
+  if (await saveData(DATA)){
     toast(id ? 'Application updated.' : 'Application added.');
     resetAppForm();
     renderAll();
   } else {
     DATA.applications = previousApplications;
-    alert("Couldn't save this application — the browser's storage is full, usually because an attached PDF is too large. Try a smaller file, or paste a link to a PDF hosted elsewhere instead of uploading it.");
+    alert(hasApi()
+      ? "Couldn't save this application — the spreadsheet database couldn't be reached. Check your connection and try again."
+      : "Couldn't save this application — the browser's storage is full, usually because an attached PDF is too large. Try a smaller file, or paste a link to a PDF hosted elsewhere instead of uploading it.");
   }
 });
 
@@ -418,14 +449,14 @@ document.getElementById('importFile').addEventListener('change', (e) => {
   const file = e.target.files[0];
   if (!file) return;
   const reader = new FileReader();
-  reader.onload = () => {
+  reader.onload = async () => {
     try {
       const parsed = JSON.parse(reader.result);
       if (!parsed.categories || !parsed.applications) throw new Error('Invalid file format.');
       DATA = parsed;
-      saveData(DATA);
+      const ok = await saveData(DATA);
       renderAll();
-      toast('Data imported successfully.');
+      toast(ok ? 'Data imported successfully.' : "Imported locally, but couldn't reach the spreadsheet to sync it.");
     } catch (err) {
       alert('Could not import this file: ' + err.message);
     }
@@ -434,12 +465,12 @@ document.getElementById('importFile').addEventListener('change', (e) => {
   e.target.value = '';
 });
 
-document.getElementById('resetBtn').addEventListener('click', () => {
+document.getElementById('resetBtn').addEventListener('click', async () => {
   if (!confirm('Reset all data back to the original defaults? This cannot be undone.')) return;
-  resetData();
-  DATA = loadData();
+  const ok = await resetData();
+  DATA = await loadData();
   renderAll();
-  toast('Data reset to defaults.');
+  toast(ok ? 'Data reset to defaults.' : "Reset locally, but couldn't reach the spreadsheet to sync it.");
 });
 
 /* ---------------- init ---------------- */

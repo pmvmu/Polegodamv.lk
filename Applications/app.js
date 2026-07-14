@@ -1,13 +1,21 @@
 /* =========================================================================
    WP/Hr/Polegoda Maha Vidyalaya — Applications Portal
    Shared data layer + i18n. Loaded by index.html, preview.html, admin.html
-   Data persists in the browser via localStorage (STORAGE_KEY below).
-   Use the Admin panel's Export/Import buttons to move data between browsers
-   or to publish an update after editing on your own computer.
+   Data lives in a Google Sheet (the real database) once you set API_URL
+   below — see SPREADSHEET_SETUP.md. Every page also keeps a local cache in
+   localStorage (STORAGE_KEY) so it still loads instantly and still works
+   if the spreadsheet is briefly unreachable. If API_URL is left blank, the
+   site falls back to the original per-browser-only behaviour.
    ========================================================================= */
 
 const STORAGE_KEY = 'wpmv_applications_data_v1';
 const LANG_KEY = 'wpmv_lang';
+
+/* ---------- spreadsheet database config ----------
+   Paste the "Web app URL" you get after deploying the Apps Script below.
+   See SPREADSHEET_SETUP.md for step-by-step instructions.
+   Leave this as '' to keep using only this browser's storage (old behaviour). */
+const API_URL = 'https://script.google.com/macros/s/AKfycbyX1hXOmYOnEVU0PdSmK75NEslOZBqo3G8l5Ga6BbxAbMsIay0dQAzMf17nsm7iERfH4g/exec';
 
 const DEFAULT_DATA = {
   school: {
@@ -58,34 +66,94 @@ const DEFAULT_DATA = {
   ]
 };
 
-/* ---------- data access ---------- */
+/* ---------- data access ----------
+   loadCachedData()  — synchronous, instant. Reads the last known copy from
+                        this browser so pages can paint immediately.
+   loadData()        — asynchronous. If API_URL is set, fetches the current
+                        data from the Google Sheet (source of truth) and
+                        refreshes the local cache; falls back to the cache
+                        if the sheet can't be reached (offline, etc.).
+   saveData(data)     — asynchronous. Always updates the local cache, and
+                        (if API_URL is set) writes the change to the Sheet
+                        too. Returns true/false depending on whether the
+                        write actually reached the spreadsheet (when one
+                        is configured).
+   ---------------------------------------------------------------- */
 
-function loadData() {
-  try {
-    const raw = localStorage.getItem(STORAGE_KEY);
-    if (!raw) {
-      saveData(DEFAULT_DATA);
-      return structuredClone(DEFAULT_DATA);
-    }
-    return JSON.parse(raw);
-  } catch (e) {
-    console.error('Failed to load data, falling back to defaults', e);
-    return structuredClone(DEFAULT_DATA);
-  }
+function hasApi() {
+  return !!API_URL;
 }
 
-function saveData(data) {
+function cacheData(data) {
   try {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
     return true;
   } catch (e) {
-    console.error('Failed to save data (storage may be full)', e);
+    console.error('Failed to cache data locally (storage may be full)', e);
     return false;
   }
 }
 
-function resetData() {
-  saveData(DEFAULT_DATA);
+function loadCachedData() {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if (!raw) {
+      cacheData(DEFAULT_DATA);
+      return structuredClone(DEFAULT_DATA);
+    }
+    return JSON.parse(raw);
+  } catch (e) {
+    console.error('Failed to read local cache, falling back to defaults', e);
+    return structuredClone(DEFAULT_DATA);
+  }
+}
+
+async function loadData() {
+  const cached = loadCachedData();
+  if (!hasApi()) return cached;
+
+  try {
+    const res = await fetch(`${API_URL}?action=get`, { method: 'GET' });
+    if (!res.ok) throw new Error('Network response was not OK');
+    const remote = await res.json();
+    if (!remote || !remote.school || !remote.categories || !remote.applications) {
+      throw new Error('Spreadsheet returned unexpected data');
+    }
+    cacheData(remote);
+    return remote;
+  } catch (e) {
+    console.warn('Could not reach the spreadsheet database, using local copy instead.', e);
+    return cached;
+  }
+}
+
+async function saveData(data) {
+  // Always keep a local cache, so the site keeps working even if the
+  // spreadsheet is briefly unreachable.
+  cacheData(data);
+
+  if (!hasApi()) return true;
+
+  try {
+    // Sent as text/plain (not application/json) on purpose: Apps Script Web
+    // Apps don't support CORS preflight requests, and a text/plain body is
+    // "simple" so the browser skips the preflight. The script still parses
+    // the body as JSON on the other end.
+    const res = await fetch(API_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+      body: JSON.stringify({ action: 'save', data })
+    });
+    const result = await res.json();
+    return !!(result && result.ok);
+  } catch (e) {
+    console.error('Failed to save to the spreadsheet database', e);
+    return false;
+  }
+}
+
+async function resetData() {
+  return saveData(DEFAULT_DATA);
 }
 
 /* ---------- language ---------- */
