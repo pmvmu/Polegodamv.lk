@@ -268,7 +268,10 @@ function resolvePdfUrl(pdfUrl) {
    be previewed inline. The download button should still use the original
    pdfUrl — only the iframe src needs this. */
 function toEmbedUrl(url) {
-  if (!url) return url;
+  // A bare Google Drive file ID (no full URL) — typically 25+ letters/numbers/-/_
+   if (/^[a-zA-Z0-9_-]{25,}$/.test(url.trim())) {
+     return `https://drive.google.com/file/d/${url.trim()}/preview`;
+   }
 
   // Google Drive — share links, "open?id=" links, and uc?export=download
   // links all carry the file's ID; Drive's own /preview endpoint embeds
