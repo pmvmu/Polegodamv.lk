@@ -87,10 +87,12 @@
     </div>
     <button class="pill-btn gold" id="addCatBtn"><i class="fa-solid fa-plus"></i> Add category</button>
 
-    <table class="table" id="catTable">
-      <thead><tr><th>English</th><th>Sinhala</th><th>Applications</th><th></th></tr></thead>
-      <tbody></tbody>
-    </table>
+    <div class="table-wrap">
+      <table class="table" id="catTable">
+        <thead><tr><th>English</th><th>Sinhala</th><th>Applications</th><th></th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
   </div>
 
   <!-- Applications -->
@@ -133,10 +135,12 @@
       </div>
     </form>
 
-    <table class="table" id="appTable">
-      <thead><tr><th>Title</th><th>Category</th><th>Date</th><th>File</th><th></th></tr></thead>
-      <tbody></tbody>
-    </table>
+    <div class="table-wrap">
+      <table class="table" id="appTable">
+        <thead><tr><th>Title</th><th>Category</th><th>Date</th><th>File</th><th></th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
   </div>
 </div>
 
@@ -264,22 +268,33 @@ document.getElementById('addCatBtn').addEventListener('click', () => {
 /* ---------------- applications ---------------- */
 
 let uploadedDataUrl = null;
+let fileReading = false;
 
 document.getElementById('appPdfFile').addEventListener('change', (e) => {
   const file = e.target.files[0];
   const status = document.getElementById('fileStatus');
-  if (!file){ uploadedDataUrl = null; status.style.display = 'none'; return; }
+  if (!file){ uploadedDataUrl = null; fileReading = false; status.style.display = 'none'; return; }
   if (file.size > 4.5 * 1024 * 1024){
     status.style.display = 'block';
     status.textContent = 'File is larger than ~4.5MB, which may not fit in this browser\'s storage. Consider hosting it elsewhere and pasting a URL instead.';
     uploadedDataUrl = null;
+    fileReading = false;
+    e.target.value = '';
     return;
   }
+  fileReading = true;
+  status.style.display = 'block';
+  status.innerHTML = `<i class="fa-solid fa-spinner"></i> Reading "${escapeHtml(file.name)}"…`;
   const reader = new FileReader();
   reader.onload = () => {
     uploadedDataUrl = reader.result;
-    status.style.display = 'block';
+    fileReading = false;
     status.innerHTML = `<i class="fa-solid fa-circle-check" style="color:#2f7a3a;"></i> "${escapeHtml(file.name)}" ready to attach.`;
+  };
+  reader.onerror = () => {
+    fileReading = false;
+    uploadedDataUrl = null;
+    status.innerHTML = `<i class="fa-solid fa-triangle-exclamation" style="color:#a3282a;"></i> Couldn't read that file. Please try again.`;
   };
   reader.readAsDataURL(file);
 });
@@ -345,6 +360,12 @@ function resetAppForm(){
 
 document.getElementById('appForm').addEventListener('submit', (e) => {
   e.preventDefault();
+
+  if (fileReading){
+    toast('Still reading the PDF file — please wait a moment and try again.');
+    return;
+  }
+
   const id = document.getElementById('appId').value;
   const categoryId = document.getElementById('appCategory').value;
   const title_en = document.getElementById('appTitleEn').value.trim();
@@ -357,20 +378,27 @@ document.getElementById('appForm').addEventListener('submit', (e) => {
 
   const pdfUrl = uploadedDataUrl || typedUrl || '';
 
+  // Keep a snapshot so we can roll back if saving fails (e.g. storage full)
+  const previousApplications = structuredClone(DATA.applications);
+
   if (id){
     const app = DATA.applications.find(a => a.id === id);
     Object.assign(app, { categoryId, title_en, title_si, pdfUrl, date });
-    toast('Application updated.');
   } else {
     let newId = 'app-' + slugify(title_en);
     let unique = newId, n = 2;
     while (DATA.applications.some(a => a.id === unique)) unique = `${newId}-${n++}`;
     DATA.applications.push({ id: unique, categoryId, title_en, title_si, pdfUrl, date });
-    toast('Application added.');
   }
-  saveData(DATA);
-  resetAppForm();
-  renderAll();
+
+  if (saveData(DATA)){
+    toast(id ? 'Application updated.' : 'Application added.');
+    resetAppForm();
+    renderAll();
+  } else {
+    DATA.applications = previousApplications;
+    alert("Couldn't save this application — the browser's storage is full, usually because an attached PDF is too large. Try a smaller file, or paste a link to a PDF hosted elsewhere instead of uploading it.");
+  }
 });
 
 /* ---------------- export / import / reset ---------------- */

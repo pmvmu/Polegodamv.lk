@@ -75,7 +75,13 @@ function loadData() {
 }
 
 function saveData(data) {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+  try {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+    return true;
+  } catch (e) {
+    console.error('Failed to save data (storage may be full)', e);
+    return false;
+  }
 }
 
 function resetData() {
