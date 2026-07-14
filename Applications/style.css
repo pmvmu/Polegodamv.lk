@@ -168,6 +168,11 @@ button {
   color: var(--ink);
 }
 
+.search-wrap input:focus {
+  outline: 2px solid var(--maroon-800);
+  outline-offset: 1px;
+}
+
 .control-group {
   display: flex;
   gap: 10px;

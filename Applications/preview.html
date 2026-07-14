@@ -92,8 +92,9 @@ function renderPreview(){
   titleEl.textContent = lang === 'si' ? app.title_si : app.title_en;
 
   if (app.pdfUrl){
-    frame.innerHTML = `<iframe src="${escapeHtml(app.pdfUrl)}" title="PDF preview"></iframe>`;
-    downloadBtn.href = app.pdfUrl;
+    const resolvedUrl = resolvePdfUrl(app.pdfUrl);
+    frame.innerHTML = `<iframe src="${escapeHtml(toEmbedUrl(resolvedUrl))}" title="PDF preview"></iframe>`;
+    downloadBtn.href = resolvedUrl;
     downloadBtn.setAttribute('download', slugify(app.title_en) + '.pdf');
     downloadBtn.style.display = '';
     downloadBtn.style.opacity = '';

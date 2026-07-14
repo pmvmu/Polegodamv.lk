@@ -15,7 +15,7 @@ const LANG_KEY = 'wpmv_lang';
    Paste the "Web app URL" you get after deploying the Apps Script below.
    See SPREADSHEET_SETUP.md for step-by-step instructions.
    Leave this as '' to keep using only this browser's storage (old behaviour). */
-const API_URL = 'https://script.google.com/macros/s/AKfycbyX1hXOmYOnEVU0PdSmK75NEslOZBqo3G8l5Ga6BbxAbMsIay0dQAzMf17nsm7iERfH4g/exec';
+const API_URL = '';
 
 const DEFAULT_DATA = {
   school: {
@@ -246,4 +246,46 @@ function slugify(str) {
     .trim()
     .replace(/[^a-z0-9]+/g, '-')
     .replace(/(^-|-$)/g, '') || 'item';
+}
+
+/* Accepts either a full link (Drive share link, Dropbox link, any plain
+   PDF URL) or just a bare Google Drive file ID, and returns a real,
+   usable URL either way. Use this before toEmbedUrl() and before setting
+   a download href. */
+function resolvePdfUrl(pdfUrl) {
+  if (!pdfUrl) return pdfUrl;
+  const value = pdfUrl.trim();
+  // A bare Drive file ID has no "://" and no spaces, and is a run of
+  // Drive's ID characters (usually 25-44 chars, but be a bit lenient).
+  if (!/:\/\//.test(value) && /^[a-zA-Z0-9_-]{15,}$/.test(value)) {
+    return `https://drive.google.com/file/d/${value}/view`;
+  }
+  return value;
+}
+
+/* Turn a stored PDF link (which may be a "direct download" link that
+   browsers refuse to show inside an <iframe>) into a URL that can actually
+   be previewed inline. The download button should still use the original
+   pdfUrl — only the iframe src needs this. */
+function toEmbedUrl(url) {
+  if (!url) return url;
+
+  // Google Drive — share links, "open?id=" links, and uc?export=download
+  // links all carry the file's ID; Drive's own /preview endpoint embeds
+  // cleanly in an iframe.
+  const driveMatch = url.match(/drive\.google\.com\/(?:file\/d\/|open\?id=|uc(?:\?|.*[?&])id=)([a-zA-Z0-9_-]+)/);
+  if (driveMatch) {
+    return `https://drive.google.com/file/d/${driveMatch[1]}/preview`;
+  }
+
+  // Dropbox — "?dl=1" forces a download; "?dl=0" shows Dropbox's own
+  // inline preview instead.
+  if (url.includes('dropbox.com')) {
+    return url.includes('dl=1') ? url.replace('dl=1', 'dl=0') : url;
+  }
+
+  // Anything else: route it through Google's PDF viewer, which can render
+  // most publicly-reachable PDF links inline even if the origin server
+  // sends "force download" headers.
+  return `https://docs.google.com/viewer?url=${encodeURIComponent(url)}&embedded=true`;
 }
