@@ -507,6 +507,12 @@ a button {
   .cards-grid {
     grid-template-columns: 1fr;
   }
+
+  .card,
+  .result-card {
+    min-width: 100%;
+  }
+
 }
 
 @media (max-width: 760px) {
