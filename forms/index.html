@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WPMV Applications</title>
+  <link rel="stylesheet" href="root-variables.css" />
+  <link rel="stylesheet" href="styles.css" />
+  <script defer src="script.js"></script>
+  <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+</head>
+
+<body>
+  <div class="page-shell">
+    <header class="topbar">
+      <ul class="topbar-list">
+        <li class="header-holder">
+          <div class="brand">
+            <img src="logo.svg" alt="WPMV Logo" class="brand-logo" />
+          </div>
+        </li>
+        <li class="header-holder">
+          <div class="topbar-title" data-i18n="applications">APPLICATIONS</div>
+        </li>
+        <li class="header-holder">
+          <div class="topbar-actions">
+            <button type="button" class="menu-toggle" aria-expanded="false" aria-controls="page-menu"
+              data-i18n-label="openMenu">
+              <span class="hamburger-line"></span>
+            </button>
+          </div>
+        </li>
+      </ul>
+      <div class="page-menu" id="page-menu" aria-hidden="true">
+        <div class="menu-overlay"></div>
+        <div class="menu-panel">
+          <div class="menu-head">
+            <span data-i18n="menu">Menu</span>
+            <button type="button" class="close-menu" data-i18n-label="closeMenu">&times;</button>
+          </div>
+          <div class="menu-group">
+            <a href="index.html" class="menu-link" data-i18n="home">Home</a>
+            <a href="search.html" class="menu-link" data-i18n="searchResults">Search Results</a>
+          </div>
+          <div class="menu-group">
+            <div class="menu-label" data-i18n="language">Language</div>
+            <div class="menu-actions">
+              <button type="button" class="lang-option" data-lang="en">English</button>
+              <button type="button" class="lang-option" data-lang="si">සිංහල</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="content">
+      <section class="toolbar">
+        <div class="toolbar-row">
+          <form class="search-box" action="search.html" method="get" role="search">
+            <input type="search" name="q" data-i18n-placeholder="searchPlaceholder" placeholder="Search applications"
+              aria-label="Search applications" />
+            <button type="submit" class="search-button" data-i18n="searchButton">Search</button>
+          </form>
+          <label class="select-box">
+            <select aria-label="Sort applications">
+              <option data-i18n="recently">Recently</option>
+              <option data-i18n="mostPopular">Most Popular</option>
+              <option data-i18n="newest">Newest</option>
+            </select>
+            <button type="button" class="filter-button" data-i18n="filter">Filter</button>
+          </label>
+        </div>
+      </section>
+
+      <section class="section-group">
+        <div class="section-header" data-i18n="issuedByOffice">Issued By the OFFICE</div>
+        <div class="cards-grid">
+
+          <article class="card" data-card-id="applicationAL">
+            <div class="card-preview">
+              <div class="placeholder-id preview" id="preview">
+                <embed src="./PDF/AL_Application.pdf#toolbar=0&navpanes=0&scrollbar=0&view=FitH"
+                  class="placeholder-iframe" type="application/pdf" width="100%" height="100%" />
+              </div>
+            </div>
+            <div class="card-body">
+              <p class="card-title" data-i18n-card-title="applicationAL">Application for 2028 A/L class</p>
+              <a href="./PDF/AL_Application.pdf" download="AL Application.pdf">
+                <button type="button" id="downloadBtn" class="download-btn" onclick="downloadPDF()">Download
+                  Document</button>
+              </a>
+              <p id="expiryMessage" class="expiry-msg" style="display: none;">
+                *මෙම අයදුම්පත බාගත කිරීමේ කාලය අවසන් වී ඇත!
+              </p>
+            </div>
+          </article>
+
+        </div>
+      </section>
+
+      <section class="section-group">
+        <div class="section-header" data-i18n="issuedByITCircle">Issued By the IT Circle</div>
+        <div class="cards-grid single-column">
+          <article class="card">
+            <div class="card-preview">
+              <div class="placeholder-id">
+                <embed src="./PDF/ICT_Circle_Application.pdf#toolbar=0&navpanes=0&scrollbar=0&view=FitH"
+                  class="placeholder-iframe" type="application/pdf" width="100%" height="100%" />
+              </div>
+            </div>
+            <div class="card-body">
+              <p class="card-title">Application to join the IT Circle</p>
+              <a href="./PDF/ICT_Circle_Application.pdf" download="ICT Circle Application.pdf">
+                <button type="button" class="download-btn">Download Document</button>
+              </a>
+            </div>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p data-i18n="allRights">All rights reserved</p>
+      <p data-i18n="schoolFooter">2026 Polegoda Maha Vidyalaya - Mahagama</p>
+      <p data-i18n="maintainedBy">Maintained by School’s IT circle</p>
+    </footer>
+  </div>
+</body>
+
+</html>
