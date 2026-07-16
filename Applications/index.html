@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WPMV Applications</title>
+  <link rel="stylesheet" href="root-variables.css" />
+  <link rel="stylesheet" href="styles.css" />
+  <script defer src="script.js"></script>
+</head>
+
+<body>
+  <div class="page-shell">
+    <header class="topbar">
+      <div class="brand">
+        <img src="logo.svg" alt="WPMV Logo" class="brand-logo" />
+        <div>
+          <p class="brand-title">WPU HR/ Polegoda Maha Vidyalaya</p>
+          <p class="brand-subtitle">විද්‍යාලය / பள்ளி</p>
+        </div>
+      </div>
+      <div class="topbar-title" data-i18n="applications">APPLICATIONS</div>
+      <div class="topbar-actions">
+        <button type="button" class="menu-toggle" aria-expanded="false" aria-controls="page-menu"
+          data-i18n-label="openMenu">
+          <span class="hamburger-line"></span>
+        </button>
+      </div>
+      <div class="page-menu" id="page-menu" aria-hidden="true">
+        <div class="menu-overlay"></div>
+        <div class="menu-panel">
+          <div class="menu-head">
+            <span data-i18n="menu">Menu</span>
+            <button type="button" class="close-menu" data-i18n-label="closeMenu">&times;</button>
+          </div>
+          <div class="menu-group">
+            <a href="index.html" class="menu-link" data-i18n="home">Home</a>
+            <a href="search.html" class="menu-link" data-i18n="searchResults">Search Results</a>
+          </div>
+          <div class="menu-group">
+            <div class="menu-label" data-i18n="language">Language</div>
+            <div class="menu-actions">
+              <button type="button" class="lang-option" data-lang="en">English</button>
+              <button type="button" class="lang-option" data-lang="si">සිංහල</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="content">
+      <section class="toolbar">
+        <div class="toolbar-row">
+          <form class="search-box" action="search.html" method="get" role="search">
+            <input type="search" name="q" data-i18n-placeholder="searchPlaceholder" placeholder="Search applications"
+              aria-label="Search applications" />
+            <button type="submit" class="search-button" data-i18n="searchButton">Search</button>
+          </form>
+          <label class="select-box">
+            <select aria-label="Sort applications">
+              <option data-i18n="recently">Recently</option>
+              <option data-i18n="mostPopular">Most Popular</option>
+              <option data-i18n="newest">Newest</option>
+            </select>
+            <button type="button" class="filter-button" data-i18n="filter">Filter</button>
+          </label>
+        </div>
+      </section>
+
+      <section class="section-group">
+        <div class="section-header" data-i18n="issuedByOffice">Issued By the OFFICE</div>
+        <div class="cards-grid">
+          <article class="card" data-card-id="applicationAL">
+            <div class="card-preview">
+              <div class="placeholder-id">
+                <embed src="./PDF/AL_Application.pdf#toolbar=0&navpanes=0&scrollbar=0&view=FitH"
+                  class="placeholder-iframe" type="application/pdf" width="100%" height="100%" />
+              </div>
+            </div>
+            <div class="card-body">
+              <p class="card-title" data-i18n-card-title="applicationAL">Application for 2028 A/L class</p>
+              <a href="#" class="card-action disabled" data-i18n="downloadDocument">Download Document</a>
+            </div>
+          </article>
+
+          <article class="card" data-card-id="resignationCertificate">
+            <div class="card-preview">
+              <div class="placeholder-id">ID: resignationCertificate</div>
+            </div>
+            <div class="card-body">
+              <p class="card-title" data-i18n-card-title="applicationResignation">Application for obtaining a
+                resignation certificate</p>
+              <a href="#" class="card-action disabled" data-i18n="downloadDocument">Download Document</a>
+            </div>
+          </article>
+
+          <article class="card" data-card-id="schoolAdmission">
+            <div class="card-preview" data-i18n="pdfPreview">
+              PDF Header Preview
+              <div class="placeholder-id">ID: schoolAdmission</div>
+            </div>
+            <div class="card-body">
+              <p class="card-title" data-i18n-card-title="applicationAdmission">Application for School Admission</p>
+              <a href="#" class="card-action disabled" data-i18n="downloadDocument">Download Document</a>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section-group">
+        <div class="section-header" data-i18n="issuedByITCircle">Issued By the IT Circle</div>
+        <div class="cards-grid single-column">
+          <article class="card">
+            <div class="card-preview">
+              <div class="placeholder-id">
+                <embed src="./PDF/ICT_Circle_Application.pdf#toolbar=0&navpanes=0&scrollbar=0&view=FitH" class="placeholder-iframe" type="application/pdf" width="100%" height="100%" />
+              </div>
+            </div>
+            <div class="card-body">
+              <p class="card-title" data-i18n-card-title="applicationAL">Application for 2028 A/L class</p>
+              <a href="./PDF/ICT_Circle_Application.pdf" class="card-action" target="_blank" download="ICT Circle Application.pdf">
+                <button type="button">Download Document</button>
+              </a>
+            </div>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p data-i18n="allRights">All rights reserved</p>
+      <p data-i18n="schoolFooter">2026 Polegoda Maha Vidyalaya - Mahagama</p>
+      <p data-i18n="maintainedBy">Maintained by School’s IT circle</p>
+    </footer>
+  </div>
+</body>
+
+</html>

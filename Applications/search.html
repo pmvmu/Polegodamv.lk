@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Search Results</title>
+  <link rel="stylesheet" href="root-variables.css" />
+  <link rel="stylesheet" href="styles.css" />
+  <script defer src="script.js"></script>
+</head>
+<body class="search-page">
+  <div class="page-shell">
+    <header class="topbar">
+      <div class="brand">
+        <img src="logo.svg" alt="WPMV Logo" class="brand-logo" />
+        <div>
+          <p class="brand-title">WPU HR/ Polegoda Maha Vidyalaya</p>
+          <p class="brand-subtitle">විද්‍යාලය / பள்ளி</p>
+        </div>
+      </div>
+      <div class="topbar-title" data-i18n="searchResults">Search Results</div>
+      <div class="topbar-actions">
+        <button type="button" class="menu-toggle" aria-expanded="false" aria-controls="page-menu" data-i18n-label="openMenu">
+          <span class="hamburger-line"></span>
+        </button>
+      </div>
+      <div class="page-menu" id="page-menu" aria-hidden="true">
+        <div class="menu-overlay"></div>
+        <div class="menu-panel">
+          <div class="menu-head">
+            <span data-i18n="menu">Menu</span>
+            <button type="button" class="close-menu" data-i18n-label="closeMenu">&times;</button>
+          </div>
+          <div class="menu-group">
+            <a href="index.html" class="menu-link" data-i18n="home">Home</a>
+            <a href="search.html" class="menu-link" data-i18n="searchResults">Search Results</a>
+          </div>
+          <div class="menu-group">
+            <div class="menu-label" data-i18n="language">Language</div>
+            <div class="menu-actions">
+              <button type="button" class="lang-option" data-lang="en">English</button>
+              <button type="button" class="lang-option" data-lang="si">සිංහල</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="content">
+      <section class="toolbar">
+        <div class="toolbar-row">
+          <form class="search-box" action="search.html" method="get" role="search">
+            <input type="search" name="q" data-i18n-placeholder="searchPlaceholder" placeholder="Search applications" aria-label="Search applications" value="" />
+            <button type="submit" class="search-button" data-i18n="searchButton">Search</button>
+          </form>
+          <label class="select-box">
+            <span data-i18n="recently">Recently</span>
+            <select aria-label="Sort applications">
+              <option data-i18n="recently">Recently</option>
+              <option data-i18n="mostPopular">Most Popular</option>
+              <option data-i18n="newest">Newest</option>
+            </select>
+            <button type="button" class="filter-button" data-i18n="filter">Filter</button>
+          </label>
+        </div>
+      </section>
+
+      <section class="section-group">
+        <div class="section-header" data-i18n="searchResults">Search Results</div>
+        <div class="search-meta">
+          <p id="search-summary" data-i18n="searchAllPages">Search results from all pages</p>
+        </div>
+        <div id="search-results" class="cards-grid"></div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p data-i18n="allRights">All rights reserved</p>
+      <p data-i18n="schoolFooter">2026 Polegoda Maha Vidyalaya - Mahagama</p>
+      <p data-i18n="maintainedBy">Maintained by School’s IT circle</p>
+    </footer>
+  </div>
+</body>
+</html>
