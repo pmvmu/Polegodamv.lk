@@ -282,11 +282,16 @@ const deadlineDate = new Date("2026-07-15T23:59:59").getTime();
 function checkDeadline() {
     const now = new Date().getTime();
     const downloadBtn = document.getElementById("downloadBtn");
+    const elements = document.querySelectorAll(".preview");
     const expiryMessage = document.getElementById("expiryMessage");
 
     // වත්මන් වේලාව deadline එකට වඩා වැඩි නම්
     if (now > deadlineDate) {
         downloadBtn.disabled = true; // Button එක Click කරන්න බැරි කරයි
+        elements.forEach(element => {
+            element.style.display = "none";
+            element.style.opacity = "0.5";
+        });
         downloadBtn.innerText = "Download Closed"; // Button එකේ text එක වෙනස් කරයි
         expiryMessage.style.display = "block"; // Warning message එක පෙන්වයි
     }
@@ -320,3 +325,61 @@ function downloadPDF() {
 
 // පිටුව load වන විටම checkDeadline function එක run කරන්න
 window.onload = checkDeadline;
+
+
+
+// -------------------------------------------------------------------------
+
+const config = [
+    { 
+        id: "downloadBtn", 
+        msgId: "msg-1", 
+        pdfContainerId: "preview", 
+        deadline: "2026-07-15T23:59:59", 
+        fileUrl: "./PDF/AL_Application.pdf", 
+        downloadName: "AL_Application_2028.pdf" 
+    }
+];
+
+function checkAllDeadlines() {
+    const now = new Date().getTime();
+
+    config.forEach(item => {
+        const btn = document.getElementById(item.id);
+        const msg = document.getElementById(item.msgId);
+        const pdfContainer = document.getElementById(item.pdfContainerId);
+        const targetDeadline = new Date(item.deadline).getTime();
+
+        if (now > targetDeadline) {
+            // 1. Deadline එක පහු වී ඇත්නම්: ⚠️ Document Timeout Box එක පෙන්වයි
+            if (pdfContainer) {
+                pdfContainer.innerHTML = `
+                    <div class="pdf-locked-box">
+                        <div class="pdf-locked-content">
+                            <span class="locked-icon">⚠️</span>
+                            <strong class="locked-title">Document Timeout</strong>
+                            <span class="locked-desc">
+                                මෙම අයදුම්පත ලබාගැනීමේ කාලය අවසන් වී ඇති බැවින් Preview එක නැරඹීමට නොහැක.
+                            </span>
+                        </div>
+                    </div>`;
+            }
+            if (btn) {
+                btn.disabled = true;
+                btn.innerText = "Download Closed";
+            }
+            if (msg) {
+                msg.style.display = "block";
+            }
+        } else {
+            // 2. Deadline එක පහු වී නැත්නම්: සාමාන්‍ය පරිදි PDF එක පෙන්වයි
+            if (pdfContainer) {
+                pdfContainer.innerHTML = `
+                    <iframe src="${item.fileUrl}#toolbar=0&navpanes=0&scrollbar=0&view=FitH" class="pdf-iframe" style="width: 106%; height: 100%; border: none;"></iframe>`;
+            }
+        }
+    });
+}
+
+// පිටුව load වන විට run කිරීම
+window.onload = checkAllDeadlines;
