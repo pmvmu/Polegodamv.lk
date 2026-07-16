@@ -274,3 +274,49 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
 });
+
+
+const deadlineDate = new Date("2026-07-15T23:59:59").getTime();
+
+// පිටුව Load වෙද්දීම deadline එක පරීක්ෂා කරන Function එක
+function checkDeadline() {
+    const now = new Date().getTime();
+    const downloadBtn = document.getElementById("downloadBtn");
+    const expiryMessage = document.getElementById("expiryMessage");
+
+    // වත්මන් වේලාව deadline එකට වඩා වැඩි නම්
+    if (now > deadlineDate) {
+        downloadBtn.disabled = true; // Button එක Click කරන්න බැරි කරයි
+        downloadBtn.innerText = "Download Closed"; // Button එකේ text එක වෙනස් කරයි
+        expiryMessage.style.display = "block"; // Warning message එක පෙන්වයි
+    }
+}
+
+// PDF එක download කරන function එක (කලින් JavaScript එකමයි)
+function downloadPDF() {
+    const now = new Date().getTime();
+    
+    // User කෙසේ හෝ code එක වෙනස් කර click කළහොත් නැවත පරීක්ෂා කිරීමට security check එකක්
+    if (now > deadlineDate) {
+        alert("කණගාටුයි, මෙම අවස්ථාව දැන් අවසන් වී ඇත!");
+        return;
+    }
+
+    const fileUrl = './PDF/AL_Application.pdf'; // PDF file path එක
+    const fileName = 'AL Application.pdf'; // Download කරන file එකේ නම
+
+    fetch(fileUrl)
+        .then(response => response.blob())
+        .then(blob => {
+            const link = document.createElement('a');
+            link.href = window.URL.createObjectURL(blob);
+            link.download = fileName;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        })
+        .catch(error => console.error('Error:', error));
+}
+
+// පිටුව load වන විටම checkDeadline function එක run කරන්න
+window.onload = checkDeadline;

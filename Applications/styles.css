@@ -343,6 +343,7 @@ select {
   display: flex;
   flex-direction: column;
   min-height: 400px;
+  min-width: 25rem;
 }
 
 .card-preview {
@@ -399,7 +400,7 @@ select {
   color: var(--white);
 }
 
-.card-action {
+.download-btn {
   display: inline-flex;
   align-items: center;
   padding: 10px 16px;
@@ -409,6 +410,23 @@ select {
   text-decoration: none;
   font-size: 0.88rem;
   font-weight: 700;
+}
+
+.download-btn:disabled {
+    cursor: not-allowed; /* block icon එක පෙන්වීමට */
+    opacity: 0.5;
+}
+
+/* Expiry Message Style එක */
+.expiry-msg {
+    color: #ffffff;
+    font-weight: bold;
+    margin-top: 10px;
+    font-family: sans-serif;
+}
+
+.card-body a {
+  width: fit-content;
 }
 
 a button {
